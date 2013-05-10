@@ -1,0 +1,13 @@
+<tr id=<%= "tipo_documento_#{tipo_documento.id}" %>>
+  <td><%= link_to tipo_documento.id, edit_tipo_documento_path(tipo_documento), :remote => true %></td>
+  <td><%= tipo_documento.sigla %></td>
+  <td><%= tipo_documento.descripcion %></td>
+  <td>
+    <%= link_to 'Mostrar', tipo_documento, :remote => true, :class => 'btn btn-default' %>
+    <%= link_to 'Editar', edit_tipo_documento_path(tipo_documento), :remote => true,
+        :class => 'btn btn-warning' %>
+    <%= link_to 'Eliminar', tipo_documento, 
+        :data => { :confirm => 'Esta Seguro?' },
+        :method => :delete, :remote => true, :class => 'btn btn-default btn-danger' %>
+  </td>
+</tr>

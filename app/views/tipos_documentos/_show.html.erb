@@ -1,0 +1,10 @@
+<%- model_class = TipoDocumento -%>
+<br><br>
+<h1><%=t '.title', :default => model_class.model_name.human %></h1>
+<br>
+
+<div class='tipodocumento'>
+  <p>id: <%= @tipo_documento.id %></p>
+  <p>sigla: <%= @tipo_documento.sigla %></p>
+  <p>descripcion: <%= @tipo_documento.descripcion %></p>
+</div>
