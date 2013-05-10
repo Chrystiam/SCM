@@ -1,0 +1,13 @@
+<tr id=<%= "falta_#{falta.id}" %>>
+  <td><%= link_to falta.id, edit_falta_path(falta), :remote => true %></td>
+  <td><%= falta.falta %></td>
+  <td><%= falta.descripcion %></td>
+  <td>
+    <%= link_to 'Mostrar', falta, :remote => true, :class => 'btn btn-default' %>
+    <%= link_to 'Editar', edit_falta_path(falta), :remote => true,
+        :class => 'btn btn-warning' %>
+    <%= link_to 'Eliminar', falta, 
+        :data => { :confirm => 'Esta Seguro?' },
+        :method => :delete, :remote => true, :class => 'btn btn-default btn-danger' %>
+  </td>
+</tr>

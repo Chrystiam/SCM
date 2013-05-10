@@ -1,4 +1,10 @@
 SCQ::Application.routes.draw do
+  resources :destroy
+
+
+  resources :cargos
+
+
   resources :faltas
 
 
