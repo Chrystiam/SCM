@@ -1,4 +1,7 @@
 SCQ::Application.routes.draw do
+  resources :programas
+
+
   resources :destroy
 
 

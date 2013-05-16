@@ -30,6 +30,7 @@ class TiposDocumentosController < ApplicationController
   def create
     @tipo_documento = TipoDocumento.new(params[:tipo_documento])
     render :action => :new unless @tipo_documento.save
+    @tipos_documentos = TipoDocumento.all
   end
 
   
@@ -42,6 +43,7 @@ class TiposDocumentosController < ApplicationController
   def destroy
     @tipo_documento = TipoDocumento.find(params[:id])
     @tipo_documento.destroy
+    @tipos_documentos = TipoDocumento.all
   end
   
   private

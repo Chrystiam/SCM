@@ -11,9 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130510163453) do
+ActiveRecord::Schema.define(:version => 20130516152619) do
 
-  create_table "cargos", :force => true do |t|
+  create_table "destroy", :force => true do |t|
+    t.string   "cargo"
     t.string   "descripcion"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
@@ -25,6 +26,36 @@ ActiveRecord::Schema.define(:version => 20130510163453) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  create_table "programas", :force => true do |t|
+    t.string   "descripcion"
+    t.string   "abreviatura"
+    t.string   "ficha"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "quejas", :force => true do |t|
+    t.date     "fechainforme"
+    t.string   "nombres"
+    t.string   "apellidos"
+    t.integer  "tipo_documento_id"
+    t.string   "programa"
+    t.string   "ficha"
+    t.text     "descripcion"
+    t.integer  "falta_id"
+    t.text     "testigos"
+    t.string   "nombresinformante"
+    t.string   "apellidosinformante"
+    t.string   "direccion"
+    t.string   "cargo"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.string   "identificacion"
+  end
+
+  add_index "quejas", ["falta_id"], :name => "index_quejas_on_falta_id"
+  add_index "quejas", ["tipo_documento_id"], :name => "index_quejas_on_tipo_documento_id"
 
   create_table "tipos_documentos", :force => true do |t|
     t.string   "sigla"
