@@ -9,17 +9,18 @@
     <%= f.collection_select :tipo_documento_id, TipoDocumento.all, :id, :sigla, :prompt => "tipo de documento" %>
     <br><br>
     <%= f.input :identificacion %>
-    <%= f.input :programa %>
+    <%= f.label :programa_id %>
+    <%= f.collection_select :programa_id, Programa.all, :id, :descripcion, :prompt => "tipo de programa" %>
     <%= f.input :ficha %>
     <%= f.input :descripcion %>
     <%= f.label :falta_id %>
     <%= f.collection_select :falta_id, Falta.all, :id, :descripcion, :prompt => "tipo de falta" %>
-    
     <%= f.input :testigos %>
     <%= f.input :nombresinformante %>
     <%= f.input :apellidosinformante %>
     <%= f.input :direccion %>
-    <%= f.input :cargo %>
+    <%= f.label :cargo_id %>
+    <%= f.collection_select :cargo_id, Cargo.all, :id, :descripcion, :prompt => "tipo de cargo" %>
   </div>
   
   <div class="form-actions">

@@ -10,15 +10,15 @@
 		<p>apellidos: <%= @queja.apellidos %></p>
 		<p>tipo documento: <%= @queja.tipo_documento.sigla %></p>
     <p>numero: <%= @queja.identificacion %></p>
-		<p>programa: <%= @queja.programa %></p>
-		<p>ficha: <%= @queja.ficha %></p>
+		<p>programa: <%= @queja.programa.descripcion %></p>
+		<p>ficha: <%= @queja.programa %></p>
 		<p>descripcion: <%= @queja.descripcion %></p>
 		<p>falta: <%= @queja.falta.descripcion %></p>
 		<p>testigos: <%= @queja.testigos %></p>
 		<p>nombres informante: <%= @queja.nombresinformante %></p>
 		<p>apellidos informante: <%= @queja.apellidosinformante %></p>
     <p>direccion: <%= @queja.direccion %></p>
-		<p>cargo: <%= @queja.cargo %></p>
+		<p>cargo: <%= @queja.cargo.descripcion%></p>
 	</div>
 
 
