@@ -1,0 +1,55 @@
+<%- model_class = Queja -%>
+<br><br>
+<h1>Quejas</h1>
+<br>
+<%= form_tag request.path, :method => 'get' do %>
+  <%= content_tag :label do %>
+    falta:
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Consultar", :nombres => nil %>
+  <% end %>
+<% end %>
+
+<%= form_tag request.path, :method => 'get' do %>
+  <%= content_tag :label do %>
+    Numero Registros:
+    <%= text_field_tag :registro, params[:registro], :class =>'input-mini' %>
+   <% end %>
+<% end %>
+
+<p>
+Total Quejas : <%= @quejas.total_entries %>
+</p>
+
+<table class="table table-bordered table-hover pretty">
+  <thead>
+    <tr>
+      <th><%= sortable "id" %></th>
+      <th><%= sortable "fechainforme"%></th>
+		  <th><%= sortable "nombres" %></th>
+		  <th><%= sortable "apellidos" %></th>
+		  <th><%= sortable "tipo documento" %></th>
+      <th><%= sortable "identificacion" %></th>
+		  <th><%= sortable "programa" %></th>
+		  <th><%= sortable "Ficha" %></th>
+		  <th><%= sortable "descripcion" %></th>
+		  <th><%= sortable "falta" %></th>
+		  <th><%= sortable "testigos" %></th>
+		  <th><%= sortable "nombresinformante" %></th>
+		  <th><%= sortable "apellidosinformante" %></th>
+		  <th><%= sortable "direccion" %></th>
+		  <th><%= sortable "cargo" %></th>
+		  <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @quejas %>
+  </tbody>
+</table>
+<%= link_to 'Nueva Queja', new_queja_path, :class => 'btn btn-primary', :remote => true %>
+
+<div align="center">
+  <%= will_paginate @quejas, :previous_label => '&laquo; Anterior', :next_label => 'Siguiente
+  &raquo;' %>
+</div>
+

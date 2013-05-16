@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130502155043) do
+ActiveRecord::Schema.define(:version => 20130514162924) do
 
   create_table "faltas", :force => true do |t|
     t.string   "falta"
@@ -19,6 +19,28 @@ ActiveRecord::Schema.define(:version => 20130502155043) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  create_table "quejas", :force => true do |t|
+    t.date     "fechainforme"
+    t.string   "nombres"
+    t.string   "apellidos"
+    t.integer  "tipo_documento_id"
+    t.string   "programa"
+    t.string   "ficha"
+    t.text     "descripcion"
+    t.integer  "falta_id"
+    t.text     "testigos"
+    t.string   "nombresinformante"
+    t.string   "apellidosinformante"
+    t.string   "direccion"
+    t.string   "cargo"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.string   "identificacion"
+  end
+
+  add_index "quejas", ["falta_id"], :name => "index_quejas_on_falta_id"
+  add_index "quejas", ["tipo_documento_id"], :name => "index_quejas_on_tipo_documento_id"
 
   create_table "tipos_documentos", :force => true do |t|
     t.string   "sigla"

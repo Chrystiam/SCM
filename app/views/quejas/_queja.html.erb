@@ -1,0 +1,25 @@
+<tr id=<%= "queja_#{queja.id}" %>>
+  <td><%= link_to queja.id, edit_queja_path(queja), :remote => true %></td>
+  <td><%= queja.fechainforme %></td>
+  <td><%= queja.nombres %></td>
+  <td><%= queja.apellidos %></td>
+  <td><%= queja.tipo_documento.sigla %></td>
+  <td><%= queja.identificacion %></td>
+  <td><%= queja.programa %></td>
+  <td><%= queja.ficha %></td>
+  <td><%= queja.descripcion %></td>
+  <td><%= queja.falta.descripcion %></td>
+  <td><%= queja.testigos %></td>
+  <td><%= queja.nombresinformante %></td>
+  <td><%= queja.apellidosinformante %></td>
+  <td><%= queja.direccion %></td>
+  <td><%= queja.cargo %></td>
+  <td>
+    <%= link_to 'Mostrar', queja, :remote => true, :class => 'btn btn-mini btn-default' %>
+    <%= link_to 'Editar', edit_queja_path(queja), :remote => true,
+        :class => 'btn btn-mini btn-warning' %>
+    <%= link_to 'Eliminar', queja, 
+        :data => { :confirm => 'Esta Seguro?' },
+        :method => :delete, :remote => true, :class => 'btn btn-mini btn-danger' %>
+  </td>
+</tr>

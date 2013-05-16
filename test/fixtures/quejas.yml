@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  fechainforme: 2013-05-14
+  nombres: MyString
+  apellidos: MyString
+  tipo_documento: 
+  programa: MyString
+  ficha: MyString
+  descripcion: MyText
+  falta: 
+  testigos: MyText
+  nombresinformante: MyString
+  apellidosinformante: MyString
+  direccion: MyString
+  cargo: MyString
+
+two:
+  fechainforme: 2013-05-14
+  nombres: MyString
+  apellidos: MyString
+  tipo_documento: 
+  programa: MyString
+  ficha: MyString
+  descripcion: MyText
+  falta: 
+  testigos: MyText
+  nombresinformante: MyString
+  apellidosinformante: MyString
+  direccion: MyString
+  cargo: MyString

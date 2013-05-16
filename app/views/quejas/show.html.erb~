@@ -1,0 +1,22 @@
+<%- model_class = Queja -%>
+<br><br>
+<h1><%=t '.title', :default => model_class.model_name.human %></h1>
+<br>
+
+<div class='queja'>
+  <p>id: <%= @queja.id %></p>
+  <p>fecha: <%= @queja.fechainforme %></p>
+  <p>nombres: <%= @queja.nombres %></p>
+  <p>apellidos: <%= @queja.apellidos %></p>
+  <p>tipo documento: <%= @queja.tipo_documento %></p>
+  <p>direccion: <%= @queja.direccion %></p>
+  <p>programa: <%= @queja.programa %></p>
+  <p>ficha: <%= @queja.ficha %></p>
+  <p>descripcion: <%= @queja.descripcion %></p>
+  <p>falta: <%= @queja.falta %></p>
+  <p>testigos: <%= @queja.testigos %></p>
+  <p>nombres informante: <%= @queja.nombresinformante %></p>
+  <p>apellidos informante: <%= @queja.apellidosinformante %></p>
+  <p>cargo: <%= @queja.cargo %></p>
+</div>
+
