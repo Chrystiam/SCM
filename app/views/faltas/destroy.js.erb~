@@ -1,0 +1,1 @@
+$("table tr#falta_<%= @falta.id %>").remove();

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  descripcion: MyString
+  abreviatura: MyString
+  ficha: MyString
+
+two:
+  descripcion: MyString
+  abreviatura: MyString
+  ficha: MyString

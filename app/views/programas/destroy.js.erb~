@@ -1,0 +1,1 @@
+$("table tr#programa_<%= @programa.id %>").remove();

@@ -1,0 +1,45 @@
+<%- model_class = TipoDocumento -%>
+<br><br>
+<h1>Tipo Documentos</h1>
+<br>
+<%= form_tag request.path, :method => 'get' do %>
+  <%= content_tag :label do %>
+    Sigla o Descripcion Documento:
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Consultar", :sigla => nil %>
+  <% end %>
+<% end %>
+
+<%= form_tag request.path, :method => 'get' do %>
+  <%= content_tag :label do %>
+     Numero Registros:
+    <%= text_field_tag :registro, params[:registro], :class =>'input-mini' %>
+   <% end %>
+<% end %>
+
+<p>
+Total Documentos : <%= @tipos_documentos.total_entries %>
+</p>
+
+<table class="table table-bordered pretty">
+  <thead>
+    <tr>
+      <th><%= sortable "id" %></th>
+      <th><%= sortable "sigla" %></th>
+      <th><%= sortable "descripcion" %></th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @tipos_documentos %>
+  </tbody>
+</table>
+<%= link_to 'Nuevo Documento', new_tipo_documento_path, :class => 'btn btn-primary', :remote => true %>
+
+<div align="center">
+  <%= will_paginate @tipo_documentos, :previous_label => '&laquo; Anterior', :next_label => 'Siguiente
+  &raquo;' %>
+</div>
+
+
+

@@ -1,0 +1,1 @@
+$("table tr#tipo_documento_<%= @tipo_documento.id %>").remove();
