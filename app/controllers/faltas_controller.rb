@@ -49,7 +49,7 @@ class FaltasController < ApplicationController
 
   private
   def sort_column
-    TipoDocumento.column_names.include?(params[:sort]) ? params[:sort] : "descripcion"
+    Falta.column_names.include?(params[:sort]) ? params[:sort] : "descripcion"
   end
   
   def sort_direction

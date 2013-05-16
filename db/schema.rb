@@ -11,10 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130516152619) do
+ActiveRecord::Schema.define(:version => 20130516164418) do
 
-  create_table "destroy", :force => true do |t|
-    t.string   "cargo"
+  create_table "cargos", :force => true do |t|
     t.string   "descripcion"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false

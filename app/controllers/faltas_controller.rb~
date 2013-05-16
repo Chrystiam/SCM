@@ -31,6 +31,7 @@ class FaltasController < ApplicationController
   def create
     @falta = Falta.new(params[:falta])
     render :action => :new unless @falta.save
+    @faltas = Falta.all
   end
 
  
@@ -43,6 +44,7 @@ class FaltasController < ApplicationController
   def destroy
     @falta = Falta.find(params[:id])
     @falta.destroy
+    @faltas = Falta.all
   end
 
   private

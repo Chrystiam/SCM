@@ -48,7 +48,7 @@ class ProgramasController < ApplicationController
   
   private
   def sort_column
-    TipoDocumento.column_names.include?(params[:sort]) ? params[:sort] : "ficha"
+    Programa.column_names.include?(params[:sort]) ? params[:sort] : "ficha"
   end
   
   def sort_direction

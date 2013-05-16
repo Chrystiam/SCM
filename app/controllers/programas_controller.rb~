@@ -43,11 +43,12 @@ class ProgramasController < ApplicationController
   def destroy
     @programa = Programa.find(params[:id])
     @programa.destroy
+    @programas = Programa.all
   end
   
   private
   def sort_column
-    TipoDocumento.column_names.include?(params[:sort]) ? params[:sort] : "ficha"
+    Falta.column_names.include?(params[:sort]) ? params[:sort] : "ficha"
   end
   
   def sort_direction

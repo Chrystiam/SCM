@@ -1,0 +1,3 @@
+$('table tbody').append("<%= escape_javascript(render @cargo) %>")
+$("input#totalregs").attr('value','<%= @cargoss.count %>');
+$.lazybox.close()
