@@ -1,3 +1,5 @@
 $('table tbody').append("<%= escape_javascript(render @falta) %>")
 $("input#totalregs").attr('value','<%= @faltas.count %>');
 $.lazybox.close()
+
+

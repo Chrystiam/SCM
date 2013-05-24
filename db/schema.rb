@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130516164418) do
+ActiveRecord::Schema.define(:version => 20130516184158) do
 
   create_table "cargos", :force => true do |t|
     t.string   "descripcion"
@@ -39,21 +39,22 @@ ActiveRecord::Schema.define(:version => 20130516164418) do
     t.string   "nombres"
     t.string   "apellidos"
     t.integer  "tipo_documento_id"
-    t.string   "programa"
-    t.string   "ficha"
+    t.string   "identificacion"
+    t.integer  "programa_id"
     t.text     "descripcion"
     t.integer  "falta_id"
-    t.text     "testigos"
+    t.string   "testigos"
     t.string   "nombresinformante"
     t.string   "apellidosinformante"
-    t.string   "direccion"
-    t.string   "cargo"
+    t.string   "direccioninformante"
+    t.integer  "cargo_id"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
-    t.string   "identificacion"
   end
 
+  add_index "quejas", ["cargo_id"], :name => "index_quejas_on_cargo_id"
   add_index "quejas", ["falta_id"], :name => "index_quejas_on_falta_id"
+  add_index "quejas", ["programa_id"], :name => "index_quejas_on_programa_id"
   add_index "quejas", ["tipo_documento_id"], :name => "index_quejas_on_tipo_documento_id"
 
   create_table "tipos_documentos", :force => true do |t|

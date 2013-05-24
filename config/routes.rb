@@ -1,15 +1,12 @@
 SCQ::Application.routes.draw do
+
+  resources :quejas
+
+
   resources :programas
 
-
-  resources :destroy
-
-
   resources :cargos
-
-
   resources :faltas
-
 
   resources :tipos_documentos
 

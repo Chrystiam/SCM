@@ -1,4 +1,7 @@
 class TipoDocumento < ActiveRecord::Base
+
+  has_many :quejas 
+
   attr_accessible :descripcion, :sigla
 
   validates_presence_of :descripcion

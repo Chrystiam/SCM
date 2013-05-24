@@ -1,2 +1,0 @@
-$('table tbody').append("<%= escape_javascript(render @tipo_documento) %>")
-$.lazybox.close()

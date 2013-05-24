@@ -1,0 +1,35 @@
+<%= simple_form_for(@queja, :html => { :class => 'form-horizontal' }, :remote => true) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="responsive">
+    <div class="control-group">
+    <!--<div class="form-inputs"> -->
+      <%= f.input :fechainforme %>
+      <%= f.input :nombres %>
+      <%= f.input :apellidos %>
+      <%= f.label :tipo_documento_id %>
+      <%= f.collection_select :tipo_documento_id, TipoDocumento.all, :id, :descripcion, :prompt => "Seleccione" %>
+      <br><br>
+      <%= f.input :identificacion %>
+      <%= f.label :programa_id %>
+      <%= f.collection_select :programa_id, Programa.all, :id, :descripcion, :prompt => "Seleccione" %>
+      <br><br>
+      <%= f.input :descripcion %>
+      <%= f.label :falta_id %>
+      <%= f.collection_select :falta_id, Falta.all, :id, :falta, :prompt => "Seleccione" %>
+      <br><br>
+      <%= f.input :testigos %>
+      <%= f.input :nombresinformante %>
+      <%= f.input :apellidosinformante %>
+      <%= f.input :direccioninformante %>
+      <%= f.label :cargo_id %>
+      <%= f.collection_select :cargo_id, Cargo.all, :id, :descripcion, :prompt => "Seleccione" %>
+    </div>
+    
+    <div class="form-actions">
+    	<%= f.submit "Guardar", :class => 'btn btn-primary' %>
+      <%= link_to 'Atras', quejas_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+<% end %>
+

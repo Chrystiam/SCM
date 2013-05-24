@@ -1,4 +1,7 @@
 class Programa < ActiveRecord::Base
+ 
+  has_many :quejas
+  
   attr_accessible :abreviatura, :descripcion, :ficha
 
   #buscador

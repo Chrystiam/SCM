@@ -1,5 +1,0 @@
-<h1>New programa</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', programas_path %>
