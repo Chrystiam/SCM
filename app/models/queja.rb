@@ -7,7 +7,7 @@ class Queja < ActiveRecord::Base
 
   attr_accessible :apellidos, :apellidosinformante, :cargo, :descripcion, :direccioninformante, 
 :fechainforme, :ficha, :nombres, :nombresinformante, :programa, :testigos, :falta_id, :tipo_documento_id,
-:identificacion, :programa_id, :cargo_id
+:identificacion, :programa_id, :cargo_id, :descargos
 
 #buscador
     def self.search(search)

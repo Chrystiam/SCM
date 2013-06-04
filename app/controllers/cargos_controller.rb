@@ -16,8 +16,7 @@ class CargosController < ApplicationController
     @cargo = Cargo.find(params[:id])
   end
 
-  # GET /cargos/new
-  # GET /cargos/new.json
+
   def new
     @cargo = Cargo.new
   end
@@ -37,7 +36,7 @@ class CargosController < ApplicationController
   
   def update
     @cargo = Cargo.find(params[:id])
-    render :action => :edit unless @cago.update_attributes(params[:cargo])
+    render :action => :edit unless @cargo.update_attributes(params[:cargo])
   end
 
  

@@ -1,0 +1,14 @@
+<%= simple_form_for(@descargo, :html => { :class => 'form-horizontal', :multipart => true }, :remote => true) do |f| %>
+
+  <%= f.error_notification %>
+
+ 
+  <%= f.input :descripcion %>
+  <%= f.input :evidencia %>
+    
+ 
+  <div class="form-actions">
+  	<%= f.submit "Guardar", :class => 'btn btn-primary' %>
+    <%= link_to 'Atras', descargos_path, :class => 'btn btn-default' %>
+  </div>
+<% end %>

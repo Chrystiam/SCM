@@ -8,6 +8,7 @@
   <td><%= queja.programa.descripcion%></td>
   <td><%= queja.descripcion %></td>
   <td><%= queja.falta.descripcion %></td>
+  
   <td>
     <%= link_to 'Mostrar', queja, :remote => true, :class => 'btn btn-mini btn-default' %>
     <%= link_to 'Editar', edit_queja_path(queja), :remote => true,

@@ -16,7 +16,7 @@
       <br><br>
       <%= f.input :descripcion %>
       <%= f.label :falta_id %>
-      <%= f.collection_select :falta_id, Falta.all, :id, :falta, :prompt => "Seleccione" %>
+      <%= f.collection_select :falta_id, Falta.all, :id, :descripcion, :prompt => "Seleccione" %>
       <br><br>
       <%= f.input :testigos %>
       <%= f.input :nombresinformante %>
@@ -24,6 +24,8 @@
       <%= f.input :direccioninformante %>
       <%= f.label :cargo_id %>
       <%= f.collection_select :cargo_id, Cargo.all, :id, :descripcion, :prompt => "Seleccione" %>
+      <br><br>
+      <%= f.input :descargos %>
     </div>
     
     <div class="form-actions">

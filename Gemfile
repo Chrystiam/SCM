@@ -21,13 +21,15 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'remotipart'
 gem 'simple_form'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 gem 'lazybox'
 gem 'bootstrap-will_paginate'
 gem 'will_paginate'
-
+gem 'sorcery'
+gem 'paperclip'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

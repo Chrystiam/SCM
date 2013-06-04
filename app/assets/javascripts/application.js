@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require twitter/bootstrap
+//= require jquery.remotipart
 //= require lazybox
 //= require_tree .
 
