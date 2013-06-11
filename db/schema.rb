@@ -11,22 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130604132600) do
+ActiveRecord::Schema.define(:version => 20130607161009) do
 
   create_table "cargos", :force => true do |t|
     t.string   "descripcion"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-  end
-
-  create_table "descargos", :force => true do |t|
-    t.text     "descripcion"
-    t.datetime "created_at",             :null => false
-    t.datetime "updated_at",             :null => false
-    t.string   "evidencia_file_name"
-    t.string   "evidencia_content_type"
-    t.integer  "evidencia_file_size"
-    t.datetime "evidencia_updated_at"
   end
 
   create_table "faltas", :force => true do |t|
@@ -61,6 +51,7 @@ ActiveRecord::Schema.define(:version => 20130604132600) do
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
     t.text     "descargos"
+    t.string   "image"
   end
 
   add_index "quejas", ["cargo_id"], :name => "index_quejas_on_cargo_id"

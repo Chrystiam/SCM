@@ -1,5 +1,7 @@
-<%= simple_form_for(@queja, :html => { :class => 'form-horizontal' }, :remote => true) do |f| %>
+<%= simple_form_for(@queja, :html => { :class => 'form-horizontal', :multipart => true }, :remote => true) do |f| %>
+
   <%= f.error_notification %>
+
 
   <div class="responsive">
     <div class="control-group">
@@ -26,6 +28,9 @@
       <%= f.collection_select :cargo_id, Cargo.all, :id, :descripcion, :prompt => "Seleccione" %>
       <br><br>
       <%= f.input :descargos %>
+      <%= image_tag @queja.evidencia.url(:small) %>
+      <%= f.label :Evidencia %>
+      <%= f.file_field :evidencia %>
     </div>
     
     <div class="form-actions">

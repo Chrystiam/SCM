@@ -29,6 +29,7 @@ gem 'lazybox'
 gem 'bootstrap-will_paginate'
 gem 'will_paginate'
 gem 'sorcery'
+gem 'remotipart'
 gem 'paperclip'
 
 # To use ActiveModel has_secure_password

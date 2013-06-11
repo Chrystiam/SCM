@@ -1,5 +1,7 @@
 SCQ::Application.routes.draw do
 
+  get "inicio/index"
+
   resources :quejas
 
 
@@ -10,7 +12,7 @@ SCQ::Application.routes.draw do
 
   resources :tipos_documentos
 
-
+  root :to => 'inicio#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -60,7 +62,7 @@ SCQ::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  
 
   # See how all your routes lay out with "rake routes"
 

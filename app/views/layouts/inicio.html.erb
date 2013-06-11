@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ES">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="assets/sena.ico"/>
+        <title>Welcome</title>
+        <meta name="SCQ" >
+        <meta name="author" >
+        <%= stylesheet_link_tag "application", :media => "all" %>
+        <%= javascript_include_tag "application" %>
+        <%= csrf_meta_tags %>
+        <%= yield(:head) %>
+    </head>
+    <body id="color">
+        <div class="navbar">
+            <div class="navbar-inner">
+                <a class="brand" </a>
+                <ul class="nav">
+                    <li><a href="#"></a></li>
+                    <!--<li><a href="#">Regístrate!</a></li> -->
+                        <li id="boton1"><%= link_to 'Regístrate!', quejas_path %></li>
+                        <li><a href="#"></a></li>
+                        <li id="boton2"><%= link_to 'Ingresar', quejas_path %></li>
+                   <!-- <li><a href="#">Ingresar</a></li> -->
+                </ul>
+                <ul class="nav pull-right">
+                    <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#"><img src="assets/españa.png" alt=alt="Spanish" width="30"/> Español<b class="caret"></b></a> 
+                <ul class="dropdown-menu">
+                <li><a href="#"><img src="assets/ingles.jpg" alt="English" width="30"/> Inglés </a></li>
+                <li><a href="#"><img src="assets/españa.png" alt="Spanish" width="30"/> Español</a></li>
+                <p></p>
+                <p></p> 
+            </div>
+        </div> 
+        <div id="ext">
+        <p>
+            <%= link_to image_tag('twitter.png'), "http://twiter.com" %>
+            <br><br>
+            <%= link_to image_tag('facebook.png'), "http://facebook.com" %>
+            <br><br>
+            <%= link_to image_tag('google.png',), "http://maps.google.es" %>
+            <br><br>
+            <%= link_to image_tag('youtube.png'), "http://youtube.com" %>
+            <br><br>
+            <%= link_to image_tag('linked_in.png'), "http://linkedin.com" %>
+            <br><br>
+            <%= link_to image_tag('vimeo.png',), "http://vimeo.com" %>
+            <br><br>
+            <%= link_to image_tag('kype.png'), "http://skype.com" %>
+        </p>
+        </div>
+        <div class="span9 offset1">
+            <br><br><br><br>
+            <div id="letra">
+                <div class='row'> 
+                    <div class="tabbable tabs-left">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#tab1" data-toggle="tab">SCQ</a></li>
+                            <li><a href="#tab2" data-toggle="tab">Agradecimientos</a></li>
+                            <li><a href="#tab3" data-toggle="tab">Contáctenos</a></li>
+                        </ul>
+                        <div class="span3">
+                            <div class="tab-content">
+                                <div class="tab-pane active" id ="tab1">
+                                    <p>SCQ es un proyecto sin ánimo de lucro, creado para facilitar el proceso que realiza el comite de seguimiento. posibilita que los aprendices puedan ver el seguimiento que se le realizaclientes.</p>
+                                </div>
+                                <div class="tab-pane" id="tab2" >
+                                    Aquellas personas que estuvieron acompañandome en este proceso.
+                                </div>
+                                <div class="tab-pane" id="tab3">
+                                    <p>Si desea comunicarse con nosotros, puede escribirnos al correo que aparece en el link, estamos ubicados en Medellín, Colombia en la calle XXX número: XXXXX.</p>
+                                    SCQ@gmail.com.co
+                                    <br><br>
+                                    <p>Síguenos a través de las redes sociales por Twitter:</p>
+                                    @SCQ
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <footer>Esta aplicacion fue creada en el año 2013.</footer>
+</html>
