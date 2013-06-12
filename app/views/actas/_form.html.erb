@@ -1,0 +1,22 @@
+<%= simple_form_for(@acta, :html => { :class => 'form-horizontal' }, :remote => true) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :ciudad %>
+    <%= f.input :fecha %>
+    <%= f.input :hora_inicio %>
+    <%= f.input :hora_terminacion %>
+    <%= f.input :lugar %>
+    <%= f.input :tema %>
+    <%= f.input :objetivo_de_la_reunion %>
+    <%= f.input :desarrollo_reunion %>
+    <%= f.input :conclusiones %>
+    <%= f.input :firmas %>
+  </div>
+
+
+  <div class="form-actions">
+    <%= f.submit "Guardar", :class => 'btn btn-primary' %>
+    <%= link_to 'Atras', actas_path, :class => 'btn btn-default' %>
+  </div>
+<% end %>

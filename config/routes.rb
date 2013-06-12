@@ -1,5 +1,8 @@
 SCQ::Application.routes.draw do
 
+  resources :actas
+
+
   get "inicio/index"
 
   resources :quejas

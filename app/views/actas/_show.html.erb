@@ -1,0 +1,18 @@
+<%- model_class = Acta -%>
+<br><br>
+<h1><%=t '.title', :default => model_class.model_name.human %></h1>
+<br>
+
+<div class='acta'>
+  <p>Ciudad: <%= @acta.ciudad %></p>
+  <p>Fecha: <%= @acta.fecha %></p>
+  <p>Hora Inicio: <%= @acta.hora_inicio %></p>
+  <p>Hora Terminación: <%= @acta.hora_terminacion %></p>
+  <p>Lugar: <%= @acta.lugar %></p>
+  <p>Tema: <%= @acta.tema %></p>
+  <p>Objetivo Reunión: <%= @acta.objetivo_de_la_reunion %></p>
+  <p>Desarrollo Reunión: <%= @acta.desarrollo_reunion %></p>
+  <p>Conclusiones: <%= @acta.conclusiones %></p>
+  <p>Firmas: <%= @acta.firmas %></p>
+
+</div>

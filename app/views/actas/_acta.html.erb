@@ -1,0 +1,23 @@
+<tr id=<%= "acta_#{acta.id}" %>>
+  <td><%= link_to acta.id, edit_acta_path(acta), :remote => true %></td>
+  <td><%= acta.ciudad %></td>
+  <td><%= acta.fecha %></td>
+  <td><%= acta.hora_inicio %></td>
+  <td><%= acta.hora_terminacion %></td>
+  <td><%= acta.lugar %></td>
+  <td><%= acta.tema %></td>
+  <td><%= acta.objetivo_de_la_reunion %></td>
+  <td><%= acta.desarrollo_reunion %></td>
+  <td><%= acta.conclusiones %></td>
+  <td><%= acta.firmas %></td>
+  <td>
+    <%= link_to 'Mostrar', acta, :remote => true, :class => 'btn btn-default' %>
+    <%= link_to 'Editar', edit_acta_path(acta), :remote => true,
+        :class => 'btn btn-warning' %>
+    <%= link_to 'Eliminar', acta, 
+        :data => { :confirm => 'Esta Seguro?' },
+        :method => :delete, :remote => true, :class => 'btn btn-default btn-danger' %>
+  </td>
+</tr>
+
+

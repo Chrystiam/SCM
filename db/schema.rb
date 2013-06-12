@@ -11,7 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130607161009) do
+ActiveRecord::Schema.define(:version => 20130611133948) do
+
+  create_table "actas", :force => true do |t|
+    t.string   "ciudad"
+    t.date     "fecha"
+    t.time     "hora_inicio"
+    t.time     "hora_terminacion"
+    t.string   "lugar"
+    t.string   "tema"
+    t.string   "objetivo_de_la_reunion"
+    t.text     "desarrollo_reunion"
+    t.text     "conclusiones"
+    t.string   "firmas"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+  end
 
   create_table "cargos", :force => true do |t|
     t.string   "descripcion"

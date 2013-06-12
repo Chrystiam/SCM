@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  ciudad: MyString
+  fecha: 2013-06-11
+  hora_inicio: 2013-06-11 08:39:48
+  hora_terminacion: 2013-06-11 08:39:48
+  lugar: MyString
+  tema: MyString
+  objetivo_de_la_reunion: MyString
+  desarrollo_reunion: MyText
+  conclusiones: MyText
+  firmas: MyString
+
+two:
+  ciudad: MyString
+  fecha: 2013-06-11
+  hora_inicio: 2013-06-11 08:39:48
+  hora_terminacion: 2013-06-11 08:39:48
+  lugar: MyString
+  tema: MyString
+  objetivo_de_la_reunion: MyString
+  desarrollo_reunion: MyText
+  conclusiones: MyText
+  firmas: MyString

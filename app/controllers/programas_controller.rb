@@ -36,7 +36,7 @@ class ProgramasController < ApplicationController
  
   def update
     @programa = Programa.find(params[:id])
-    render :action => :edit unless @falta.update_attributes(params[:programa])
+    render :action => :edit unless @programa.update_attributes(params[:programa])
   end
 
 

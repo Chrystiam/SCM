@@ -1,0 +1,51 @@
+<%- model_class = Acta -%>
+<br><br>
+<h1>Actas</h1>
+<br>
+<%= form_tag request.path, :method => 'get' do %>
+  <%= content_tag :label do %>
+    Ciudad:
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Consultar", :ciudad => nil %>
+  <% end %>
+<% end %>
+
+<%= form_tag request.path, :method => 'get' do %>
+  <%= content_tag :label do %>
+    Numero Registros:
+    <%= text_field_tag :registro, params[:registro], :class =>'input-mini' %>
+   <% end %>
+<% end %>
+
+<p>
+Total Actas : <input type="text" id="totalregs" class="span1" value="<%= @actas.total_entries %>"readonly /></h4>
+</p>
+
+<table class="table table-bordered table-hover pretty">
+  <thead>
+    <tr>  
+      <th><%= sortable "id" %></th>
+      <th><%= sortable "ciudad" %></th> 
+      <th><%= sortable "fecha" %></th>
+      <th><%= sortable "hora_inicio" %></th> 
+      <th><%= sortable "hora_terminacion" %></th>
+      <th><%= sortable "lugar" %></th> 
+      <th><%= sortable "tema" %></th>
+      <th><%= sortable "objetivo_de_la_reunion" %></th> 
+      <th><%= sortable "desarrollo_reunion" %></th>
+      <th><%= sortable "conclusiones" %></th> 
+      <th><%= sortable "firmas" %></th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @actas %>
+  </tbody>
+</table>
+<%= link_to 'Nueva Acta', new_acta_path, :class => 'btn btn-primary', :remote => true %>
+
+<div align="center">
+  <%= will_paginate @actas, :previous_label => '&laquo; Anterior', :next_label => 'Siguiente
+  &raquo;' %>
+</div>
+
