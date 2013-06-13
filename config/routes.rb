@@ -1,5 +1,8 @@
 SCQ::Application.routes.draw do
 
+  resources :instructores
+
+
   resources :actas
 
 

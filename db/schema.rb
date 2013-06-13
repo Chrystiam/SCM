@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130612164151) do
+ActiveRecord::Schema.define(:version => 20130613014649) do
 
   create_table "actas", :force => true do |t|
     t.string   "ciudad"
@@ -39,6 +39,24 @@ ActiveRecord::Schema.define(:version => 20130612164151) do
     t.string   "descripcion"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "instructores", :force => true do |t|
+    t.string   "nombres"
+    t.string   "apellidos"
+    t.string   "string"
+    t.string   "cedula"
+    t.string   "email"
+    t.string   "direccion"
+    t.string   "telefono"
+    t.date     "fch_nacimiento"
+    t.string   "modalidad"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.string   "imagen_file_name"
+    t.string   "imagen_content_type"
+    t.integer  "imagen_file_size"
+    t.datetime "imagen_updated_at"
   end
 
   create_table "programas", :force => true do |t|

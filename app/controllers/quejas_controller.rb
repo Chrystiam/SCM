@@ -10,10 +10,6 @@ class QuejasController < ApplicationController
 
     @quejas  = Queja.order(sort_column + " " + sort_direction).search(params[:search]).page(params[:page]).per_page(@rxp)
     
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml { render :xml => @quejas }
-    end
   end
 
  
