@@ -1,0 +1,21 @@
+<tr class="success" id=<%= "funcionario_#{funcionario.id}" %>>
+  
+  <td><%= funcionario.id %></td>
+ 
+  <td><%= funcionario.apellidos %></td>
+  <td><%= funcionario.cedula %></td>
+  <td><%= funcionario.email%></td>
+  <td><%= funcionario.direccion %></td>
+  <td><%= funcionario.telefono %></td>
+  <td><%= funcionario.fch_nacimiento %></td>
+  <td><%= funcionario.cargo %></td>
+  <td>
+    
+    <%= link_to 'Mostrar', funcionario, :remote => true, :class => 'btn btn-mini btn-info' %>
+    <%= link_to 'Editar', edit_funcionario_path(funcionario), :remote => true,
+        :class => 'btn btn-mini btn-warning' %>
+    <%= link_to 'Eliminar', funcionario, 
+        :data => { :confirm => 'Esta Seguro?' },
+        :method => :delete, :remote => true, :class => 'btn btn-mini btn-danger' %>
+  </td>
+</tr>

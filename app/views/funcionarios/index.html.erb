@@ -1,0 +1,50 @@
+<%- model_class = Funcionario -%>
+<br><br>
+ <h1>Funcionarios</h1>
+<br>
+<%= form_tag request.path, :method => 'get' do %>
+ <%= content_tag :label do %>
+  <h4>Nombre Instructor: </h4>
+ <%= text_field_tag :search, params[:search] %>
+ <%= submit_tag "Consultar", :nombres => nil %>
+ <% end %>
+<% end %>
+
+<%= form_tag request.path, :method => 'get' do %>
+  <%= content_tag :label do %>
+     Numero Registros:
+    <%= text_field_tag :registro, params[:registro], :class =>'input-mini' %>
+   <% end %>
+<% end %>
+
+<p>
+ <h4>Total Funcionarios: <input type="text" id="totalregs" class="span1" value="<%= @funcionarios.total_entries %>"readonly /></h4>
+</p>
+
+  <table class="table table-bordered table-hover pretty">
+   <thead>
+     <tr>
+       <th><%= sortable "id" %> </th>
+       <th><%= sortable "nombres" %></th>
+       <th><%= sortable "apellidos" %></th>
+       <th><%= sortable "cedula" %></th>
+       <th><%= sortable "email" %></th>
+       <th><%= sortable "direccion" %></th>
+       <th><%= sortable "telefono" %></th>
+       <th><%= sortable "fch_ncto" %></th>
+       <th><%= sortable "cargo" %></th>
+       <th>Acciones</th>
+     </tr>
+   </thead>
+   <tbody>
+     <%= render @funcionarios %>
+   </tbody>
+  </table>
+
+    <%= link_to 'Nuevo Funcionario', new_funcionario_path, :remote => true, :class => 'btn btn-primary' %>
+
+  </div>
+
+  <div align="center">
+   <%= will_paginate @funcionarios, :previous_label => '&laquo; Anterior', :next_label => 'Siguiente&raquo;' %>
+</div>

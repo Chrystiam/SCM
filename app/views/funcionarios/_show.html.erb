@@ -1,0 +1,18 @@
+<%- model_class = Funcionario -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
+
+<div class='funcionario'>
+  <p>id: <%= @funcionario.id %></p>
+  
+  <p>nombre: <%= @funcionario.nombres %></p>
+  <p>apellidos: <%= @funcionario.apellidos %></p>
+  <p>cedula: <%= @funcionario.cedula %></p>
+  <p>email: <%= @funcionario.email %></p>
+  <p>direccion: <%= @funcionario.direccion %></p>
+  <p>telefono: <%= @funcionario.telefono %></p>
+  <p>fch_nacimiento: <%= @funcionario.fch_nacimiento %></p>
+  <p>Cargo: <%= @funcionario.cargo %></p>
+
+</div>

@@ -1,0 +1,21 @@
+<%= simple_form_for(@funcionario, :html => { :class => 'form-horizontal' }, :remote => true) do |f| %>
+
+  <%= f.error_notification %>
+  
+ 
+  <br><br>
+  <%= f.input :nombres,  :required => true %>
+  <%= f.input :apellidos,:required => true %>
+  <%= f.input :cedula,   :required => true %>
+  <%= f.input :email,    :required => true %>
+  <%= f.input :direccion,:required => true %>
+  <%= f.input :telefono, :required => true %>
+  <%= f.input :fch_nacimiento, as: :date, start_year: Date.today.year - 50, end_year: Date.today.year - 10, accept_day: true, order: [:day, :month, :year] %>  
+  
+  <%= f.input :cargo, :required => true %>
+  
+  <div class="form-actions">
+    <%= f.submit "Guardar", :class => 'btn btn-primary' %>
+    <%= link_to 'Atras', instructores_path, :class => 'btn btn-default' %>
+  </div>
+<% end %>
