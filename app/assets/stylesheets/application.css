@@ -85,11 +85,6 @@
 
 }
 
-#letra{
-  
-  color: #000000;
-
-}
 
 footer{
   
@@ -110,6 +105,7 @@ footer{
 
 }
 
-#l{
-  
+#es{
+  height: 200px; 
+  width: 300px;
 }

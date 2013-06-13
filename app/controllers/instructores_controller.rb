@@ -37,7 +37,7 @@ class InstructoresController < ApplicationController
 
   def update
     @instructor = Instructor.find(params[:id])
-    render :action => :edit unless @instructor.update_attributes(params[:acta])
+    render :action => :edit unless @instructor.update_attributes(params[:instructor])
   end
 
 

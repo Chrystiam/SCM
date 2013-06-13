@@ -1,4 +1,5 @@
 class Instructor < ActiveRecord::Base
+	
     attr_accessible :apellidos, :cedula, :direccion, :email, :fch_nacimiento, :modalidad, :nombres, :string, :telefono, :imagen
 
     has_attached_file :imagen, :styles => { :small => "150x150>", :lsmall => "30x30>" }

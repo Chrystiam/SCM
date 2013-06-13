@@ -2,10 +2,10 @@ class AddImagenToInstructores < ActiveRecord::Migration
   
    def self.up
     add_attachment :instructores, :imagen
-  end
+   end
 
-  def self.down
+   def self.down
     remove_attachment :instructores, :imagen
-  end
+   end
 
 end

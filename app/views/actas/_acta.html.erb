@@ -11,12 +11,12 @@
   <td><%= acta.conclusiones %></td>
   <td><%= acta.firmas %></td>
   <td>
-    <%= link_to 'Mostrar', acta, :remote => true, :class => 'btn btn-default' %>
+    <%= link_to 'Mostrar', acta, :remote => true, :class => 'btn btn-mini ' %>
     <%= link_to 'Editar', edit_acta_path(acta), :remote => true,
-        :class => 'btn btn-warning' %>
+        :class => 'btn btn-warning btn btn-mini' %>
     <%= link_to 'Eliminar', acta, 
-        :data => { :confirm => 'Esta Seguro?' },
-        :method => :delete, :remote => true, :class => 'btn btn-default btn-danger' %>
+        :data => { :confirm => 'Esta Seguro' },
+        :method => :delete, :remote => true, :class => 'btn btn-mini btn-danger' %>
   </td>
 </tr>
 
