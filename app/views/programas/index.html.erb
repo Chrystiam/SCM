@@ -4,7 +4,7 @@
 <br>
 <%= form_tag request.path, :method => 'get' do %>
   <%= content_tag :label do %>
-    ficha:
+    Ficha:
     <%= text_field_tag :search, params[:search] %>
     <%= submit_tag "Consultar", :ficha => nil %>
   <% end %>
@@ -12,7 +12,7 @@
 
 <%= form_tag request.path, :method => 'get' do %>
   <%= content_tag :label do %>
-    Numero Registros:
+     Numero Registros:
     <%= text_field_tag :registro, params[:registro], :class =>'input-mini' %>
    <% end %>
 <% end %>
@@ -21,13 +21,14 @@
 Total Programas : <input type="text" id="totalregs" class="span1" value="<%= @programas.total_entries %>"readonly /></h4>
 </p>
 
-<table class="table table-bordered table-hover pretty">
+<table class="table table-bordered pretty">
   <thead>
     <tr>
       <th><%= sortable "id" %></th>
       <th><%= sortable "descripcion" %></th>
-      <th><%= sortable "abreviatura" %></th> 
-      <th><%= sortable "ficha" %></th> 
+      <th><%= sortable "abreviatura" %></th>
+      <th><%= sortable "ficha" %></th>
+      <th><%= sortable "centro" %></th>
       <th>Acciones</th>
     </tr>
   </thead>
@@ -41,4 +42,7 @@ Total Programas : <input type="text" id="totalregs" class="span1" value="<%= @pr
   <%= will_paginate @programas, :previous_label => '&laquo; Anterior', :next_label => 'Siguiente
   &raquo;' %>
 </div>
+
+
+
 

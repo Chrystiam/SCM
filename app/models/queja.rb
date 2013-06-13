@@ -6,8 +6,8 @@ class Queja < ActiveRecord::Base
   belongs_to :programa
 
   attr_accessible :apellidos, :apellidosinformante, :cargo, :descripcion, :direccioninformante, 
-  :fechainforme, :ficha, :nombres, :nombresinformante, :programa, :testigos, :falta_id, :tipo_documento_id,
-  :identificacion, :programa_id, :cargo_id, :descargos, :evidencia
+  :fechainforme, :nombres, :nombresinformante,  :testigos, :falta_id, :tipo_documento_id,
+  :identificacion, :programa_id, :cargo_id, :descargos, :evidencia, :telefono, :email, :ficha
 
 
   has_attached_file :evidencia, :styles => { :small => "150x150>", :lsmall => "30x30>" }

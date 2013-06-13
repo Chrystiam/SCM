@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130613014649) do
+ActiveRecord::Schema.define(:version => 20130613204057) do
 
   create_table "actas", :force => true do |t|
     t.string   "ciudad"
@@ -34,6 +34,19 @@ ActiveRecord::Schema.define(:version => 20130613014649) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "centros", :force => true do |t|
+    t.string   "nombre"
+    t.string   "abreviatura"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "descargos", :force => true do |t|
+    t.text     "descripcion"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "faltas", :force => true do |t|
     t.string   "falta"
     t.string   "descripcion"
@@ -41,10 +54,22 @@ ActiveRecord::Schema.define(:version => 20130613014649) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "funcionarios", :force => true do |t|
+    t.string   "nombres"
+    t.string   "apellidos"
+    t.string   "cedula"
+    t.string   "email"
+    t.string   "direccion"
+    t.string   "telefono"
+    t.date     "fch_nacimiento"
+    t.string   "cargo"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
   create_table "instructores", :force => true do |t|
     t.string   "nombres"
     t.string   "apellidos"
-    t.string   "string"
     t.string   "cedula"
     t.string   "email"
     t.string   "direccion"
@@ -63,9 +88,12 @@ ActiveRecord::Schema.define(:version => 20130613014649) do
     t.string   "descripcion"
     t.string   "abreviatura"
     t.string   "ficha"
+    t.integer  "centro_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  add_index "programas", ["centro_id"], :name => "index_programas_on_centro_id"
 
   create_table "quejas", :force => true do |t|
     t.date     "fechainforme"
@@ -84,11 +112,13 @@ ActiveRecord::Schema.define(:version => 20130613014649) do
     t.datetime "created_at",             :null => false
     t.datetime "updated_at",             :null => false
     t.text     "descargos"
-    t.string   "image"
     t.string   "evidencia_file_name"
     t.string   "evidencia_content_type"
     t.integer  "evidencia_file_size"
     t.datetime "evidencia_updated_at"
+    t.string   "telefono"
+    t.string   "email"
+    t.string   "codigo"
   end
 
   add_index "quejas", ["cargo_id"], :name => "index_quejas_on_cargo_id"

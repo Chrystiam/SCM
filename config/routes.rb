@@ -1,5 +1,17 @@
 SCQ::Application.routes.draw do
 
+  #ruta para metodo del controlador para queja
+
+  get 'quejas/camficha', to: 'quejas#camficha'
+  resources :programas
+
+
+  resources :centros
+
+
+  resources :funcionarios
+
+
   resources :instructores
 
 
@@ -9,9 +21,6 @@ SCQ::Application.routes.draw do
   get "inicio/index"
 
   resources :quejas
-
-
-  resources :programas
 
   resources :cargos
   resources :faltas

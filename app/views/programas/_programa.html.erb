@@ -1,14 +1,17 @@
-<tr id=<%= "programa_#{programa.id}" %>>
-  <td><%= link_to programa.id, edit_programa_path(programa), :remote => true %></td>
+<tr class="success" id=<%= "programa_#{programa.id}" %>>
+  
+  <td><%= programa.id %></td>
   <td><%= programa.descripcion %></td>
   <td><%= programa.abreviatura %></td>
-  <td><%= programa.ficha %></td>
+  <td><%= programa.ficha%></td>
+  <td><%= programa.centro.abreviatura %></td>
   <td>
-    <%= link_to 'Mostrar', programa, :remote => true, :class => 'btn btn-default' %>
+    
+    <%= link_to 'Mostrar', programa, :remote => true, :class => 'btn btn-mini btn-info' %>
     <%= link_to 'Editar', edit_programa_path(programa), :remote => true,
-        :class => 'btn btn-warning' %>
+        :class => 'btn btn-mini btn-warning' %>
     <%= link_to 'Eliminar', programa, 
         :data => { :confirm => 'Esta Seguro?' },
-        :method => :delete, :remote => true, :class => 'btn btn-default btn-danger' %>
+        :method => :delete, :remote => true, :class => 'btn btn-mini btn-danger' %>
   </td>
 </tr>

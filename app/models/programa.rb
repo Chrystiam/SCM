@@ -1,12 +1,9 @@
 class Programa < ActiveRecord::Base
- 
-  has_many :quejas
+  belongs_to :centro
   
-  attr_accessible :abreviatura, :descripcion, :ficha
+  attr_accessible :abreviatura, :descripcion, :ficha, :centro_id
 
-  #buscador
     def self.search(search)
 		where('ficha like ?', "%#{search}%",)
 	end
-
 end

@@ -47,6 +47,16 @@ class QuejasController < ApplicationController
     @quejas = Queja.all
   end
   
+  #metodo para llevar el atributo ficha
+  def camficha
+    input = Programa.where("id = ?", params[:id]).first
+    @fic = input.ficha
+    respond_to do  |format|
+      format.js { render 'asig_ficha' } #asig_ficha archivo js
+    end
+  end
+
+
   private
   def sort_column
     Queja.column_names.include?(params[:sort]) ? params[:sort] : "nombres"
@@ -55,5 +65,6 @@ class QuejasController < ApplicationController
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
+
 end
     

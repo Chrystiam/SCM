@@ -4,8 +4,10 @@ one:
   descripcion: MyString
   abreviatura: MyString
   ficha: MyString
+  centro: 
 
 two:
   descripcion: MyString
   abreviatura: MyString
   ficha: MyString
+  centro: 

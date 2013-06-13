@@ -1,4 +1,7 @@
-<%= simple_form_for(@queja, :html => { :class => 'form-horizontal', :multipart => true }, :remote => true) do |f| %>
+
+   <!-- inclusion del archivo js -->
+  <%= javascript_include_tag "application.js" %>
+<%= simple_form_for([@programa, @queja], :html => { :class => 'form-horizontal', :multipart => true }, :remote => true) do |f| %>
 
 
   <%= f.error_notification %>
@@ -14,8 +17,13 @@
       <%= f.collection_select :tipo_documento_id, TipoDocumento.all, :id, :descripcion, :prompt => "Seleccione" %>
       <br><br>
       <%= f.input :identificacion %>
+      <%= f.input :telefono %>
+      <%= f.input :email %>
       <%= f.label :programa_id %>
-      <%= f.collection_select :programa_id, Programa.all, :id, :descripcion, :prompt => "Seleccione" %>
+      <%= f.collection_select :programa, Programa.all, :id, :abreviatura, :order => 'abreviatura', :prompt => "Seleccione" %>
+      <br><br>
+      <%= f.input :codigo %>
+      
       <br><br>
       <%= f.input :descripcion %>
       <%= f.label :falta_id %>
@@ -29,6 +37,7 @@
       <%= f.collection_select :cargo_id, Cargo.all, :id, :descripcion, :prompt => "Seleccione" %>
       <br><br>
       <%= f.input :descargos %>
+
       <%= image_tag @queja.evidencia.url(:small) %>
       <%= f.label :Evidencia %>
       <%= f.file_field :evidencia %>
