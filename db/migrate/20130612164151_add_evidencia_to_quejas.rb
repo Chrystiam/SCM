@@ -1,10 +1,11 @@
 class AddEvidenciaToQuejas < ActiveRecord::Migration
  
   def self.up 
-  	add_attachment :descargos, :evidencia
+  	add_attachment :quejas, :evidencia
   end
 
   def self.down
-  	remove_attachment :descargos, :evidencia
+  	remove_attachment :quejas, :evidencia
   end
+  
 end

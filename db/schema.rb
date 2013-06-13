@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130611133948) do
+ActiveRecord::Schema.define(:version => 20130612164151) do
 
   create_table "actas", :force => true do |t|
     t.string   "ciudad"
@@ -63,10 +63,14 @@ ActiveRecord::Schema.define(:version => 20130611133948) do
     t.string   "apellidosinformante"
     t.string   "direccioninformante"
     t.integer  "cargo_id"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
     t.text     "descargos"
     t.string   "image"
+    t.string   "evidencia_file_name"
+    t.string   "evidencia_content_type"
+    t.integer  "evidencia_file_size"
+    t.datetime "evidencia_updated_at"
   end
 
   add_index "quejas", ["cargo_id"], :name => "index_quejas_on_cargo_id"

@@ -14,7 +14,7 @@ has_attached_file :evidencia, :styles => { :small => "150x150>", :lsmall => "30x
 
   validates_attachment_presence :evidencia
   validates_attachment_size :evidencia, :less_than => 5.megabytes
-  validates_attachment_content_type :evidencia, :content_type => ['image/jpeg', 'image/png']
+  validates_attachment_content_type :evidencia, :content_type => ['image/jpeg', 'image/png', 'imagen/jpg', 'application/pdf', 'text/plain']
 
 
 #buscador

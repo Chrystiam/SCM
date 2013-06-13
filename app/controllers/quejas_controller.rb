@@ -9,6 +9,11 @@ class QuejasController < ApplicationController
     end
 
     @quejas  = Queja.order(sort_column + " " + sort_direction).search(params[:search]).page(params[:page]).per_page(@rxp)
+    
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml { render :xml => @quejas }
+    end
   end
 
  
@@ -33,19 +38,19 @@ class QuejasController < ApplicationController
     @quejas = Queja.all
   end
 
-
+  
   def update
     @queja = Queja.find(params[:id])
     render :action => :edit unless @queja.update_attributes(params[:queja])
   end
-
+   
   
   def destroy
     @queja = Queja.find(params[:id])
     @queja.destroy
     @quejas = Queja.all
   end
-
+  
   private
   def sort_column
     Queja.column_names.include?(params[:sort]) ? params[:sort] : "nombres"
