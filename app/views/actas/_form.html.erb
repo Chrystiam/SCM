@@ -1,22 +1,45 @@
 <%= simple_form_for(@acta, :html => { :class => 'form-horizontal' }, :remote => true) do |f| %>
   <%= f.error_notification %>
+ 
+  <div class="responsive">
+    <div class="modal-body">  
+      <div class="control-group">
+        <div class="row" id ="colors">
+          <div class= "span6"> 
+            <center><h4></h4></center>
+            <hr>
+            <%= f.input :ciudad %>
+            <%= f.input :fecha %>
+            <%= f.input :hora_inicio %>
+            <%= f.input :hora_terminacion %>
+            <%= f.input :lugar %>
+          </div>
+          
+          <center><h4></h4></center>
+          <hr>
+          <div class ="span6">
+            <div class="row">
+              <%= f.input :tema %>
+              <%= f.input :objetivo_de_la_reunion %>
+              <br><br>
+              <%= f.label :desarrollo_reunion %>
+              <%= f.text_area(:desarrollo_reunion, :rows => 4) %>
+              <br><br>
+              <%= f.label :conclusiones %>
+              <%= f.text_area(:conclusiones, :rows => 4) %>
+              <br><br>
+              <%= f.input :firmas %>
+            </div>
+          </div>
+        </div>
 
-  <div class="form-inputs">
-    <%= f.input :ciudad %>
-    <%= f.input :fecha %>
-    <%= f.input :hora_inicio %>
-    <%= f.input :hora_terminacion %>
-    <%= f.input :lugar %>
-    <%= f.input :tema %>
-    <%= f.input :objetivo_de_la_reunion %>
-    <%= f.input :desarrollo_reunion %>
-    <%= f.input :conclusiones %>
-    <%= f.input :firmas %>
-  </div>
-
-
-  <div class="form-actions">
-    <%= f.submit "Guardar", :class => 'btn btn-primary' %>
-    <%= link_to 'Atras', actas_path, :class => 'btn btn-default' %>
+        <div class= "span12">
+          <div class="form-actions">
+            <%= f.submit "Guardar", :class => 'btn btn-primary' %>
+            <%= link_to 'Atras', actas_path, :class => 'btn btn-default' %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 <% end %>

@@ -2,6 +2,8 @@ class ProgramasController < ApplicationController
   
   helper_method :sort_column, :sort_direction
 
+  before_filter :find_programa
+
   def index
     
     @rxp = (params[:registro])? params[:registro].to_i : 2
@@ -14,7 +16,7 @@ class ProgramasController < ApplicationController
 
  
   def show
-    @programa = Programa.find(params[:id])
+    
   end
 
 
@@ -24,7 +26,7 @@ class ProgramasController < ApplicationController
 
 
   def edit
-    @programa = Programa.find(params[:id])
+    
   end
 
 
@@ -36,7 +38,6 @@ class ProgramasController < ApplicationController
 
 
   def update
-    @programa = Programa.find(params[:id])
     render :action => :edit unless @programa.update_attributes(params[:programa])
   end
 
@@ -48,8 +49,13 @@ class ProgramasController < ApplicationController
   end
 
   private
+
+  def find_programa
+    @programa = Programa.find(params[:id]) if params[:id]
+  end
+
   def sort_column
-    Programa.column_names.include?(params[:sort]) ? params[:sort] : "ficha"
+    Programa.column_names.include?(params[:sort]) ? params[:sort] : "descripcion"
   end
   
   def sort_direction

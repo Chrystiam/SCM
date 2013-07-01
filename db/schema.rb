@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130613204057) do
+ActiveRecord::Schema.define(:version => 20130701215808) do
 
   create_table "actas", :force => true do |t|
     t.string   "ciudad"
@@ -41,11 +41,16 @@ ActiveRecord::Schema.define(:version => 20130613204057) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "descargos", :force => true do |t|
-    t.text     "descripcion"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+  create_table "comites", :force => true do |t|
+    t.date     "fecha"
+    t.time     "hora"
+    t.string   "lugar"
+    t.integer  "queja_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
+
+  add_index "comites", ["queja_id"], :name => "index_comites_on_queja_id"
 
   create_table "faltas", :force => true do |t|
     t.string   "falta"
@@ -53,6 +58,16 @@ ActiveRecord::Schema.define(:version => 20130613204057) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  create_table "fichas", :force => true do |t|
+    t.string   "codigo"
+    t.integer  "programa_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.boolean  "estado"
+  end
+
+  add_index "fichas", ["programa_id"], :name => "index_fichas_on_programa_id"
 
   create_table "funcionarios", :force => true do |t|
     t.string   "nombres"
@@ -70,6 +85,7 @@ ActiveRecord::Schema.define(:version => 20130613204057) do
   create_table "instructores", :force => true do |t|
     t.string   "nombres"
     t.string   "apellidos"
+    t.string   "string"
     t.string   "cedula"
     t.string   "email"
     t.string   "direccion"
@@ -87,10 +103,10 @@ ActiveRecord::Schema.define(:version => 20130613204057) do
   create_table "programas", :force => true do |t|
     t.string   "descripcion"
     t.string   "abreviatura"
-    t.string   "ficha"
     t.integer  "centro_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.boolean  "estado"
   end
 
   add_index "programas", ["centro_id"], :name => "index_programas_on_centro_id"
@@ -101,6 +117,8 @@ ActiveRecord::Schema.define(:version => 20130613204057) do
     t.string   "apellidos"
     t.integer  "tipo_documento_id"
     t.string   "identificacion"
+    t.string   "telefono"
+    t.string   "email"
     t.integer  "programa_id"
     t.text     "descripcion"
     t.integer  "falta_id"
@@ -109,20 +127,19 @@ ActiveRecord::Schema.define(:version => 20130613204057) do
     t.string   "apellidosinformante"
     t.string   "direccioninformante"
     t.integer  "cargo_id"
+    t.text     "descargos"
+    t.integer  "ficha_id"
     t.datetime "created_at",             :null => false
     t.datetime "updated_at",             :null => false
-    t.text     "descargos"
     t.string   "evidencia_file_name"
     t.string   "evidencia_content_type"
     t.integer  "evidencia_file_size"
     t.datetime "evidencia_updated_at"
-    t.string   "telefono"
-    t.string   "email"
-    t.string   "codigo"
   end
 
   add_index "quejas", ["cargo_id"], :name => "index_quejas_on_cargo_id"
   add_index "quejas", ["falta_id"], :name => "index_quejas_on_falta_id"
+  add_index "quejas", ["ficha_id"], :name => "index_quejas_on_ficha_id"
   add_index "quejas", ["programa_id"], :name => "index_quejas_on_programa_id"
   add_index "quejas", ["tipo_documento_id"], :name => "index_quejas_on_tipo_documento_id"
 

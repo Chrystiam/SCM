@@ -3,7 +3,6 @@ class CreateProgramas < ActiveRecord::Migration
     create_table :programas do |t|
       t.string :descripcion
       t.string :abreviatura
-      t.string :ficha
       t.references :centro
 
       t.timestamps

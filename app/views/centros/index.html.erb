@@ -1,25 +1,44 @@
-<h1>Listing centros</h1>
-
-<table>
-  <tr>
-    <th>Nombre</th>
-    <th>Abreviatura</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @centros.each do |centro| %>
-  <tr>
-    <td><%= centro.nombre %></td>
-    <td><%= centro.abreviatura %></td>
-    <td><%= link_to 'Show', centro %></td>
-    <td><%= link_to 'Edit', edit_centro_path(centro) %></td>
-    <td><%= link_to 'Destroy', centro, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<%- model_class = Centro -%>
+<br><br>
+<h1>centros</h1>
+<br>
+<%= form_tag request.path, :method => 'get' do %>
+  <%= content_tag :label do %>
+    centro:
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Consultar", :falta => nil %>
+  <% end %>
 <% end %>
+
+<%= form_tag request.path, :method => 'get' do %>
+  <%= content_tag :label do %>
+    Numero Registros:
+    <%= text_field_tag :registro, params[:registro], :class =>'input-mini' %>
+   <% end %>
+<% end %>
+
+<p>
+Total centros : <input type="text" id="totalregs" class="span1" value="<%= @centros.total_entries %>"readonly /></h4>
+</p>
+
+<table class="table table-bordered table-hover pretty">
+  <thead>
+    <tr>  
+      <th><%= sortable "id" %></th>
+      <th><%= sortable "nombre" %></th> 
+      <th><%= sortable "abreviatura" %></th> 
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @centros %>
+  </tbody>
 </table>
+<%= link_to 'Nuevo centro', new_centro_path, :class => 'btn btn-primary', :remote => true %>
 
-<br />
+<div align="center">
+  <%= will_paginate @centros, :previous_label => '&laquo; Anterior', :next_label => 'Siguiente
+  &raquo;' %>
+</div>
 
-<%= link_to 'New Centro', new_centro_path %>
+

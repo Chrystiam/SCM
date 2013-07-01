@@ -3,10 +3,11 @@
   <td><%= programa.id %></td>
   <td><%= programa.descripcion %></td>
   <td><%= programa.abreviatura %></td>
-  <td><%= programa.ficha%></td>
+ 
   <td><%= programa.centro.abreviatura %></td>
+  <td><%= programa.estado %></td>
+  <td><%= link_to 'Fichas', programa_fichas_path(programa), :class => 'btn btn-large btn-inverse' %></td>
   <td>
-    
     <%= link_to 'Mostrar', programa, :remote => true, :class => 'btn btn-mini btn-info' %>
     <%= link_to 'Editar', edit_programa_path(programa), :remote => true,
         :class => 'btn btn-mini btn-warning' %>

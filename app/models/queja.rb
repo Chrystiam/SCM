@@ -3,12 +3,14 @@ class Queja < ActiveRecord::Base
   belongs_to :tipo_documento
   belongs_to :falta
   belongs_to :cargo
+  belongs_to :ficha
   belongs_to :programa
+  has_many :comites
+  
 
-  attr_accessible :apellidos, :apellidosinformante, :cargo, :descripcion, :direccioninformante, 
-  :fechainforme, :nombres, :nombresinformante,  :testigos, :falta_id, :tipo_documento_id,
-  :identificacion, :programa_id, :cargo_id, :descargos, :evidencia, :telefono, :email, :ficha
+  attr_accessible :apellidos, :apellidosinformante, :cargo, :descripcion, :direccioninformante,:fechainforme, :nombres, :nombresinformante,  :testigos, :falta_id, :tipo_documento_id, :tipo_documento_descripcion, :identificacion, :cargo_id, :cargo_descripcion, :evidencia, :telefono, :email, :descargos, :programa_id, :programa_descripcion, :ficha_id, :fecha_codigo
 
+  validates_presence_of :ficha_id
 
   has_attached_file :evidencia, :styles => { :small => "150x150>", :lsmall => "30x30>" }
 

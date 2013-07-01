@@ -1,51 +1,67 @@
-
-   <!-- inclusion del archivo js -->
-  <%= javascript_include_tag "application.js" %>
-<%= simple_form_for([@programa, @queja], :html => { :class => 'form-horizontal', :multipart => true }, :remote => true) do |f| %>
-
+<%= simple_form_for(@queja, :html => { :class => 'form-horizontal', :multipart => true }, :remote => true) do |f| %>
 
   <%= f.error_notification %>
 
 
   <div class="responsive">
-    <div class="control-group">
-    <!--<div class="form-inputs"> -->
-      <%= f.input :fechainforme %>
-      <%= f.input :nombres %>
-      <%= f.input :apellidos %>
-      <%= f.label :tipo_documento_id %>
-      <%= f.collection_select :tipo_documento_id, TipoDocumento.all, :id, :descripcion, :prompt => "Seleccione" %>
-      <br><br>
-      <%= f.input :identificacion %>
-      <%= f.input :telefono %>
-      <%= f.input :email %>
-      <%= f.label :programa_id %>
-      <%= f.collection_select :programa, Programa.all, :id, :abreviatura, :order => 'abreviatura', :prompt => "Seleccione" %>
-      <br><br>
-      <%= f.input :codigo %>
-      
-      <br><br>
-      <%= f.input :descripcion %>
-      <%= f.label :falta_id %>
-      <%= f.collection_select :falta_id, Falta.all, :id, :descripcion, :prompt => "Seleccione" %>
-      <br><br>
-      <%= f.input :testigos %>
-      <%= f.input :nombresinformante %>
-      <%= f.input :apellidosinformante %>
-      <%= f.input :direccioninformante %>
-      <%= f.label :cargo_id %>
-      <%= f.collection_select :cargo_id, Cargo.all, :id, :descripcion, :prompt => "Seleccione" %>
-      <br><br>
-      <%= f.input :descargos %>
+    <div class="modal-body">  
+      <div class="control-group">
+        <div class="row" id ="colors">
+          <div class= "span6"> 
+            <center><h4>Información del Aprendiz</h4></center>
+            <hr>
+          <!--<div class="form-inputs"> -->
+            <%= f.input :fechainforme %>
+            <%= f.input :nombres %>
+            <%= f.input :apellidos %>
+            <%= f.label :Tipo_Documento %>
+            <%= f.collection_select :tipo_documento_id, TipoDocumento.all, :id, :descripcion, :prompt => "Seleccione" %>
+            <br><br>
+            <%= f.input :identificacion %>
+            <%= f.input :telefono %>
+            <%= f.input :email %>
+            <%= f.label :programa_id %>
+            <%= select_tag "programa_id", options_from_collection_for_select(@programas, "id", "descripcion"), :prompt => "select a program" %>
+            <br><br>
+            <div id="fichasDiv">
+              <%= render :partial => 'fichas', :object => @fichas%>
+            </div>
+          </div>
+           <center><h4>Tipo de falta y Datos del Informante</h4></center>
+            <hr>
 
-      <%= image_tag @queja.evidencia.url(:small) %>
-      <%= f.label :Evidencia %>
-      <%= f.file_field :evidencia %>
-    </div>
-    
-    <div class="form-actions">
-    	<%= f.submit "Guardar", :class => 'btn btn-primary' %>
-      <%= link_to 'Atras', quejas_path, :class => 'btn btn-default' %>
+          <div class ="span6">
+            <div class="row">
+              <%= f.label :descripcion %>
+              <%= f.text_area(:descripcion, :rows => 4) %>
+              <br><br>
+              <%= f.label :falta_id %>
+              <%= f.collection_select :falta_id, Falta.all, :id, :descripcion, :prompt => "Seleccione" %>
+              <br><br>
+              <%= f.input :testigos %>
+              <%= f.input :nombresinformante %>
+              <%= f.input :apellidosinformante %>
+              <%= f.input :direccioninformante %>
+              <%= f.label :cargo_id %>
+              <%= f.collection_select :cargo_id, Cargo.all, :id, :descripcion, :prompt => "Seleccione" %>
+              <br><br>
+              <%= f.label :descargos %>
+              <%= f.text_area(:descargos, :rows => 4) %>
+              <br><br>
+              <%= image_tag @queja.evidencia.url(:small) %>
+              <%= f.label :Evidencia %>
+              <%= f.file_field :evidencia %>
+            </div>
+          </div>
+        </div>
+        
+        <div class= "span12">
+          <div class="form-actions">
+          	<%= f.submit "Guardar", :class => 'btn btn-primary' %>
+            <%= link_to 'Atras', quejas_path, :class => 'btn btn-default' %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 <% end %>

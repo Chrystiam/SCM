@@ -8,21 +8,22 @@
 		<p>fecha: <%= @queja.fechainforme %></p>
 		<p>nombres: <%= @queja.nombres %></p>
 		<p>apellidos: <%= @queja.apellidos %></p>
-		<p>tipo documento: <%= @queja.tipo_documento.descripcion %></p>
+		<p>tipo documento: <%= @queja.tipo_documento.descripcion %> </td>
         <p>numero: <%= @queja.identificacion %></p>
         <p>telefono: <%= @queja.telefono %></p>
         <p>email: <%= @queja.email %></p>
-		<p>programa: <%= @queja.programa.abreviatura %></p>
-		<p>ficha: <%= @queja.programa.ficha %></p>
+		<p>programa: <%= @queja.programa_id %></p>
+		<p>ficha: <%= @queja.ficha_id %></p>
 		<p>descripcion falta: <%= @queja.descripcion %></p>
 		<p>falta: <%= @queja.falta.descripcion %></p>
 		<p>testigos: <%= @queja.testigos %></p>
 		<p>nombres informante: <%= @queja.nombresinformante %></p>
 		<p>apellidos informante: <%= @queja.apellidosinformante %></p>
         <p>direccion informante: <%= @queja.direccioninformante %></p>
-		<p>cargo: <%= @queja.cargo.descripcion%></p>
+		<p>cargo: <%= @queja.cargo.descripcion %></p>
 		<p>descargos: <%= @queja.descargos %></p>
-		<p>Evidencia: <strong><%= image_tag @queja.evidencia.url(:small) %></strong></p>
+
+		<p>Evidencia: <br> <strong><%= image_tag @queja.evidencia.url(:small) %></strong></p>
 	</div>
 
 

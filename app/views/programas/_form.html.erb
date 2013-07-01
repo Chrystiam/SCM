@@ -4,9 +4,10 @@
 
   <%= f.input :descripcion %>
   <%= f.input :abreviatura %>
-  <%= f.input :ficha %>
-  <%= f.label :centro_id %>
+  <%= f.input :estado %>
+  <%= f.label :centro %>
   <%= f.collection_select :centro_id, Centro.all, :id, :abreviatura, :prompt => "Seleccione" %>
+  
 
   <div class="form-actions">
     <%= f.submit "Guardar", :class => 'btn btn-primary' %>

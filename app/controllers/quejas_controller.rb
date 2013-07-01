@@ -17,23 +17,33 @@ class QuejasController < ApplicationController
     @queja = Queja.find(params[:id])
   end
 
-
+  
   def new
+    @programas = Programa.all
+    @fichas = Ficha.all
     @queja = Queja.new
   end
 
  
   def edit
+    @programas = Programa.all
+    @fichas = Ficha.all
     @queja = Queja.find(params[:id])
   end
 
   
+  def update_fichas_div
+    @fichas = Ficha.where('programa_id = ?', params[:programa_id])
+    render :partial => "fichas", :object => @fichas
+  end
+
+
   def create
     @queja = Queja.new(params[:queja])
     render :action => :new unless @queja.save
     @quejas = Queja.all
   end
-
+    
   
   def update
     @queja = Queja.find(params[:id])
@@ -47,16 +57,7 @@ class QuejasController < ApplicationController
     @quejas = Queja.all
   end
   
-  #metodo para llevar el atributo ficha
-  def camficha
-    input = Programa.where("id = ?", params[:id]).first
-    @fic = input.ficha
-    respond_to do  |format|
-      format.js { render 'asig_ficha' } #asig_ficha archivo js
-    end
-  end
-
-
+ 
   private
   def sort_column
     Queja.column_names.include?(params[:sort]) ? params[:sort] : "nombres"
