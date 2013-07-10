@@ -1,0 +1,12 @@
+<%- model_class = Ficha -%>
+<br><br>
+<h1><%=t '.title', :default => model_class.model_name.human %></h1>
+<br>
+
+<div class='ficha'>
+
+  <p>ficha: <%= @ficha.codigo %></p>
+  <p>programa: <%= @ficha.programa.descripcion %></p>
+  <p>estado: <%= @ficha.estado %></p>
+</div>
+

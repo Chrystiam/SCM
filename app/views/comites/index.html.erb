@@ -1,0 +1,45 @@
+<%- model_class = Comite -%>
+<br><br>
+<h1>comites</h1>
+<br>
+<%= form_tag request.path, :method => 'get' do %>
+  <%= content_tag :label do %>
+    comite:
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Consultar", :lugar => nil %>
+  <% end %>
+<% end %>
+
+<%= form_tag request.path, :method => 'get' do %>
+  <%= content_tag :label do %>
+    Numero Registros:
+    <%= text_field_tag :registro, params[:registro], :class =>'input-mini' %>
+   <% end %>
+<% end %>
+
+<p>
+Total comites : <input type="text" id="totalregs" class="span1" value="<%= @comites.total_entries %>"readonly /></h4>
+</p>
+
+<table class="table table-bordered table-hover pretty">
+  <thead>
+    <tr>  
+      <th><%= sortable "id" %></th>
+      <th><%= sortable "fecha" %></th> 
+      <th><%= sortable "hora" %></th> 
+      <th><%= sortable "lugar" %></th> 
+      <th><%= sortable "falta_id" %></th> 
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @comites %>
+  </tbody>
+</table>
+<%= link_to 'Nuevo comite', new_comite_path, :class => 'btn btn-primary', :remote => true %>
+
+<div align="center">
+  <%= will_paginate @comites, :previous_label => '&laquo; Anterior', :next_label => 'Siguiente
+  &raquo;' %>
+</div>
+

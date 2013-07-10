@@ -1,0 +1,11 @@
+<%- model_class = Comite -%>
+<br><br>
+<h1><%=t '.title', :default => model_class.model_name.human %></h1>
+<br>
+
+<div class='cargo'>
+  <p>fecha: <%= @comite.fecha %></p>
+  <p>hora: <%= @comite.hora %></p>
+  <p>lugar: <%= @comite.lugar %></p>
+  <p>lugar: <%= @comite.falta.id %></p>
+</div>

@@ -1,0 +1,14 @@
+<tr id=<%= "ficha_#{ficha.id}" %>>
+
+  <td><%= ficha.codigo %></td>
+  <td><%= ficha.programa.descripcion %></td>
+  <td><%= ficha.estado %></td>
+  <td>
+    <%= link_to 'Mostrar', programa_ficha_path(@programa,ficha), :remote => true, :class => 'btn btn-default' %>
+    <%= link_to 'Editar', edit_programa_ficha_path(@programa,ficha), :remote => true,
+        :class => 'btn btn-warning' %>
+    <%= link_to 'Eliminar', programa_ficha_path(@programa, ficha), 
+        :data => { :confirm => 'Esta Seguro?' },
+        :method => :delete, :remote => true, :class => 'btn btn-default btn-danger' %>
+  </td>
+</tr>

@@ -1,0 +1,20 @@
+<%= simple_form_for(@comite, :html => { :class => 'form-horizontal' }, :remote => true) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :fecha %>
+    <%= f.input :hora %>
+    <%= f.input :lugar %>
+    <%= f.label :queja %>
+    <%= f.collection_select :queja_id, Queja.all, :id, :nombres %>
+    <br><br>
+    <%= f.label :falta %>
+    <%= f.collection_select :falta_id, Falta.all, :id, :descripcion %>
+  </div>
+
+
+  <div class="form-actions">
+  	<%= f.submit "Guardar", :class => 'btn btn-primary' %>
+    <%= link_to 'Atras', comites_path, :class => 'btn btn-default' %>
+  </div>
+<% end %>

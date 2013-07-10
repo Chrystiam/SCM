@@ -1,0 +1,9 @@
+<%- model_class = Centro -%>
+<br><br>
+<h1><%=t '.title', :default => model_class.model_name.human %></h1>
+<br>
+
+<div class='centro'>
+  <p>Nombre: <%= @centro.nombre %></p>
+  <p>Abreviatura: <%= @centro.abreviatura %></p>
+</div>

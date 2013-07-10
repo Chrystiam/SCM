@@ -1,0 +1,8 @@
+<%= simple_form_for([@programa,@ficha], :html => { :class => 'form-horizontal' }, :remote => true) do |f| %>
+  <%= f.input :codigo %>
+  <%= f.input :estado %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),programa_fichas_path(@programa), :class => 'btn' %>
+  </div>
+<% end %>

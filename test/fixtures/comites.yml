@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  fecha: 2013-07-01
+  hora: 2013-07-01 16:58:09
+  lugar: MyString
+  queja: 
+
+two:
+  fecha: 2013-07-01
+  hora: 2013-07-01 16:58:09
+  lugar: MyString
+  queja: 

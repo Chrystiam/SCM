@@ -1,0 +1,3 @@
+$('table tbody').append("<%= escape_javascript(render @centro) %>")
+$("input#totalregs").attr('value','<%= @centros.count %>');
+$.lazybox.close()

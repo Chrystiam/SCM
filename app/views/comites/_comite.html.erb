@@ -1,0 +1,16 @@
+<tr id=<%= "comite_#{comite.id}" %>>
+  
+  <td><%= comite.id %></td>
+  <td><%= comite.fecha %></td>
+  <td><%= comite.hora %></td>
+  <td><%= comite.lugar %></td>
+  <td><%= comite.falta_id %></td>
+  <td>
+    <%= link_to 'Mostrar', comite, :remote => true, :class => 'btn btn-default' %>
+    <%= link_to 'Editar', edit_comite_path(comite), :remote => true,
+        :class => 'btn btn-warning' %>
+    <%= link_to 'Eliminar', comite, 
+        :data => { :confirm => 'Esta Seguro?' },
+        :method => :delete, :remote => true, :class => 'btn btn-default btn-danger' %>
+  </td>
+</tr>

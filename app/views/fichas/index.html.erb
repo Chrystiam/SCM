@@ -1,0 +1,44 @@
+<%- model_class = Ficha -%>
+<br><br>
+<h1>Fichas</h1>
+<br>
+<%= form_tag request.path, :method => 'get' do %>
+  <%= content_tag :label do %>
+    falta:
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Consultar", :codigo => nil %>
+  <% end %>
+<% end %>
+
+<%= form_tag request.path, :method => 'get' do %>
+  <%= content_tag :label do %>
+    Numero Registros:
+    <%= text_field_tag :registro, params[:registro], :class =>'input-mini' %>
+   <% end %>
+<% end %>
+
+<p>
+Total Fichas : <input type="text" id="totalregs" class="span1" value="<%= @fichas.total_entries %>"readonly /></h4>
+</p>
+
+<table class="table table-bordered table-hover pretty">
+  <thead>
+    <tr>
+      <th><%= sortable "codigo" %></th>
+      <th><%= sortable "programa_id" %></th>
+      <th><%= sortable "estado" %></th> 
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @fichas %>
+  </tbody>
+</table>
+<%= link_to 'Nueva Ficha', new_programa_ficha_path, :class => 'btn btn-primary', :remote => true %>
+<%= link_to 'Atras', programas_path,  :class => 'btn btn-default' %> 
+
+<div align="center">
+  <%= will_paginate @fichas, :previous_label => '&laquo; Anterior', :next_label => 'Siguiente
+  &raquo;' %>
+</div>
+
