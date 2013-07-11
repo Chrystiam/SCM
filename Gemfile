@@ -30,6 +30,7 @@ gem 'bootstrap-will_paginate'
 gem 'will_paginate'
 gem 'sorcery'
 gem 'paperclip'
+gem 'bootstrap-datepicker-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

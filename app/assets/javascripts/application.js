@@ -16,6 +16,7 @@
 //= require twitter/bootstrap
 //= require jquery.remotipart
 //= require lazybox
+//= require bootstrap-datepicker
 //= require_tree .
 
 
@@ -27,30 +28,21 @@ $(document).ready(function() {
   $.lazybox.settings = {cancelClass: "button green", submitClass: 'button red', closeImg: false, niceClose: false}
   $.rails.allowAction = $.lazybox.confirm;
   
+}
 
-    $("#fichasDiv").css('display','none');
-    $('#programa_id').bind('change',function(e){
-     var program = $(this).val();
-         
-     if (program != ""){
-        $("#fichasDiv").css('display','block'); 
-        update_fichas_div(program)
-     }
-     else
-        $("#fichasDiv").css('display','none');
-     
-    });
+
+/* funcion para hacer aparecer y desaparecer el menu de los enlaces*/
+$(function() {
+
+  $('.navigation a').stop().animate({'marginLeft':'-85px'},1000);
+ 
+  $('.navigation > li').hover(
+    function () {
+     $('a',$(this)).stop().animate({'marginLeft':'-2px'},200);
+    },
+    function () {
+      $('a',$(this)).stop().animate({'marginLeft':'-85px'},200);
+    }
+  );
 });
 
-
- function update_fichas_div(programa_id) {  
-  jQuery.ajax({
-    url: "/update_fichas",
-    type: "GET",
-    data: {"programa_id" : programa_id},
-    dataType: "html",
-    success: function(data) {
-      jQuery("#fichasDiv").html(data);
-    }
-  });
-}

@@ -1,7 +1,8 @@
+<%= javascript_include_tag "programaselect.js" %>
+<%= javascript_include_tag "fecha.js" %>
 <%= simple_form_for(@queja, :html => { :class => 'form-horizontal', :multipart => true }, :remote => true) do |f| %>
 
   <%= f.error_notification %>
-
 
   <div class="responsive">
     <div class="modal-body">  
@@ -11,42 +12,74 @@
             <center><h4>Información del Aprendiz</h4></center>
             <hr>
           <!--<div class="form-inputs"> -->
+            <%= f.label :fechainforme %>
+            <%= f.input :fechainforme, :as => :string, :label => false, 
+            :input_html => {  :class=>"datepicker" } %>
             <%= f.input :fechainforme %>
             <%= f.input :nombres %>
             <%= f.input :apellidos %>
-            <%= f.label :Tipo_Documento %>
-            <%= f.collection_select :tipo_documento_id, TipoDocumento.all, :id, :descripcion, :prompt => "Seleccione" %>
+            <div class ="control-group">
+              <%= f.label :Tipo_Documento %>
+              <div class="controls" >
+                <%= f.collection_select :tipo_documento_id, TipoDocumento.all, :id, :descripcion, :prompt => "Seleccione" %>
+              </div>
+            </div>
             <br><br>
             <%= f.input :identificacion %>
             <%= f.input :telefono %>
             <%= f.input :email %>
-            <%= f.label :programa_id %>
-            <%= select_tag "programa_id", options_from_collection_for_select(@programas, "id", "descripcion"), :prompt => "select a program" %>
+            <div class ="control-group">
+              <%= f.label :programa_id %> 
+              <div class="controls" >
+                <%= select_tag "programa_id", options_from_collection_for_select(@programas, "id", "descripcion"), :prompt => "select a program" %>
+              </div>
+            </div>
             <br><br>
-            <div id="fichasDiv">
-              <%= render :partial => 'fichas', :object => @fichas%>
+            <div class ="control-group">
+                <%= f.label :ficha%>
+                <div class="controls" id="fichasDiv" >
+                  <div id="fichasDiv">
+                    <%= render :partial => 'fichas', :object => @fichas%>
+                  </div>
+                </div>
             </div>
           </div>
-           <center><h4>Tipo de falta y Datos del Informante</h4></center>
-            <hr>
+          <center><h4>Tipo de falta y Datos del Informante</h4></center>
+          <hr>
 
           <div class ="span6">
             <div class="row">
-              <%= f.label :descripcion %>
-              <%= f.text_area(:descripcion, :rows => 4) %>
+              <div class ="control-group">
+                <%= f.label :descripcion %>
+                <div class="controls" >
+                  <%= f.text_area(:descripcion, :rows => 4) %>
+                </div>
+              </div>
               <br><br>
-              <%= f.label :falta_id %>
-              <%= f.collection_select :falta_id, Falta.all, :id, :descripcion, :prompt => "Seleccione" %>
+              <div class ="control-group">
+                <%= f.label :falta_id %>
+                <div class="controls" >
+                  <%= f.collection_select :falta_id, Falta.all, :id, :descripcion, :prompt => "Seleccione" %>
+                </div>
+              </div>
               <br><br>
               <%= f.input :testigos %>
               <%= f.input :nombresinformante %>
               <%= f.input :apellidosinformante %>
               <%= f.input :direccioninformante %>
-              <%= f.label :cargo_id %>
-              <%= f.collection_select :cargo_id, Cargo.all, :id, :descripcion, :prompt => "Seleccione" %>
+              <div class ="control-group">
+                <%= f.label :cargo_id %>
+                <div class="controls" >
+                  <%= f.collection_select :cargo_id, Cargo.all, :id, :descripcion, :prompt => "Seleccione" %>
+                </div>
+              </div>
               <br><br>
-              <%= f.label :descargos %>
-              <%= f.text_area(:descargos, :rows => 4) %>
+              <div class ="control-group">
+                <%= f.label :descargos %>
+                <div class="controls" >
+                  <%= f.text_area(:descargos, :rows => 4) %>
+                </div>
+              </div>
               <br><br>
               <%= image_tag @queja.evidencia.url(:small) %>
               <%= f.label :Evidencia %>

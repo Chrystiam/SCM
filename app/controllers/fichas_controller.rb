@@ -11,7 +11,7 @@ class FichasController < ApplicationController
       @rxp = 1
     end
 
-    @fichas  = Ficha.order(sort_column + " " + sort_direction).search(params[:search]).page(params[:page]).per_page(@rxp)
+    @fichas  = @programa.fichas.order(sort_column + " " + sort_direction).search(params[:search]).page(params[:page]).per_page(@rxp)
   end
 
 
@@ -33,7 +33,7 @@ class FichasController < ApplicationController
   def create
     
     @ficha = @programa.fichas.build(params[:ficha])
-    #@ficha.programa_id = @programa.id
+    @ficha.programa_id = @programa.id
     render :action => :new unless @ficha.save
     @fichas = Ficha.all
   end

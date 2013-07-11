@@ -32,7 +32,7 @@ class QuejasController < ApplicationController
   end
 
   
-  def update_fichas_div
+  def update_fichas
     @fichas = Ficha.where('programa_id = ?', params[:programa_id])
     render :partial => "fichas", :object => @fichas
   end

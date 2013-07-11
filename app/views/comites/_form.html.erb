@@ -1,15 +1,25 @@
+<%= javascript_include_tag "fecha.js" %>
 <%= simple_form_for(@comite, :html => { :class => 'form-horizontal' }, :remote => true) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :fecha %>
+    <%= f.label :fecha %>
+    <%= f.input :fecha, :as => :string, :label => false, :input_html => {  :class=>"datepicker" } %>
     <%= f.input :hora %>
     <%= f.input :lugar %>
-    <%= f.label :queja %>
-    <%= f.collection_select :queja_id, Queja.all, :id, :nombres %>
+    <div class ="control-group">
+      <%= f.label :queja %>
+      <div class="controls" >
+        <%= f.collection_select :queja_id, Queja.all, :id, :nombres %>
+      </div>
+    </div>
     <br><br>
-    <%= f.label :falta %>
-    <%= f.collection_select :falta_id, Falta.all, :id, :descripcion %>
+    <div class ="control-group">
+      <%= f.label :falta %>
+      <div class="controls" >
+        <%= f.collection_select :falta_id, Falta.all, :id, :descripcion %>
+      </div>
+    </div>
   </div>
 
 

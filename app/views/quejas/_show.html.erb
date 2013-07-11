@@ -1,29 +1,66 @@
 <%- model_class = Queja -%>
-	<br><br>
-	<h1><%=t '.title', :default => model_class.model_name.human %></h1>
-	<br>
 
-	<div class='queja'>
-		<p>id: <%= @queja.id %></p>
-		<p>fecha: <%= @queja.fechainforme %></p>
-		<p>nombres: <%= @queja.nombres %></p>
-		<p>apellidos: <%= @queja.apellidos %></p>
-		<p>tipo documento: <%= @queja.tipo_documento.descripcion %> </td>
-        <p>numero: <%= @queja.identificacion %></p>
-        <p>telefono: <%= @queja.telefono %></p>
-        <p>email: <%= @queja.email %></p>
-		<p>programa: <%= @queja.programa_id %></p>
-		<p>ficha: <%= @queja.ficha_id %></p>
-		<p>descripcion falta: <%= @queja.descripcion %></p>
-		<p>falta: <%= @queja.falta.descripcion %></p>
-		<p>testigos: <%= @queja.testigos %></p>
-		<p>nombres informante: <%= @queja.nombresinformante %></p>
-		<p>apellidos informante: <%= @queja.apellidosinformante %></p>
-        <p>direccion informante: <%= @queja.direccioninformante %></p>
-		<p>cargo: <%= @queja.cargo.descripcion %></p>
-		<p>descargos: <%= @queja.descargos %></p>
+<br><br>
+<h1><%=t '.title', :default => model_class.model_name.human %></h1>
+<br>
 
-		<p>Evidencia: <br> <strong><%= image_tag @queja.evidencia.url(:small) %></strong></p>
-	</div>
+    
+<div class="responsive">
+	<div class="modal-body">
+		<div class='row' id='colors'>
+  			<div class='queja'>
+    			<div class="span5">
+					<p class="text-info">id </p>
+					<p><%= @queja.id %></p>
+					<p class="text-info">Fecha </p>
+					<p><%= @queja.fechainforme %></p>
+					<p class="text-info">Nombres</p>
+					<p><%= @queja.nombres %></p>
+					<p class="text-info">Apellidos </p>
+					<p><%= @queja.apellidos %></p>
+					<p class="text-info">Tipo Documento </p>
+		            <p><%= @queja.tipo_documento.descripcion %></p>
+		            <p class="text-info">Identificación </p>
+		            <p><%= @queja.identificacion %></p>
+		            <p class="text-info">Telefono </p>
+		            <p><%= @queja.telefono %></p>
+		            <p class="text-info">Email </p>
+		            <p><%= @queja.email %></p>
+		            <p class="text-info">Programa </p>
+		            <p><%= @queja.ficha.programa.descripcion %></p>
+		            <p class="text-info">Ficha </p>
+		            <p><%= @queja.ficha.codigo %></p>
+                </div>
 
+                <div class="span2">
+                	<div class="row">
+			        </div>
+                </div>
 
+                <div class="span2">
+                	<div class="row">
+			            <p class="text-info">Descripción </p>
+						<p><%= @queja.descripcion %></p>
+						<p class="text-info">Falta </p>
+						<p><%= @queja.falta.descripcion %></p>
+						<p class="text-info">Testigos </p>
+			            <p><%= @queja.testigos %></p>
+			            <p class="text-info">Nombres Informantes </p>
+			            <p><%= @queja.nombresinformante %></p>
+			            <p class="text-info">Apellidos Informantes </p>
+			            <p><%= @queja.apellidosinformante %></p>
+			            <p class="text-info">Dirección Informantes </p>
+			            <p><%= @queja.direccioninformante %></p>
+			            <p class="text-info">Cargo </p>
+			            <p><%= @queja.cargo.descripcion %></p>
+			            <p class="text-info">Descargos </p>
+			            <p><%= @queja.descargos %></p>
+			            <p class="text-info">Evidencia </p>
+			            <p><br> <strong><%= image_tag @queja.evidencia.url(:small) %></strong></p>
+					
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

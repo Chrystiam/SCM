@@ -3,9 +3,21 @@
 <h1><%=t '.title', :default => model_class.model_name.human %></h1>
 <br>
 
-<div class='cargo'>
-  <p>fecha: <%= @comite.fecha %></p>
-  <p>hora: <%= @comite.hora %></p>
-  <p>lugar: <%= @comite.lugar %></p>
-  <p>lugar: <%= @comite.falta.id %></p>
+<div class="responsive">
+	<div class="modal-body">
+		<div class='row' id='colors'>
+			<div class='cargo'>
+				<div class="span5">
+				   <p class="text-info">Fecha </p>
+				   <p>fecha: <%= @comite.fecha %></p>
+				   <p class="text-info">Hora </p>
+				   <p>hora: <%= @comite.hora %></p>
+				   <p class="text-info">Lugar </p>
+				   <p>lugar: <%= @comite.lugar %></p>
+				   <p class="text-info">Descripción de la falta </p>
+				   <p>falta: <%= @comite.falta.descripcion %></p>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
