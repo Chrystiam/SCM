@@ -7,13 +7,7 @@
     <%= f.input :fecha, :as => :string, :label => false, :input_html => {  :class=>"datepicker" } %>
     <%= f.input :hora %>
     <%= f.input :lugar %>
-    <div class ="control-group">
-      <%= f.label :queja %>
-      <div class="controls" >
-        <%= f.collection_select :queja_id, Queja.all, :id, :nombres %>
-      </div>
-    </div>
-    <br><br>
+  
     <div class ="control-group">
       <%= f.label :falta %>
       <div class="controls" >
@@ -21,7 +15,6 @@
       </div>
     </div>
   </div>
-
 
   <div class="form-actions">
   	<%= f.submit "Guardar", :class => 'btn btn-primary' %>

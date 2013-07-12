@@ -20,20 +20,17 @@
 //= require_tree .
 
 
-$(document).ready(function() {
-  
+
+$(document).ready(function(){
+
   $('a#show_tipo_documento_link').lazybox({closeImg: true});
   
   $('a[rel*=lazybox]').lazybox({close: false, modal: false, opacity: 0.7, klass: 'lazybox', speed: 200});
   $.lazybox.settings = {cancelClass: "button green", submitClass: 'button red', closeImg: false, niceClose: false}
   $.rails.allowAction = $.lazybox.confirm;
+
   
-}
-
-
-/* funcion para hacer aparecer y desaparecer el menu de los enlaces*/
-$(function() {
-
+  /* funcion para hacer aparecer y desaparecer el menu de los enlaces*/
   $('.navigation a').stop().animate({'marginLeft':'-85px'},1000);
  
   $('.navigation > li').hover(
@@ -41,8 +38,8 @@ $(function() {
      $('a',$(this)).stop().animate({'marginLeft':'-2px'},200);
     },
     function () {
-      $('a',$(this)).stop().animate({'marginLeft':'-85px'},200);
+     $('a',$(this)).stop().animate({'marginLeft':'-85px'},200);
     }
   );
-});
 
+});
