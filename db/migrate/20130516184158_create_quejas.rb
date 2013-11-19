@@ -17,7 +17,6 @@ class CreateQuejas < ActiveRecord::Migration
       t.string :direccioninformante
       t.string :telefonoinf
       t.references :cargo
-      t.text :descargos
       t.references :ficha
       t.references :centro
 
@@ -30,5 +29,6 @@ class CreateQuejas < ActiveRecord::Migration
     add_index :quejas, :cargo_id
     add_index :quejas, :ficha_id
     add_index :quejas, :centro_id
+    add_index :quejas, :calificacionf_id
   end
 end
