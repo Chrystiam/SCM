@@ -5,11 +5,6 @@
   <td><%= acta.hora_inicio %></td>
   <td><%= acta.hora_terminacion %></td>
   <td><%= acta.lugar %></td>
-  <td><%= acta.tema %></td>
-  <td><%= acta.objetivo_de_la_reunion %></td>
-  <td><%= acta.desarrollo_reunion %></td>
-  <td><%= acta.conclusiones %></td>
-  <td><%= acta.firmas %></td>
   <td>
     <%= link_to 'Mostrar', acta, :remote => true, :class => 'btn btn-mini ' %>
     <%= link_to 'Editar', edit_acta_path(acta), :remote => true,

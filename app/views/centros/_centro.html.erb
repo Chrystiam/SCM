@@ -2,6 +2,7 @@
   <td><%= link_to centro.id, edit_centro_path(centro), :remote => true %></td>
   <td><%= centro.nombre %></td>
   <td><%= centro.abreviatura %></td>
+  <td><%= link_to 'Programas', centro_programas_path(centro), :class => 'btn btn-large btn-inverse' %></td>
   <td>
     <%= link_to 'Mostrar', centro, :remote => true, :class => 'btn btn-default' %>
     <%= link_to 'Editar', edit_centro_path(centro), :remote => true,

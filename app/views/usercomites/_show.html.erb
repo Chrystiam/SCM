@@ -1,0 +1,28 @@
+<%- model_class = Usercomite -%>
+
+<div class="modal-body">
+
+  <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="$.lazybox.close()">x</button> 
+
+  <h3>Usuario Comite</h3>
+
+
+  <div class='row' id='colors'>
+    <div class='usercomite'>
+      <div class="span4">
+        <br><br>
+        <hr>
+        <p class="text-info">Nombre Completo: </p>
+        <p><%= @usercomite.nc %></p>
+        <p class="text-info">Cedula: </p>
+        <p><%= @usercomite.cedula %></p>
+        <p class="text-info">Email: </p>
+        <p><%= @usercomite.email %></p>
+        <p class="text-info">Fecha: </p>
+        <p><%= @usercomite.fch_ncto %></p>
+        <p class="text-info">Cargo: </p>
+        <p><%= @usercomite.cargo.descripcion %></p>
+      </div>
+    </div>
+  </div>
+</div>

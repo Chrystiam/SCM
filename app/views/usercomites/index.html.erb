@@ -1,0 +1,45 @@
+<%- model_class = Usercomite -%>
+<br><br><br>
+<h1>usuarios comite</h1>
+<br>
+<%= form_tag request.path, :method => 'get' do %>
+  <%= content_tag :label do %>
+    Nombre:
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Consultar", :nc => nil %>
+  <% end %>
+<% end %>
+
+<%= form_tag request.path, :method => 'get' do %>
+  <%= content_tag :label do %>
+    Numero Registros:
+    <%= text_field_tag :registro, params[:registro], :class =>'input-mini' %>
+   <% end %>
+<% end %>
+
+<p>
+Total Usuarios comite : <input type="text" id="totalregs" class="span1" value="<%= @usercomites.total_entries %>"readonly /></h4>
+</p>
+
+<table class="table table-bordered table-hover pretty">
+  <thead>
+    <tr>  
+      <th><%= sortable "nc", "Nombre Completo" %></th>
+      <th><%= sortable "cedula" %></th> 
+      <th><%= sortable "email" %></th>
+      <th><%= sortable "fch_ncto" %></th> 
+      <th><%= sortable "cargo" %></th> 
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @usercomites %>
+  </tbody>
+</table>
+<%= link_to 'Nuevo Usuario Comite', new_usercomite_path, :class => 'btn btn-primary', :remote => true %>
+<%= link_to image_tag("pdf_icon.gif"), usercomites_path(:format => :pdf), :id => "pdfc" %> 
+
+<div align="center">
+  <%= will_paginate @usercomites, :previous_label => '&laquo; Anterior', :next_label => 'Siguiente
+  &raquo;' %>
+</div>

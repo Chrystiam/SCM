@@ -3,16 +3,47 @@
 <h1><%=t '.title', :default => model_class.model_name.human %></h1>
 <br>
 
-<div class='acta'>
-  <p>Ciudad: <%= @acta.ciudad %></p>
-  <p>Fecha: <%= @acta.fecha %></p>
-  <p>Hora Inicio: <%= @acta.hora_inicio %></p>
-  <p>Hora Terminación: <%= @acta.hora_terminacion %></p>
-  <p>Lugar: <%= @acta.lugar %></p>
-  <p>Tema: <%= @acta.tema %></p>
-  <p>Objetivo Reunión: <%= @acta.objetivo_de_la_reunion %></p>
-  <p>Desarrollo Reunión: <%= @acta.desarrollo_reunion %></p>
-  <p>Conclusiones: <%= @acta.conclusiones %></p>
-  <p>Firmas: <%= @acta.firmas %></p>
-
+<div class="responsive">
+  <div class="modal-body">
+    <div class='row' id='colors'>
+      <div class='acta'>
+        <div class="span5">
+          <br><br>
+          <hr>
+          <p class="text-info">Ciudad: </p>
+          <p><%= @acta.ciudad %></p>
+          <p class="text-info">Fecha: </p>
+          <p><%= @acta.fecha %></p>
+          <p class="text-info">Hora Incio: </p>
+          <p><%= @acta.hora_inicio %></p>
+          <p class="text-info">Hora Terminación: </p>
+          <p><%= @acta.hora_terminacion %></p>
+          <p class="text-info">Lugar: </p>
+          <p><%= @acta.lugar %></p>
+        </div>
+        
+        <div class="span2">
+          <div class="row">
+          </div>
+        </div>
+        
+        <br><br>
+        <hr>
+        <div class="span2">
+          <div class="row">
+            <p class="text-info">Tema: </p>
+            <p><%= @acta.tema %></p>
+            <p class="text-info">Objetivo Reunión:  </p>
+            <p><%= @acta.objetivo_de_la_reunion %></p>
+            <p class="text-info">Desarrollo Reunión: </p>
+            <p><%= @acta.desarrollo_reunion %></p>
+            <p class="text-info">Conclusiones </p>
+            <p><%= @acta.conclusiones %></p>
+            <p class="text-info">Firmas: </p>
+            <p><%= @acta.firmas %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

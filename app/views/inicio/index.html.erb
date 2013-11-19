@@ -1,38 +1,88 @@
 <!doctype html>
-<html>
+<html lang="ES">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>home</title>
-        <meta name="description" content="">
-        <meta name="author" content="">
+        <link rel="shortcut icon" href="assets/scm.png">
+        <title>Welcome</title>
+        <meta name="SCM" >
+        <meta name="author" >
         <%= stylesheet_link_tag "application", :media => "all" %>
         <%= javascript_include_tag "application" %>
         <%= csrf_meta_tags %>
         <%= yield(:head) %>
     </head>
-    <body>
-
-        <div class="row">
-            <div class="span6 offset3">
-                <form class="form-inline">
-                    <input type="text" class="input-small" placeholder="Email">
-                    <input type="password" class="input-small" placeholder="Password">
-                    <label class="checkbox">
-                    <input type="checkbox"> Recordar mis datos
-                    </label>
-                    <button type="submit" class="btn">Iniciar sesión</button>
-                    <button class="btn btn-primary" type="button">Registrarse</button>
-                </form>
+    <body id="color">
+        <div class="navbar">
+            <div class="navbar-inner">
+                <a class="brand" </a>
+                <ul class="nav">
+                    <li><a href="#"></a></li>
+                      <button class="btn btn-success" type="button"><%= link_to 'Regístrate!', signup_path, :remote => true %></button> 
+                        <li><a href="#"></a></li>
+                        <button class="btn btn-success" type="button"><%= link_to 'Ingresar', login_path %></button>
+                </ul>
+                
             </div>
-            <div class="span6 offset3">
-                <div class="hero-unit">
-                    <h1><center>Bienvenidos</center></h1>
-                    <left><%=image_tag('c1.jpg', :alt => '', :class => "img-rounded" ) %><left>
-                    <p><center></center></p>
-                </div>
+        </div> 
+        
+        <div>
+            <ul class="navigation">
+                <li>
+                    <a href="http://www.senasofiaplus.edu.co/" title="Sofia Plus"><img src="assets/Sofiaplus.jpg" /></a>
+                <li>
+                <li >
+                    <a href="http://www.senavirtual.edu.co" title="Sena Virtual"><img src="assets/senavirtual.jpg" /></a>
+                </li>
+                <li >
+                    <a href="http://sne.sena.edu.co/‎" title="Servico Publico de Empleo"><img src="assets/empleo.jpg" /></a>
+                </li>
+                <li>
+                    <a href="http://www.youtube.com" title="Youtube"><img src="assets/youtube.png" /></a>
+                </li>
+                <li>
+                    <a href="http://www.skype.com" title="Skype"><img src="assets/skype.png" /></a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="span8 offset1" >
+            <div class="well">
+                <div class='row'> 
+                    <div class="tabbable tabs-left">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#tab1" data-toggle="tab">SCQ</a></li>
+                            <li><a href="#tab2" data-toggle="tab">Agradecimientos</a></li>
+                            <li><a href="#tab3" data-toggle="tab">Contáctenos</a></li>
+                        </ul>
+                        <div id ="l">
+                        <div class="span3">
+                            <div id="es" class="tab-content">
+                                <div class="tab-pane active" id ="tab1">
+                                    <p>SCM es un proyecto sin ánimo de lucro, creado para facilitar el proceso que realiza el comite de seguimiento. posibilita que los aprendices puedan ver el seguimiento que se le realizaclientes.</p>
+                                    <img src="assets/scm.png" />
+                                </div>
+                                <div class="tab-pane" id="tab2" >
+                                    Aquellas personas que estuvieron acompañandome en este proceso.
+                                </div>
+                                <div class="tab-pane" id="tab3">
+                                    <p>Si desea comunicarse con nosotros, puede escribirnos al correo que aparece en el link, estamos ubicados en Medellín, Colombia en la calle XXX número: XXXXX.</p>
+                                    SCM@gmail.com.co
+                                    <br><br>
+                                    <p>Síguenos a través de las redes sociales por Twitter:</p>
+                                    @SCM
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div> 
             </div>
         </div>
     </body>
-    
+    <div id="imagen">
+      <img src=" assets/logosena.jpg">
+    </div>
+    <br><br><br>
+    <footer>Esta aplicacion fue creada en el año 2013.</footer>
 </html>

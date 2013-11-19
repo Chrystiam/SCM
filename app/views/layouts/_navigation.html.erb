@@ -2,8 +2,13 @@
     <!-- if user_signed_in? %>  -->
    
     <li><%= link_to image_tag('icono.gif' ), root_path, :title => "¿volver al inicio?" %></li> 
+    <li><%= link_to('Usuarios', users_path) %> </li>
+    <li><%= link_to('Quejas', quejas_path) %> </li>
     <li><%= link_to('Comites', comites_path) %> </li>
     <li><%= link_to('Actas', actas_path) %> </li>
+    <li><%= link_to('usuarios comite', usercomites_path) %> </li>
+    <li><%= link_to('Ayuda', ayudas_path) %> </li>
+
    <!-- else %> -->
    
 
@@ -11,11 +16,3 @@
   <!-- end %> -->
 
 </ul> 
-<ul class="nav pull-right">
-     <li class="dropdown">
-    <a data-toggle="dropdown" class="dropdown-toggle" href="#"><img src="bootstrap/img/en.png" alt=""/> Español<b class="caret"></b></a>
-<ul class="dropdown-menu">
-    <li><a href="#"><img src="assets/ingles.jpg" alt="English" width="30"/> Inglés </a></li>
-    <li><a href="#"><img src="assets/españa.png" alt="Spanish" width="30"/> Español</a></li>
-    <p></p>
-    <p></p>

@@ -2,7 +2,7 @@
   <%= f.input :codigo %>
   <%= f.input :estado %>
   <div class="form-actions">
-    <%= f.button :submit, :class => 'btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),programa_fichas_path(@programa), :class => 'btn' %>
+    <%= f.submit "Guardar", :class => 'btn btn-primary' %>
+    <%= link_to 'Atras', programa_fichas_path(@programa), :class => 'btn btn-default' %>
   </div>
 <% end %>

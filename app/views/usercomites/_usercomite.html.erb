@@ -1,0 +1,15 @@
+<tr id=<%= "usercomite_#{usercomite.id}" %>>
+  <td><%= usercomite.nc %></td>
+  <td><%= usercomite.cedula %></td>
+  <td><%= usercomite.email %></td>
+  <td><%= usercomite.fch_ncto %></td>
+  <td><%= usercomite.cargo.descripcion %></td>
+  <td>
+    <%= link_to 'Mostrar', usercomite, :remote => true, :class => 'btn btn-mini ' %>
+    <%= link_to 'Editar', edit_usercomite_path(usercomite), :remote => true,
+        :class => 'btn btn-warning btn btn-mini' %>
+    <%= link_to 'Eliminar', usercomite, 
+        :data => { :confirm => 'Esta Seguro' },
+        :method => :delete, :remote => true, :class => 'btn btn-mini btn-danger' %>
+  </td>
+</tr>

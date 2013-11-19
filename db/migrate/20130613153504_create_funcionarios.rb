@@ -7,7 +7,7 @@ class CreateFuncionarios < ActiveRecord::Migration
       t.string :email
       t.string :direccion
       t.string :telefono
-      t.date :fch_nacimiento
+      t.string :fch_nacimiento
       t.string :cargo
 
       t.timestamps

@@ -1,12 +1,15 @@
 class TipoDocumento < ActiveRecord::Base
+  
+    #referencia de la tabla quejas
+    has_many :quejas 
+  
+    #atributos
+    attr_accessible :descripcion, :sigla
+  
+    #validaciones
+    validates_presence_of :descripcion
 
-  has_many :quejas 
-
-  attr_accessible :descripcion, :sigla
-
-  validates_presence_of :descripcion
-
-  validates_presence_of :sigla
+    validates_presence_of :sigla
  
     #buscador
     def self.search(search)

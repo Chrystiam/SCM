@@ -1,6 +1,6 @@
 class InicioController < ApplicationController
 
-	layout 'inicio.html.erb'
+	#layout 'inicio.html.erb'
 
   def index
 

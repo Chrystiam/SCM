@@ -1,10 +1,9 @@
-<br>
 <!doctype html>
 <html>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="assets/sena.ico"/>
+    <link rel="shortcut icon" href="assets/scm.png">
     <title>SCQ</title>
     <meta name="description" content="">
     <meta name="author" content="">
@@ -13,14 +12,29 @@
     <%= csrf_meta_tags %>
     <%= yield(:head) %>
   </head>
-  <body >
-    <header class="navbar navbar-fixed-top">
-      <nav class="navbar-inner">
-        <div class="container">
-          <%= render 'layouts/navigation' %>
-        </div>
-      </nav>
-    </header>
+  <body>
+    <% if current_user %>
+      <header class="navbar navbar-fixed-top">
+        <nav class="navbar-inner">
+          <div class="container">
+            <%= render 'layouts/navigation' %>
+          </div>
+          <div id='buton'>
+            <div class="btn-group" >
+              <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-user icon-white"></i> User:<%= current_user.username %></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to(logout_path) do %>
+                  salir <i class="icon-briefcase"></i>
+                  <% end %> 
+                </li>
+              </ul>
+            </div> 
+          </div> 
+        </nav>
+      </header>
+    <% end %>
+           
+        
     <div id="main" role="main">
       <div class="container">
         <div class="content">

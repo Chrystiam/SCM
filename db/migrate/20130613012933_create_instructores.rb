@@ -3,12 +3,11 @@ class CreateInstructores < ActiveRecord::Migration
     create_table :instructores do |t|
       t.string :nombres
       t.string :apellidos
-      t.string :string
       t.string :cedula
       t.string :email
       t.string :direccion
       t.string :telefono
-      t.date :fch_nacimiento
+      t.string :fch_nacimiento
       t.string :modalidad
 
       t.timestamps

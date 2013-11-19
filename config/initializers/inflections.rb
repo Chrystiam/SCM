@@ -27,6 +27,9 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'title', 'titles'
   inflect.irregular 'hint', 'hints'
   inflect.irregular 'action', 'actions'
+  inflect.irregular 'user', 'users'
+  inflect.irregular 'session', 'sessions'
+  inflect.irregular 'role', 'roles'
 end
 
 

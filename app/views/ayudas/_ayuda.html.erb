@@ -1,0 +1,12 @@
+<tr id=<%= "ayuda_#{ayuda.id}"%>>
+	<td><%= link_to image_tag('pdf.jpg'), download_ayuda_path(ayuda) %></td>
+	<td><%= ayuda.nombre %></td>
+	<td>
+		<%= link_to 'Ver', ayuda, :remote => true, :class =>'btn btn-mini btn-info'  %>
+        
+        <%= link_to 'Editar', edit_ayuda_path(ayuda), :remote => true, :class =>'btn btn-mini' %>
+
+        <%= link_to 'Eliminar',ayuda, :data => {:confirm => 'esta seguro'}, :method => :delete, :remote => true, :class => 'btn btn-mini btn-danger' %>
+
+  	</td>
+  </tr>

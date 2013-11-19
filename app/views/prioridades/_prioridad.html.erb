@@ -1,0 +1,13 @@
+<tr class="success" id=<%= "prioridad_#{prioridad.id}" %>>
+  
+  <td><%= prioridad.nombre %></td>
+
+  <td>
+    <%= link_to 'Mostrar', prioridad, :remote => true, :class => 'btn btn-mini btn-info' %>
+    <%= link_to 'Editar', edit_prioridad_path(prioridad), :remote => true,
+        :class => 'btn btn-mini btn-warning' %>
+    <%= link_to 'Eliminar', prioridad, 
+        :data => { :confirm => 'Esta Seguro?' },
+        :method => :delete, :remote => true, :class => 'btn btn-mini btn-danger' %>
+  </td>
+</tr>

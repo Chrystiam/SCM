@@ -1,10 +1,10 @@
 <%- model_class = Funcionario -%>
-<br><br>
+<br><br><br>
  <h1>Funcionarios</h1>
 <br>
 <%= form_tag request.path, :method => 'get' do %>
  <%= content_tag :label do %>
-  <h4>Nombre Instructor: </h4>
+  <h4>Nombre Funcionario: </h4>
  <%= text_field_tag :search, params[:search] %>
  <%= submit_tag "Consultar", :nombres => nil %>
  <% end %>

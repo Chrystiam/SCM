@@ -1,0 +1,10 @@
+<%= simple_form_for(@ayuda, :html => { :class => 'form-horizontal', :multipart => true}, :remote => true) do |f| %>
+  <%= f.error_notification %>
+  <%= f. label :archivo %> 
+  <%= f.file_field :archivo %><br><br>
+  <%= f.input :nombre %>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div> 
+<% end %>

@@ -1,5 +1,6 @@
 <%= simple_form_for(@instructor, :html => { :multipart => true, :class => 'form-horizontal' }, :remote => true) do |f| %>
 
+  <%= javascript_include_tag "fecha.js" %>
   <%= f.error_notification %>
   
   <div class="responsive">
@@ -24,8 +25,8 @@
           <div class="row">
             <%= f.input :direccion,:required => true %>
             <%= f.input :telefono, :required => true %>
-            <%= f.input :fch_nacimiento, as: :date, start_year: Date.today.year - 50, end_year: Date.today.year - 10, accept_day: true, order: [:day, :month, :year] %>  
-            
+            <%= f.label :fecha %>
+            <%= f.input :fch_nacimiento, :as => :string, :label => false, :input_html => {  :class=>"datepicker" } %>  
             <%= f.input :modalidad, :required => true %>
           </div>
         </div>

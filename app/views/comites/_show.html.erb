@@ -1,23 +1,46 @@
 <%- model_class = Comite -%>
-<br><br>
 <h1><%=t '.title', :default => model_class.model_name.human %></h1>
-<br>
 
 <div class="responsive">
 	<div class="modal-body">
 		<div class='row' id='colors'>
 			<div class='cargo'>
-				<div class="span5">
-				   <p class="text-info">Fecha </p>
-				   <p><%= @comite.fecha %></p>
-				   <p class="text-info">Hora </p>
-				   <p><%= @comite.hora %></p>
-				   <p class="text-info">Lugar </p>
-				   <p><%= @comite.lugar %></p>
-				   <p class="text-info">Descripción de la falta </p>
-				   <p><%= @comite.falta.descripcion %></p>
+				<div class="span4">
+					<br><br>
+				    <center><h4>Información del comite</h4></center>
+				    <hr>
+                    <center><div>
+					    <p class="text-info">Fecha </p>
+					    <p><%= @comite.fecha %></p>
+					    <p class="text-info">Hora </p>
+					    <p><%= @comite.hora %></p>
+					    <p class="text-info">Lugar </p>
+					    <p><%= @comite.lugar %></p>
+					</div><center>
+				</div>
+
+                <div class="span4">
+        	    	<div class="row">
+	        		</div>
+        		</div>
+                
+                <br><br>
+                <center><h4>Información del Aprendiz</h4></center>
+                <hr>
+
+				<div class="span4">
+	            	<div class="row">
+	            		<center><div>
+						   <p class="text-info">Nombre Aprendiz </p>
+						   <p><%= @comite.queja.nombres %></p>
+						   <p class="text-info">Falta </p>
+						   <p><%= @comite.falta.descripcion %></p>
+						   <p class="text-info">Prioridad </p>
+						   <p><%= @comite.prioridad.nombre %></p>
+					   </div><center>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+    </div>
 </div>

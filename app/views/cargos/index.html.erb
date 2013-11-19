@@ -1,12 +1,12 @@
 <%- model_class = Cargo -%>
-<br><br>
+<br><br><br>
 <h1>Cargos</h1>
 <br>
 <%= form_tag request.path, :method => 'get' do %>
   <%= content_tag :label do %>
-    cargo:
+    Descripcion:
     <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Consultar", :falta => nil %>
+    <%= submit_tag "Consultar", :descripcion => nil %>
   <% end %>
 <% end %>
 

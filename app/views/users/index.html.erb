@@ -1,0 +1,45 @@
+<%- model_class = User -%>
+<br><br><br>
+<h1>Usuarios</h1>
+<br>
+<%= form_tag request.path, :method => 'get' do %>
+  <%= content_tag :label do %>
+    Nombre:
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Consultar", :nombre => nil %>
+  <% end %>
+<% end %>
+
+<%= form_tag request.path, :method => 'get' do %>
+  <%= content_tag :label do %>
+    Numero Registros:
+    <%= text_field_tag :registro, params[:registro], :class =>'input-mini', :html => { :title => "Ver Informacion"} %>
+   <% end %>
+<% end %>
+
+<p>
+Total Usuarios : <input type="text" id="totalregs" class="span1" value="<%= @users.count %>"readonly  /></h4>
+</p>
+
+<table class="table table-bordered table-hover pretty">
+  <thead>
+    <tr>  
+      <th><%= sortable "nombre" %></th>
+      <th><%= sortable "username" %></th> 
+      <th><%= sortable "email" %></th>
+      <th><%= sortable "created_at" %></th> 
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @users %>
+  </tbody>
+</table>
+<%= link_to 'Nuevo usuario', new_user_path, :class => 'btn btn-primary', :remote => true %>
+<%= link_to image_tag("pdf_icon.gif"), users_path(:format => :pdf), :id => "pdfc" %> 
+
+
+<div align="center">
+  <%= will_paginate @users, :previous_label => '&laquo; Anterior', :next_label => 'Siguiente
+  &raquo;' %>
+</div>

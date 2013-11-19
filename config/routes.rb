@@ -1,9 +1,32 @@
 SCQ::Application.routes.draw do
 
+  get 'quejas/update_ficha', to: 'quejas#update_ficha'
+   
+  get "logout" => "sessions#destroy", :as => "logout"
+
+  get "login" => "sessions#new", :as => "login"
+  
+  get "signup" => "users#new", :as => "signup"
+
+  get "inicio/index"
+
+  resources :users 
+
+  resources :sessions
+
+  resources :prioridades
+
+
   resources :comites
 
-
   resources :quejas
+
+  resources :quejas do
+    #ruta para el metodo de descarga de las evidencias
+    member do
+      get :download
+    end
+  end
   
   resources :fichas
 
@@ -11,11 +34,10 @@ SCQ::Application.routes.draw do
     resources :fichas
   end
   
- 
-  match "/update_fichas" => "quejas#update_fichas"
 
-  resources :centros
-
+  resources :centros do
+    resources :programas
+  end
 
   resources :funcionarios
 
@@ -25,15 +47,25 @@ SCQ::Application.routes.draw do
 
   resources :actas
 
-
-  get "inicio/index"
-
-
   resources :cargos
   
   resources :faltas
 
   resources :tipos_documentos
+  
+  resources :usercomites
+
+  resources :ayudas do
+    member do
+      get :download
+    end
+  end
+  
+  #ruta select de fichas
+  #match "/update_fichas" => "quejas#update_fichas"
+
+  #ruta select de programas
+  #match "/update_programas" => "quejas#update_programas"
 
   root :to => 'inicio#index'
   # The priority is based upon order of creation:

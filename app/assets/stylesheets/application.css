@@ -10,9 +10,11 @@
  *
  *= require_self
  *= require lazybox
+ *= require bootstrap-timepicker
  *= require_tree .
  */
 
+/* lazybox */
 #lazybox div.tipo_documento { max-width: 500px; }
 
 .lazybox {
@@ -89,6 +91,13 @@ footer{
   color: #000000;
 }
 
+/*boton de logueo */
+div#buton{
+  margin-top: -57px;
+  float: right;
+}
+
+
 #imagen{
  height: 350px; 
  width: 350px;
@@ -97,11 +106,14 @@ footer{
 
 }
 
+
 #es{
   height: 200px; 
   width: 300px;
 }
 
+
+/* color de las ventanas de lazybox*/
 #colors{
   background: #D8D8D8;
 }
@@ -180,3 +192,56 @@ height: 70px;
 margin-top:-800%;
 right: 900px;
 }
+
+
+/* login */
+#registration {
+  color: #fff;
+  background: #242424;
+  -moz-linear-gradient :10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  margin: 10px;
+  width: 430px;
+  padding: 20px;
+}
+ 
+ 
+#registration a {
+  color: #8c910b;
+  text-shadow: 0px -1px 0px #000;
+}
+ 
+
+#registration fieldset {
+  padding: 20px;
+}
+
+/*
+label {
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  border:solid 1px #444;
+} */
+
+/*titulos  login */
+#registration h2 {
+color: #fff;
+text-shadow: 0px -1px 0px #000;
+text-align: center;
+padding: 18px;
+margin: 0px;
+font-weight: normal;
+font-size: 24px;
+font-family: Lucida Grande, Helvetica, Arial, sans-serif;
+border-bottom: solid #181818 1px;
+-moz-box-shadow: 0px 1px 0px #3a3a3a;
+-webkit-box-shadow: 0px 1px 0px #3a3a3a;
+box-shadow: 0px 1px 0px #3a3a3a;
+}
+
+#registerNew:hover { background-position: 0px -41px; }
+
+#registerNew:active { background-position: 0px -82px; }

@@ -3,11 +3,12 @@ class FuncionariosController < ApplicationController
   helper_method :sort_column, :sort_direction
   
   def index
+    #numero de registros por paginas
     @rxp = (params[:registro])? params[:registro].to_i : 2
     if ((@rxp) == 0) or ((@rxp) < 0) then
       @rxp = 1
     end
-
+    #buscador
     @funcionarios  = Funcionario.order(sort_column + " " + sort_direction).search(params[:search]).page(params[:page]).per_page(@rxp)
   end
 
@@ -45,7 +46,8 @@ class FuncionariosController < ApplicationController
     @funcionario.destroy
     @funcionarios = Funcionario.all
   end
-
+  
+  #ordenamiento
   private
   def sort_column
     Funcionario.column_names.include?(params[:sort]) ? params[:sort] : "nombres"

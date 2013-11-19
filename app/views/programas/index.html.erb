@@ -1,12 +1,12 @@
 <%- model_class = Programa -%>
-<br><br>
+<br><br><br>
 <h1>Programas</h1>
 <br>
 <%= form_tag request.path, :method => 'get' do %>
   <%= content_tag :label do %>
-    Ficha:
+    Programa:
     <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Consultar", :ficha => nil %>
+    <%= submit_tag "Consultar", :descripcion => nil %>
   <% end %>
 <% end %>
 
@@ -27,7 +27,7 @@ Total Programas : <input type="text" id="totalregs" class="span1" value="<%= @pr
       <th><%= sortable "id" %></th>
       <th><%= sortable "descripcion" %></th>
       <th><%= sortable "abreviatura" %></th>
-      <th><%= sortable "centro" %></th>
+      <th><%= sortable "centro_id" %></th>
       <th><%= sortable "estado" %></th>
       <th>Acciones</th>
     </tr>
@@ -36,13 +36,13 @@ Total Programas : <input type="text" id="totalregs" class="span1" value="<%= @pr
     <%= render @programas %>
   </tbody>
 </table>
-<%= link_to 'Nuevo Programa', new_programa_path, :class => 'btn btn-primary', :remote => true %>
+<%= link_to 'Nuevo Programa', new_centro_programa_path, :class => 'btn btn-primary', :remote => true %>
+<%= link_to 'Atras', centros_path,  :class => 'btn btn-default' %> 
 
 <div align="center">
   <%= will_paginate @programas, :previous_label => '&laquo; Anterior', :next_label => 'Siguiente
   &raquo;' %>
 </div>
-
 
 
 

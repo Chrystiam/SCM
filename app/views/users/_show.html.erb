@@ -1,0 +1,23 @@
+<br><br><br>
+<%- model_class = User -%>
+
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+
+<div class="responsive">
+  <div class="modal-body">
+    <div class='row' id='colors'>
+      <div class='user'>
+        <div class="span5">
+          <p class="text-info">Nombre </p>
+          <p><%= @user.nombre %></p>
+          <p class="text-info">Username </p>
+          <p><%= @user.username %></p>
+          <p class="text-info">Email </p>
+          <p><%= @user.email %></p>
+          <p class="text-info">Fecha </p>
+          <p><%= @user.created_at %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

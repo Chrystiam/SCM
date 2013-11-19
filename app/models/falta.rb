@@ -1,9 +1,12 @@
 class Falta < ActiveRecord::Base
-
-  has_many :quejas
-
+  
+  #referencia de la tabla quejas
+  has_many :quejas 
+  
+  #atributos
   attr_accessible :descripcion, :falta
-
+  
+  #validaciones
   validates_presence_of :descripcion
 
   validates_presence_of :falta

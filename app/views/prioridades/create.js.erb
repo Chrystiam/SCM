@@ -1,0 +1,3 @@
+$('table tbody').append("<%= escape_javascript(render @prioridad) %>")
+$("input#totalregs").attr('value','<%= @prioridades.count %>');
+$.lazybox.close()

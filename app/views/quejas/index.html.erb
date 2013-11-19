@@ -1,10 +1,11 @@
+<%= javascript_include_tag "application.js" %>
 <%- model_class = Queja -%>
-<br><br>
+<br><br><br>
 <h1>Quejas</h1>
 <br>
 <%= form_tag request.path, :method => 'get' do %>
   <%= content_tag :label do %>
-    falta:
+    Nombres Aprendiz:
     <%= text_field_tag :search, params[:search] %>
     <%= submit_tag "Consultar", :nombres => nil %>
   <% end %>
@@ -13,25 +14,25 @@
 <%= form_tag request.path, :method => 'get' do %>
   <%= content_tag :label do %>
     Numero Registros:
-    <%= text_field_tag :registro, params[:registro], :class =>'input-mini' %>
+    <%= text_field_tag :registro, params[:registro], :class =>'input-mini', :title => "ingresa el dato y preciona enter" %>
    <% end %>
 <% end %>
 
 <p>
-Total Quejas : <input type="text" id="totalregs" class="span1" value="<%= @quejas.total_entries %>"readonly /></h4>
+Total Quejas : <input type="text" id="totalregs" class="span1" value="<%= @quejas.total_entries %>" readonly /></h4>
 </p>
 
 <table class="table table-bordered table-condensed table-hover pretty">
   <thead>
     <tr>
-      <th><%= sortable "id" %></th>
-      <th><%= sortable "fechainforme"%></th>
+      <th><%= sortable "id", "Numero Queja"%></th>
+      <th><%= sortable "created_at", "Fecha"%></th>
       <th><%= sortable "nombres" %></th>
       <th><%= sortable "apellidos" %></th>
       <th><%= sortable "tipo documento" %></th>
       <th><%= sortable "identificacion" %></th>
-      <th><%= sortable "email" %></th>
       <th><%= sortable "falta" %></th>
+      <th><%= sortable "estado" %></th> 
 		  <th>Acciones</th>
     </tr>
   </thead>
@@ -39,10 +40,11 @@ Total Quejas : <input type="text" id="totalregs" class="span1" value="<%= @queja
     <%= render @quejas %>
   </tbody>
 </table>
-<%= link_to 'Nueva Queja', new_queja_path, :class => 'btn btn-primary', :remote => true %>
 
+<%= link_to 'Nueva Queja', new_queja_path, :class => 'btn btn-primary', :remote => true %>
+<%= link_to image_tag("pdf_icon.gif"), quejas_path(:format => :pdf) %>
 <div align="center">
   <%= will_paginate @quejas, :previous_label => '&laquo; Anterior', :next_label => 'Siguiente
   &raquo;' %>
 </div>
-
+<%= link_to 'xls', url_for(:format => 'docx')%> 

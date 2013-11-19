@@ -1,5 +1,5 @@
 <%- model_class = Acta -%>
-<br><br>
+<br><br><br>
 <h1>Actas</h1>
 <br>
 <%= form_tag request.path, :method => 'get' do %>
@@ -30,11 +30,6 @@ Total Actas : <input type="text" id="totalregs" class="span1" value="<%= @actas.
       <th><%= sortable "hora_inicio" %></th> 
       <th><%= sortable "hora_terminacion" %></th>
       <th><%= sortable "lugar" %></th> 
-      <th><%= sortable "tema" %></th>
-      <th><%= sortable "objetivo_de_la_reunion" %></th> 
-      <th><%= sortable "desarrollo_reunion" %></th>
-      <th><%= sortable "conclusiones" %></th> 
-      <th><%= sortable "firmas" %></th>
       <th>Acciones</th>
     </tr>
   </thead>
@@ -43,6 +38,7 @@ Total Actas : <input type="text" id="totalregs" class="span1" value="<%= @actas.
   </tbody>
 </table>
 <%= link_to 'Nueva Acta', new_acta_path, :class => 'btn btn-primary', :remote => true %>
+<%= link_to image_tag("pdf_icon.gif"), actas_path(:format => :pdf), :id => "pdfc" %> 
 
 <div align="center">
   <%= will_paginate @actas, :previous_label => '&laquo; Anterior', :next_label => 'Siguiente

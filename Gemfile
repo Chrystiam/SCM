@@ -24,13 +24,22 @@ gem 'jquery-rails'
 gem 'remotipart'
 gem 'simple_form'
 gem 'less-rails'
+gem 'prawn'
 gem 'twitter-bootstrap-rails'
 gem 'lazybox'
 gem 'bootstrap-will_paginate'
 gem 'will_paginate'
 gem 'sorcery'
+# esta gema es para encriptar las claves con la cuales creamos la cuenta de usuario y  hacemos el bundle
+gem "bcrypt-ruby", :require => "bcrypt" 
+gem "cancan"
+gem "rolify"
 gem 'paperclip'
 gem 'bootstrap-datepicker-rails'
+gem 'bootstrap-timepicker-rails'
+#gema para llenar los seed(base de datos)
+gem 'seed_dump'
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

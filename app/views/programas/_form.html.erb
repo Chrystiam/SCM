@@ -1,4 +1,4 @@
-<%= simple_form_for(@programa, :html => { :class => 'form-horizontal' }, :remote => true  ) do |f| %>
+<%= simple_form_for([@centro,@programa], :html => { :class => 'form-horizontal' }, :remote => true  ) do |f| %>
 
   <%= f.error_notification %>
 
@@ -11,6 +11,6 @@
 
   <div class="form-actions">
     <%= f.submit "Guardar", :class => 'btn btn-primary' %>
-    <%= link_to 'Atras', programas_path, :class => 'btn btn-default' %>
+    <%= link_to 'Atras', centro_programas_path(@centro), :class => 'btn btn-default' %>
   </div>
 <% end %>

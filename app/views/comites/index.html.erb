@@ -1,10 +1,10 @@
 <%- model_class = Comite -%>
-<br><br>
+<br><br><br>
 <h1>comites</h1>
 <br>
 <%= form_tag request.path, :method => 'get' do %>
   <%= content_tag :label do %>
-    comite:
+    Lugar:
     <%= text_field_tag :search, params[:search] %>
     <%= submit_tag "Consultar", :lugar => nil %>
   <% end %>
@@ -29,6 +29,7 @@ Total comites : <input type="text" id="totalregs" class="span1" value="<%= @comi
       <th><%= sortable "hora" %></th> 
       <th><%= sortable "lugar" %></th> 
       <th><%= sortable "falta_id" %></th> 
+      <th><%= sortable "prioridad_id" %></th> 
       <th>Acciones</th>
     </tr>
   </thead>
@@ -38,6 +39,7 @@ Total comites : <input type="text" id="totalregs" class="span1" value="<%= @comi
 </table>
 <%= link_to 'Nuevo comite', new_comite_path, :class => 'btn btn-primary', :remote => true %>
 
+<%= link_to image_tag("pdf_icon.gif"), comites_path(:format => :pdf) %>
 <div align="center">
   <%= will_paginate @comites, :previous_label => '&laquo; Anterior', :next_label => 'Siguiente
   &raquo;' %>

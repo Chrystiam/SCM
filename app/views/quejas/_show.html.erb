@@ -1,66 +1,74 @@
 <%- model_class = Queja -%>
 
-<br><br>
-<h1><%=t '.title', :default => model_class.model_name.human %></h1>
-<br>
+<div class="modal-body">
+	
 
-    
-<div class="responsive">
-	<div class="modal-body">
-		<div class='row' id='colors'>
-  			<div class='queja'>
-    			<div class="span5">
-					<p class="text-info">id </p>
-					<p><%= @queja.id %></p>
-					<p class="text-info">Fecha </p>
-					<p><%= @queja.fechainforme %></p>
-					<p class="text-info">Nombres</p>
-					<p><%= @queja.nombres %></p>
-					<p class="text-info">Apellidos </p>
-					<p><%= @queja.apellidos %></p>
-					<p class="text-info">Tipo Documento </p>
-		            <p><%= @queja.tipo_documento.descripcion %></p>
-		            <p class="text-info">Identificación </p>
-		            <p><%= @queja.identificacion %></p>
-		            <p class="text-info">Telefono </p>
-		            <p><%= @queja.telefono %></p>
-		            <p class="text-info">Email </p>
-		            <p><%= @queja.email %></p>
-		            <p class="text-info">Programa </p>
-		            <p><%= @queja.ficha.programa.descripcion %></p>
-		            <p class="text-info">Ficha </p>
-		            <p><%= @queja.ficha.codigo %></p>
-                </div>
+	<!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="$.lazybox.close()">h;</button> -->
+    <h3>Queja</h3>
+   
+   
+	<div class='row' id='colors'>
+		<div class='queja'>
+			<div class="span6">
+				<p class="text-info">Numero Queja </p>
+				<p><%= @queja.id %></p>
+				<p class="text-info">Fecha </p>
+				<p><%= @queja.created_at %></p>
+				<p class="text-info">Nombres</p>
+				<p><%= @queja.nombres %></p>
+				<p class="text-info">Apellidos </p>
+				<p><%= @queja.apellidos %></p>
+				<p class="text-info">Tipo Documento </p>
+	            <p><%= @queja.tipo_documento.descripcion %></p>
+	            <p class="text-info">Identificación </p>
+	            <p><%= @queja.identificacion %></p>
+	            <p class="text-info">Telefono </p>
+	            <p><%= @queja.telefono %></p>
+	            <p class="text-info">Email </p>
+	            <p><%= @queja.email %></p>
+	            <p class="text-info">Programa </p>
+	            <p><%= @queja.ficha.programa.descripcion %></p>
+	            <p class="text-info">Ficha </p>
+	            <p><%= @queja.ficha.codigo %></p>
+	            <p class="text-info">Descripción Falta</p>
+				<p><%= @queja.descripcion %></p>
+            </div>
 
-                <div class="span2">
-                	<div class="row">
-			        </div>
-                </div>
+            <div class="span2">
+            	<div class="row">
+		        </div>
+            </div>
 
-                <div class="span2">
-                	<div class="row">
-			            <p class="text-info">Descripción </p>
-						<p><%= @queja.descripcion %></p>
-						<p class="text-info">Falta </p>
-						<p><%= @queja.falta.descripcion %></p>
-						<p class="text-info">Testigos </p>
-			            <p><%= @queja.testigos %></p>
-			            <p class="text-info">Nombres Informantes </p>
-			            <p><%= @queja.nombresinformante %></p>
-			            <p class="text-info">Apellidos Informantes </p>
-			            <p><%= @queja.apellidosinformante %></p>
-			            <p class="text-info">Dirección Informantes </p>
-			            <p><%= @queja.direccioninformante %></p>
-			            <p class="text-info">Cargo </p>
-			            <p><%= @queja.cargo.descripcion %></p>
-			            <p class="text-info">Descargos </p>
-			            <p><%= @queja.descargos %></p>
-			            <p class="text-info">Evidencia </p>
-			            <p><br> <strong><%= image_tag @queja.evidencia.url(:small) %></strong></p>
-					
-                    </div>
+            <div class="span2">
+            	<div class="row">
+					<p class="text-info">Falta </p>
+					<p><%= @queja.falta.descripcion %></p>
+					<p class="text-info">Testigos </p>
+		            <p><%= @queja.testigos %></p>
+		            <p class="text-info">Nombres Informante </p>
+		            <p><%= @queja.nombresinformante %></p>
+		            <p class="text-info">Apellidos Informante </p>
+		            <p><%= @queja.apellidosinformante %></p>
+		            <p class="text-info">Email Informante </p>
+		            <p><%= @queja.emailinfor %></p>
+		            <p class="text-info">Dirección Informante </p>
+		            <p><%= @queja.direccioninformante %></p>
+		            <p class="text-info">Cargo </p>
+		            <p><%= @queja.cargo.descripcion %></p>
+		            <p class="text-info">Descargos </p>
+		            <p><%= @queja.descargos %></p>
+		            <p class="text-info"> Estado Queja </p>
+		            <p><%= @queja.estado %></p>
+		            <p class="text-info">Evidencia </p>
+		            <p><br><strong><%= image_tag @queja.evidencia.url(:small) %></strong></p>  
+		            <!-- link para descargar las evidencias -->
+		            <p><%= link_to 'Descarga Evidencia', download_queja_path(@queja), :class => 'btn btn-info' %></p>
+		            <br><br>
+		            
+		            
                 </div>
             </div>
         </div>
     </div>
 </div>
+    

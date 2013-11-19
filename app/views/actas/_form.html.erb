@@ -1,4 +1,7 @@
+<% javascript_include_tag "fecha.js" %>
 <%= simple_form_for(@acta, :html => { :class => 'form-horizontal' }, :remote => true) do |f| %>
+  
+  <%= javascript_include_tag "fecha.js" %>
   <%= f.error_notification %>
  
   <div class="responsive">
@@ -9,11 +12,32 @@
             <center><h4></h4></center>
             <hr>
             <%= f.input :ciudad %>
-            <%= f.input :fecha %>
-            <%= f.input :hora_inicio %>
-            <%= f.input :hora_terminacion %>
+            <%= f.label :fecha %>
+            <%= f.input :fecha, :as => :string, :label => false, :input_html => {  :class=>"datepicker" } %>
+            <div class ="control-group">
+              <label class="control-label" for="inputName">Hora Inicio</label>
+              <div class="controls" >
+                <div class =" input-append bootstrap-timepicker ">
+                  <%= f.input_field :hora_inicio, :class => "time_picker input-small"%>
+                  <span class="add-on"><i class="icon-time"></i></span>
+                </div>
+              </div>
+            </div>
+            <div class ="control-group">
+              <label class="control-label" for="inputName">Hora de Finalizacion</label>
+              <div class="controls" >
+                <div class =" input-append bootstrap-timepicker">
+                  <%= f.input_field :hora_terminacion, :as => :string, :class => "time_picker input-small"%>
+                  <span class="add-on"><i class="icon-time"></i></span>
+                </div>
+              </div>
+            </div>
+           
             <%= f.input :lugar %>
           </div>
+         
+              
+              
           
           <center><h4></h4></center>
           <hr>
