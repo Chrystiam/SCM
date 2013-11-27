@@ -1,4 +1,3 @@
-<%= javascript_include_tag "programaselect.js" %>
 <%= simple_form_for(@queja, :html => { :class => 'form-horizontal', :multipart => true }, :remote => true) do |f| %>
 
   <%= f.error_notification %>
@@ -10,16 +9,15 @@
           <div class= "span6"> 
             <center><h4>Información del Aprendiz</h4></center>
             <hr>
-          
             <%= f.input :nombres %>
             <%= f.input :apellidos %>
+            
             <div class ="control-group">
-              <%= f.label :Tipo_Documento %>
+             <label class="control-label">ATopos Documentos</label>
               <div class="controls" >
                 <%= f.collection_select :tipo_documento_id, TipoDocumento.all, :id, :descripcion, :prompt => "Seleccione" %>
               </div>
             </div>
-            <br><br>
             <%= f.input :identificacion %>
             <%= f.input :telefono %>
             <%= f.input :email %>
@@ -30,19 +28,15 @@
                 <%= f.collection_select  :programa_id, Programa.all,:id, :descripcion,:order => 'descripcion',:label => false, :required => true, :prompt => "Seleccione Programa",:input_html => {:class => 'span2' } %>
               </div>
             </div>
-            <br><br>
-            <div class ="control-group" id="fichasDiv">
-              <div class="controls" >
-                <%= render :partial => 'ficha', :object => @fichas %>
-              </div>
-            </div>
+
+            <%= f.input :ficha %>
+            
             <div class ="control-group">
               <%= f.label :descripcion_falta %>
               <div class="controls" >
                 <%= f.text_area(:descripcion, :rows => 4) %>
               </div>
             </div>
-            <br><br>
           </div>
           <center><h4>Tipo de falta y Datos del Informante</h4></center>
           <hr>
@@ -55,29 +49,28 @@
                   <%= f.collection_select :falta_id, Falta.all, :id, :descripcion, :prompt => "Seleccione" %>
                 </div>
               </div>
-              <br><br>
-              <%= f.input :testigos %>
+              <div class ="control-group">
+                <label class="control-label" for="inputName">Coodinador Academico</label>
+                <div class="controls" >
+                  <%= f.collection_select  :coordinador_id, Coordinador.all,:id, :nombre,:order => 'nombre',:label => false, :required => true, :prompt => "Seleccione Coordinador",:input_html => {:class => 'span2' } %>
+                </div>
+              </div>
+              <div class ="control-group">
+                <%= f.label :testigos %>
+                <div class="controls" >
+                 <%= f.text_area(:testigos, :rows => 4)%>
+                </div>
+              </div>
+              
               <%= f.input :nombresinformante %>
-              <%= f.input :apellidosinformante %>
               <%= f.input :direccioninformante %>
-              <%= f.input :emailinfor %>
               <div class ="control-group">
                 <%= f.label :cargo_id %>
                 <div class="controls" >
                   <%= f.collection_select :cargo_id, Cargo.all, :id, :descripcion, :prompt => "Seleccione" %>
                 </div>
               </div>
-              <br><br>
-              <div class ="control-group">
-                <%= f.label :descargos %>
-                <div class="controls" >
-                  <%= f.text_area(:descargos, :rows => 4) %>
-                </div>
-              </div>
-              <br><br>
-              <%= f.input :estado %>
               <%= image_tag @queja.evidencia.url(:small) %>
-              <%= f.label :Evidencia %>
               <%= f.file_field :evidencia %>
             </div>
           </div>

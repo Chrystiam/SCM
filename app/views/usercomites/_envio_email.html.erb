@@ -1,0 +1,47 @@
+<div class="modal-body">
+
+  <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="$.lazybox.close()">x</button> 
+
+  <h3>Usuario Comite</h3>
+
+
+  <div class='row' id='colors'>
+    <div class='usercomite'>
+      <div class="span4">
+        <h3><%= @fcomite.fecha %></h3>
+          <h2><%= @fcomite.lugar %></h2>
+        <hr>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>hora</th>
+              <th>nombre aprendices</th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @comites.each do |queja|%>
+              <tr>
+                
+                <td><%= queja.hora %></td>
+                <td><%= queja.nombreapren %></td>
+                <td><%= queja.programa.abreviatura %></td>
+                <td><%= queja.ficha %></td>
+                
+             
+            <% end %>
+             <% @usercomites.each do |userco| %>
+               
+                   <td><%= userco.nombre %></td>
+                 
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+       
+      </div>
+    </div>
+  </div>
+</div>

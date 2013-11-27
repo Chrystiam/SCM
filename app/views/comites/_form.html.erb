@@ -1,61 +1,59 @@
 <%= javascript_include_tag "fecha.js" %>
-<%= simple_form_for(@comite, :html => { :class => 'form-horizontal' }, :remote => true) do |f| %>
+<%= simple_form_for([@fcomite,@comite], :html => { :class => 'form-horizontal' }, :remote => true) do |f| %>
   <%= f.error_notification %>
 
   <div class="responsive">
     <div class="modal-body">  
       <div class="control-group">
         <div class="row" id ="colors">
-          <div class= "span6"> 
-            <center><h4>Información del comite</h4></center>
+          <div class= "span5"> 
             <hr>
-            <%= f.label :fecha %>
-            <%= f.input :fecha, :as => :string, :label => false, :input_html => {  :class=>"datepicker" } %>
-            
-              
+              <div class="control-group">
                 <div class =" input-append bootstrap-timepicker offset2">
-                   
-                      <%= f.input_field :hora, :as => :string, :class => "time_picker input-small"%>
-                      <span class="add-on"><i class="icon-time"></i></span>
+                  <label>hora</label>
                   
-                </div>
-              
-           
-            <%= f.input :lugar %>
-          </div>
+                   <%= f.input_field :hora, :as => :string, :class => "time_picker input-small"%>
+                  <span class="add-on"><i class="icon-time"></i></span>
+                   
+                </div>  
+              </div>
 
-          <center><h4>Información del Aprendiz</h4></center>
+              <div class="controls-group" >
+                <label class="control-label">Nombres Aprendices</label>
+                <div class="controls">
+                  <%= f.text_area(:nombreapren, :rows => 10) %>
+                </div>  
+              </div>
+          </div>
+        
+         
+          <center></center>
           <hr>
 
-          <div class ="span6">
+          <div class ="span3">
             <div class="row">
               <div class ="control-group">
-                <%= f.label :Nombre_Aprendiz %>
+               <label class="control-label">Programas</label>
                 <div class="controls" >
-                  <%= f.collection_select :queja_id, Queja.all, :id, :nombres, :prompt => "Seleccione un nombre" %>
+                  <%= f.collection_select :programa_id, Programa.all, :id, :abreviatura, :prompt => "Seleccione un nombre" %>
                 </div>
               </div>
+            
+              <%= f.input :ficha %>
 
               <div class ="control-group">
-                <%= f.label :falta %>
+                <label class="control-label">Comite</label>
                 <div class="controls" >
-                  <%= f.collection_select :falta_id, Falta.all, :id, :descripcion, :prompt => "Seleccione" %>
+                  <%= f.collection_select :fcomite_id, Fcomite.all, :id, :lugar, :prompt => "Seleccione la prioridad" %>
                 </div>
               </div>
-            </div>
-            
-            <div class ="control-group">
-                <%= f.label :prioridad %>
-                <div class="controls" >
-                  <%= f.collection_select :prioridad_id, Prioridad.all, :id, :nombre, :prompt => "Seleccione la prioridad" %>
-                </div>
-              </div>
+            </div>  
           </div>
 
           <div class= "span12">
             <div class="form-actions">
             	<%= f.submit "Guardar", :class => 'btn btn-primary' %>
-              <%= link_to 'Atras', comites_path, :class => 'btn btn-default' %>
+              <%= link_to 'Atras', fcomite_comites_path(@fcomite), :class => 'btn btn-default' %>
             </div>
           </div>
         </div>

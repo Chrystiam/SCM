@@ -6,7 +6,7 @@
   <%= content_tag :label do %>
     Lugar:
     <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Consultar", :lugar => nil %>
+    <%= submit_tag "Consultar", :hora => nil %>
   <% end %>
 <% end %>
 
@@ -25,11 +25,10 @@ Total comites : <input type="text" id="totalregs" class="span1" value="<%= @comi
   <thead>
     <tr>  
       <th><%= sortable "id" %></th>
-      <th><%= sortable "fecha" %></th> 
       <th><%= sortable "hora" %></th> 
-      <th><%= sortable "lugar" %></th> 
-      <th><%= sortable "falta_id" %></th> 
-      <th><%= sortable "prioridad_id" %></th> 
+      <th><%= sortable "nombreapren" %></th> 
+      <th><%= sortable "programa_id" %></th> 
+      <th><%= sortable "ficha" %></th> 
       <th>Acciones</th>
     </tr>
   </thead>
@@ -37,9 +36,11 @@ Total comites : <input type="text" id="totalregs" class="span1" value="<%= @comi
     <%= render @comites %>
   </tbody>
 </table>
-<%= link_to 'Nuevo comite', new_comite_path, :class => 'btn btn-primary', :remote => true %>
+<%= link_to 'Nuevo comite', new_fcomite_comite_path, :class => 'btn btn-primary', :remote => true %>
 
-<%= link_to image_tag("pdf_icon.gif"), comites_path(:format => :pdf) %>
+<%= link_to image_tag("pdf_icon.gif"), fcomite_comites_path(:format => :pdf) %>
+<%= link_to 'Atras', fcomites_path, :class => 'btn btn-primary' %>
+
 <div align="center">
   <%= will_paginate @comites, :previous_label => '&laquo; Anterior', :next_label => 'Siguiente
   &raquo;' %>

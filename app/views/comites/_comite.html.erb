@@ -1,17 +1,20 @@
 <tr id=<%= "comite_#{comite.id}" %>>
   
   <td><%= comite.id %></td>
-  <td><%= comite.fecha %></td>
   <td><%= comite.hora %></td>
-  <td><%= comite.lugar %></td>
-  <td><%= comite.falta.descripcion %></td>
-  <td><%= comite.prioridad.nombre %></td>
+  <td><%= comite.nombreapren %></td>
+  <td><%= comite.programa.abreviatura %></td>
+  <td><%= comite.ficha %></td>
+  <td><%= link_to 'Miembros del Comite', fcomite_comite_usercomites_path(@fcomite,comite), :class => 'btn btn-inverse' %></td>
+  <td></td>
   <td>
-    <%= link_to 'Mostrar', comite, :remote => true, :class => 'btn btn-default' %>
-    <%= link_to 'Editar', edit_comite_path(comite), :remote => true,
+    <%= link_to 'Mostrar', fcomite_comite_path(@fcomite,comite), :remote => true, :class => 'btn btn-default' %>
+    <%= link_to 'Editar', edit_fcomite_comite_path(@fcomite,comite), :remote => true,
         :class => 'btn btn-warning' %>
-    <%= link_to 'Eliminar', comite, 
+    <%= link_to 'Eliminar', fcomite_comite_path(@fcomite,comite), 
         :data => { :confirm => 'Esta Seguro?' },
         :method => :delete, :remote => true, :class => 'btn btn-default btn-danger' %>
   </td>
+
+  <%= link_to  "enviar a comite", fcomite_comite_envio_email_path(@fcomite,comite), :remote => true, :class => 'btn btn-mini btn-default' %>
 </tr>

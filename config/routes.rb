@@ -1,6 +1,23 @@
 SCQ::Application.routes.draw do
 
-  get 'quejas/update_ficha', to: 'quejas#update_ficha'
+  
+
+
+  resources :estados
+
+
+  #get 'quejas/asigna', to: 'quejas#asigna'
+  match "/asigna" => "quejas#asigna"
+
+  
+
+  resources :asignacioncomites
+
+
+  resources :coordinadores
+
+
+  #get 'quejas/update_ficha', to: 'quejas#update_ficha'
    
   get "logout" => "sessions#destroy", :as => "logout"
 
@@ -16,9 +33,17 @@ SCQ::Application.routes.draw do
 
   resources :prioridades
 
+  resources :usercomites
 
-  resources :comites
-
+ 
+  
+  resources :fcomites do
+    resources :comites do
+        match "/envio_email" => "comites#envio_email"
+        resources :usercomites
+     
+    end
+  end
   resources :quejas
 
   resources :quejas do
@@ -53,8 +78,7 @@ SCQ::Application.routes.draw do
 
   resources :tipos_documentos
   
-  resources :usercomites
-
+  
   resources :ayudas do
     member do
       get :download

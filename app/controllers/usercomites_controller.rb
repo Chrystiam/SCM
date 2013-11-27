@@ -1,6 +1,7 @@
 class UsercomitesController < ApplicationController
   
   helper_method :sort_column, :sort_direction
+  before_filter :find_comite_and_usercomite
 
   def index
     #numero de registros por pagina
@@ -9,16 +10,16 @@ class UsercomitesController < ApplicationController
       @rxp = 1
     end
     #buscador
-    @usercomites  = Usercomite.order(sort_column + " " + sort_direction).search(params[:search]).page(params[:page]).per_page(@rxp)
+    @usercomites  = @comite.usercomites.order(sort_column + " " + sort_direction).search(params[:search]).page(params[:page]).per_page(@rxp)
     
     #esta variable trae todos los registros para el pdf
-    @a= Usercomite.all 
-    output = UsercomiteList.new(@a,view_context) # Aquí instancio el documento pdf
+    #@a= Usercomite.all 
+    #output = UsercomiteList.new(@a,view_context) # Aquí instancio el documento pdf
     respond_to do |format|
-      format.pdf{
-        send_data output.render, :filename => "usercomiteList.pdf", :type => "application/pdf", 
-        :disposition => "inline" # este parámetro permite ver el documento pdf en linea.
-      }
+      #format.pdf{
+       # send_data output.render, :filename => "usercomiteList.pdf", :type => "application/pdf", 
+        #:disposition => "inline" # este parámetro permite ver el documento pdf en linea.
+      #}
       format.html #{ render :text => "<h1>Use .pdf</h1>".html_safe }
       format.json { render json: @usercomites  }
     end
@@ -26,7 +27,6 @@ class UsercomitesController < ApplicationController
   
 
   def show
-    @usercomite = Usercomite.find(params[:id])
   end
 
   
@@ -36,20 +36,21 @@ class UsercomitesController < ApplicationController
 
  
   def edit
-    @usercomite = Usercomite.find(params[:id])
+   
   end
 
  
   def create
-    @usercomite = Usercomite.new(params[:usercomite])
+    @usercomite = @comite.usercomites.build(params[:usercomite])
     render :action => :new unless @usercomite.save
     @usercomites = Usercomite.all
   
   end
 
+  
+
  
   def update
-    @usercomite = Usercomite.find(params[:id])
     render :action => :edit unless @usercomite.update_attributes(params[:usercomite])
   end
 
@@ -63,11 +64,20 @@ class UsercomitesController < ApplicationController
   #ordenamiento
   private
   def sort_column
-    Acta.column_names.include?(params[:sort]) ? params[:sort] : "nc"
+    Acta.column_names.include?(params[:sort]) ? params[:sort] : "nombre"
   end
   
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+
+
+
+  private
+  def find_comite_and_usercomite
+    @comite = Comite.find(params[:comite_id])
+    @fcomite = Fcomite.find(params[:fcomite_id])
+    @usercomite = Usercomite.find(params[:id]) if params[:id]
   end
 
 end

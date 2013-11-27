@@ -40,13 +40,13 @@ class QuejasController < ApplicationController
   
   def new
     @queja = Queja.new
-    @fichas = Ficha.all
+   
     @programas = Programa.all
   end
 
  
   def edit
-    @fichas = Ficha.all
+   
     @queja = Queja.find(params[:id])
   end
 
@@ -60,20 +60,36 @@ class QuejasController < ApplicationController
 
   def create
     @queja = Queja.new(params[:queja])
+    @queja.estado_id =  1
+   
+    #render :action => :new unless @queja.save
+    #QuejaMailer.registration_confirmation(@queja).deliver
+
     if @queja.save 
+
       envio_email
     else
       render :action => :new unless @queja.save
     end  
-    
+  
     @quejas = Queja.all
+  end
+
+  def asigna
+   
+    @queja = Queja.find(params[:id])
+    Asignacioncomite.create(:nombres => @queja.nombres, :apellidos => @queja.apellidos, :programa => @queja.programa.descripcion, :ficha => @queja.ficha)
+    @queja.estado_id = 2
+    @queja.save
+
   end
   
   #metodo para el select de programas
-  def update_ficha
-    @fichas = Ficha.where('programa_id=?', params[:programa_id])
-    render :partial => "ficha", :object => @fichas
-  end
+
+  #def update_ficha
+  #  @fichas = Ficha.where('programa_id=?', params[:programa_id])
+  #  render :partial => "ficha", :object => @fichas
+  #end
   
   def update
     @queja = Queja.find(params[:id])
@@ -96,7 +112,7 @@ class QuejasController < ApplicationController
   private
   #ordenamiento
   def sort_column
-    Queja.column_names.include?(params[:sort]) ? params[:sort] : "nombres"
+    Queja.column_names.include?(params[:sort]) ? params[:sort] : "estado_id"
   end
   
   def sort_direction
@@ -105,9 +121,10 @@ class QuejasController < ApplicationController
 
   def envio_email
 
-    @destinatarios = Usercomite.select("nc,email")
-    @vec_destinatarios = QuejaMailer.emails_with_names(@destinatarios,"nc","email")
-    @vec_destinatarios << QuejaMailer.add_destinatario(@queja)
+    @destiapren = @queja.email
+    @desticoor = @queja.coordinador.email
+    @vec_destinatarios = QuejaMailer.emails_with_names(@destiapren,@desticoor)
+    #@vec_destinatarios << QuejaMailer.add_destinatario(@queja)
     #email
     QuejaMailer.registration_confirmation(@queja, @vec_destinatarios, "notificacion de la queja" ).deliver
 

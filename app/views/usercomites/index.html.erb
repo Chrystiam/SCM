@@ -6,7 +6,7 @@
   <%= content_tag :label do %>
     Nombre:
     <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Consultar", :nc => nil %>
+    <%= submit_tag "Consultar", :nombre => nil %>
   <% end %>
 <% end %>
 
@@ -24,10 +24,9 @@ Total Usuarios comite : <input type="text" id="totalregs" class="span1" value="<
 <table class="table table-bordered table-hover pretty">
   <thead>
     <tr>  
-      <th><%= sortable "nc", "Nombre Completo" %></th>
+      <th><%= sortable "nombre", "Nombre Completo" %></th>
       <th><%= sortable "cedula" %></th> 
       <th><%= sortable "email" %></th>
-      <th><%= sortable "fch_ncto" %></th> 
       <th><%= sortable "cargo" %></th> 
       <th>Acciones</th>
     </tr>
@@ -36,8 +35,9 @@ Total Usuarios comite : <input type="text" id="totalregs" class="span1" value="<
     <%= render @usercomites %>
   </tbody>
 </table>
-<%= link_to 'Nuevo Usuario Comite', new_usercomite_path, :class => 'btn btn-primary', :remote => true %>
-<%= link_to image_tag("pdf_icon.gif"), usercomites_path(:format => :pdf), :id => "pdfc" %> 
+<%= link_to 'Nuevo Usuario Comite', new_fcomite_comite_usercomite_path(@fcomite,@comite), :class => 'btn btn-primary', :remote => true %>
+<%= link_to image_tag("pdf_icon.gif"), fcomite_comite_usercomites_path(:format => :pdf), :id => "pdfc" %> 
+
 
 <div align="center">
   <%= will_paginate @usercomites, :previous_label => '&laquo; Anterior', :next_label => 'Siguiente

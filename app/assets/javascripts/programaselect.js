@@ -1,4 +1,4 @@
-/* select de fichas/ aparecer y desaparecer*/
+/* select de fichas/ aparecer y desaparecer
 
 $(document).ready(function(){
 
@@ -29,4 +29,22 @@ $(document).ready(function(){
     
 
   });
+});
+*/
+$(document).ready(function(){
+
+  $(".a1").click(function(){
+   
+    //var program = $('tr#queja.id').val()
+    $(".a1").css("background","pdf.jpg")
+  
+  
+  });
+  /*
+  $.ajax({
+          url:'/cotizaciones/cal_cost', //Defined in your routes file
+          data:('id=' + $('#cotizacion_detalle_id').val()) 
+        });
+*/
+
 });

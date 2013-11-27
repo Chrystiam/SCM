@@ -4,11 +4,14 @@ class Comite < ActiveRecord::Base
   belongs_to :queja
   belongs_to :falta
   belongs_to :prioridad
+  belongs_to :fcomite
+  has_many   :usercomites
+  belongs_to :programa
 
   #atributos
-  attr_accessible :fecha, :hora, :lugar, :falta_id, :queja_id, :queja_nombres, :prioridad_id
+  attr_accessible :hora, :nombreapren,:programa_id, :ficha, :fcomite_id 
     #buscador
     def self.search(search)
-		where('lugar like ?', "%#{search}%",)
+		where('hora like ?', "%#{search}%",)
 	end
 end

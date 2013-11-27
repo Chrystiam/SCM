@@ -1,3 +1,3 @@
-$('table tbody').append("<%= escape_javascript(render @programa) %>")
+$('table tbody').append("<%= escape_javascript(render @programa) %>");
 $("input#totalregs").attr('value','<%= @programas.count %>');
 $.lazybox.close()

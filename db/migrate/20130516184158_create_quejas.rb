@@ -1,6 +1,7 @@
 class CreateQuejas < ActiveRecord::Migration
   def change
     create_table :quejas do |t|
+      t.string :fechainforme
       t.string :nombres
       t.string :apellidos
       t.references :tipo_documento
@@ -8,27 +9,26 @@ class CreateQuejas < ActiveRecord::Migration
       t.string :telefono
       t.string :email
       t.references :programa
+      t.string :ficha
       t.text :descripcion
       t.references :falta
-      t.references :calificacionf
-      t.string :testigos
+      t.text :testigos
       t.string :nombresinformante
-      t.string :apellidosinformante
       t.string :direccioninformante
-      t.string :telefonoinf
       t.references :cargo
-      t.references :ficha
-      t.references :centro
+      t.references :coordinador
+      t.references :estado
+
+
 
 
       t.timestamps
     end
+    add_index :quejas, :estado_id
     add_index :quejas, :tipo_documento_id
     add_index :quejas, :programa_id
     add_index :quejas, :falta_id
     add_index :quejas, :cargo_id
-    add_index :quejas, :ficha_id
-    add_index :quejas, :centro_id
-    add_index :quejas, :calificacionf_id
+    add_index :quejas, :coordinador_id
   end
 end

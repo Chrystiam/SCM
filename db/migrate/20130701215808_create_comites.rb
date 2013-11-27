@@ -1,17 +1,15 @@
 class CreateComites < ActiveRecord::Migration
   def change
     create_table :comites do |t|
-      t.string :fecha
       t.string :hora
-      t.string :lugar
-      t.references :queja
-      t.references :falta
-      t.references :prioridad
-
+      t.text :nombreapren
+      t.references :programa
+      t.string :ficha
+      t.references :fcomite
+      
       t.timestamps
     end
-    add_index :comites, :queja_id
-    add_index :comites, :falta_id
-    add_index :comites, :prioridad_id
+    add_index :comites, :fcomite_id
+    add_index :comites, :programa_id
   end
 end

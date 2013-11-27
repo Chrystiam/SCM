@@ -1,0 +1,11 @@
+<%= simple_form_for @asignacioncomite, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :nombres %>
+  <%= f.input :apellidos %>
+  <%= f.input :programa %>
+  <%= f.input :ficha %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                asignacioncomites_path, :class => 'btn' %>
+  </div>
+<% end %>

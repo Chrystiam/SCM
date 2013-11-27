@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130919003340) do
+ActiveRecord::Schema.define(:version => 201307012018430) do
 
   create_table "actas", :force => true do |t|
     t.string   "ciudad"
@@ -26,6 +26,15 @@ ActiveRecord::Schema.define(:version => 20130919003340) do
     t.string   "firmas"
     t.datetime "created_at",             :null => false
     t.datetime "updated_at",             :null => false
+  end
+
+  create_table "asignacioncomites", :force => true do |t|
+    t.string   "nombres"
+    t.string   "apellidos"
+    t.string   "programa"
+    t.string   "ficha"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "ayudas", :force => true do |t|
@@ -52,19 +61,31 @@ ActiveRecord::Schema.define(:version => 20130919003340) do
   end
 
   create_table "comites", :force => true do |t|
-    t.string   "fecha"
     t.string   "hora"
-    t.string   "lugar"
-    t.integer  "queja_id"
-    t.integer  "falta_id"
-    t.integer  "prioridad_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.text     "nombreapren"
+    t.integer  "programa_id"
+    t.string   "ficha"
+    t.integer  "fcomite_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
-  add_index "comites", ["falta_id"], :name => "index_comites_on_falta_id"
-  add_index "comites", ["prioridad_id"], :name => "index_comites_on_prioridad_id"
-  add_index "comites", ["queja_id"], :name => "index_comites_on_queja_id"
+  add_index "comites", ["fcomite_id"], :name => "index_comites_on_fcomite_id"
+  add_index "comites", ["programa_id"], :name => "index_comites_on_programa_id"
+
+  create_table "coordinadores", :force => true do |t|
+    t.string   "nombre"
+    t.string   "email"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "estados", :force => true do |t|
+    t.string   "nombre"
+    t.string   "descripcion"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "faltas", :force => true do |t|
     t.string   "falta"
@@ -73,15 +94,12 @@ ActiveRecord::Schema.define(:version => 20130919003340) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "fichas", :force => true do |t|
-    t.string   "codigo"
-    t.integer  "programa_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.boolean  "estado"
+  create_table "fcomites", :force => true do |t|
+    t.string   "fecha"
+    t.string   "lugar"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
-
-  add_index "fichas", ["programa_id"], :name => "index_fichas_on_programa_id"
 
   create_table "funcionarios", :force => true do |t|
     t.string   "nombres"
@@ -122,15 +140,18 @@ ActiveRecord::Schema.define(:version => 20130919003340) do
   create_table "programas", :force => true do |t|
     t.string   "descripcion"
     t.string   "abreviatura"
+    t.integer  "coordinadora_id"
     t.integer  "centro_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
     t.boolean  "estado"
   end
 
   add_index "programas", ["centro_id"], :name => "index_programas_on_centro_id"
+  add_index "programas", ["coordinadora_id"], :name => "index_programas_on_coordinadora_id"
 
   create_table "quejas", :force => true do |t|
+    t.string   "fechainforme"
     t.string   "nombres"
     t.string   "apellidos"
     t.integer  "tipo_documento_id"
@@ -138,30 +159,27 @@ ActiveRecord::Schema.define(:version => 20130919003340) do
     t.string   "telefono"
     t.string   "email"
     t.integer  "programa_id"
+    t.string   "ficha"
     t.text     "descripcion"
     t.integer  "falta_id"
-    t.string   "testigos"
+    t.text     "testigos"
     t.string   "nombresinformante"
-    t.string   "apellidosinformante"
     t.string   "direccioninformante"
     t.integer  "cargo_id"
-    t.text     "descargos"
-    t.integer  "ficha_id"
-    t.integer  "centro_id"
+    t.integer  "coordinador_id"
+    t.integer  "estado_id"
     t.datetime "created_at",             :null => false
     t.datetime "updated_at",             :null => false
     t.string   "evidencia_file_name"
     t.string   "evidencia_content_type"
     t.integer  "evidencia_file_size"
     t.datetime "evidencia_updated_at"
-    t.string   "emailinfor"
-    t.boolean  "estado"
   end
 
   add_index "quejas", ["cargo_id"], :name => "index_quejas_on_cargo_id"
-  add_index "quejas", ["centro_id"], :name => "index_quejas_on_centro_id"
+  add_index "quejas", ["coordinador_id"], :name => "index_quejas_on_coordinador_id"
+  add_index "quejas", ["estado_id"], :name => "index_quejas_on_estado_id"
   add_index "quejas", ["falta_id"], :name => "index_quejas_on_falta_id"
-  add_index "quejas", ["ficha_id"], :name => "index_quejas_on_ficha_id"
   add_index "quejas", ["programa_id"], :name => "index_quejas_on_programa_id"
   add_index "quejas", ["tipo_documento_id"], :name => "index_quejas_on_tipo_documento_id"
 
@@ -184,16 +202,16 @@ ActiveRecord::Schema.define(:version => 20130919003340) do
   end
 
   create_table "usercomites", :force => true do |t|
-    t.string   "nc"
-    t.string   "cedula"
+    t.string   "nombre"
     t.string   "email"
-    t.string   "fch_ncto"
+    t.integer  "comite_id"
     t.integer  "cargo_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   add_index "usercomites", ["cargo_id"], :name => "index_usercomites_on_cargo_id"
+  add_index "usercomites", ["comite_id"], :name => "index_usercomites_on_comite_id"
 
   create_table "users", :force => true do |t|
     t.string   "username",                     :null => false

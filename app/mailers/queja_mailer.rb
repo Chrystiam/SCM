@@ -1,15 +1,28 @@
-#class QuejaMailer < ActionMailer::Base
+class QuejaMailer < ActionMailer::Base
+     default from: 'geraldinearenass@gmail.com'
+	def self.emails_with_names(registros,coor)
+    	
+    	@datos = registros
+    	@emails = []
+    	
+			@emails <<  "<"+ @datos + ">" 
+            @emails << "<"+ coor +">"
+    	
+    	return @emails
+    end	
     
-#	def registration_confirmation(queja)
+	def registration_confirmation(queja,email,asunto)
 
-#		@queja = queja
-#		attachments["logosena.jpg"] = File.read("#{Rails.root}/app/assets/images/logosena.jpg")
-# 		mail(:to => queja.email, :subject => "Registro de Queja exitoso", :from => "geraldinearenass@gmail.com")
-#    end
-
-#end
+		@queja = queja
+		#attachments["logosena.jpg"] = File.read("#{Rails.root}/app/assets/images/logosena.jpg")
+		mail(:to => email, :subject => "asunto")
+   end
+end
 
 #email
+
+=begin
+    
 class QuejaMailer < ActionMailer::Base
   default from: 'geraldinearenass@gmail.com' 
     
@@ -45,3 +58,5 @@ class QuejaMailer < ActionMailer::Base
  		mail(:to => emails, :subject => asunto)
     end
 end
+=end
+

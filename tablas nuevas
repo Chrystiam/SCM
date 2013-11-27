@@ -6,11 +6,11 @@ rails g scaffold asunto nombre:string
 
 2 coordiaca
 
-rails g scaffold coordacade nombre:string email:string programa:references --skip-stylesheets
+rails g scaffold coordiacade nombre:string email:string  --skip-stylesheets
 
-3 detallecomte
+3 fcomite
 
-rails g scaffold detallecomite ???? debo de relacinar bien los campos a utilizar 
+rails g scaffold fcomite fecha:string lugar:string --skip-stylesheets
 
 4 asistentescomite
 
@@ -26,6 +26,13 @@ rails g scaffold comite lugar:string fecha:string
 7 detalle comite
 
 rails g scaffold detallecomite asistente:references comite:references hora:string tema:string
+
+8 asignacion a coomite
+rails g scaffold asignacioncomite nombres:string apellidos:string programa:string ficha:string --skip-stylesheets
+
+9 estados
+
+rails g scaffold estado nombre:string descripcion:string  --skip-stylesheets
 
 rake db:migrate
 rails g bootstrap:themed teams -f
