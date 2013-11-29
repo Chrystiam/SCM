@@ -35,11 +35,11 @@ SCQ::Application.routes.draw do
 
   resources :usercomites
 
- 
+ match "/envio_email" => "comites#envio_email"
   
   resources :fcomites do
     resources :comites do
-        match "/envio_email" => "comites#envio_email"
+        
         resources :usercomites
      
     end

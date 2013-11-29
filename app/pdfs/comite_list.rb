@@ -3,12 +3,16 @@ class ComiteList < Prawn::Document
 
   # 1- Método constructor de la clase comitelist 
 
-  def initialize(comites, view)
-     super()
-     logo 
-     @comites = comites
-     @vista = view
-     comite_details
+  def initialize(comites, fcomite, view )
+   super()
+   logo 
+   @comites = comites
+   @fcomite = fcomite
+   @vista = view
+   draw_text "Lugar: #{@fcomite.lugar}", :at => [180, 585], size: 22
+   draw_text "Fecha: #{@fcomite.fecha}", :at => [180, 555], size: 22
+   comite_details
+
   end
 
   # 2- Método que reemplaza el constructor(initialize se elimina), pero implica que en el controller de la clase se invoque así:
@@ -17,21 +21,16 @@ class ComiteList < Prawn::Document
   # format.pdf{
   #      send_data output, :filename => "comiteslist.pdf", :type => "application/pdf", :disposition => "inline"
   #    }
-  def to_pdf(comites, view)
-    logo
-    @comites = comites
-    @vista = view
-    comite_details
-    render
-  end
+
+
 
   #Método para definir el logo con su ubicación así como el título del reporte  
   def logo
     logopath =  "#{Rails.root}/app/assets/images/logosena.jpg"
     image logopath, :width => 50, :height => 64
     move_down 10
-    draw_text "Listado de comites", :at => [150, 575], size: 22
-    text "Logo"
+    draw_text "Listado de comites #{@fcomite}", :at => [150, 675], size: 22
+    
   end
 
   #Método para dar formato a la salida de los registros
@@ -41,16 +40,32 @@ class ComiteList < Prawn::Document
 
   #Método para almacenar y mostrar los registros del detalle de la orden
   def comite_item_rows
-    [["Fecha", "Hora", "Lugar", "Falta", "Prioridad"]] +
+    [[ "Hora","Nombre Aprendices", "Programa","Ficha","Miembros Comite"]] +
+     
     @comites.map do |comite|
-      [ "#{comite.fecha} ",
+      
+
+      [
         "#{comite.hora} ",
-        "#{comite.lugar} ",
-        "#{comite.falta.descripcion} ",
-        "#{comite.prioridad.nombre} " ]
-    end
+        "#{comite.nombreapren} ",
+        "#{comite.programa.abreviatura} ",
+        "#{comite.ficha} ",
+
+        @userscomites = userscomite(comite.id)
+      ]
+    end 
   end
 
+  def userscomite(comiteid)
+      @comite = Comite.find(comiteid)
+      @usuarios = @comite.usercomites.all
+
+      @cadena = ""
+      @usuarios.map do |uc|
+        @cadena += "#{uc.nombre}\n "
+      end
+      return @cadena
+  end 
   #Método que imprime la tabla de las ordenes que hay
   def comite_details
     move_down 80
@@ -58,7 +73,8 @@ class ComiteList < Prawn::Document
       row(0).font_style = :bold
       columns(1..3).align = :right
       self.header = true
-      self.column_widths = {0 => 100, 1 => 100, 2 => 100, 3 => 100, 4 => 100}
+      #self.column_widths = {0 => 100, 1 => 100, 2 => 100, 3 => 100,4 => 100, 5=>100}
     end
+    
   end
 end

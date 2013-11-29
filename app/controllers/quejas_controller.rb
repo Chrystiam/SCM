@@ -93,12 +93,13 @@ class QuejasController < ApplicationController
   
   def update
     @queja = Queja.find(params[:id])
-    if @queja.update_attributes(params[:queja])
+    render :action => :edit unless @queja.update_attributes(params[:queja])
+    #if @queja.update_attributes(params[:queja])
       #metodo de enviar correo
-      envio_email  
-    else
-      render :action => :edit #unless @queja.update_attributes(params[:queja])
-    end  
+     # envio_email  
+    #else
+     # render :action => :edit unless @queja.update_attributes(params[:queja])
+    #end  
   end
    
   

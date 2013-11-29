@@ -17,9 +17,9 @@ class ComiteMailer < ActionMailer::Base
     #end	
 
 
-	def usercomite_programacion(fcomite,comite, emails, asunto)
-		@queja = fcomite
-		@comite = comite
+	def usercomite_programacion(fcomite, comites, emails, asunto)
+		@comites = comites
+		@fcomite = fcomite
 		#@comite_emails = Usercomite.plunck(:email)
 		#@comite_emails << @queja.email
 		#@cc = "pcarmona@misena.edu.co"

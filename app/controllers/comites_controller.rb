@@ -2,7 +2,7 @@ class ComitesController < ApplicationController
 
   helper_method :sort_column, :sort_direction
 
-  before_filter :find_fcomite_and_comite 
+  before_filter :find_fcomite_and_comite, :except => [:envio_email]
 
   def index
    #numero de registro por pagina
@@ -13,13 +13,14 @@ class ComitesController < ApplicationController
     #buscador
     @comites  = @fcomite.comites.order(sort_column + " " + sort_direction).search(params[:search]).page(params[:page]).per_page(@rxp)
     #esta variable trae todos los registros para el pdf
-    #@a= Comite.all 
-    #output = ComiteList.new(@a,view_context) # Aquí instancio el documento pdf
+    @a = @fcomite.comites.all 
+    @fcomite = Fcomite.find(params[:fcomite_id])
+    output = ComiteList.new(@a,@fcomite,view_context) # Aquí instancio el documento pdf
     respond_to do |format|
-      #format.pdf{
-       # send_data output.render, :filename => "qcomiteList.pdf", :type => "application/pdf", 
-        #:disposition => "inline" # este parámetro permite ver el documento pdf en linea.
-      #}
+      format.pdf{
+       send_data output.render, :filename => "qcomiteList.pdf", :type => "application/pdf", 
+        :disposition => "inline" # este parámetro permite ver el documento pdf en linea.
+      }
       format.html #{ render :text => "<h1>Use .pdf</h1>".html_safe }
       format.json { render json: @comites  }
     end
@@ -48,14 +49,14 @@ class ComitesController < ApplicationController
   end
 
   def envio_email
-    @comites = @fcomite.comites.all
-    @usercomites = Usercomite.all
-
-    #@destinatarios = Usercomite.select("nombre,email")
-    #@vec_destinatarios = UsercomiteMailer.emails_with_names(@destinatarios,"nombre","email")
+    #@comite = Comite.find(params[:comite_id])
+    @fcomite = Fcomite.find((params[:fcomite_id]))
+    @comites = Comite.where(:fcomite_id => (params[:fcomite_id]))
+    @destinatarios = Usercomite.select("nombre,email")
+    @vec_destinatarios = ComiteMailer.emails_with_names(@destinatarios,"nombre","email")
     #@vec_destinatarios << UsercomiteMailer.add_destinatario(@usercomite)
     #email
-    #UsercomiteMailer.usercomite_programacion(@usercomites,@comites, @vec_destinatarios, "notificacion de la queja" ).deliver
+    ComiteMailer.usercomite_programacion(@fcomite, @comites, @vec_destinatarios, "notificacion de la queja" ).deliver
   end
 
 

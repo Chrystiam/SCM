@@ -11,38 +11,35 @@
     <div class='usercomite'>
       <div class="span4">
         <h3><%= @fcomite.fecha %></h3>
-          <h2><%= @fcomite.lugar %></h2>
+        <h2><%= @fcomite.lugar %></h2>
         <hr>
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>hora</th>
-              <th>nombre aprendices</th>
-              <th></th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @comites.each do |queja|%>
-              <tr>
-                
-                <td><%= queja.hora %></td>
-                <td><%= queja.nombreapren %></td>
-                <td><%= queja.programa.abreviatura %></td>
-                <td><%= queja.ficha %></td>
-                
-             
-            <% end %>
-             <% @usercomites.each do |userco| %>
+        
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Hora</th>
+                  <th>Nombre Aprendices</th>
+                  <th>Programa</th>
+                  <th>Ficha</th>
+                  <th>Miembros Comite</th>
+                </tr>
+              </thead>
+              <tbody>
                
-                   <td><%= userco.nombre %></td>
-                 
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-       
+                <tr>
+                  <% @comites.each do |comite| %>
+                  <td><%= comite.hora %></td>
+                  <td><%= comite.nombreapren %></td>
+                  <td><%= comite.programa.abreviatura %></td>
+                  <td><%= comite.ficha %></td>
+                  <% @usercomites = Usercomite.where(:comite_id => comite.id)%>
+                    <% @usercomites.each do |u| %>
+                     <td><%= u.nombre %></td>
+                    <% end %>
+                  <% end %>
+                </tr>
+              </tbody>
+            </table>
       </div>
     </div>
   </div>

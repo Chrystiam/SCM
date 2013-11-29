@@ -41,15 +41,15 @@ class QuejaList < Prawn::Document
 
   #Método para almacenar y mostrar los registros del detalle de la orden
   def queja_item_rows
-    [["Fecha", "nombre", "apellidos", "TipoDoc", "identificacion", "telefono", "Email"]] +
+    [["Fecha", "nombre", "apellidos", "telefono", "Email", "Descripcion","Estado"]] +
     @quejas.map do |queja|
       [ "#{queja.created_at} ",
         "#{queja.nombres} ",
         "#{queja.apellidos} ",
-        "#{queja.tipo_documento.descripcion} ",
-        "#{queja.identificacion} ",
         "#{queja.telefono} ",
-        "#{queja.email} ",
+        "#{queja.email}",
+        "#{queja.descripcion}",
+        "#{queja.estado.nombre}",
       ]
 
     end
@@ -62,7 +62,8 @@ class QuejaList < Prawn::Document
       row(0).font_style = :bold
       columns(1..3).align = :right
       self.header = true
-      self.column_widths = {0 => 80, 1 => 80, 2 => 80, 3 => 80, 4 => 80, 5 => 80, 6 => 80, 7 => 80}
+      #align = { 0 => 80, 1 => :left, 2 => :right, 3 => :right, 4 => :right, 5 => :right, 6 => :right,7 => :right, 8 => :left} 
+      self.column_widths = {0 => 80, 1 => 80, 2 => 80, 3 => 80, 4 => 80, 5 => 80, 6 => 80}
     end
   end
 end

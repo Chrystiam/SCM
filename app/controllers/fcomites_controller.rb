@@ -41,7 +41,7 @@ class FcomitesController < ApplicationController
   # POST /fcomites.json
   def create
     @fcomite = Fcomite.new(params[:fcomite])
-
+    @fcomite.tipo = params[:tipo]
     respond_to do |format|
       if @fcomite.save
         format.html { redirect_to @fcomite, notice: 'Fcomite was successfully created.' }
@@ -57,6 +57,7 @@ class FcomitesController < ApplicationController
   # PUT /fcomites/1.json
   def update
     @fcomite = Fcomite.find(params[:id])
+    @fcomite.tipo = params[:tipo]
 
     respond_to do |format|
       if @fcomite.update_attributes(params[:fcomite])
@@ -73,6 +74,7 @@ class FcomitesController < ApplicationController
   # DELETE /fcomites/1.json
   def destroy
     @fcomite = Fcomite.find(params[:id])
+    Comite.where(:fcomite_id => @fcomite.id).destroy_all#destruir a los hijos 
     @fcomite.destroy
 
     respond_to do |format|

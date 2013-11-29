@@ -21,7 +21,10 @@
     <%= link_to 'Eliminar', queja, 
         :data => { :confirm => 'Esta Seguro?' },
         :method => :delete, :remote => true, :class => 'btn btn-mini btn-danger' %>
-    <%= link_to "enviar a comite", asigna_path(:id => queja.id), :remote => true, :class => 'btn btn-mini btn-primary' %>
+    <% if queja.estado_id == 1 %>
+      <%= link_to "enviar a comite", asigna_path(:id => queja.id), :remote => true, :class => 'btn btn-mini btn-primary' %>
+    <% end %>
+
   </td>
 </tr>
 

@@ -1,3 +1,4 @@
+<%= javascript_include_tag "fecha.js" %>
 <%= simple_form_for(@queja, :html => { :class => 'form-horizontal', :multipart => true }, :remote => true) do |f| %>
 
   <%= f.error_notification %>
@@ -9,6 +10,8 @@
           <div class= "span6"> 
             <center><h4>Información del Aprendiz</h4></center>
             <hr>
+
+            <%= f.input :fechainforme, :as => :string, :label => "Fecha", :input_html => {  :class=>"datepicker" } %>
             <%= f.input :nombres %>
             <%= f.input :apellidos %>
             

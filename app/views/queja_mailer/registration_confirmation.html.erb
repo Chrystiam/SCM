@@ -5,16 +5,11 @@
 			<title>SCQ - Sistema Centralizado de Quejas</title>
 	</head>
 	<body>
-		<h1><%= @queja.created_at %></h1>
+		<p>Se ha generado una queja sobre el aprendiz <h3><%= @queja.nombres %></h3> <h3><%= @queja.apellidos %></h3> </p>
+		<p>Descripcion de la queja presentad</p>
+		<p><%= @queja.descripcion %></p>
 
-		<h3><%= @queja.nombres %></h3>
+		<p>El aprendiz debe de presentarse el dia de mañana en la oficina de Luz Albani para la "Subdireccion  Centro de Formacion en Diseño, Confrccion y Moda</p>
 
-		<h3><%= @queja.apellidos %></h3>
-
-		<h3><%= @queja.email %></h3>
-
-		<p><%= @queja.falta.descripcion %></p>
-
-		Thank you for registering!
 	</body>
 </html>

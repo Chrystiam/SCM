@@ -8,6 +8,7 @@
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:fecha) %></th>
       <th><%= model_class.human_attribute_name(:lugar) %></th>
+      <th><%= model_class.human_attribute_name(:tipo) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -18,6 +19,7 @@
         <td><%= link_to fcomite.id, fcomite_path(fcomite) %></td>
         <td><%= fcomite.fecha %></td>
         <td><%= fcomite.lugar %></td>
+        <td><%= fcomite.tipo %></td>
         <td><%=l fcomite.created_at %></td>
         <td><%= link_to 'Detalle Comite', fcomite_comites_path(fcomite), :class => 'btn btn-inverse' %></td>
         <td>
