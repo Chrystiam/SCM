@@ -10,7 +10,7 @@ class QuejasController < ApplicationController
     end
     #buscador
     @quejas  = Queja.order(sort_column + " " + sort_direction).search(params[:search]).page(params[:page]).per_page(@rxp)
-    
+    @estadoquejas = Queja.where(:estado_id => 1)
     #esta variable trae todos los registros para el pdf
     @a= Queja.all 
     output = QuejaList.new(@a,view_context) # Aquí instancio el documento pdf
@@ -22,8 +22,9 @@ class QuejasController < ApplicationController
 
       format.html #{ render :text => "<h1>Use .pdf</h1>".html_safe }
       format.docx
-      format.json { render json: @quejas  }
+      format.json { render json: @quejas }
     end
+    
   end
 
   #metodo para descargar evidencia
@@ -71,7 +72,7 @@ class QuejasController < ApplicationController
     else
       render :action => :new unless @queja.save
     end  
-  
+    @estadoquejas = Queja.where(:estado_id == 1)
     @quejas = Queja.all
   end
 
@@ -106,6 +107,7 @@ class QuejasController < ApplicationController
   def destroy
     @queja = Queja.find(params[:id])
     @queja.destroy
+     @estadoquejas = Queja.where(:estado_id == 1)
     @quejas = Queja.all
   end
   

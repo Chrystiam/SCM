@@ -1,8 +1,8 @@
 <%= javascript_include_tag "application.js" %>
 <%- model_class = Queja -%>
-<br><br><br>
+
 <h1>Quejas</h1>
-<br>
+
 <%= form_tag request.path, :method => 'get' do %>
   <%= content_tag :label do %>
     Nombres Aprendiz:
@@ -19,7 +19,7 @@
 <% end %>
 
 <p>
-Total Quejas : <input type="text" id="totalregs" class="span1" value="<%= @quejas.total_entries %>" readonly /></h4>
+Total Quejas : <input type="text" id="totalregs" class="span1" value="<%= @estadoquejas.count %>" readonly /></h4>
 </p>
 
 <table class="table table-bordered table-condensed table-hover pretty">

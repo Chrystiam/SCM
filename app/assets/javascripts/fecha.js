@@ -4,5 +4,10 @@
 $(document).ready(function(){
 	
     $('.time_picker').timepicker();
-	$(".datepicker").datepicker();
+	$(".datepicker").datepicker({
+		"format":"yyyy-mm-dd",
+		"weekStart":1,
+		"language":'es',
+		"autoclose":true
+	});
 });

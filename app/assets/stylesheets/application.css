@@ -248,3 +248,11 @@ box-shadow: 0px 1px 0px #3a3a3a;
 #registerNew:hover { background-position: 0px -41px; }
 
 #registerNew:active { background-position: 0px -82px; }
+
+.menu {
+ 
+ border-radius: 0px 0px 5px 5px;
+ position: relative;
+
+ 
+}
