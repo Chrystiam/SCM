@@ -24,8 +24,7 @@ Total Usuarios comite : <input type="text" id="totalregs" class="span1" value="<
 <table class="table table-bordered table-hover pretty">
   <thead>
     <tr>  
-      <th><%= sortable "nombre", "Nombre Completo" %></th>
-      <th><%= sortable "cedula" %></th> 
+      <th><%= sortable "nombre", "Nombre Completo" %></th> 
       <th><%= sortable "email" %></th>
       <th><%= sortable "cargo" %></th> 
       <th>Acciones</th>
@@ -36,8 +35,8 @@ Total Usuarios comite : <input type="text" id="totalregs" class="span1" value="<
   </tbody>
 </table>
 <%= link_to 'Nuevo Usuario Comite', new_fcomite_comite_usercomite_path(@fcomite,@comite), :class => 'btn btn-primary', :remote => true %>
-<%= link_to image_tag("pdf_icon.gif"), fcomite_comite_usercomites_path(:format => :pdf), :id => "pdfc" %> 
-
+<%= link_to image_tag("pdf_icon.gif"), fcomite_comite_usercomites_path(:format => :pdf), :id => "pdfc",:target => "_blank" %> 
+<%= link_to "atras", fcomite_comites_path,:class => 'btn btn-primary' %>
 
 <div align="center">
   <%= will_paginate @usercomites, :previous_label => '&laquo; Anterior', :next_label => 'Siguiente

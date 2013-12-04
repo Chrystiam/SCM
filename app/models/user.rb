@@ -1,9 +1,12 @@
 class User < ActiveRecord::Base
-  rolify
+  #rolify
   authenticates_with_sorcery!
+  has_many :user_roles
+  has_many :roles, :through => :user_roles
+ 
   
   #atributos
-  attr_accessible :username, :email, :password, :password_confirmation, :nombre
+  attr_accessible :role_ids,:username, :email, :password, :password_confirmation, :nombre,  :roles
   
   #validaciones
   validates_confirmation_of :password

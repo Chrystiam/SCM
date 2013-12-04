@@ -124,7 +124,7 @@ class QuejasController < ApplicationController
 
     @destiapren = @queja.email
     @desticoor = @queja.coordinador.email
-    @vec_destinatarios = QuejaMailer.emails_with_names(@destiapren,@desticoor)
+    @vec_destinatarios = QuejaMailer.emails_with_names(@destiapren,@desticoor,current_user.email)
     #@vec_destinatarios << QuejaMailer.add_destinatario(@queja)
     #email
     QuejaMailer.registration_confirmation(@queja, @vec_destinatarios, "notificacion de la queja" ).deliver

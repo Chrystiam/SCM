@@ -47,6 +47,17 @@
          <%= f.password_field :password_confirmation %>
         </div>
       </div> 
+
+       <div class="well well-small">
+          <% for role in Role.all %>
+                <%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role) %>
+                <%= role.name %>
+                <% if role.id % 4 == 0 %> 
+                  <br>
+                <% end %>
+          <% end %>
+          <%= hidden_field_tag "user[role_ids][]", "" %>
+       </div>
      
       <div class="control-group">
         <div class ="controls">

@@ -9,8 +9,8 @@ class ComiteList < Prawn::Document
    @comites = comites
    @fcomite = fcomite
    @vista = view
-   draw_text "Lugar: #{@fcomite.lugar}", :at => [180, 585], size: 22
-   draw_text "Fecha: #{@fcomite.fecha}", :at => [180, 555], size: 22
+   draw_text "Lugar: #{@fcomite.lugar}", :at => [180, 615], size: 18
+   draw_text "Fecha: #{@fcomite.fecha}", :at => [235, 585], size: 18
    comite_details
 
   end
@@ -26,10 +26,11 @@ class ComiteList < Prawn::Document
 
   #Método para definir el logo con su ubicación así como el título del reporte  
   def logo
-    logopath =  "#{Rails.root}/app/assets/images/logosena.jpg"
-    image logopath, :width => 50, :height => 64
+    logopath =  "#{Rails.root}/app/assets/images/logo_sena.png"
+    image logopath, :width => 60, :height => 74
     move_down 10
-    draw_text "Listado de comites #{@fcomite}", :at => [150, 675], size: 22
+    draw_text "CENTRO DE FORMACIÓN EN DISEÑO, CONFECCIÓN Y MODA", :at => [70, 700], size: 15
+    draw_text "COMITÉ  DE EVALUCIÓN Y SEGUIMIENTO", :at => [145, 670], size: 15
     
   end
 
@@ -69,11 +70,11 @@ class ComiteList < Prawn::Document
   #Método que imprime la tabla de las ordenes que hay
   def comite_details
     move_down 80
-    table comite_item_rows, :width => 500 do
+    table comite_item_rows, :width => 510 do
       row(0).font_style = :bold
-      columns(1..3).align = :right
+      columns(0..4).align = :left
       self.header = true
-      #self.column_widths = {0 => 100, 1 => 100, 2 => 100, 3 => 100,4 => 100, 5=>100}
+      self.column_widths = {0 => 65, 1 => 130, 2 => 70, 3 => 65,4 => 180, 5=>180}
     end
     
   end

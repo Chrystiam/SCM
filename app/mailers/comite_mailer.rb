@@ -1,12 +1,12 @@
 class ComiteMailer < ActionMailer::Base
   default from: 'geraldinearenass@gmail.com' 
     
-  	def self.emails_with_names(registros,nombre,correo)
+  	def self.emails_with_names(registros)
     	
     	@datos = registros
     	@emails = []
     	@datos.each do |d|
-			@emails << d.nombre + "<"+ d.email + ">"
+			@emails << d.nombre + "<" + d.email + ">"
     	end	
     	return @emails
     end	
@@ -23,7 +23,17 @@ class ComiteMailer < ActionMailer::Base
 		#@comite_emails = Usercomite.plunck(:email)
 		#@comite_emails << @queja.email
 		#@cc = "pcarmona@misena.edu.co"
-		#attachments["logosena.jpg"] = File.read("#{Rails.root}/app/assets/images/logosena.jpg")
+		#attachments "application/pdf"
+		output = ComiteList.new(@comites,@fcomite,view_context)
+
+		report_pdf_content = output.render()
+
+	    attachments['paneaciocomite.pdf'] = {
+	      mime_type: 'application/pdf',
+	      content: report_pdf_content
+	    } 
+		#attachments['funny.pdf'] = File.read("#{Rails.root}/app/pdfs/comite_list.rb", :mode => 'rb')
+
 		
 		#vec_destinatarios = []
 		#destinatarios.each do |d|

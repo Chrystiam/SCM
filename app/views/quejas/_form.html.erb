@@ -59,16 +59,21 @@
                 </div>
               </div>
               <div class ="control-group">
-                <%= f.label :testigos %>
+                <%= f.label :testigos_o_pruebas_que_aporta %>
                 <div class="controls" >
                  <%= f.text_area(:testigos, :rows => 4)%>
                 </div>
               </div>
-              
-              <%= f.input :nombresinformante %>
-              <%= f.input :direccioninformante %>
+
+               <div class ="control-group">
+                <%= f.label :Nombre_y_dirección_de_quien_informa %>
+                <div class="controls" >
+                 <%= f.text_area(:nombreinfor, :rows => 4)%>
+                </div>
+              </div>
+             
               <div class ="control-group">
-                <%= f.label :cargo_id %>
+                <%= f.label :cargo_de_quien_informa %>
                 <div class="controls" >
                   <%= f.collection_select :cargo_id, Cargo.all, :id, :descripcion, :prompt => "Seleccione" %>
                 </div>

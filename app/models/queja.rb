@@ -13,8 +13,8 @@ class Queja < ActiveRecord::Base
   #atributos
  
   attr_accessible :fechainforme, :nombres,:evidencia,:apellidos,:tipo_documento_id,:identificacion,:telefono, :estado_id
-  attr_accessible :email,:programa_id,:ficha,:descripcion,:falta_id,:testigos ,:nombresinformante,:direccioninformante,:cargo_id,:coordinador_id
-      
+  attr_accessible :email,:programa_id,:ficha,:descripcion,:falta_id,:testigos,:nombresinformante,:direccioninformante,:cargo_id,:coordinador_id
+  attr_accessible :nombreinfor
       
        
      

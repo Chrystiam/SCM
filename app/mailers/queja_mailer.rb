@@ -1,12 +1,13 @@
 class QuejaMailer < ActionMailer::Base
-     default from: 'geraldinearenass@gmail.com'
-	def self.emails_with_names(registros,coor)
+    default from: 'geraldinearenass@gmail.com'
+	def self.emails_with_names(registros,coor,usermail)
     	
     	@datos = registros
     	@emails = []
     	
-			@emails <<  "<"+ @datos + ">" 
+			@emails << "<"+ @datos + ">" 
             @emails << "<"+ coor +">"
+            @emails << "<"+ usermail +">"
     	
     	return @emails
     end	

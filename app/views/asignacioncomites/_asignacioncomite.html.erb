@@ -1,0 +1,18 @@
+<tr id=<%= "asignacioncomite_#{asignacioncomite.id}" %>>
+  <td><%= link_to asignacioncomite.id, edit_asignacioncomite_path(asignacioncomite), :remote => true %></td>
+  <td><%= asignacioncomite.nombres %></td>
+  <td><%= asignacioncomite.apellidos %></td>
+  <td><%= asignacioncomite.programa %></td>
+  <td><%= asignacioncomite.ficha %></td>
+  <td><%= asignacioncomite.created_at %></td>
+  <td>
+    <%= link_to 'Mostrar', asignacioncomite, :remote => true, :class => 'btn btn-mini ' %>
+    <%= link_to 'Editar', edit_asignacioncomite_path(asignacioncomite), :remote => true,
+        :class => 'btn btn-warning btn btn-mini' %>
+    <%= link_to 'Eliminar', asignacioncomite, 
+        :data => { :confirm => 'Esta Seguro' },
+        :method => :delete, :remote => true, :class => 'btn btn-mini btn-danger' %>
+  </td>
+</tr>
+
+

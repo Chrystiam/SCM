@@ -16,9 +16,10 @@ class ComitesController < ApplicationController
     @a = @fcomite.comites.all 
     @fcomite = Fcomite.find(params[:fcomite_id])
     output = ComiteList.new(@a,@fcomite,view_context) # Aquí instancio el documento pdf
+  
     respond_to do |format|
       format.pdf{
-       send_data output.render, :filename => "qcomiteList.pdf", :type => "application/pdf", 
+       send_data output.render, :filename => "public/comiteList.pdf", :type => "application/pdf", 
         :disposition => "inline" # este parámetro permite ver el documento pdf en linea.
       }
       format.html #{ render :text => "<h1>Use .pdf</h1>".html_safe }
@@ -53,7 +54,8 @@ class ComitesController < ApplicationController
     @fcomite = Fcomite.find((params[:fcomite_id]))
     @comites = Comite.where(:fcomite_id => (params[:fcomite_id]))
     @destinatarios = Usercomite.select("nombre,email")
-    @vec_destinatarios = ComiteMailer.emails_with_names(@destinatarios,"nombre","email")
+    @vec_destinatarios = ComiteMailer.emails_with_names(@destinatarios)
+    #@a = @fcomite.comites.all 
     #@vec_destinatarios << UsercomiteMailer.add_destinatario(@usercomite)
     #email
     ComiteMailer.usercomite_programacion(@fcomite, @comites, @vec_destinatarios, "notificacion de la queja" ).deliver

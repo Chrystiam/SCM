@@ -3,94 +3,118 @@
 # Do not hesitate to tweak this to your needs
 
 Acta.create([
-  { :ciudad => "medellin", :fecha => "2013-09-09", :hora_inicio => "2000-01-01 11:56:00", :hora_terminacion => "2000-01-01 13:56:00", :lugar => "pasarela", :tema => "llegadas tarde", :objetivo_de_la_reunion => "revisar las faltas", :desarrollo_reunion => "djfhfjghjghbgknbvm bmv", :conclusiones => "dhfhfbvvjbvb ", :firmas => "geraldine arenas", :created_at => "2013-09-10 06:57:46", :updated_at => "2013-09-10 06:57:46" }
+  { :ciudad => nil, :fecha => nil, :hora_inicio => nil, :hora_terminacion => nil, :lugar => nil, :tema => nil, :objetivo_de_la_reunion => nil, :desarrollo_reunion => nil, :conclusiones => nil, :firmas => nil, :created_at => nil, :updated_at => nil }
+], :without_protection => true )
+
+
+
+Asignacioncomite.create([
+  { :nombres => nil, :apellidos => nil, :programa => nil, :ficha => nil, :created_at => nil, :updated_at => nil }
+], :without_protection => true )
+
+
+
+Ayuda.create([
+  { :nombre => nil, :created_at => nil, :updated_at => nil, :archivo_file_name => nil, :archivo_content_type => nil, :archivo_file_size => nil, :archivo_updated_at => nil }
 ], :without_protection => true )
 
 
 
 Cargo.create([
-  { :descripcion => "Aprendiz", :created_at => "2013-08-29 01:23:26", :updated_at => "2013-08-29 01:23:26" },
-  { :descripcion => "Instructor", :created_at => "2013-08-29 01:23:33", :updated_at => "2013-08-29 01:23:33" }
+  { :descripcion => "Aprendiz", :created_at => "2013-12-02 19:14:13", :updated_at => "2013-12-02 19:14:13" },
+  { :descripcion => "Instructor ", :created_at => "2013-12-02 19:14:32", :updated_at => "2013-12-02 19:14:32" }
 ], :without_protection => true )
 
 
 
 Centro.create([
-  { :nombre => "centro de formación en diseño,confección y moda", :abreviatura => "C.D.C.M", :created_at => "2013-08-29 00:40:48", :updated_at => "2013-08-29 00:40:48" },
-  { :nombre => "centro del mobiliario", :abreviatura => "C.M", :created_at => "2013-08-29 00:46:29", :updated_at => "2013-08-29 00:46:29" }
+  { :nombre => "Centro de Formacion en Diseño, Confeccion y Moda", :abreviatura => "CFDCM", :created_at => "2013-12-02 18:58:45", :updated_at => "2013-12-02 18:58:45" }
 ], :without_protection => true )
 
 
 
 Comite.create([
-  { :fecha => "2013-12-09", :hora => "12:42:00", :lugar => "auditorio 5 piso", :queja_id => 1, :falta_id => 2, :prioridad_id => 1, :created_at => "2013-09-10 06:43:09", :updated_at => "2013-09-10 06:43:09" }
+  { :hora => nil, :nombreapren => nil, :programa_id => nil, :ficha => nil, :fcomite_id => nil, :created_at => nil, :updated_at => nil }
+], :without_protection => true )
+
+
+
+Coordinador.create([
+  { :nombre => "camilo", :email => "chrystiamgg@misena.edu.co", :created_at => "2013-12-02 19:08:15", :updated_at => "2013-12-02 19:08:15" }
+], :without_protection => true )
+
+
+
+Estado.create([
+  { :nombre => "en espera ", :descripcion => "la queja fue creada y espera a ser enviada a comite ", :created_at => "2013-12-02 19:50:45", :updated_at => "2013-12-02 19:50:45" },
+  { :nombre => "remitido a comite", :descripcion => "la queja fue remitida a comite", :created_at => "2013-12-02 19:53:25", :updated_at => "2013-12-02 19:53:25" }
 ], :without_protection => true )
 
 
 
 Falta.create([
-  { :falta => "Academica", :descripcion => "Insultar a un profesor", :created_at => "2013-08-29 01:28:01", :updated_at => "2013-08-29 01:28:01" },
-  { :falta => "Disciplinaria", :descripcion => "llegada tarde", :created_at => "2013-08-29 01:28:16", :updated_at => "2013-08-29 01:28:16" }
+  { :falta => "Academica", :descripcion => "no cumple con los trabajos", :created_at => "2013-12-02 18:46:54", :updated_at => "2013-12-02 18:46:54" },
+  { :falta => "Diciplinaria", :descripcion => "ofender a un instructor", :created_at => "2013-12-02 18:47:54", :updated_at => "2013-12-02 18:47:54" }
 ], :without_protection => true )
 
 
 
-Ficha.create([
-  { :codigo => "323921", :programa_id => 1, :created_at => "2013-08-29 00:41:30", :updated_at => "2013-08-29 00:41:30", :estado => true },
-  { :codigo => "567890", :programa_id => 2, :created_at => "2013-08-29 00:56:30", :updated_at => "2013-08-29 00:56:30", :estado => true }
+Fcomite.create([
+  { :fecha => nil, :lugar => nil, :tipo => nil, :created_at => nil, :updated_at => nil }
 ], :without_protection => true )
 
 
 
 Funcionario.create([
-  { :nombres => "jersson ", :apellidos => "restrepo", :cedula => "12345678899", :email => "jirestrepo@misena.edu.co", :direccion => "carrera 53 # 22 - 43", :telefono => "2345676", :fch_nacimiento => "2013-10-09", :cargo => "aprendiz", :created_at => "2013-09-10 15:09:05", :updated_at => "2013-09-10 15:09:05" }
+  { :nombres => nil, :apellidos => nil, :cedula => nil, :email => nil, :direccion => nil, :telefono => nil, :fch_nacimiento => nil, :cargo => nil, :created_at => nil, :updated_at => nil }
 ], :without_protection => true )
 
 
 
 Instructor.create([
-  { :nombres => "juan jose ", :apellidos => "velez vanegas", :cedula => "1234567890", :email => "geral1@misena.edu.co", :direccion => "calle 107 e # 38 a 11", :telefono => "2597028", :fch_nacimiento => "2013-11-09", :modalidad => "español", :created_at => "2013-09-10 15:14:07", :updated_at => "2013-09-10 15:14:07", :imagen_file_name => "IMG00563-20120816-0617.jpg", :imagen_content_type => "image/jpeg", :imagen_file_size => 233229, :imagen_updated_at => "2013-09-10 15:14:05" }
+  { :nombres => nil, :apellidos => nil, :cedula => nil, :email => nil, :direccion => nil, :telefono => nil, :fch_nacimiento => nil, :modalidad => nil, :created_at => nil, :updated_at => nil, :imagen_file_name => nil, :imagen_content_type => nil, :imagen_file_size => nil, :imagen_updated_at => nil }
 ], :without_protection => true )
 
 
 
 Prioridad.create([
-  { :nombre => "Leve", :created_at => "2013-08-29 01:39:41", :updated_at => "2013-08-29 01:39:41" },
-  { :nombre => "Grave", :created_at => "2013-08-29 01:39:46", :updated_at => "2013-08-29 01:39:46" }
+  { :nombre => nil, :created_at => nil, :updated_at => nil }
 ], :without_protection => true )
 
 
 
 Programa.create([
-  { :descripcion => "analisis y desarrollo de sistemas de informacion", :abreviatura => "ADSI", :centro_id => 1, :created_at => "2013-08-29 00:41:18", :updated_at => "2013-08-29 00:41:18", :estado => true },
-  { :descripcion => "diseño multimedial", :abreviatura => "D.M", :centro_id => 2, :created_at => "2013-08-29 00:47:05", :updated_at => "2013-08-29 00:47:05", :estado => true }
+  { :descripcion => "analisis y  de desarrollo  de sistemas de informacion", :abreviatura => "ADSI", :coordinadora_id => nil, :centro_id => 1, :created_at => "2013-12-02 19:02:14", :updated_at => "2013-12-02 19:02:14", :estado => true }
 ], :without_protection => true )
 
 
 
-Queja.create([
-  {  :nombres => "andres ", :apellidos => "echeverry", :tipo_documento_id => 1, :identificacion => "7855656576879", :telefono => "56576787", :email => "pcarmonaz@hotmail.com", :programa_id => nil, :descripcion => "", :falta_id => 2, :testigos => "geraldine arenas", :nombresinformante => "yamile ", :apellidosinformante => "tobon", :direccioninformante => "calle 107 e # 38 a 11", :cargo_id => 1, :descargos => "", :ficha_id => 1, :centro_id => nil, :created_at => "2013-09-02 13:29:48", :updated_at => "2013-09-03 13:54:33", :evidencia_file_name => "hola.txt", :evidencia_content_type => "text/plain", :evidencia_file_size => 5, :evidencia_updated_at => "2013-09-03 13:54:31", :emailinfor => "yamiletobon@misena.edu.co", :estado => true },
-  {  :nombres => "geral", :apellidos => "saldarriaga", :tipo_documento_id => 1, :identificacion => "576787798989", :telefono => "4537876", :email => "geraldin.-14@hotmail.com", :programa_id => nil, :descripcion => "", :falta_id => 2, :testigos => "paulo carmona", :nombresinformante => "yamile ", :apellidosinformante => "tobon", :direccioninformante => "calle 107 e # 38 a 13", :cargo_id => 2, :descargos => "", :ficha_id => 1, :centro_id => nil, :created_at => "2013-09-02 14:36:45", :updated_at => "2013-09-03 13:55:28", :evidencia_file_name => "hola.txt", :evidencia_content_type => "text/plain", :evidencia_file_size => 5, :evidencia_updated_at => "2013-09-03 13:55:27", :emailinfor => "pcarmona@misena.edu.co", :estado => true }
+Role.create([
+  { :name => "admin", :created_at => "2013-12-02 16:44:24", :updated_at => "2013-12-02 16:44:24" }
 ], :without_protection => true )
 
 
 
 TipoDocumento.create([
-  { :sigla => "C.C", :descripcion => "Cédula de Ciudadanía", :created_at => "2013-08-29 01:20:22", :updated_at => "2013-08-29 01:20:22" },
-  { :sigla => "T.I", :descripcion => "Tarjeta de Identidad", :created_at => "2013-08-29 01:20:44", :updated_at => "2013-08-29 01:20:44" }
+  { :sigla => "CC", :descripcion => "Cedula", :created_at => "2013-12-02 18:45:35", :updated_at => "2013-12-02 18:45:35" }
 ], :without_protection => true )
 
 
 
 User.create([
-  { :username => nil, :email => nil, :crypted_password => nil, :salt => nil, :created_at => nil, :updated_at => nil, :remember_me_token => nil, :remember_me_token_expires_at => nil, :nombre => nil }
+  { :username => "camilo", :email => "camilo@hotmail.com", :crypted_password => "$2a$10$SFhHxfzukK2k1J.LWowbDeqp6bcI4Zbc6arIu3IKWOIzu6TuIUPpy", :salt => "mBJ2FWsqUepVyTkYrZ7N", :created_at => "2013-12-02 18:20:38", :updated_at => "2013-12-02 18:20:38", :remember_me_token => nil, :remember_me_token_expires_at => nil, :nombre => "camilo" }
+], :without_protection => true )
+
+
+
+UserRole.create([
+  { :user_id => 1, :role_id => 1, :created_at => "2013-12-02 18:20:38", :updated_at => "2013-12-02 18:20:38" }
 ], :without_protection => true )
 
 
 
 Usercomite.create([
-  { :nc => "yamile tobon", :cedula => "168767867", :email => "yamiletobon@misena.edu.co", :fch_ncto => "2013-04-09", :cargo_id => 1, :created_at => "2013-09-02 13:26:15", :updated_at => "2013-09-02 13:26:15" },
-  { :nc => "geraldine ", :cedula => "578778055456", :email => "geraldinearenass@hotmail.com", :fch_ncto => "2013-05-09", :cargo_id => 2, :created_at => "2013-09-02 13:27:13", :updated_at => "2013-09-03 14:19:07" }
+  { :nombre => nil, :email => nil, :comite_id => nil, :cargo_id => nil, :created_at => nil, :updated_at => nil }
 ], :without_protection => true )
 
 

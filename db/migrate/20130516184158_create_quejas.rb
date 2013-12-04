@@ -13,8 +13,7 @@ class CreateQuejas < ActiveRecord::Migration
       t.text :descripcion
       t.references :falta
       t.text :testigos
-      t.string :nombresinformante
-      t.string :direccioninformante
+      t.text :nombreinfor
       t.references :cargo
       t.references :coordinador
       t.references :estado

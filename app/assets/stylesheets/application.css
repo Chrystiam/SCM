@@ -16,6 +16,8 @@
 
 /* lazybox */
 #lazybox div.tipo_documento { max-width: 500px; }
+#lazybox div.centeruser { max-width: 500px; margin-top: 60px; border-radius: 0px; height: 290px; }
+
 
 .lazybox {
   background: transparent !important;
@@ -27,6 +29,7 @@
   height: 25px;
   top: -17px;
   right: -17px;
+  
 }
 
 #lazybox.sticker {
