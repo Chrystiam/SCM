@@ -11,6 +11,7 @@ class QuejasController < ApplicationController
     #buscador
     @quejas  = Queja.order(sort_column + " " + sort_direction).search(params[:search]).page(params[:page]).per_page(@rxp)
     @estadoquejas = Queja.where(:estado_id => 1)
+    @estadoencomite =  Queja.where(:estado_id => 2)
     #esta variable trae todos los registros para el pdf
     @a= Queja.all 
     output = QuejaList.new(@a,view_context) # Aquí instancio el documento pdf
@@ -126,12 +127,14 @@ class QuejasController < ApplicationController
 
     @destiapren = @queja.email
     @desticoor = @queja.coordinador.email
-    @vec_destinatarios = QuejaMailer.emails_with_names(@destiapren,@desticoor,current_user.email)
+    #@vec_destinatarios = QuejaMailer.emails_with_names(@destiapren,@desticoor,current_user.email)
     #@vec_destinatarios << QuejaMailer.add_destinatario(@queja)
     #email
-    QuejaMailer.registration_confirmation(@queja, @vec_destinatarios, "notificacion de la queja" ).deliver
-
+    QuejaMailer.registration_confirmation(@queja, "Citación a Comité de Evaluación y Seguimiento" ).deliver
+    QuejaMailer.registro_queja_coordinador(@queja, @desticoor,"Notificación de Queja").deliver
+    QuejaMailer.registro_queja_instructor(@queja,current_user.email, "Notificación de Queja" ).deliver
   end
 
 end
     
+#

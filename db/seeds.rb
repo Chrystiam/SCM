@@ -18,13 +18,6 @@ Centro.create([
 
 
 
-Comite.create([
-  { :hora => nil, :nombreapren => nil, :programa_id => nil, :ficha => nil, :fcomite_id => nil, :created_at => nil, :updated_at => nil }
-], :without_protection => true )
-
-
-
-
 Estado.create([
   { :nombre => "en espera ", :descripcion => "la queja fue creada y espera a ser enviada a comite ", :created_at => "2013-12-02 19:50:45", :updated_at => "2013-12-02 19:50:45" },
   { :nombre => "remitido a comite", :descripcion => "la queja fue remitida a comite", :created_at => "2013-12-02 19:53:25", :updated_at => "2013-12-02 19:53:25" }

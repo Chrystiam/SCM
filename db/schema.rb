@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 201307012018430) do
     t.string   "apellidos"
     t.string   "programa"
     t.string   "ficha"
+    t.string   "fecha"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

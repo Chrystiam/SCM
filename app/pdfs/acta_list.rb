@@ -26,7 +26,7 @@ class ActaList < Prawn::Document
 
   #Método para definir el logo con su ubicación así como el título del reporte  
   def logo
-    logopath =  "#{Rails.root}/app/assets/images/logosena.jpg"
+    logopath =  "#{Rails.root}/app/assets/images/logo_sena.png"
     image logopath, :width => 50, :height => 64
     move_down 10
     draw_text "Listado de actas", :at => [150, 575], size: 22

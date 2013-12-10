@@ -5,6 +5,7 @@ class CreateAsignacioncomites < ActiveRecord::Migration
       t.string :apellidos
       t.string :programa
       t.string :ficha
+      t.string :fecha
 
       t.timestamps
     end

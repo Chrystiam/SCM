@@ -13,7 +13,8 @@ class ComitesController < ApplicationController
     #buscador
     @comites  = @fcomite.comites.order(sort_column + " " + sort_direction).search(params[:search]).page(params[:page]).per_page(@rxp)
     #esta variable trae todos los registros para el pdf
-    @a = @fcomite.comites.all 
+    @a = @fcomite.comites.order("hora")
+ 
     @fcomite = Fcomite.find(params[:fcomite_id])
     output = ComiteList.new(@a,@fcomite,view_context) # Aquí instancio el documento pdf
   

@@ -1,7 +1,22 @@
 <%- model_class = Asignacioncomite -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+<div class="buscador">
+  <h1 class="h1"><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+  <%= form_tag request.path, :id => "submit",  :method => 'get' do %>
+    <%= content_tag :label do %>
+      <%= text_field_tag :search, params[:search], :placeholder => "Nombre Aprendiz" %>
+      <%= submit_tag "Consultar", :nombres => nil, :apellidos => nil, :class => "btn btn-success", :id => "submit" %>
+      
+    <% end %>
+  <% end %>
+  <% if @searc.empty? %>
+    <p id="nr"> N° de Registros: <%= "#{@asignacioncomites.count}" %> </p>
+  <% elsif @asignacioncomites.count == 0 %>
+    <p id="nr">No hay  resultados para: '<%= "#{@searc}"%>' </p>
+  <% else %>
+    <p id="nr"> N° de Resultados de la Busqueda: <%= "#{@asignacioncomites.count}" %> </p>
+  <% end %>
 </div>
+<br>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -20,3 +35,9 @@
 </table>
 
 <%= link_to t('.new', :default => t("helpers.links.new")),new_asignacioncomite_path,:remote => true, :class => 'btn btn-primary' %>
+
+
+<div align="center">
+  <%= will_paginate @asignacioncomites, :previous_label => '&laquo; Anterior', :next_label => 'Siguiente
+  &raquo;' %>
+</div>

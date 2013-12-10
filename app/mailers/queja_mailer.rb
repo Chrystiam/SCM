@@ -8,17 +8,31 @@ class QuejaMailer < ActionMailer::Base
 			@emails << "<"+ @datos + ">" 
             @emails << "<"+ coor +">"
             @emails << "<"+ usermail +">"
-    	
-    	return @emails
+        return @emails
     end	
     
-	def registration_confirmation(queja,email,asunto)
+	def registration_confirmation(queja,asunto)
+    attachments.inline['logo-sena.png'] = File.read('/images/logo-sena.png')
 
 		@queja = queja
 		#attachments["logosena.jpg"] = File.read("#{Rails.root}/app/assets/images/logosena.jpg")
-		mail(:to => email, :subject => "asunto")
+		mail(:to => @queja.email, :subject => "asunto")
+   end
+   def registro_queja_coordinador(queja,email,asunto)
+      attachments.inline['logo-sena.png'] = File.read('/images/logo-sena.png')
+
+      @queja = queja
+      #attachments["logosena.jpg"] = File.read("#{Rails.root}/app/assets/images/logosena.jpg")
+      mail(:to => email, :subject => "asunto")
+   end
+   def registro_queja_instructor(queja,email,asunto)
+      attachments.inline['logo'] = File.read('/images/logo-sena.png')
+      @queja = queja
+      #attachments["logosena.jpg"] = File.read("#{Rails.root}/app/assets/images/logosena.jpg")
+      mail(:to => email, :subject => "asunto")
    end
 end
+
 
 #email
 

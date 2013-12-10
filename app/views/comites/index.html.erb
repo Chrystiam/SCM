@@ -39,7 +39,7 @@ Total comites : <input type="text" id="totalregs" class="span1" value="<%= @comi
 
 <%= link_to image_tag("pdf_icon.gif"), fcomite_comites_path(:format => :pdf),:target => "_blank" %>
 <%= link_to 'Atras', fcomites_path, :class => 'btn btn-primary' %>
- <%= link_to  "enviar a comite", envio_email_path(:fcomite_id => @fcomite), :remote => true, :class => 'btn btn-mini btn-default' %>
+ <%= link_to  "enviar a comite", envio_email_path(:fcomite_id => @fcomite), :remote => true, :class => 'btn  btn-info' %>
 
 <div align="center">
   <%= will_paginate @comites, :previous_label => '&laquo; Anterior', :next_label => 'Siguiente

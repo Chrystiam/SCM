@@ -35,7 +35,7 @@ class Queja < ActiveRecord::Base
 
   #buscador
   def self.search(search)
-		where('nombres like ?', "%#{search}%",)
+		where('nombres like ? or apellidos like ? ', "%#{search}%", "%#{search}%")
 	end
 
 end

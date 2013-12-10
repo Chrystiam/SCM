@@ -1,5 +1,5 @@
-<!doctype html>
-<html lang="ES">
+<!DOCTYPE html>
+<html>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,24 +8,11 @@
         <meta name="SCM" >
         <meta name="author" >
         <%= stylesheet_link_tag "application", :media => "all" %>
-        <%= javascript_include_tag "application" %>
+       
         <%= csrf_meta_tags %>
         <%= yield(:head) %>
     </head>
     <body id="color">
-        <div class="navbar">
-            <div class="navbar-inner">
-                <a class="brand" </a>
-                <ul class="nav">
-                    <li><a href="#"></a></li>
-                      <button class="btn btn-success" type="button"><%= link_to 'Regístrate!', signup_path, :remote => true %></button> 
-                        <li><a href="#"></a></li>
-                        <button class="btn btn-success" type="button"><%= link_to 'Ingresar', login_path %></button>
-                </ul>
-                
-            </div>
-        </div> 
-        
         <div>
             <ul class="navigation">
                 <li>
@@ -46,10 +33,10 @@
             </ul>
         </div>
 
-        <div class="span8 offset1" >
-            <div class="well">
-                <div class='row'> 
-                    <div class="tabbable tabs-left">
+        <div class="span8 offset2 " >
+            <div class="well" id="border">
+                <div class=''> 
+                    <div class="tabbable tabs-left ">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#tab1" data-toggle="tab">SCQ</a></li>
                             <li><a href="#tab2" data-toggle="tab">Agradecimientos</a></li>
@@ -80,9 +67,4 @@
             </div>
         </div>
     </body>
-    <div id="imagen">
-      <img src=" assets/logosena.jpg">
-    </div>
-    <br><br><br>
-    <footer>Esta aplicacion fue creada en el año 2013.</footer>
 </html>

@@ -9,8 +9,9 @@ class ComiteList < Prawn::Document
    @comites = comites
    @fcomite = fcomite
    @vista = view
-   draw_text "Lugar: #{@fcomite.lugar}", :at => [180, 615], size: 18
-   draw_text "Fecha: #{@fcomite.fecha}", :at => [235, 585], size: 18
+   draw_text "Programación Comite #{@fcomite.tipo}", :at => [105, 620], size: 18
+   draw_text "Lugar: #{@fcomite.lugar}", :at => [180, 590], size: 18
+   draw_text "Fecha: #{@fcomite.fecha}", :at => [235, 563], size: 18
    comite_details
 
   end

@@ -14,6 +14,46 @@
  *= require_tree .
  */
 
+#regi{
+  float: right;
+  margin-top: -60px;
+  margin-right: 200px;
+}
+#qest{
+  float: right;
+  margin-top: -60px;
+ }
+#qrem{
+  float: right;
+  margin-top: -30px;
+}
+
+#nr{
+  float: right;
+  margin-top: -50px;
+}
+
+.h1{
+  text-align: center;
+}
+.buscador{
+  background-color: #F0EEEE;
+  padding: 25px;
+  margin-top: -12px;
+   /*** Rounded Corners ***/
+   border-radius: 0px 0px 15px 15px;
+  -moz-border-radius: 0px 0px 15px 15px;
+  -webkit-border-radius:  0px 0px 15px 15px;
+   /*** Shadow behind the box ***/
+   box-shadow: 0px -5px 10px #000;
+  -moz-box-shadow: 0px -5px 10px #000;
+  -webkit-box-shadow:0px -5px 10px #000;
+}
+
+#bajar{
+  padding-top: 10px;
+  position: relative;
+}
 /* lazybox */
 #lazybox div.tipo_documento { max-width: 500px; }
 #lazybox div.centeruser { max-width: 500px; margin-top: 60px; border-radius: 0px; height: 290px; }
@@ -82,21 +122,48 @@
   background: #D8D8D8;
 }
 
+#border{
+   /*** Rounded Corners ***/
+   border-radius: 0px 0px 15px 15px;
+  -moz-border-radius: 0px 0px 15px 15px;
+  -webkit-border-radius:  0px 0px 15px 15px;
+  /**border-radius: 0px 0px 15px 15px;
+  border-radius:  0px 0px 15px 15px;**/
+   /*** Shadow behind the box ***/
+   box-shadow: 0px -5px 10px #000;
+  -moz-box-shadow: 0px -5px 10px #000;
+  -webkit-box-shadow:0px -5px 10px #000;
+  /**box-shadow: 0px 0px 10px 10px #000;**/
+  /**box-shadow:0px 0px 10px 10px #000;**/
+ 
+}
+
 
 footer{
-  
-  position: relative;
   top: 108px; /* altura en px del footer con valor negativo */
   height: 50px; /* Altura del Footer en px*/
   clear: both;
   background: #FFA500;
   text-align: center;
   color: #000000;
+  margin-top: 61px;
+   /*** Rounded Corners ***/
+   border-radius: 0px 0px 15px 15px;
+  -moz-border-radius: 0px 0px 15px 15px;
+  -webkit-border-radius:  0px 0px 15px 15px;
+  /**border-radius: 0px 0px 15px 15px;
+  border-radius:  0px 0px 15px 15px;**/
+   /*** Shadow behind the box ***/
+   box-shadow: 0px -5px 10px #000;
+  -moz-box-shadow: 0px -5px 10px #000;
+  -webkit-box-shadow:0px -5px 10px #000;
+  /**box-shadow: 0px 0px 10px 10px #000;**/
+  /**box-shadow:0px 0px 10px 10px #000;**/
 }
 
 /*boton de logueo */
 div#buton{
-  margin-top: -57px;
+  margin-top: -10px;
   float: right;
 }
 
@@ -167,7 +234,42 @@ ul.navigation li a {
 }
 
 
-ul.navigation li a {
+ul.navigation li a {<h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+    <%= form_tag request.path, :method => 'get' do %>
+      <%= content_tag :label do %>
+        <%= text_field_tag :search, params[:search], :placeholder => "Nombre Aprendiz" %>
+        <%= submit_tag "Consultar", :nombres => nil, :apellidos => nil, :class => "btn btn-success" %>
+        
+      <% end %>
+    <% end %>
+    <p> N° de Resultados de la Busqueda: <%= "#{@asignacioncomites.count}" %> </p>
+
+  <br>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th><%= model_class.human_attribute_name(:id) %></th>
+        <th><%= model_class.human_attribute_name(:nombres) %></th>
+        <th><%= model_class.human_attribute_name(:apellidos) %></th>
+        <th><%= model_class.human_attribute_name(:programa) %></th>
+        <th><%= model_class.human_attribute_name(:ficha) %></th>
+        <th><%= model_class.human_attribute_name(:created_at) %></th>
+        <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @asignacioncomites %>
+    </tbody>
+  </table>
+
+  <%= link_to t('.new', :default => t("helpers.links.new")),new_asignacioncomite_path,:remote => true, :class => 'btn btn-primary' %>
+
+
+  <div align="center">
+    <%= will_paginate @asignacioncomites, :previous_label => '&laquo; Anterior', :next_label => 'Siguiente
+    &raquo;' %>
+  </div>
+
   display: block;
   margin-left: -85px;
   width: 100px;
@@ -255,4 +357,15 @@ box-shadow: 0px 1px 0px #3a3a3a;
  position: relative;
 
  
+}
+
+.borlink {
+    /*** Rounded Corners ***/
+border-radius: 0px 0px 15px 15px;
+-moz-border-radius: 0px 0px 15px 15px;
+-webkit-border-radius:  0px 0px 15px 15px;
+ /*** Shadow behind the box ***/
+ box-shadow: 0px -5px 9px #fff;
+-moz-box-shadow: 0px -5px 9px #fff;
+-webkit-box-shadow:0px -5px 9px #fff;
 }

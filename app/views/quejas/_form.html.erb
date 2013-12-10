@@ -16,7 +16,7 @@
             <%= f.input :apellidos %>
             
             <div class ="control-group">
-             <label class="control-label">ATopos Documentos</label>
+             <label class="control-label">Tipo Documento</label>
               <div class="controls" >
                 <%= f.collection_select :tipo_documento_id, TipoDocumento.all, :id, :descripcion, :prompt => "Seleccione" %>
               </div>

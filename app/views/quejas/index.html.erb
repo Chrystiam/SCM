@@ -1,31 +1,36 @@
-<%= javascript_include_tag "application.js" %>
 <%- model_class = Queja -%>
 
-<h1>Quejas</h1>
-
-<%= form_tag request.path, :method => 'get' do %>
-  <%= content_tag :label do %>
-    Nombres Aprendiz:
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Consultar", :nombres => nil %>
+<div class="buscador">
+  <h1 class="h1">Quejas</h1>
+  <%= form_tag request.path, :method => 'get' do %>
+    <%= content_tag :label do %>
+      Nombres Aprendiz:
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Consultar", :nombres => nil %>
+    <% end %>
   <% end %>
-<% end %>
+  <div id="regi">
+    <%= form_tag request.path, :method => 'get' do %>
+      <%= content_tag :label do %>
+        Numero Registros:
+        <%= text_field_tag :registro, params[:registro], :class =>'input-mini', :title => "ingresa el dato y preciona enter" %>
+       <% end %>
+    <% end %>
+  </div>  
 
-<%= form_tag request.path, :method => 'get' do %>
-  <%= content_tag :label do %>
-    Numero Registros:
-    <%= text_field_tag :registro, params[:registro], :class =>'input-mini', :title => "ingresa el dato y preciona enter" %>
-   <% end %>
-<% end %>
-
-<p>
-Total Quejas : <input type="text" id="totalregs" class="span1" value="<%= @estadoquejas.count %>" readonly /></h4>
-</p>
-
+  <p id="qest">
+  Quejas en Estado de Espera: <%= "#{@estadoquejas.count}" %>
+  </p>
+  
+  <p id="qrem"> 
+  Quejas Remitidas a Comite: <%=  "#{@estadoencomite.count}" %>
+  </p>
+</div>
+<br>
 <table class="table table-bordered table-condensed table-hover pretty">
   <thead>
     <tr>
-      <th><%= sortable "id", "Numero Queja"%></th>
+      <th><%= sortable "id", "N°Queja"%></th>
       <th><%= sortable "created_at", "Fecha"%></th>
       <th><%= sortable "nombres" %></th>
       <th><%= sortable "apellidos" %></th>
@@ -42,7 +47,7 @@ Total Quejas : <input type="text" id="totalregs" class="span1" value="<%= @estad
 </table>
 
 <%= link_to 'Nueva Queja', new_queja_path, :class => 'btn btn-primary', :remote => true %>
-<%= link_to image_tag("pdf_icon.gif"), quejas_path(:format => :pdf) %>
+<%= link_to image_tag("pdf_icon.gif"), quejas_path(:format => :pdf),:target => "_blank"  %>
 <div align="center">
   <%= will_paginate @quejas, :previous_label => '&laquo; Anterior', :next_label => 'Siguiente
   &raquo;' %>

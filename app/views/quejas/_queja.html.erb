@@ -8,9 +8,9 @@
   <td><%= queja.ficha %></td>
   <td><%= queja.falta.falta %></td>
   <td><% if queja.estado_id == 1 %>
-      <%= image_tag('espera.png', :title => 'en espera')  %>
+      <%= image_tag('espera.png', :title => 'en espera', :width => "50x30")  %>
     <% else  %>
-      <%= image_tag("comite.jpg",:title => 'en comite')%>
+      <%= image_tag("comite.jpg",:title => 'en comite', :width => "50x30")%>
     <% end %></td>
   
   <td>
