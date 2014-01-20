@@ -1,5 +1,7 @@
 class Asignacioncomite < ActiveRecord::Base
-    attr_accessible :apellidos, :ficha, :nombres, :programa, :fecha
+    attr_accessible :apellidos, :ficha, :nombres, :programa_id, :fecha, :estado_id
+    belongs_to :programa
+    belongs_to :estado
 
 
 	def self.splfecd(fecha)

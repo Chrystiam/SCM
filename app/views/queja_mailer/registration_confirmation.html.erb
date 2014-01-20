@@ -5,12 +5,22 @@
 			<title>SCQ - Sistema Centralizado de Quejas</title>
 	</head>
 	<body>
+
 		<p><%= image_tag attachments['logo-sena.png'].url -%></p>
-		<p>Se ha generado una queja sobre el aprendiz <h3><%= @queja.nombres %></h3> <h3><%= @queja.apellidos %></h3> </p>
+		<p>Se ha generado una queja sobre el aprendiz </p>
+		
+
+		<p>Respetado (a) aprendiz: <%= @queja.nombres  %> <%= @queja.apellidos %>
+
+			Teniendo en cuenta el informe de su proceso presentado por los instructores, donde se expresa que ha tenido dificultades en términos académicos y disciplinarios en su proceso de formación, se anexa copia de la comunicación y pruebas presentadas por los Instructores. 
+			Por lo anterior, usted debe presentarse  el dia de mañana en la oficina de Luz Albani  "Subdireccion",  Centro de Formacion en Diseño, Confrccion y Moda.
+		</p>
+
 		<p>Descripcion de la queja presentad</p>
 		<p><%= @queja.descripcion %></p>
-
-		<p>El aprendiz debe de presentarse el dia de mañana en la oficina de Luz Albani para la "Subdireccion  Centro de Formacion en Diseño, Confrccion y Moda</p>
-
+		
 	</body>
+	<footer>
+		<p>Mensaje enviodo por la aplicación  S.C.M  <%= image_tag attachments['scm.png'].url -%> </p>
+	</footer>
 </html>

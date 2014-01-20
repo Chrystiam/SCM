@@ -2,8 +2,9 @@
   <td><%= link_to asignacioncomite.id, edit_asignacioncomite_path(asignacioncomite), :remote => true %></td>
   <td><%= asignacioncomite.nombres %></td>
   <td><%= asignacioncomite.apellidos %></td>
-  <td><%= asignacioncomite.programa %></td>
+  <td><%= asignacioncomite.programa.abreviatura %></td>
   <td><%= asignacioncomite.ficha %></td>
+  <td><%= asignacioncomite.estado.nombre%></td>
   <td><%= asignacioncomite.created_at %></td>
   <td>
     <%= link_to 'Mostrar', asignacioncomite, :remote => true, :class => 'btn btn-mini ' %>
@@ -12,6 +13,9 @@
     <%= link_to 'Eliminar', asignacioncomite, 
         :data => { :confirm => 'Esta Seguro' },
         :method => :delete, :remote => true, :class => 'btn btn-mini btn-danger' %>
+        <% if asignacioncomite.estado_id == 4 %>
+          <%= link_to 'asignar a programacio', asignar_path(:id => asignacioncomite.id), :remote => true, :class => 'btn btn-warning btn btn-mini', :id => 'env'  %>
+      <% end %>
   </td>
 </tr>
 

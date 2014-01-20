@@ -6,7 +6,7 @@ class ComiteMailer < ActionMailer::Base
     	@datos = registros
     	@emails = []
     	@datos.each do |d|
-			@emails << d.nombre + "<" + d.email + ">"
+			@emails << "<" + d + ">"
     	end	
     	return @emails
     end	
@@ -18,8 +18,10 @@ class ComiteMailer < ActionMailer::Base
 
 
 	def usercomite_programacion(fcomite, comites, emails, asunto)
-		@comites = comites
+		@comites = comites.order("hora") 
 		@fcomite = fcomite
+		attachments.inline['logo-sena.png'] = File.read("#{Rails.root}/app/assets/images/logo-sena.png")
+        attachments.inline['scm.png'] = File.read("#{Rails.root}/app/assets/images/scm.png")
 		#@comite_emails = Usercomite.plunck(:email)
 		#@comite_emails << @queja.email
 		#@cc = "pcarmona@misena.edu.co"

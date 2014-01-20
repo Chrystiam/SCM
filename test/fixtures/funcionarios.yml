@@ -8,7 +8,6 @@ one:
   direccion: MyString
   telefono: MyString
   fch_nacimiento: 2013-06-13
-  : MyString
   cargo: MyString
 
 two:
@@ -19,5 +18,4 @@ two:
   direccion: MyString
   telefono: MyString
   fch_nacimiento: 2013-06-13
-  : MyString
   cargo: MyString

@@ -1,0 +1,31 @@
+<%= javascript_include_tag "fecha.js" %>
+<div class="responsive">
+    <div class="modal-body">  
+        <div class="control-group">
+            <div class="row" id ="lazyasho">
+	            <div class= "span6">
+		            <%= form_tag asignar_hora_path, :method => 'get' do %>
+					    <%= content_tag :label do %>
+						    <p>
+						        <label class="control-label">Fecha del Comite</label>
+					            <div class="controls" >
+					                <%= collection_select :fcomite_id, params[:fcomite_id], Fcomite.all, :id, :fecha, :prompt => "Seleccione", :id=>'efecto1' %>
+					                <% @id = params[:id] %>
+					                <input name="id" type="hidden" value="<%= @id %>">
+					            </div>
+					            
+
+					            <div class =" input-append bootstrap-timepicker offset3 ">
+					            	<label class="control-label">Hora de Citacion</label>
+					                <%= text_field_tag :hora, params[:hora],  :as => :string, :label => "hora", :class => "time_picker input-small", :id=>'efecto1'%>
+					                <span class="add-on">hora<i class="icon-time"></i></span>
+					            </div>  
+						    </p>
+					    <% end %>
+					    <%= submit_tag "Consultar",:class => "btn btn-success",   :id=>'efecto1' %>
+					<% end %>
+				</div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -4,42 +4,7 @@
 
   <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="$.lazybox.close()">x</button> 
 
-  <h3>Usuario Comite</h3>
-
-
-  <div class='row' id='colors'>
-    <div class='usercomite'>
-      <div class="span4">
-        <h3><%= @fcomite.fecha %></h3>
-        <h2><%= @fcomite.lugar %></h2>
-        <hr>
-        
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>Hora</th>
-                  <th>Nombre Aprendices</th>
-                  <th>Programa</th>
-                  <th>Ficha</th>
-                  <th>Miembros Comite</th>
-                </tr>
-              </thead>
-              <tbody>
-               
-                <tr>
-                  <% @comites.each do |comite| %>
-                  <td><%= comite.hora %></td>
-                  <td><%= comite.nombreapren %></td>
-                  <td><%= comite.programa.abreviatura %></td>
-                  <td><%= comite.ficha %></td>
-                  <% @usercomites = Usercomite.where(:comite_id => comite.id)%>
-                    <% @usercomites.each do |u| %>
-                     <td><%= u.nombre %></td>
-                    <% end %>
-                  <% end %>
-                </tr>
-              </tbody>
-            </table>
+  <h3>Usuario Comite</h3>  
       </div>
     </div>
   </div>

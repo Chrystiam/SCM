@@ -1,7 +1,7 @@
 <tr id=<%= "usercomite_#{usercomite.id}" %>>
   <td><%= usercomite.nombre %></td>
-  <td><%= usercomite.email %></td>
-  <td><%= usercomite.cargo.descripcion %></td>
+  <td><%= usercomite.emails %></td>
+  <td></td>
   
   <td>
     <%= link_to 'Mostrar', fcomite_comite_usercomite_path(@fcomite,@comite,usercomite), :remote => true, :class => 'btn btn-mini ' %>

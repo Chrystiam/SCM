@@ -1,0 +1,21 @@
+<div class="responsive">
+    <div class="modal-body">  
+        <div class="control-group">
+            <div class="row" id ="colors">
+	            <div class= "span6"> 
+	                 Para <%=  @user.nombre %>
+		            <form action="corregir"  method="get">
+		           		<textarea name="body" cols="30" rows="3" placeholder="Cuadro de descripcion "></textarea>
+		           		<input name="email" type="hidden" value="<%= @user.email %>">
+		           		<input name="queja" type="hidden" value="<%= @queja.id %>">
+
+		           		<input name="boton" type="submit" value="Enviar">
+		            </form>
+
+			    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

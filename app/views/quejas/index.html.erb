@@ -4,30 +4,36 @@
   <h1 class="h1">Quejas</h1>
   <%= form_tag request.path, :method => 'get' do %>
     <%= content_tag :label do %>
+      <p>
       Nombres Aprendiz:
-      <%= text_field_tag :search, params[:search] %>
-      <%= submit_tag "Consultar", :nombres => nil %>
+      <%= text_field_tag :search, params[:search], :id=>'efecto1' %>
+      <%= submit_tag "Consultar", :nombres => nil, :class=>"btn btn-info btn-mini", :id=>'efecto1'%>
+      </p>
     <% end %>
   <% end %>
   <div id="regi">
     <%= form_tag request.path, :method => 'get' do %>
       <%= content_tag :label do %>
         Numero Registros:
-        <%= text_field_tag :registro, params[:registro], :class =>'input-mini', :title => "ingresa el dato y preciona enter" %>
+        <%= text_field_tag :registro, params[:registro], :class =>'input-mini', :title => "ingresa el dato y preciona enter",:id=>'efecto1' %>
        <% end %>
     <% end %>
-  </div>  
-
-  <p id="qest">
-  Quejas en Estado de Espera: <%= "#{@estadoquejas.count}" %>
+  </div>
+  <p id="qest" >
+    Quejas en Estado de Espera: <%= @estadoquejas.count %>
   </p>
   
   <p id="qrem"> 
-  Quejas Remitidas a Comite: <%=  "#{@estadoencomite.count}" %>
+    Quejas Remitidas a Comite: <%=  "#{@estadoencomite.count}" %>
   </p>
+
+  <p id="qcorr">
+    Quejas en correccion: <%= "#{@quejacorreccion.count }"%>
+  </p>
+
 </div>
 <br>
-<table class="table table-bordered table-condensed table-hover pretty">
+<table  class="table table-bordered table-condensed table-hover pretty">
   <thead>
     <tr>
       <th><%= sortable "id", "N°Queja"%></th>
@@ -41,13 +47,13 @@
 		  <th>Acciones</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody >
     <%= render @quejas %>
   </tbody>
 </table>
 
 <%= link_to 'Nueva Queja', new_queja_path, :class => 'btn btn-primary', :remote => true %>
-<%= link_to image_tag("pdf_icon.gif"), quejas_path(:format => :pdf),:target => "_blank"  %>
+
 <div align="center">
   <%= will_paginate @quejas, :previous_label => '&laquo; Anterior', :next_label => 'Siguiente
   &raquo;' %>

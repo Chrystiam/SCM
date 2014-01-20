@@ -18,7 +18,7 @@ development:
   database: SCQ_development
   pool: 5
   username: postgres
-  password: 323921 
+  password: postgres 
   host: localhost
   port: 5432
 
@@ -45,7 +45,7 @@ test:
   database: SCQ_test
   pool: 5
   username: postgres
-  password: 323921 
+  password: postgres 
   host: localhost
   port: 5432
 
@@ -55,6 +55,6 @@ production:
   database: SCQ_production
   pool: 5
   username: postgres
-  password: 323921 
+  password: postgres 
   host: localhost
   port: 5432

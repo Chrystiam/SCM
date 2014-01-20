@@ -11,7 +11,13 @@ SCQ::Application.routes.draw do
   #get 'quejas/asigna', to: 'quejas#asigna'
   match "/asigna" => "quejas#asigna"
 
-  
+  match "/corregir" => "quejas#corregir"
+
+  match "/cuerpo_correo_correccion" => "quejas#cuerpo_correo_correccion"
+
+  match "/asignar_hora" => "asignacioncomites#asignar_hora"
+
+  match "/asignar" => "asignacioncomites#asignar"
 
   resources :asignacioncomites
 

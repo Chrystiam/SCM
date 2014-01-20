@@ -1,2 +1,3 @@
 $('tr#queja_<%= @queja.id %>').replaceWith("<%= escape_javascript(render @queja) %>")
 $.lazybox("<%= j(render 'asigna') %>", {klass: 'sticker', fixed: true, Close: false})
+

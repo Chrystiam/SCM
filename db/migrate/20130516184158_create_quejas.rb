@@ -14,9 +14,10 @@ class CreateQuejas < ActiveRecord::Migration
       t.references :falta
       t.text :testigos
       t.text :nombreinfor
-      t.references :cargo
+      t.string :cargo
       t.references :coordinador
       t.references :estado
+      t.integer :userid
 
 
 
@@ -27,7 +28,6 @@ class CreateQuejas < ActiveRecord::Migration
     add_index :quejas, :tipo_documento_id
     add_index :quejas, :programa_id
     add_index :quejas, :falta_id
-    add_index :quejas, :cargo_id
     add_index :quejas, :coordinador_id
   end
 end

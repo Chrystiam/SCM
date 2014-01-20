@@ -10,4 +10,36 @@ $(document).ready(function(){
 		"language":'es',
 		"autoclose":true
 	});
+	
+	$(function(){
+
+		
+		
+		
+			setTimeout(hola, 1000); 
+		
+
+	})
+
+	function hola(){
+
+		var si = $("#user").attr("data-usid")
+
+	     if (si == "coordinador") {
+	     	alert(si);
+	     };
+		    
+		
+	   
+			
+	}
+		
+	
+
+	/*
+	$('#env').click(function(){
+		$("#env").css('display','none');
+
+	});
+    */
 });

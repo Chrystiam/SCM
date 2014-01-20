@@ -1,36 +1,51 @@
 class QuejaMailer < ActionMailer::Base
-    default from: 'geraldinearenass@gmail.com'
+
+  default from: 'geraldinearenass@gmail.com'
+
 	def self.emails_with_names(registros,coor,usermail)
     	
-    	@datos = registros
-    	@emails = []
-    	
-			@emails << "<"+ @datos + ">" 
-            @emails << "<"+ coor +">"
-            @emails << "<"+ usermail +">"
-        return @emails
-    end	
+  	@datos = registros
+  	@emails = []
+  	
+		@emails << "<"+ @datos + ">" 
+          @emails << "<"+ coor +">"
+          @emails << "<"+ usermail +">"
+      return @emails
+  end	
     
 	def registration_confirmation(queja,asunto)
-    attachments.inline['logo-sena.png'] = File.read('/images/logo-sena.png')
-
+    attachments.inline['logo-sena.png'] = File.read("#{Rails.root}/app/assets/images/logo-sena.png")
+    attachments.inline['scm.png'] = File.read("#{Rails.root}/app/assets/images/scm.png")
 		@queja = queja
 		#attachments["logosena.jpg"] = File.read("#{Rails.root}/app/assets/images/logosena.jpg")
-		mail(:to => @queja.email, :subject => "asunto")
-   end
-   def registro_queja_coordinador(queja,email,asunto)
-      attachments.inline['logo-sena.png'] = File.read('/images/logo-sena.png')
+		mail(:to => @queja.email, :subject => asunto)
+  end
 
-      @queja = queja
-      #attachments["logosena.jpg"] = File.read("#{Rails.root}/app/assets/images/logosena.jpg")
-      mail(:to => email, :subject => "asunto")
-   end
-   def registro_queja_instructor(queja,email,asunto)
-      attachments.inline['logo'] = File.read('/images/logo-sena.png')
-      @queja = queja
-      #attachments["logosena.jpg"] = File.read("#{Rails.root}/app/assets/images/logosena.jpg")
-      mail(:to => email, :subject => "asunto")
-   end
+  def registro_queja_coordinador(queja,email,asunto)
+    attachments.inline['logo-sena.png'] = File.read("#{Rails.root}/app/assets/images/logo-sena.png")
+    attachments.inline['scm.png'] = File.read("#{Rails.root}/app/assets/images/scm.png")
+
+    @queja = queja
+    #attachments["logosena.jpg"] = File.read("#{Rails.root}/app/assets/images/logosena.jpg")
+    mail(:to => email, :subject => asunto)
+  end
+
+  def registro_queja_instructor(queja,email,asunto)
+    attachments.inline['logo-sena.png'] = File.read("#{Rails.root}/app/assets/images/logo-sena.png")
+    attachments.inline['scm.png'] = File.read("#{Rails.root}/app/assets/images/scm.png")
+    
+    @queja = queja
+    #attachments["logosena.jpg"] = File.read("#{Rails.root}/app/assets/images/logosena.jpg")
+    mail(:to => email, :subject => asunto)
+  end
+
+  def correcion_queja(bodyemail,queja,useremail,asunto)
+    @queja = queja
+    @body = bodyemail
+    attachments.inline['logo-sena.png'] = File.read("#{Rails.root}/app/assets/images/logo-sena.png")
+    attachments.inline['scm.png'] = File.read("#{Rails.root}/app/assets/images/scm.png")
+    mail(:to => useremail , :subjet => asunto)
+  end
 end
 
 

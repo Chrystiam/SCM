@@ -11,7 +11,13 @@ class Comite < ActiveRecord::Base
   #atributos
   attr_accessible :hora, :nombreapren,:programa_id, :ficha, :fcomite_id 
     #buscador
-    def self.search(search)
+  def self.search(search)
 		where('hora like ?', "%#{search}%",)
 	end
+
+  #metodo para recobrar los correos de los userrscomite 
+  def self.emails(emails)
+    @fcreacio = emails.split(",")
+    return  @fcreacio
+  end
 end

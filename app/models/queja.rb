@@ -3,7 +3,6 @@ class Queja < ActiveRecord::Base
   #referencia de la tablas tipo documentos,faltas,cargos,fichas,programas y centros
   belongs_to :tipo_documento
   belongs_to :falta
-  belongs_to :cargo
   belongs_to :programa
   belongs_to :centro
   belongs_to :coordinador
@@ -13,7 +12,7 @@ class Queja < ActiveRecord::Base
   #atributos
  
   attr_accessible :fechainforme, :nombres,:evidencia,:apellidos,:tipo_documento_id,:identificacion,:telefono, :estado_id
-  attr_accessible :email,:programa_id,:ficha,:descripcion,:falta_id,:testigos,:nombresinformante,:direccioninformante,:cargo_id,:coordinador_id
+  attr_accessible :email,:programa_id,:ficha,:descripcion,:falta_id,:testigos,:nombresinformante,:direccioninformante,:cargo,:coordinador_id
   attr_accessible :nombreinfor
       
        
@@ -38,4 +37,15 @@ class Queja < ActiveRecord::Base
 		where('nombres like ? or apellidos like ? ', "%#{search}%", "%#{search}%")
 	end
 
+  def self.indes(userid)
+    @quejauser = Queja.where(:userid => userid)
+  end
+  
+  #metodo para retornar el nombe de rol que tiene el usuario registrado
+  def self.has_role(userid)
+    @userid = UserRole.find(userid)
+    @userolname = Role.find(@userid.role_id)
+    @rolename = @userolname.name
+    return @rolename.downcase  
+  end
 end

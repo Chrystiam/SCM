@@ -1,26 +1,27 @@
 <%- model_class = Usercomite -%>
 
-<h1>usuarios comite</h1>
-
-<%= form_tag request.path, :method => 'get' do %>
-  <%= content_tag :label do %>
-    Nombre:
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Consultar", :nombre => nil %>
+<div class="buscador">
+  <h1 class="h1">usuarios comite</h1>
+  <%= form_tag request.path, :method => 'get' do %>
+    <%= content_tag :label do %>
+      Nombre:
+      <%= text_field_tag :search, params[:search],:id=>"efecto1" %>
+      <%= submit_tag "Consultar", :nombre => nil, :class => "btn btn-mini btn-success", :id=>"efecto1"%>
+    <% end %>
   <% end %>
-<% end %>
-
-<%= form_tag request.path, :method => 'get' do %>
-  <%= content_tag :label do %>
-    Numero Registros:
-    <%= text_field_tag :registro, params[:registro], :class =>'input-mini' %>
-   <% end %>
-<% end %>
-
-<p>
-Total Usuarios comite : <input type="text" id="totalregs" class="span1" value="<%= @usercomites.total_entries %>"readonly /></h4>
-</p>
-
+  <div id="regi">
+    <%= form_tag request.path, :method => 'get' do %>
+      <%= content_tag :label do %>
+        Numero Registros:
+        <%= text_field_tag :registro, params[:registro], :class =>'input-mini',:id=>"efecto1" %>
+       <% end %>
+    <% end %>
+  </div>
+  <p id="qest">
+  Total Usuarios comite : <input type="text" id="totalregs" class="span1" value="<%= @usercomites.total_entries %>"readonly /></h4>
+  </p>
+</div>
+<br>
 <table class="table table-bordered table-hover pretty">
   <thead>
     <tr>  
@@ -35,7 +36,8 @@ Total Usuarios comite : <input type="text" id="totalregs" class="span1" value="<
   </tbody>
 </table>
 <%= link_to 'Nuevo Usuario Comite', new_fcomite_comite_usercomite_path(@fcomite,@comite), :class => 'btn btn-primary', :remote => true %>
-<%= link_to image_tag("pdf_icon.gif"), fcomite_comite_usercomites_path(:format => :pdf), :id => "pdfc",:target => "_blank" %> 
+<!--<%= link_to image_tag("pdf_icon.gif"), fcomite_comite_usercomites_path(:format => :pdf), :id => "pdfc",:target => "_blank" %> -->
+
 <%= link_to "atras", fcomite_comites_path,:class => 'btn btn-primary' %>
 
 <div align="center">

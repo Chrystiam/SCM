@@ -13,7 +13,7 @@
 				<p class="text-info">Numero Queja </p>
 				<p><%= @queja.id %></p>
 				<p class="text-info">Fecha </p>
-				<p><%= @queja.created_at %></p>
+				<p><%= @queja.fechainforme %></p>
 				<p class="text-info">Nombres</p>
 				<p><%= @queja.nombres %></p>
 				<p class="text-info">Apellidos </p>
@@ -22,14 +22,18 @@
 	            <p><%= @queja.tipo_documento.descripcion %></p>
 	            <p class="text-info">Identificación </p>
 	            <p><%= @queja.identificacion %></p>
+	            <p class="text-info">Correo del Aprendiz</p>
+	            <p><%= @queja.email%></p>
 	            <p class="text-info">Telefono </p>
 	            <p><%= @queja.telefono %></p>
 	            <p class="text-info">Programa </p>
-	            <p><%= @queja.programa_id %></p>
+	            <p><%= @queja.programa.abreviatura %></p>
 	            <p class="text-info">Ficha </p>
 	            <p><%= @queja.ficha %></p>
 	            <p class="text-info">Descripción Falta</p>
 				<p><%= @queja.descripcion %></p>
+				<p class="text-info">Estado</p>
+				<p><%= @queja.estado.nombre %></p>
             </div>
 
             <div class="span2">
@@ -39,24 +43,14 @@
 
             <div class="span2">
             	<div class="row">
+            		<p class="text-info">Testigos</p>
+            		<p><%= @queja.testigos %></p>
+            		<p class="text-info">Nombre y Direccion de quien Informa </p>
+            		<p><%= @queja.nombreinfor%></p>
+            		<p class="text-info">Corgo Informante</p>
+            		<p><%= @queja.cargo %></p>
 					<p class="text-info">Falta </p>
 					<p><%= @queja.falta.descripcion %></p>
-					<p class="text-info">Testigos </p>
-		            <p><%= @queja.testigos %></p>
-		            <p class="text-info">Nombres Informante </p>
-		            <p><%= @queja.nombresinformante %></p>
-		            <p class="text-info">Apellidos Informante </p>
-		            <p><%= @queja.apellidosinformante %></p>
-		            <p class="text-info">Email Informante </p>
-		            <p><%= @queja.emailinfor %></p>
-		            <p class="text-info">Dirección Informante </p>
-		            <p><%= @queja.direccioninformante %></p>
-		            <p class="text-info">Cargo </p>
-		            <p><%= @queja.cargo.descripcion %></p>
-		            <p class="text-info">Descargos </p>
-		            <p><%= @queja.descargos %></p>
-		            <p class="text-info"> Estado Queja </p>
-		            <p><%= @queja.estado %></p>
 		            <p class="text-info">Evidencia </p>
 		            <p><br><strong><%= image_tag @queja.evidencia.url(:small) %></strong></p>  
 		            <!-- link para descargar las evidencias -->

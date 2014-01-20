@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   def create
    @user = User.new(params[:user])
    
-    render :root unless @user.save
+    render :inicio unless @user.save
     @users = User.all
   end
 

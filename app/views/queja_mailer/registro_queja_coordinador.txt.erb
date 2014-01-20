@@ -1,3 +1,8 @@
 <%= image_tag attachments['logo-sena.png'].url -%>
 
-hola coordinador
+Se ha generado una queja sobre el aprendiz <%= @queja.nombres %> <%= @queja.apellidos %> 
+
+Descripcion de la queja presentada
+<%= @queja.descripcion %>
+
+Mensaje enviodo por la aplicación  S.C.M <%= image_tag attachments['scm.png'].url -%>

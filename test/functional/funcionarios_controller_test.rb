@@ -18,7 +18,7 @@ class FuncionariosControllerTest < ActionController::TestCase
 
   test "should create funcionario" do
     assert_difference('Funcionario.count') do
-      post :create, funcionario: { : @funcionario., apellidos: @funcionario.apellidos, cargo: @funcionario.cargo, cedula: @funcionario.cedula, direccion: @funcionario.direccion, email: @funcionario.email, fch_nacimiento: @funcionario.fch_nacimiento, nombres: @funcionario.nombres, telefono: @funcionario.telefono }
+      post :create, funcionario: { apellidos: @funcionario.apellidos, cargo: @funcionario.cargo, cedula: @funcionario.cedula, direccion: @funcionario.direccion, email: @funcionario.email, fch_nacimiento: @funcionario.fch_nacimiento, nombres: @funcionario.nombres, telefono: @funcionario.telefono }
     end
 
     assert_redirected_to funcionario_path(assigns(:funcionario))
@@ -35,7 +35,7 @@ class FuncionariosControllerTest < ActionController::TestCase
   end
 
   test "should update funcionario" do
-    put :update, id: @funcionario, funcionario: { : @funcionario., apellidos: @funcionario.apellidos, cargo: @funcionario.cargo, cedula: @funcionario.cedula, direccion: @funcionario.direccion, email: @funcionario.email, fch_nacimiento: @funcionario.fch_nacimiento, nombres: @funcionario.nombres, telefono: @funcionario.telefono }
+    put :update, id: @funcionario, funcionario: { apellidos: @funcionario.apellidos, cargo: @funcionario.cargo, cedula: @funcionario.cedula, direccion: @funcionario.direccion, email: @funcionario.email, fch_nacimiento: @funcionario.fch_nacimiento, nombres: @funcionario.nombres, telefono: @funcionario.telefono }
     assert_redirected_to funcionario_path(assigns(:funcionario))
   end
 

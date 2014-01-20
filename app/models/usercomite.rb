@@ -5,7 +5,7 @@ class Usercomite < ActiveRecord::Base
     belongs_to :comite
 
     #atributos
-    attr_accessible :nombre, :email, :cargo_id, :comite_id
+    attr_accessible :nombre, :emails, :cargo_id, :comite_id
     
     #buscador
     def self.search(search)

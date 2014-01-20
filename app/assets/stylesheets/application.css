@@ -14,6 +14,12 @@
  *= require_tree .
  */
 
+#efecto1{
+  -webkit-box-shadow: 0 10px 6px -6px #777;
+  -moz-box-shadow: 0 10px 6px -6px #777;
+  box-shadow: 0 10px 6px -6px #777;
+}
+
 #regi{
   float: right;
   margin-top: -60px;
@@ -21,11 +27,16 @@
 }
 #qest{
   float: right;
-  margin-top: -60px;
+  margin-top: -70px;
  }
 #qrem{
   float: right;
-  margin-top: -30px;
+  margin-top: -40px;
+}
+
+#qcorr{
+  float: right;
+  margin-top: -25px;
 }
 
 #nr{
@@ -184,8 +195,16 @@ div#buton{
 
 
 /* color de las ventanas de lazybox*/
+#lazyasho{
+  background: #D8D8D8;
+   height: 250px; 
+   width: 450px;
+
+}
+
 #colors{
   background: #D8D8D8;
+
 }
 
 /* menu de los enlaces*/

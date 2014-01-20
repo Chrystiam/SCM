@@ -1,25 +1,28 @@
 <%- model_class = Comite -%>
-<h1>comites</h1>
 
-<%= form_tag request.path, :method => 'get' do %>
-  <%= content_tag :label do %>
-    Lugar:
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Consultar", :hora => nil %>
+<div class="buscador">
+  <h1 class="h1">comites</h1>
+  <%= form_tag request.path, :method => 'get' do %>
+    <%= content_tag :label do %>
+      Lugar:
+      <%= text_field_tag :search, params[:search], :id=>'efecto1'  %>
+      <%= submit_tag "Consultar", :hora => nil,:id=>'efecto1'  %>
+    <% end %>
   <% end %>
-<% end %>
+  <div id="regi">
+    <%= form_tag request.path, :method => 'get' do %>
+      <%= content_tag :label do %>
+        Numero Registros:
+        <%= text_field_tag :registro, params[:registro], :class =>'input-mini',:id=>'efecto1'  %>
+       <% end %>
+    <% end %>
+  </div>  
 
-<%= form_tag request.path, :method => 'get' do %>
-  <%= content_tag :label do %>
-    Numero Registros:
-    <%= text_field_tag :registro, params[:registro], :class =>'input-mini' %>
-   <% end %>
-<% end %>
-
-<p>
-Total comites : <input type="text" id="totalregs" class="span1" value="<%= @comites.total_entries %>"readonly /></h4>
-</p>
-
+  <p id="qest">
+  Total comites : <input type="text" id="totalregs" class="span1" value="<%= @comites.total_entries %>"readonly /></h4>
+  </p>
+</div>  
+<br>
 <table class="table table-bordered table-hover pretty">
   <thead>
     <tr>  

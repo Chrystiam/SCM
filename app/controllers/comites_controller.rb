@@ -51,15 +51,14 @@ class ComitesController < ApplicationController
   end
 
   def envio_email
-    #@comite = Comite.find(params[:comite_id])
     @fcomite = Fcomite.find((params[:fcomite_id]))
-    @comites = Comite.where(:fcomite_id => (params[:fcomite_id]))
-    @destinatarios = Usercomite.select("nombre,email")
-    @vec_destinatarios = ComiteMailer.emails_with_names(@destinatarios)
-    #@a = @fcomite.comites.all 
-    #@vec_destinatarios << UsercomiteMailer.add_destinatario(@usercomite)
+    @comitespdf = Comite.where(:fcomite_id => (params[:fcomite_id]))
+    @comite = Comite.find_by_fcomite_id(@fcomite.id)
+    @usercomite = Usercomite.find_by_comite_id(@comite.id)
+    @emailusercom = Comite.emails(@usercomite.emails)
+    @vec_destinatarios = ComiteMailer.emails_with_names(@emailusercom)
     #email
-    ComiteMailer.usercomite_programacion(@fcomite, @comites, @vec_destinatarios, "notificacion de la queja" ).deliver
+    ComiteMailer.usercomite_programacion(@fcomite, @comitespdf, @vec_destinatarios, "notificacion de la queja" ).deliver
   end
 
 

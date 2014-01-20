@@ -7,25 +7,33 @@
   <td><%= queja.programa.abreviatura %></td>
   <td><%= queja.ficha %></td>
   <td><%= queja.falta.falta %></td>
-  <td><% if queja.estado_id == 1 %>
-      <%= image_tag('espera.png', :title => 'en espera', :width => "50x30")  %>
-    <% else  %>
-      <%= image_tag("comite.jpg",:title => 'en comite', :width => "50x30")%>
-    <% end %></td>
-  
+
+  <td  id = "hola" data-id="<%= queja.estado_id%>">
+    <% if queja.estado_id == 1 %>
+      <%= image_tag('espera.png', :title => 'en espera', :width => "30x30") %>
+    <% elsif  queja.estado_id == 2 %>
+      <%= image_tag("comite.jpg",:title => 'en comite', :width => "30x30") %>
+    <% else %>
+      <%= image_tag("corregir.png", :title => 'en correccion', :width => "30x30") %> 
+    <% end %>
+  </td>
+
   <td>
     
     <%= link_to 'Mostrar', queja, :remote => true, :class => 'btn btn-mini btn-default' %>
-    <%= link_to 'Editar', edit_queja_path(queja), :remote => true,
-        :class => 'btn btn-mini btn-warning' %>
-    <%= link_to 'Eliminar', queja, 
-        :data => { :confirm => 'Esta Seguro?' },
-        :method => :delete, :remote => true, :class => 'btn btn-mini btn-danger' %>
-    <% if queja.estado_id == 1 %>
-      <%= link_to "enviar a comite", asigna_path(:id => queja.id), :remote => true, :class => 'btn btn-mini btn-primary' %>
-    <% end %>
 
+    <% if queja.estado_id == 3 && has_role == "instructor" %>
+      <%= link_to 'Editar', edit_queja_path(queja), :remote => true, :class => 'btn btn-mini btn-warning' %>
+    <% end %>
+    <%  if has_role == "admin" %>
+      <%= link_to 'Eliminar', queja, :data => { :confirm => 'Esta Seguro?' },
+          :method => :delete, :remote => true, :class => 'btn btn-mini btn-danger'%>
+    <% end %>
+    <%= link_to image_tag("pdf_icon.gif"), queja_path(queja, :format => "pdf"),:target => "_blank"  %>
+
+    <% if queja.estado_id == 1 && has_role == "coordinador" %>
+      <%= link_to "enviar a comite", asigna_path(:id => queja.id), :remote => true, :class => 'btn btn-mini btn-primary' %>
+      <%= link_to "Corregir", cuerpo_correo_correccion_path(:id => queja.id), :remote => true, :class => 'btn btn-mini btn-primary' %>
+    <% end %>
   </td>
 </tr>
-
-

@@ -8,24 +8,22 @@ class QuejasController < ApplicationController
     if ((@rxp) == 0) or ((@rxp) < 0) then
       @rxp = 1
     end
+
     #buscador
-    @quejas  = Queja.order(sort_column + " " + sort_direction).search(params[:search]).page(params[:page]).per_page(@rxp)
-    @estadoquejas = Queja.where(:estado_id => 1)
-    @estadoencomite =  Queja.where(:estado_id => 2)
+    if Queja.has_role(current_user.id) == "instructor"
+      @quejas  = Queja.indes(current_user.id).order(sort_column + " " + sort_direction).search(params[:search]).page(params[:page]).per_page(@rxp)
+      @estadoquejas = @quejas.where(:estado_id => 1)
+      @estadoencomite =  @quejas.where(:estado_id => 2)
+      @quejacorreccion =  @quejas.where(:estado_id => 3)
+    else
+
+      @quejas  = Queja.order(sort_column + " " + sort_direction).search(params[:search]).page(params[:page]).per_page(@rxp)
+      @estadoquejas = Queja.where(:estado_id => 1) 
+      @estadoencomite =  Queja.where(:estado_id => 2)
+      @quejacorreccion =  Queja.where(:estado_id => 3)
+    end
     #esta variable trae todos los registros para el pdf
     @a= Queja.all 
-    output = QuejaList.new(@a,view_context) # Aquí instancio el documento pdf
-    respond_to do |format|
-      format.pdf{
-        send_data output.render, :filename => "quejaList.pdf", :type => "application/pdf", 
-        :disposition => "inline" # este parámetro permite ver el documento pdf en linea.
-      }
-
-      format.html #{ render :text => "<h1>Use .pdf</h1>".html_safe }
-      format.docx
-      format.json { render json: @quejas }
-    end
-    
   end
 
   #metodo para descargar evidencia
@@ -37,6 +35,16 @@ class QuejasController < ApplicationController
 
   def show
     @queja = Queja.find(params[:id])
+    
+    if params[:format] == "pdf"
+      output = QuejaList.new(@queja,view_context) # Aquí instancio el documento pdf
+      respond_to do |format|
+        format.pdf{
+          send_data output.render, :filename => "quejaList.pdf", :type => "application/pdf", 
+          :disposition => "inline" # este parámetro permite ver el documento pdf en linea.
+        }
+      end
+    end
   end
 
   
@@ -48,7 +56,6 @@ class QuejasController < ApplicationController
 
  
   def edit
-   
     @queja = Queja.find(params[:id])
   end
 
@@ -63,27 +70,45 @@ class QuejasController < ApplicationController
   def create
     @queja = Queja.new(params[:queja])
     @queja.estado_id =  1
+    @queja.userid = current_user.id
+
    
     #render :action => :new unless @queja.save
     #QuejaMailer.registration_confirmation(@queja).deliver
 
     if @queja.save 
-
       envio_email
+      render fecha.js
     else
       render :action => :new unless @queja.save
     end  
-    @estadoquejas = Queja.where(:estado_id == 1)
-    @quejas = Queja.all
+    
   end
 
   def asigna
    
     @queja = Queja.find(params[:id])
-    Asignacioncomite.create(:nombres => @queja.nombres, :apellidos => @queja.apellidos, :programa => @queja.programa.descripcion, :ficha => @queja.ficha)
+    Asignacioncomite.create(:estado_id => 4, :nombres => @queja.nombres, :apellidos => @queja.apellidos, :programa_id => @queja.programa.id, :ficha => @queja.ficha)
     @queja.estado_id = 2
     @queja.save
 
+  end
+
+  def cuerpo_correo_correccion
+
+    @queja = Queja.find(params[:id])
+    @user = User.find(@queja.userid)
+    
+  end
+
+  def corregir
+    @queja = Queja.find(params[:queja])
+    @useremail = params[:email]
+    @bodyemail = params[:body]
+    QuejaMailer.correcion_queja(@bodyemail,@queja,@useremail,"Corrección de la queja presentada" ).deliver
+    @queja.estado_id = 3 
+    @queja.save
+    redirect_to quejas_path
   end
   
   #metodo para el select de programas
@@ -92,24 +117,18 @@ class QuejasController < ApplicationController
   #  @fichas = Ficha.where('programa_id=?', params[:programa_id])
   #  render :partial => "ficha", :object => @fichas
   #end
-  
   def update
     @queja = Queja.find(params[:id])
+    #render :action => :edit unless @queja.update_attributes(params[:queja])
     render :action => :edit unless @queja.update_attributes(params[:queja])
-    #if @queja.update_attributes(params[:queja])
-      #metodo de enviar correo
-     # envio_email  
-    #else
-     # render :action => :edit unless @queja.update_attributes(params[:queja])
-    #end  
+    @queja.estado_id =  1
+    @queja.save
   end
    
   
   def destroy
     @queja = Queja.find(params[:id])
     @queja.destroy
-     @estadoquejas = Queja.where(:estado_id == 1)
-    @quejas = Queja.all
   end
   
  
@@ -130,11 +149,10 @@ class QuejasController < ApplicationController
     #@vec_destinatarios = QuejaMailer.emails_with_names(@destiapren,@desticoor,current_user.email)
     #@vec_destinatarios << QuejaMailer.add_destinatario(@queja)
     #email
-    QuejaMailer.registration_confirmation(@queja, "Citación a Comité de Evaluación y Seguimiento" ).deliver
+    #QuejaMailer.registration_confirmation(@queja, "Citación a Comité de Evaluación y Seguimiento" ).deliver
     QuejaMailer.registro_queja_coordinador(@queja, @desticoor,"Notificación de Queja").deliver
     QuejaMailer.registro_queja_instructor(@queja,current_user.email, "Notificación de Queja" ).deliver
   end
 
 end
     
-#

@@ -31,12 +31,16 @@ ActiveRecord::Schema.define(:version => 201307012018430) do
   create_table "asignacioncomites", :force => true do |t|
     t.string   "nombres"
     t.string   "apellidos"
-    t.string   "programa"
+    t.integer  "programa_id"
     t.string   "ficha"
     t.string   "fecha"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "estado_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
+
+  add_index "asignacioncomites", ["estado_id"], :name => "index_asignacioncomites_on_estado_id"
+  add_index "asignacioncomites", ["programa_id"], :name => "index_asignacioncomites_on_programa_id"
 
   create_table "ayudas", :force => true do |t|
     t.string   "nombre"
@@ -166,9 +170,10 @@ ActiveRecord::Schema.define(:version => 201307012018430) do
     t.integer  "falta_id"
     t.text     "testigos"
     t.text     "nombreinfor"
-    t.integer  "cargo_id"
+    t.string   "cargo"
     t.integer  "coordinador_id"
     t.integer  "estado_id"
+    t.integer  "userid"
     t.datetime "created_at",             :null => false
     t.datetime "updated_at",             :null => false
     t.string   "evidencia_file_name"
@@ -177,7 +182,6 @@ ActiveRecord::Schema.define(:version => 201307012018430) do
     t.datetime "evidencia_updated_at"
   end
 
-  add_index "quejas", ["cargo_id"], :name => "index_quejas_on_cargo_id"
   add_index "quejas", ["coordinador_id"], :name => "index_quejas_on_coordinador_id"
   add_index "quejas", ["estado_id"], :name => "index_quejas_on_estado_id"
   add_index "quejas", ["falta_id"], :name => "index_quejas_on_falta_id"
