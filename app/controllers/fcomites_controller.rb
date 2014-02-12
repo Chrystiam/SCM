@@ -10,6 +10,7 @@ class FcomitesController < ApplicationController
 
   def new
     @fcomite = Fcomite.new
+    @aprendices = Asignacioncomite.all
   end
 
   def edit
@@ -18,9 +19,16 @@ class FcomitesController < ApplicationController
 
   def create
     @fcomite = Fcomite.new(params[:fcomite])
+    @comite = @fcomite.comites.build(params[:form])
     @fcomite.tipo = params[:tipo]
     render :action => :new unless @fcomite.save
     @fcomites = Fcomite.all
+  end
+
+  def update_aprendices
+
+    @aprendices = Asignacioncomite.where(:programa_id => params[:programa_id])
+    render :partial => "aprendices", :object => @aprendices
   end
 
   def update

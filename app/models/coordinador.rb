@@ -1,3 +1,6 @@
 class Coordinador < ActiveRecord::Base
-  attr_accessible :email, :nombre
+
+	belongs_to :centro
+	has_many :programas
+    attr_accessible :email, :nombre, :centro_id
 end

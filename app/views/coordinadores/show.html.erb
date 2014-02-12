@@ -12,11 +12,11 @@
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
-              coordinadores_path, :class => 'btn'  %>
+              centro_coordinadores_path(@centro), :class => 'btn'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_coordinador_path(@coordinador), :class => 'btn' %>
+              edit_centro_coordinador_path(@centro,coordinador), :class => 'btn' %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              coordinador_path(@coordinador),
+              centro_coordinador_path(@centro,coordinador),
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>

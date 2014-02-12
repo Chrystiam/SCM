@@ -10,23 +10,9 @@ class ActaList < Prawn::Document
      acta_details
   end
 
-  # 2- Método que reemplaza el constructor(initialize se elimina), pero implica que en el controller de la clase se invoque así:
-  #  output = actaList.new.to_pdf(@actas,view_context) -> es más larga esta forma.
-  # y también se debe cambiar el formato quitandole el método render así:
-  # format.pdf{
-  #      send_data output, :filename => "actaslist.pdf", :type => "application/pdf", :disposition => "inline"
-  #    }
-  def to_pdf(actas, view)
-    logo
-    @actas = actas
-    @vista = view
-    acta_details
-    render
-  end
-
   #Método para definir el logo con su ubicación así como el título del reporte  
   def logo
-    logopath =  "#{Rails.root}/app/assets/images/logo_sena.png"
+    logopath =  "#{Rails.root}/app/assets/images/senac.jpg"
     image logopath, :width => 50, :height => 64
     move_down 10
     draw_text "Listado de actas", :at => [150, 575], size: 22

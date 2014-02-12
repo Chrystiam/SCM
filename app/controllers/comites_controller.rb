@@ -14,22 +14,34 @@ class ComitesController < ApplicationController
     @comites  = @fcomite.comites.order(sort_column + " " + sort_direction).search(params[:search]).page(params[:page]).per_page(@rxp)
     #esta variable trae todos los registros para el pdf
     @a = @fcomite.comites.order("hora")
- 
     @fcomite = Fcomite.find(params[:fcomite_id])
     output = ComiteList.new(@a,@fcomite,view_context) # Aquí instancio el documento pdf
   
     respond_to do |format|
       format.pdf{
-       send_data output.render, :filename => "public/comiteList.pdf", :type => "application/pdf", 
+       send_data output.render, :filename => "programacion_comite.pdf", :type => "application/pdf", 
         :disposition => "inline" # este parámetro permite ver el documento pdf en linea.
       }
       format.html #{ render :text => "<h1>Use .pdf</h1>".html_safe }
       format.json { render json: @comites  }
     end
+
   end
   
 
   def show
+
+    @queja = Queja.find(@comite.quejaid)
+    if params[:format] == "pdf"
+      @fechaes, @año = Comite.fechaes
+      output = CitacionList.new(@queja,@comite,@fechaes,@año,view_context) # Aquí instancio el documento pdf
+      respond_to do |format|
+        format.pdf{
+          send_data output.render, :filename => "citacion.pdf", :type => "application/pdf", 
+          :disposition => "inline" # este parámetro permite ver el documento pdf en linea.
+        }
+      end
+    end
    
   end
 
@@ -51,14 +63,24 @@ class ComitesController < ApplicationController
   end
 
   def envio_email
+    #datos para envio de email a los iembross del  comite y variables para enexar el pdf a el email
     @fcomite = Fcomite.find((params[:fcomite_id]))
     @comitespdf = Comite.where(:fcomite_id => (params[:fcomite_id]))
     @comite = Comite.find_by_fcomite_id(@fcomite.id)
-    @usercomite = Usercomite.find_by_comite_id(@comite.id)
-    @emailusercom = Comite.emails(@usercomite.emails)
-    @vec_destinatarios = ComiteMailer.emails_with_names(@emailusercom)
-    #email
-    ComiteMailer.usercomite_programacion(@fcomite, @comitespdf, @vec_destinatarios, "notificacion de la queja" ).deliver
+    #email miembros comite
+    #ComiteMailer.usercomite_programacion(@fcomite, @comitespdf, @emailusercom, "notificacion de la queja" ).deliver
+
+    #variable para el envio de email con citacion a los aprendices que ya tienen programacion
+    @comitespdf.each do |detalle_comite|
+      quejaid =  detalle_comite.quejaid
+      @comitea = Comite.find_by_quejaid(quejaid)
+      @queja = Queja.find(quejaid)
+      ComiteMailer.citacion_aprendiz(@queja,@comitea,"Citacion Comite Evaluacion y Seguimiento").deliver
+
+      @usercomite = Usercomite.find_by_comite_id(@comite.id)
+      @emailusercom = Comite.emails(@usercomite.emails)
+      ComiteMailer.usercomite_programacion(@fcomite, @comitespdf, @emailusercom, "notificacion de la queja" ).deliver
+    end
   end
 
 
@@ -71,6 +93,16 @@ class ComitesController < ApplicationController
     @comite = Comite.find(params[:id])
     @comite.destroy
     @comites = Comite.all
+  end
+
+  def asignar_userc
+    @fcomite = Fcomite.find(params[:fcomite_id])
+    @comite_id = params[:comite_id]
+    @nombres = params[:nombres]
+    @emails = params[:emails]
+    Usercomite.create(:nombre => @nombres, :emails => @emails,:comite_id => @comite_id)
+    @comites = Comite.all
+    redirect_to fcomite_comites_path(@fcomite.id)
   end
   
   #ordenamiento

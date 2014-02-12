@@ -52,12 +52,7 @@
                   <%= f.collection_select :falta_id, Falta.all, :id, :falta, :prompt => "Seleccione" %>
                 </div>
               </div>
-              <div class ="control-group">
-                <label class="control-label" for="inputName">Coodinador Academico</label>
-                <div class="controls" >
-                  <%= f.collection_select  :coordinador_id, Coordinador.all,:id, :nombre,:order => 'nombre',:label => false, :required => true, :prompt => "Seleccione Coordinador",:input_html => {:class => 'span2' } %>
-                </div>
-              </div>
+             
               <div class ="control-group">
                 <%= f.label :testigos_o_pruebas_que_aporta %>
                 <div class="controls" >

@@ -22,7 +22,7 @@ class Queja < ActiveRecord::Base
   
   #paperclip
   has_attached_file :evidencia, :styles => { :small => "150x150>", :lsmall => "30x30>" },
-  :default_url => "logo-sena.png"
+  :default_url => "senac.jpg"
 
   
   

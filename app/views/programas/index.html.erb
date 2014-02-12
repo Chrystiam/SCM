@@ -35,8 +35,8 @@ Total Programas : <input type="text" id="totalregs" class="span1" value="<%= @pr
     <%= render @programas %>
   </tbody>
 </table>
-<%= link_to 'Nuevo Programa', new_centro_programa_path, :class => 'btn btn-primary', :remote => true %>
-<%= link_to 'Atras', centros_path,  :class => 'btn btn-default' %> 
+<%= link_to 'Nuevo Programa', new_centro_coordinador_programa_path(@centro,@coordinador), :class => 'btn btn-mini btn-primary', :remote => true %>
+<%= link_to 'Atras', centro_coordinadores_path,  :class => 'btn btn-mini' %> 
 
 <div align="center">
   <%= will_paginate @programas, :previous_label => '&laquo; Anterior', :next_label => 'Siguiente

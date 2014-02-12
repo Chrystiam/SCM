@@ -14,6 +14,10 @@
  *= require_tree .
  */
 
+ #lazybox div.userc{
+  max-width: 50000px; color: black; background-color: gray; border-radius: 10px; width: 700px; 
+ }
+
 #efecto1{
   -webkit-box-shadow: 0 10px 6px -6px #777;
   -moz-box-shadow: 0 10px 6px -6px #777;
@@ -66,8 +70,9 @@
   position: relative;
 }
 /* lazybox */
+#lazybox div.asignar_programacion  { width: 500px; border-radius: 0px;}
 #lazybox div.tipo_documento { max-width: 500px; }
-#lazybox div.centeruser { max-width: 500px; margin-top: 60px; border-radius: 0px; height: 290px; }
+#lazybox div.centeruser { max-width: 500px; border-radius: 0px; margin-top: 40px; }
 
 
 .lazybox {
@@ -253,41 +258,7 @@ ul.navigation li a {
 }
 
 
-ul.navigation li a {<h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
-    <%= form_tag request.path, :method => 'get' do %>
-      <%= content_tag :label do %>
-        <%= text_field_tag :search, params[:search], :placeholder => "Nombre Aprendiz" %>
-        <%= submit_tag "Consultar", :nombres => nil, :apellidos => nil, :class => "btn btn-success" %>
-        
-      <% end %>
-    <% end %>
-    <p> N° de Resultados de la Busqueda: <%= "#{@asignacioncomites.count}" %> </p>
-
-  <br>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th><%= model_class.human_attribute_name(:id) %></th>
-        <th><%= model_class.human_attribute_name(:nombres) %></th>
-        <th><%= model_class.human_attribute_name(:apellidos) %></th>
-        <th><%= model_class.human_attribute_name(:programa) %></th>
-        <th><%= model_class.human_attribute_name(:ficha) %></th>
-        <th><%= model_class.human_attribute_name(:created_at) %></th>
-        <th><%=t '.actions', :default => t("helpers.actions") %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <%= render @asignacioncomites %>
-    </tbody>
-  </table>
-
-  <%= link_to t('.new', :default => t("helpers.links.new")),new_asignacioncomite_path,:remote => true, :class => 'btn btn-primary' %>
-
-
-  <div align="center">
-    <%= will_paginate @asignacioncomites, :previous_label => '&laquo; Anterior', :next_label => 'Siguiente
-    &raquo;' %>
-  </div>
+ul.navigation li a {
 
   display: block;
   margin-left: -85px;
@@ -341,14 +312,6 @@ right: 900px;
 #registration fieldset {
   padding: 20px;
 }
-
-/*
-label {
-  -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
-  border-radius: 15px;
-  border:solid 1px #444;
-} */
 
 /*titulos  login */
 #registration h2 {

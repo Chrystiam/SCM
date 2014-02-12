@@ -4,13 +4,22 @@
 </div>
 
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:nombres) %>:</strong></dt>
-  <dd><%= @asignacioncomite.nombres %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:apellidos) %>:</strong></dt>
-  <dd><%= @asignacioncomite.apellidos %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:programa) %>:</strong></dt>
-  <dd><%= @asignacioncomite.programa %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:ficha) %>:</strong></dt>
-  <dd><%= @asignacioncomite.ficha %></dd>
+  <dt><strong>Nombre</strong></dt>
+  	<dd><%= @asignacioncomite.nombres %></dd>
+
+  <dt><strong>Apellido</strong></dt>
+  	<dd><%= @asignacioncomite.apellidos %></dd>
+
+  <dt><strong>Programa</strong></dt>
+  	<dd><%= @asignacioncomite.programa.abreviatura %></dd>
+
+  <dt><strong>Ficha</strong></dt>
+  	<dd><%= @asignacioncomite.ficha %></dd>
+
+  <dt><strong>Telefono</strong></dt>
+  	<dd><%= @queja.telefono %></dd>
+
+  <dt><strong>Numero de: <%= @queja.tipo_documento.sigla %> </strong></dt>
+  	<dd><%= @queja.identificacion %></dd>
 </dl>
 

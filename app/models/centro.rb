@@ -1,6 +1,6 @@
 class Centro < ActiveRecord::Base
     #referencia de la tabla programas
-	has_many :programas
+	has_many :coordinadores
     #atributos
     attr_accessible :abreviatura, :nombre
     #buscador

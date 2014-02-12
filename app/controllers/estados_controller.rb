@@ -1,6 +1,5 @@
 class EstadosController < ApplicationController
-  # GET /estados
-  # GET /estados.json
+
   def index
     @estados = Estado.all
 
@@ -10,8 +9,6 @@ class EstadosController < ApplicationController
     end
   end
 
-  # GET /estados/1
-  # GET /estados/1.json
   def show
     @estado = Estado.find(params[:id])
 
@@ -21,8 +18,6 @@ class EstadosController < ApplicationController
     end
   end
 
-  # GET /estados/new
-  # GET /estados/new.json
   def new
     @estado = Estado.new
 
@@ -32,13 +27,10 @@ class EstadosController < ApplicationController
     end
   end
 
-  # GET /estados/1/edit
   def edit
     @estado = Estado.find(params[:id])
   end
 
-  # POST /estados
-  # POST /estados.json
   def create
     @estado = Estado.new(params[:estado])
 
@@ -53,8 +45,6 @@ class EstadosController < ApplicationController
     end
   end
 
-  # PUT /estados/1
-  # PUT /estados/1.json
   def update
     @estado = Estado.find(params[:id])
 
@@ -69,8 +59,6 @@ class EstadosController < ApplicationController
     end
   end
 
-  # DELETE /estados/1
-  # DELETE /estados/1.json
   def destroy
     @estado = Estado.find(params[:id])
     @estado.destroy

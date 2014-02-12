@@ -4,7 +4,14 @@
   <td><%= asignacioncomite.apellidos %></td>
   <td><%= asignacioncomite.programa.abreviatura %></td>
   <td><%= asignacioncomite.ficha %></td>
-  <td><%= asignacioncomite.estado.nombre%></td>
+
+  <td>
+    <% if asignacioncomite.estado_id == 4 %>
+      <%= image_tag('espera.png', :title => 'en espera', :width => "30x30") %>
+    <% elsif  asignacioncomite.estado_id == 5 %>
+      <%= image_tag("comite.jpg",:title => 'en comite', :width => "30x30") %> 
+    <% end %>
+  </td>
   <td><%= asignacioncomite.created_at %></td>
   <td>
     <%= link_to 'Mostrar', asignacioncomite, :remote => true, :class => 'btn btn-mini ' %>
@@ -13,9 +20,7 @@
     <%= link_to 'Eliminar', asignacioncomite, 
         :data => { :confirm => 'Esta Seguro' },
         :method => :delete, :remote => true, :class => 'btn btn-mini btn-danger' %>
-        <% if asignacioncomite.estado_id == 4 %>
-          <%= link_to 'asignar a programacio', asignar_path(:id => asignacioncomite.id), :remote => true, :class => 'btn btn-warning btn btn-mini', :id => 'env'  %>
-      <% end %>
+    <%= link_to "Observacion", observaciones_path(:id => asignacioncomite.id), :remote => true, :class => 'btn btn-mini btn-info' %>
   </td>
 </tr>
 

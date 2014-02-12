@@ -1,0 +1,19 @@
+<div class="responsive asignar_programacion">
+    <div class="modal-body ">  
+      
+        <%= form_tag observacion_path, :method => 'get' do %>
+		    <%= content_tag :label do %>
+			    <p>
+		            <div>
+		            	<label class="control-label">Oservaciones Comunicacion con el Aprendiz</label>
+		                <%= text_area_tag :observaciones, params[:observaciones], rows: 8,  :id=>'efecto1'%>
+		            </div>   
+		        </p> 
+		        <% @idas = params[:id]%>
+		        <input name="id" type="hidden" value="<%= @idas %>">
+		    <% end %>
+		    <%= submit_tag "Consultar", :class => "btn btn-success",   :id=>'efecto1'  %>
+		<% end %>
+
+    </div>
+</div>

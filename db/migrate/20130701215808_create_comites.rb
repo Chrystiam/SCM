@@ -6,6 +6,8 @@ class CreateComites < ActiveRecord::Migration
       t.references :programa
       t.string :ficha
       t.references :fcomite
+      t.integer :asignacioncomiteid
+      t.integer :quejaid
       
       t.timestamps
     end

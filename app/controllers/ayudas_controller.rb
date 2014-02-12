@@ -1,6 +1,5 @@
 class AyudasController < ApplicationController
-  # GET /ayudas
-  # GET /ayudas.json
+
   def index
     @ayudas = Ayuda.all
 
@@ -44,6 +43,5 @@ class AyudasController < ApplicationController
   def destroy
     @ayuda = Ayuda.find(params[:id])
     @ayuda.destroy
-
   end
 end

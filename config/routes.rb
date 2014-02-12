@@ -1,23 +1,33 @@
 SCQ::Application.routes.draw do
 
-  
-
-
-  resources :roles
-
-  resources :estados
-
-
   #get 'quejas/asigna', to: 'quejas#asigna'
+
+  match "/userc" => "comites#userc"
+
+  match "/asignar_userc" => "comites#asignar_userc"
+
+  match "/envio_email" => "comites#envio_email"
+
+  match "/observaciones" => "asignacioncomites#observaciones"
+
+  match "/observacion" => "asignacioncomites#observacion"
+
   match "/asigna" => "quejas#asigna"
 
   match "/corregir" => "quejas#corregir"
 
   match "/cuerpo_correo_correccion" => "quejas#cuerpo_correo_correccion"
 
-  match "/asignar_hora" => "asignacioncomites#asignar_hora"
+  match "/crear_progra" => "asignacioncomites#crear_progra"
 
   match "/asignar" => "asignacioncomites#asignar"
+
+  get 'asignacioncomites/update_aprendices', to: 'asignacioncomites#update_aprendices'
+  #match "/fcomites" => "fcomites#update_aprendices"
+  
+  resources :roles
+
+  resources :estados
 
   resources :asignacioncomites
 
@@ -43,13 +53,11 @@ SCQ::Application.routes.draw do
 
   resources :usercomites
 
- match "/envio_email" => "comites#envio_email"
+ 
   
   resources :fcomites do
     resources :comites do
-        
-        resources :usercomites
-     
+      resources :usercomites
     end
   end
   resources :quejas
@@ -63,13 +71,13 @@ SCQ::Application.routes.draw do
   
   resources :fichas
 
-  resources :programas do
-    resources :fichas
-  end
+  resources :programas
   
 
   resources :centros do
-    resources :programas
+     resources :coordinadores do
+      resources :programas
+    end
   end
 
   resources :funcionarios

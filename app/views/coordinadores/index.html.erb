@@ -15,15 +15,17 @@
   <tbody>
     <% @coordinadores.each do |coordinador| %>
       <tr>
-        <td><%= link_to coordinador.id, coordinador_path(coordinador) %></td>
+        <td><%= link_to coordinador.id, centro_coordinador_path(@centro,coordinador) %></td>
         <td><%= coordinador.nombre %></td>
         <td><%= coordinador.email %></td>
         <td><%=l coordinador.created_at %></td>
+        <td><%= link_to 'Programas', centro_coordinador_programas_path(@centro,coordinador), :class => 'btn btn-mini btn-inverse' %>
+        </td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_coordinador_path(coordinador), :class => 'btn btn-mini' %>
+                      edit_centro_coordinador_path(@centro,coordinador), :class => 'btn btn-mini' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      coordinador_path(coordinador),
+                      centro_coordinador_path(@centro,coordinador),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-mini btn-danger' %>
@@ -34,5 +36,5 @@
 </table>
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
-            new_coordinador_path,
+            new_centro_coordinador_path(@centro),
             :class => 'btn btn-primary' %>

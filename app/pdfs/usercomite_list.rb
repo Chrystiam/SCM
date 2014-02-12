@@ -26,7 +26,7 @@ class UsercomiteList < Prawn::Document
 
   #Método para definir el logo con su ubicación así como el título del reporte  
   def logo
-    logopath =  "#{Rails.root}/app/assets/images/logosena.jpg"
+    logopath =  "#{Rails.root}/app/assets/images/senac.jpg"
     image logopath, :width => 80, :height => 90
     move_down 10
     draw_text "Listado de usuarios", :at => [150, 575], size: 22

@@ -4,14 +4,13 @@
   <td><%= programa.descripcion %></td>
   <td><%= programa.abreviatura %></td>
  
-  <td><%= programa.centro.abreviatura %></td>
+  <td><%= programa.coordinador.centro.abreviatura %></td>
   <td><%= programa.estado %></td>
-  <td><%= link_to 'Fichas', programa_fichas_path(programa), :class => 'btn btn-large btn-inverse' %></td>
   <td>
-    <%= link_to 'Mostrar', centro_programa_path(@centro,programa), :remote => true, :class => 'btn btn-mini btn-info' %>
-    <%= link_to 'Editar', edit_centro_programa_path(@centro,programa), :remote => true,
+    <%= link_to 'Mostrar', centro_coordinador_programa_path(@centro,@coordinador,programa), :remote => true, :class => 'btn btn-mini btn-info' %>
+    <%= link_to 'Editar', edit_centro_coordinador_programa_path(@centro,@coordinador,programa), :remote => true,
         :class => 'btn btn-mini btn-warning' %>
-    <%= link_to 'Eliminar', centro_programa_path(@centro,programa), 
+    <%= link_to 'Eliminar', centro_coordinador_programa_path(@centro,@coordinador,programa), 
         :data => { :confirm => 'Esta Seguro?' },
         :method => :delete, :remote => true, :class => 'btn btn-mini btn-danger' %>
   </td>

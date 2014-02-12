@@ -1,0 +1,31 @@
+<div class="userc">
+	<div class="responsive">
+		<div class="modal-body">
+
+			<h1>Ingresar los Usuarios para el comite</h1>
+
+			 <%= form_tag asignar_userc_path, :method => 'get' do %>
+			    <%= content_tag :label do %>
+				   
+			            <div class="span3">
+			            	<label class="control-label">Nombres Usuarios Comite</label>
+			                <%= text_area_tag :nombres, params[:nombres], rows: 8,  :id=>'efecto1'%>
+			            </div> 
+
+			            <div class="offset5">
+			              	<label class="control-label">Correos Usuarios Comite</label>
+				            <%= text_area_tag :emails, params[:emails], rows: 8,  :id=>'efecto1'%>
+				        </div>
+
+			        		<% @fcomite_id = params[:fcomite_id]%>
+					        <input name="fcomite_id" type="hidden" value="<%= @fcomite_id %>">
+					        <% @comite_id = params[:comite_id]%>
+					        <input name="comite_id" type="hidden" value="<%= @comite_id %>">
+				        
+			       
+			    <% end %>
+			    <%= submit_tag "Consultar", :class => "btn btn-success",   :id=>'efecto1'  %>
+			<% end %>
+		</div>
+	</div>
+</div>

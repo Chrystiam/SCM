@@ -1,8 +1,9 @@
 class CoordinadoresController < ApplicationController
-  # GET /coordinadores
-  # GET /coordinadores.json
+ 
+  before_filter  :find_centro_and_coordinador
+
   def index
-    @coordinadores = Coordinador.all
+    @coordinadores = @centro.coordinadores.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -10,19 +11,9 @@ class CoordinadoresController < ApplicationController
     end
   end
 
-  # GET /coordinadores/1
-  # GET /coordinadores/1.json
   def show
-    @coordinador = Coordinador.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @coordinador }
-    end
   end
 
-  # GET /coordinadores/new
-  # GET /coordinadores/new.json
   def new
     @coordinador = Coordinador.new
 
@@ -32,31 +23,19 @@ class CoordinadoresController < ApplicationController
     end
   end
 
-  # GET /coordinadores/1/edit
   def edit
-    @coordinador = Coordinador.find(params[:id])
   end
 
-  # POST /coordinadores
-  # POST /coordinadores.json
   def create
-    @coordinador = Coordinador.new(params[:coordinador])
+    @coordinador = @centro.coordinadores.build(params[:coordinador])
 
-    respond_to do |format|
-      if @coordinador.save
-        format.html { redirect_to @coordinador, notice: 'Coordinador was successfully created.' }
-        format.json { render json: @coordinador, status: :created, location: @coordinador }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @coordinador.errors, status: :unprocessable_entity }
-      end
-    end
+    
+    @coordinador.save
+    redirect_to centro_coordinadores_path
+       
   end
 
-  # PUT /coordinadores/1
-  # PUT /coordinadores/1.json
   def update
-    @coordinador = Coordinador.find(params[:id])
 
     respond_to do |format|
       if @coordinador.update_attributes(params[:coordinador])
@@ -69,15 +48,14 @@ class CoordinadoresController < ApplicationController
     end
   end
 
-  # DELETE /coordinadores/1
-  # DELETE /coordinadores/1.json
   def destroy
-    @coordinador = Coordinador.find(params[:id])
     @coordinador.destroy
+    redirect_to  centro_coordinadores_path 
+  end
 
-    respond_to do |format|
-      format.html { redirect_to coordinadores_url }
-      format.json { head :no_content }
-    end
+  private
+  def find_centro_and_coordinador
+    @centro = Centro.find(params[:centro_id])
+    @coordinador = Coordinador.find(params[:id]) if params[:id]
   end
 end

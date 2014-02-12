@@ -3,12 +3,10 @@ class CreateProgramas < ActiveRecord::Migration
     create_table :programas do |t|
       t.string :descripcion
       t.string :abreviatura
-      t.references :coordinadora
-      t.references :centro
-
+      t.references :coordinador
+      
       t.timestamps
     end
-    add_index :programas, :centro_id
-    add_index :programas, :coordinadora_id
+    add_index :programas, :coordinador_id
   end
 end

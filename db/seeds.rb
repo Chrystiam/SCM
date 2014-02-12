@@ -11,7 +11,7 @@ Centro.create([
 
 
 Coordinador.create([
-  { :nombre => "camilo", :email => "chrystiamgg@misena.edu.co", :created_at => "2013-12-09 21:18:38", :updated_at => "2013-12-09 21:18:38" }
+  { :nombre => "christiam Camilo Gomez", :email => "chrystiamgg@misena.edu.co", :created_at => "2013-12-09 21:18:38", :updated_at => "2013-12-09 21:18:38" }
 ], :without_protection => true )
 
 
@@ -36,7 +36,7 @@ Estado.create([
 ], :without_protection => true )
 
 Programa.create([
-  { :descripcion => "analisis y  de desarrollo  de sistemas de informacion", :abreviatura => "ADSI", :coordinadora_id => nil, :centro_id => 1, :created_at => "2013-12-02 19:02:14", :updated_at => "2013-12-02 19:02:14", :estado => true }
+  { :descripcion => "analisis y  de desarrollo  de sistemas de informacion", :abreviatura => "ADSI", :coordinador_id => 1, :centro_id => 1, :created_at => "2013-12-02 19:02:14", :updated_at => "2013-12-02 19:02:14", :estado => true }
 ], :without_protection => true )
 
 

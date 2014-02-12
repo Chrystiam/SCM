@@ -59,14 +59,6 @@ class QuejasController < ApplicationController
     @queja = Queja.find(params[:id])
   end
 
-  
-  #metodo para el select de centros
-  #def update_programas
-   # @programas = Programa.where('centro_id = ?', params[:centro_id])
-    #render :partial => "programas", :object => @programas
-  #end
-
-
   def create
     @queja = Queja.new(params[:queja])
     @queja.estado_id =  1
@@ -78,7 +70,6 @@ class QuejasController < ApplicationController
 
     if @queja.save 
       envio_email
-      render fecha.js
     else
       render :action => :new unless @queja.save
     end  
@@ -86,19 +77,15 @@ class QuejasController < ApplicationController
   end
 
   def asigna
-   
     @queja = Queja.find(params[:id])
-    Asignacioncomite.create(:estado_id => 4, :nombres => @queja.nombres, :apellidos => @queja.apellidos, :programa_id => @queja.programa.id, :ficha => @queja.ficha)
+    Asignacioncomite.create(:estado_id => 4, :nombres => @queja.nombres, :apellidos => @queja.apellidos, :programa_id => @queja.programa.id, :ficha => @queja.ficha, :quejaid => @queja.id)
     @queja.estado_id = 2
     @queja.save
-
   end
 
   def cuerpo_correo_correccion
-
     @queja = Queja.find(params[:id])
     @user = User.find(@queja.userid)
-    
   end
 
   def corregir
@@ -110,13 +97,7 @@ class QuejasController < ApplicationController
     @queja.save
     redirect_to quejas_path
   end
-  
-  #metodo para el select de programas
 
-  #def update_ficha
-  #  @fichas = Ficha.where('programa_id=?', params[:programa_id])
-  #  render :partial => "ficha", :object => @fichas
-  #end
   def update
     @queja = Queja.find(params[:id])
     #render :action => :edit unless @queja.update_attributes(params[:queja])
@@ -130,6 +111,16 @@ class QuejasController < ApplicationController
     @queja = Queja.find(params[:id])
     @queja.destroy
   end
+
+  
+
+  def envio_email
+    @desticoor = @queja.programa.coordinador.id
+    @coordinadorp = Coordinador.find(@desticoor)
+   
+    QuejaMailer.registro_queja_coordinador(@queja, @coordinadorp,"Notificación de Queja").deliver
+    QuejaMailer.registro_queja_instructor(@queja,current_user.email, "Notificación de Queja" ).deliver
+  end
   
  
   private
@@ -140,18 +131,6 @@ class QuejasController < ApplicationController
   
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
-  end
-
-  def envio_email
-
-    @destiapren = @queja.email
-    @desticoor = @queja.coordinador.email
-    #@vec_destinatarios = QuejaMailer.emails_with_names(@destiapren,@desticoor,current_user.email)
-    #@vec_destinatarios << QuejaMailer.add_destinatario(@queja)
-    #email
-    #QuejaMailer.registration_confirmation(@queja, "Citación a Comité de Evaluación y Seguimiento" ).deliver
-    QuejaMailer.registro_queja_coordinador(@queja, @desticoor,"Notificación de Queja").deliver
-    QuejaMailer.registro_queja_instructor(@queja,current_user.email, "Notificación de Queja" ).deliver
   end
 
 end

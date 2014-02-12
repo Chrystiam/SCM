@@ -7,10 +7,12 @@ class AsignacioncomitesController < ApplicationController
     else
       @searc = ""
     end  
+
   end
 
   def show
     @asignacioncomite = Asignacioncomite.find(params[:id])
+    @queja = Queja.find(@asignacioncomite.quejaid)
   end
 
   def new
@@ -27,38 +29,61 @@ class AsignacioncomitesController < ApplicationController
     render :action => :new unless @asignacioncomite.save
   end
 
+  def update_aprendices
 
-  def asignar_hora
+    @aprendices = Asignacioncomite.where(:programa_id => params[:programa_id], :estado_id => 4 )
+    @fcomiteid = params[:fcomite_id]
+    @fcomite = Fcomite.find(@fcomiteid)
+    @tiempo_caso = @fcomite.tiempo_caso
+
+    @comites = Comite.where(:fcomite_id => @fcomiteid)
+    if @comites.count == 0
+      @h = params[:hora]
+    else
+      @hora = @comites.last
+      @ho = Time.now.strftime("%Y/%m/%d #{@hora.hora}").to_time
+      tiempo_caso = @tiempo_caso.to_i * 60 
+      @ho = @ho + tiempo_caso
+      @h = @ho.strftime("%I:%M %p")
+    end
+    render :partial => "aprendices", :object => @aprendices
+  end
+
+  def crear_progra
+
+
+    @aprendices = Asignacioncomite.where(:programa_id => params[:programa_id])
+    @fcomiteid = params[:fcomite_id]
+    @programaid = params[:programa_id]
+    @hora = params[:horas]
+    @horas = @hora.split(",")
+    @ids = params[:ids].split(",").map {|s| s.to_i}
+     i=0
+    @aprendices.each do |aprendiz|
+
+      @nombreasig = Asignacioncomite.find(@ids[i])
+      Comite.create(:hora => @horas[i],:fcomite_id => @fcomiteid[0], :nombreapren => @nombreasig.nombres, :programa_id =>@programaid[0] , :ficha => @nombreasig.ficha, :asignacioncomite_id => @nombreasig.programa_id, :quejaid => @nombreasig.quejaid)   
+      @nombreasig.estado_id = 5
+      @nombreasig.save
+      i+=1
+    end
+    redirect_to asignacioncomites_path
+  end
+
+  def observacion
 
     @asignacioncomite = Asignacioncomite.find(params[:id])
-    @fcomiteid = params[:fcomite_id]
-    @hora = params[:hora]
-    @comites = Comite.all
-    if @comites.count == 0 then
-      Comite.create(:hora => @hora,:fcomite_id => @fcomiteid[0], :nombreapren => @asignacioncomite.nombres, :programa_id => @asignacioncomite.programa_id, :ficha => @asignacioncomite.ficha)   
-      @asignacioncomite.estado_id = 5
-      @asignacioncomite.save
+    @observacion = params[:observaciones]
+    @asignacioncomite.observaciones = @observacion
+    @asignacioncomite.save
 
-    else 
-      @comite = Comite.find_by_hora(@hora)  
-      if @comite 
-        if @comite.hora == @hora
-          @nombresal = "#{@comite.nombreapren}" + "#{@asignacioncomite.nombres}"
-          @comite.nombreapren = @nombresal
-          @comite.save
-          @asignacioncomite.estado_id = 5
-          @asignacioncomite.save
-        end
-      else
-        Comite.create(:hora => @hora,:fcomite_id => @fcomiteid[0], :nombreapren => @asignacioncomite.nombres, :programa_id => @asignacioncomite.programa_id, :ficha => @asignacioncomite.ficha)   
-        @asignacioncomite.estado_id = 5
-        @asignacioncomite.save
-      end  
-      
-    end
+    redirect_to asignacioncomites_path
+  end
 
-    redirect_to :asignacioncomites
-    
+
+  def asignar
+    @programas = Asignacioncomite.hash_programa
+    @aprendices = Queja.all
   end
 
   def update

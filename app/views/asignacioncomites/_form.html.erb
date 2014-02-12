@@ -1,11 +1,19 @@
+<%= javascript_include_tag "fecha.js" %>
 <%= simple_form_for(@asignacioncomite, :html => { :class => 'form-horizontal' }, :remote => true) do |f| %>
-  <%= f.input :nombres %>
-  <%= f.input :apellidos %>
-  <%= f.input :programa_id %>
-  <%= f.input :ficha %>
+  
+  <%= f.fields_for :comites do |builder| %>
+  <p>
+	<div class =" input-append bootstrap-timepicker offset3 ">
+		<label class="control-label">Hora de Citacion</label>
+		<%= builder.text_field :hora,  :as => :string, :label => "hora", :class => "time_picker input-small", :id=>'efecto1'%>
+		<span class="add-on" id="efecto1">hora<i class="icon-time"></i></span>
+	</div>  
+  </p>
+  <% end %>
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 asignacioncomites_path, :class => 'btn' %>
   </div>
+
 <% end %>

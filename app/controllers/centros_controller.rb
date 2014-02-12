@@ -31,7 +31,7 @@ class CentrosController < ApplicationController
   def create
     @centro = Centro.new(params[:centro])
     render :action => :new unless @centro.save
-    @centros = Cargo.all
+    @centros = Centro.all
   end
 
 

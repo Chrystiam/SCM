@@ -2,7 +2,7 @@ class CreateUsercomites < ActiveRecord::Migration
   def change
     create_table :usercomites do |t|
       t.string :nombre
-      t.string :email
+      t.text  :emails
       t.references :comite
       t.references :cargo
 

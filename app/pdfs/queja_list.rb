@@ -18,7 +18,7 @@ class QuejaList < Prawn::Document
 
   #Método para definir el logo con su ubicación así como el título del reporte  
   def logo
-    logopath =  "#{Rails.root}/app/assets/images/logo_sena.png"
+    logopath =  "#{Rails.root}/app/assets/images/senac.jpg"
     image logopath, :width => 50, :height => 64
     move_down 10
     draw_text "Listado de Quejas", :at => [150, 575], size: 22
@@ -35,7 +35,7 @@ class QuejaList < Prawn::Document
     bounding_box [0, cursor], :width => bounds.right, :height => 60 do
       
       text "CENTRO DE FORMACIÓN EN DISEÑO, CONFECCIÓN Y MODA\nFORMATO DE INFORME O QUEJA", :align => :center
-      image "#{Rails.root}/app/assets/images/logo_sena.png", :top => 43, :height => 50, :at => [0, bounds.top]
+      image "#{Rails.root}/app/assets/images/senac.jpg", :top => 43, :height => 50, :at => [0, bounds.top]
     end
     
   end

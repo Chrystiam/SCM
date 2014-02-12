@@ -1,4 +1,3 @@
-
 class ComiteList < Prawn::Document
 
   # 1- Método constructor de la clase comitelist 
@@ -13,7 +12,6 @@ class ComiteList < Prawn::Document
    draw_text "Lugar: #{@fcomite.lugar}", :at => [180, 590], size: 18
    draw_text "Fecha: #{@fcomite.fecha}", :at => [235, 563], size: 18
    comite_details
-
   end
 
   # 2- Método que reemplaza el constructor(initialize se elimina), pero implica que en el controller de la clase se invoque así:
@@ -27,7 +25,7 @@ class ComiteList < Prawn::Document
 
   #Método para definir el logo con su ubicación así como el título del reporte  
   def logo
-    logopath =  "#{Rails.root}/app/assets/images/logo_sena.png"
+    logopath =  "#{Rails.root}/app/assets/images/senac.jpg"
     image logopath, :width => 60, :height => 74
 
     logoscm = "#{Rails.root}/app/assets/images/scm.png"
@@ -44,8 +42,9 @@ class ComiteList < Prawn::Document
 
   #Método para almacenar y mostrar los registros del detalle de la orden
   def comite_item_rows
-    [[ "Hora","Nombre Aprendices", "Programa","Ficha","Miembros Comite"]] +
-     
+    
+    [[ "Hora","Nombre Aprendices", "Programa","Ficha","Miembros Comite","comentarios"]]+
+
     @comites.map do |comite|
       
 
@@ -55,8 +54,10 @@ class ComiteList < Prawn::Document
         "#{comite.programa.abreviatura} ",
         "#{comite.ficha} ",
 
-        @userscomites = userscomite(comite.id)
+        @userscomites = userscomite(comite.id),
+        "#{comite.asignacioncomite.observaciones}"
       ]
+
     end 
   end
 
@@ -66,19 +67,17 @@ class ComiteList < Prawn::Document
 
       @cadena = ""
       @usuarios.map do |uc|
-        @cadena += "#{uc.nombre}\n "
+        @cadena += "#{uc.nombre}"
       end
       return @cadena
   end 
   #Método que imprime la tabla de las ordenes que hay
   def comite_details
     move_down 80
-    table comite_item_rows, :width => 510 do
+    table comite_item_rows, :width =>  570 do
       row(0).font_style = :bold
-      columns(0..4).align = :left
       self.header = true
-      self.column_widths = {0 => 65, 1 => 130, 2 => 70, 3 => 65,4 => 180, 5=>180}
+      self.column_widths = {0 => 65, 1 => 130, 2 => 70, 3 => 65,4 => 130,5=>110}
     end
-    
   end
 end

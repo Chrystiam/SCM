@@ -2,7 +2,7 @@ class ProgramasController < ApplicationController
   
   helper_method :sort_column, :sort_direction
 
-  before_filter :find_centro_and_programa
+  before_filter :find_coordinador_and_programa
 
   def index
     #numero de registros por pagina
@@ -11,7 +11,7 @@ class ProgramasController < ApplicationController
       @rxp = 1
     end
     #buscador
-    @programas  = @centro.programas.order(sort_column + " " + sort_direction).search(params[:search]).page(params[:page]).per_page(@rxp)
+    @programas  = @coordinador.programas.order(sort_column + " " + sort_direction).search(params[:search]).page(params[:page]).per_page(@rxp)
     #@programas  = Programa.order(sort_column + " " + sort_direction).search(params[:search]).page(params[:page]).per_page(@rxp)
   end
 
@@ -32,7 +32,7 @@ class ProgramasController < ApplicationController
 
 
   def create
-    @programa = @centro.programas.build(params[:programa])
+    @programa = @coordinador.programas.build(params[:programa])
     render :action => :new unless @programa.save
     @programas = Programa.all
   end
@@ -60,8 +60,9 @@ class ProgramasController < ApplicationController
   end
 
   #metodo para el select de programa
-  def find_centro_and_programa
+  def find_coordinador_and_programa
     @centro = Centro.find(params[:centro_id])
+    @coordinador = Coordinador.find(params[:coordinador_id])
     @programa = Programa.find(params[:id]) if params[:id]
   end
 end
