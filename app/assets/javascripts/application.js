@@ -32,33 +32,14 @@ $(document).ready(function(){
   $.lazybox.settings = {cancelClass: "button green", submitClass: 'button red', closeImg: false, niceClose: false}
   $.rails.allowAction = $.lazybox.confirm;
 
-  
-  /* funcion para hacer aparecer y desaparecer el menu de los enlaces*/
-  $('.navigation a').stop().animate({'marginLeft':'-85px'},1000);
- 
-  $('.navigation > li').hover(
-    function () {
-     $('a',$(this)).stop().animate({'marginLeft':'-2px'},200);
-    },
-    function () {
-     $('a',$(this)).stop().animate({'marginLeft':'-85px'},200);
-    }
-  );
-
-  
-})
-
-
-
 });
-
-
 
 
 function remove_fields(link) {
   $(link).prev("input[type=hidden]").val(1);
   $(link).closest(".fields").hide();
 }
+
 function add_fields(link, association, content) {
   var new_id = new Date().getTime();
   var regexp = new RegExp("new_" + association, "g");
