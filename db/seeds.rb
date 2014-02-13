@@ -33,7 +33,7 @@ Falta.create([
 
 Fcomite.create([
   { :fecha => "2013-12-12", :lugar => "pasarela", :tipo => "Ordinario", :created_at => "2013-12-10 23:24:29", :updated_at => "2013-12-10 23:24:29" },
-  { :fecha => "2014-01-23", :lugar => "bcghfcgch", :tipo => "Extraordinario", :created_at => "2014-01-14 20:07:54", :updated_at => "2014-01-14 20:07:54" }
+  { :fecha => "2014-01-23", :lugar => "Salon empresarial", :tipo => "Extraordinario", :created_at => "2014-01-14 20:07:54", :updated_at => "2014-01-14 20:07:54" }
 ], :without_protection => true )
 
 
@@ -41,15 +41,6 @@ Programa.create([
   { :descripcion => "analisis y  de desarrollo  de sistemas de informacion", :abreviatura => "ADSI", :coordinador_id => 1, :created_at => "2013-12-03 00:02:14", :updated_at => "2013-12-03 00:02:14", :estado => true },
   { :descripcion => "Diseño de joyas ", :abreviatura => "DJ", :coordinador_id => 1, :created_at => "2014-02-13 02:04:42", :updated_at => "2014-02-13 02:04:42", :estado => true }
 ], :without_protection => true )
-
-
-
-Queja.create([
-  { :fechainforme => "2014-01-25", :nombres => "cristian", :apellidos => "jimenez", :tipo_documento_id => 1, :identificacion => "1232435", :telefono => "435346546", :email => "chrystiamgg@misena.edu.co", :programa_id => 1, :ficha => "323921", :descripcion => "kjhfjdshifhnjdsahfalkuskdyhfbdguaslskduej", :falta_id => 1, :testigos => "kjsdfhnkljsdnflkjsdbfjd", :nombreinfor => "jkghiiasljkdhf7uebfjdk", :cargo => "Instructor", :coordinador_id => 1, :estado_id => 3, :userid => 1, :created_at => "2014-01-09 21:06:31", :updated_at => "2014-01-13 19:12:23", :evidencia_file_name => "1B5.jpg", :evidencia_content_type => "image/jpeg", :evidencia_file_size => 87084, :evidencia_updated_at => "2014-01-09 21:06:29" },
-  { :fechainforme => "2014-01-29", :nombres => "kkjdsfhsdkjhfgjfdm", :apellidos => "kkjrhgrhgjk", :tipo_documento_id => 1, :identificacion => "mjdgdfbgjdf", :telefono => "3884758734", :email => "chrystiamgg@misena.edu.co", :programa_id => 1, :ficha => "323921", :descripcion => "dfhgerhgrrgjfd", :falta_id => 1, :testigos => "mndfbgjfbgjfdb", :nombreinfor => "bgjfdbfjgbdj", :cargo => "instructor", :coordinador_id => 1, :estado_id => 1, :userid => 1, :created_at => "2014-01-10 19:44:29", :updated_at => "2014-01-13 19:22:58", :evidencia_file_name => "1B5.jpg", :evidencia_content_type => "image/jpeg", :evidencia_file_size => 87084, :evidencia_updated_at => "2014-01-10 19:44:27" },
-  { :fechainforme => "2014-01-18", :nombres => "jose gregoria", :apellidos => "avila cerezo", :tipo_documento_id => 1, :identificacion => "2345677", :telefono => "354325465", :email => "chrystiamgg@misena.edu.co", :programa_id => 1, :ficha => "323921", :descripcion => "jhdfgjhsbfuergjh", :falta_id => 1, :testigos => "dnsmbfphola uarabe chan\r\n", :nombreinfor => "kskdufherugtuier", :cargo => "jdhgjgfdj", :coordinador_id => 1, :estado_id => 1, :userid => 2, :created_at => "2014-01-14 19:02:49", :updated_at => "2014-01-14 19:10:00", :evidencia_file_name => "1B5.jpg", :evidencia_content_type => "image/jpeg", :evidencia_file_size => 87084, :evidencia_updated_at => "2014-01-14 19:02:47" }
-], :without_protection => true )
-
 
 
 Role.create([

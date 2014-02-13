@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class ComiteList < Prawn::Document
 
   # 1- Método constructor de la clase comitelist 

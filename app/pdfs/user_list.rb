@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class UserList < Prawn::Document
 
   # 1- Método constructor de la clase userlist 

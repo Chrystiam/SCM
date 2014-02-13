@@ -4,6 +4,7 @@ class CreateFcomites < ActiveRecord::Migration
       t.string :fecha
       t.string :lugar
       t.string :tipo
+      t.string :tiempo_caso
      
 
       t.timestamps

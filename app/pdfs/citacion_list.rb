@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class CitacionList < Prawn::Document
 
 	def initialize(queja,comite,fecha,año,view)

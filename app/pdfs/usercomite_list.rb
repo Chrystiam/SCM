@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class UsercomiteList < Prawn::Document
 
   # 1- Método constructor de la clase usercomitelist 
