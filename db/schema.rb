@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(:version => 201307012018430) do
     t.string   "ficha"
     t.string   "fecha"
     t.integer  "estado_id"
+    t.integer  "quejaid"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -71,8 +72,10 @@ ActiveRecord::Schema.define(:version => 201307012018430) do
     t.integer  "programa_id"
     t.string   "ficha"
     t.integer  "fcomite_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer  "asignacioncomiteid"
+    t.integer  "quejaid"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
   add_index "comites", ["fcomite_id"], :name => "index_comites_on_fcomite_id"
@@ -81,9 +84,12 @@ ActiveRecord::Schema.define(:version => 201307012018430) do
   create_table "coordinadores", :force => true do |t|
     t.string   "nombre"
     t.string   "email"
+    t.integer  "centro_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "coordinadores", ["centro_id"], :name => "index_coordinadores_on_centro_id"
 
   create_table "estados", :force => true do |t|
     t.string   "nombre"
@@ -146,15 +152,13 @@ ActiveRecord::Schema.define(:version => 201307012018430) do
   create_table "programas", :force => true do |t|
     t.string   "descripcion"
     t.string   "abreviatura"
-    t.integer  "coordinadora_id"
-    t.integer  "centro_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.integer  "coordinador_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
     t.boolean  "estado"
   end
 
-  add_index "programas", ["centro_id"], :name => "index_programas_on_centro_id"
-  add_index "programas", ["coordinadora_id"], :name => "index_programas_on_coordinadora_id"
+  add_index "programas", ["coordinador_id"], :name => "index_programas_on_coordinador_id"
 
   create_table "quejas", :force => true do |t|
     t.string   "fechainforme"
@@ -210,7 +214,7 @@ ActiveRecord::Schema.define(:version => 201307012018430) do
 
   create_table "usercomites", :force => true do |t|
     t.string   "nombre"
-    t.string   "email"
+    t.text     "emails"
     t.integer  "comite_id"
     t.integer  "cargo_id"
     t.datetime "created_at", :null => false

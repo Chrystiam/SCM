@@ -1,23 +1,49 @@
 <ul class="nav nav-pills">
-    <!-- if user_signed_in? %>  -->
-   <% if current_user %>
-    <li><%= link_to image_tag('icono.gif' ), root_path, :title => "¿volver al inicio?" %></li> 
-    <li><%= link_to('Usuarios', users_path) %> </li>
-    <li class="borlink"><%= link_to('Quejas', quejas_path) %> </li>
-    <li><%= link_to('Comites', fcomites_path) %> </li>
-    <li><%= link_to('Actas', actas_path) %> </li>
-    <li><%= link_to('Ayuda', ayudas_path) %> </li>
-   <% else %> 
+
+  <% if current_user %>
+
+    <li>
+      <%= link_to image_tag('icono.gif' ), root_path, :title => "¿volver al inicio?" %>
+    </li> 
+
+    <li>
+      <%= link_to('Usuarios', users_path) %> 
+    </li>
+
+    <li class="borlink">
+      <%= link_to('Quejas', quejas_path) %> 
+    </li>
+
+    <li>
+      <%= link_to('Comites', fcomites_path) %> 
+    </li>
+
+    <li>
+      <%= link_to('Actas', actas_path) %> 
+    </li>
+
+    <li>
+      <%= link_to('Ayuda', ayudas_path) %> 
+    </li>
+
+    <li>
+      <%= link_to 'Admministracion', admin_path, :remote => true%>
+    </li>
+
+  <% else %> 
+  
     <li class="divider-vertical"></li>
+
     <li><a href="#"></a></li>
-    <li class="borlink"><%= link_to 'Regístrate!', signup_path, :remote => true %></li> 
-    <li><a href="#"></a></li>
-    <li class="borlink"><%= link_to 'Ingresar', login_path %></li>
-   <% end %>
-   <!-- else %> -->
+
+    <li class="borlink">
+      <%= link_to 'Regístrate!', signup_path, :remote => true %>
+    </li> 
    
+    <li><a href="#"></a></li>
 
-
-  <!-- end %> -->
-
+    <li class="borlink">
+      <%= link_to 'Ingresar', login_path %>
+    </li>
+  <% end %>
 </ul> 

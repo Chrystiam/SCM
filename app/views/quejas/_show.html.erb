@@ -1,66 +1,65 @@
 <%- model_class = Queja -%>
 
-<div class="modal-body">
-	
+<div class="quejashow">
+	<div class="modal-body">
+		<h3>Queja</h3>
+	   	<button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="$.lazybox.close()">h;</button>
+	   
+		<div class='row' id='colors'>
+			<div class='queja'>
+				<div class="span6">
+					<p class="text-info">Numero Queja </p>
+					<p><%= @queja.id %></p>
+					<p class="text-info">Fecha </p>
+					<p><%= @queja.fechainforme %></p>
+					<p class="text-info">Nombres</p>
+					<p><%= @queja.nombres %></p>
+					<p class="text-info">Apellidos </p>
+					<p><%= @queja.apellidos %></p>
+					<p class="text-info">Tipo Documento </p>
+		            <p><%= @queja.tipo_documento.descripcion %></p>
+		            <p class="text-info">Identificación </p>
+		            <p><%= @queja.identificacion %></p>
+		            <p class="text-info">Correo del Aprendiz</p>
+		            <p><%= @queja.email%></p>
+		            <p class="text-info">Telefono </p>
+		            <p><%= @queja.telefono %></p>
+		            <p class="text-info">Programa </p>
+		            <p><%= @queja.programa.abreviatura %></p>
+		            <p class="text-info">Ficha </p>
+		            <p><%= @queja.ficha %></p>
+		            <p class="text-info">Descripción Falta</p>
+					<p><%= @queja.descripcion %></p>
+					<p class="text-info">Estado</p>
+					<p><%= @queja.estado.nombre %></p>
+	            </div>
 
-	<!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="$.lazybox.close()">h;</button> -->
-    <h3>Queja</h3>
-   
-   
-	<div class='row' id='colors'>
-		<div class='queja'>
-			<div class="span6">
-				<p class="text-info">Numero Queja </p>
-				<p><%= @queja.id %></p>
-				<p class="text-info">Fecha </p>
-				<p><%= @queja.fechainforme %></p>
-				<p class="text-info">Nombres</p>
-				<p><%= @queja.nombres %></p>
-				<p class="text-info">Apellidos </p>
-				<p><%= @queja.apellidos %></p>
-				<p class="text-info">Tipo Documento </p>
-	            <p><%= @queja.tipo_documento.descripcion %></p>
-	            <p class="text-info">Identificación </p>
-	            <p><%= @queja.identificacion %></p>
-	            <p class="text-info">Correo del Aprendiz</p>
-	            <p><%= @queja.email%></p>
-	            <p class="text-info">Telefono </p>
-	            <p><%= @queja.telefono %></p>
-	            <p class="text-info">Programa </p>
-	            <p><%= @queja.programa.abreviatura %></p>
-	            <p class="text-info">Ficha </p>
-	            <p><%= @queja.ficha %></p>
-	            <p class="text-info">Descripción Falta</p>
-				<p><%= @queja.descripcion %></p>
-				<p class="text-info">Estado</p>
-				<p><%= @queja.estado.nombre %></p>
-            </div>
+	            <div class="span2">
+	            	<div class="row">
+			        </div>
+	            </div>
 
-            <div class="span2">
-            	<div class="row">
-		        </div>
-            </div>
-
-            <div class="span2">
-            	<div class="row">
-            		<p class="text-info">Testigos</p>
-            		<p><%= @queja.testigos %></p>
-            		<p class="text-info">Nombre y Direccion de quien Informa </p>
-            		<p><%= @queja.nombreinfor%></p>
-            		<p class="text-info">Corgo Informante</p>
-            		<p><%= @queja.cargo %></p>
-					<p class="text-info">Falta </p>
-					<p><%= @queja.falta.descripcion %></p>
-		            <p class="text-info">Evidencia </p>
-		            <p><br><strong><%= image_tag @queja.evidencia.url(:small) %></strong></p>  
-		            <!-- link para descargar las evidencias -->
-		            <p><%= link_to 'Descarga Evidencia', download_queja_path(@queja), :class => 'btn btn-info' %></p>
-		            <br><br>
-		            
-		            
-                </div>
-            </div>
-        </div>
-    </div>
+	            <div class="span2">
+	            	<div class="row">
+	            		<p class="text-info">Testigos</p>
+	            		<p><%= @queja.testigos %></p>
+	            		<p class="text-info">Nombre y Direccion de quien Informa </p>
+	            		<p><%= @queja.nombreinfor%></p>
+	            		<p class="text-info">Corgo Informante</p>
+	            		<p><%= @queja.cargo %></p>
+						<p class="text-info">Falta </p>
+						<p><%= @queja.falta.descripcion %></p>
+			            <p class="text-info">Evidencia </p>
+			            <p><br><strong><%= image_tag @queja.evidencia.url(:small) %></strong></p>  
+			            <!-- link para descargar las evidencias -->
+			            <p><%= link_to 'Descarga Evidencia', download_queja_path(@queja), :class => 'btn btn-info' %></p>
+			            <br><br>
+			            
+			            
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
 </div>
     

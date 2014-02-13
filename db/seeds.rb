@@ -3,62 +3,66 @@
 # Do not hesitate to tweak this to your needs
 
 
-
 Centro.create([
-  { :nombre => "Centro de Formacion en Diseño, Confeccion y Moda", :abreviatura => "CFDCM", :created_at => "2013-12-02 18:58:45", :updated_at => "2013-12-02 18:58:45" }
+  { :nombre => "Centro de Formacion en Diseño, Confeccion y Moda", :abreviatura => "CFDCM", :created_at => "2013-12-02 23:58:45", :updated_at => "2013-12-02 23:58:45" }
 ], :without_protection => true )
-
 
 
 Coordinador.create([
-  { :nombre => "christiam Camilo Gomez", :email => "chrystiamgg@misena.edu.co", :created_at => "2013-12-09 21:18:38", :updated_at => "2013-12-09 21:18:38" }
+  { :nombre => "christiam Camilo Gomez", :email => "chrystiamgg@misena.edu.co", :centro_id => 1, :created_at => "2013-12-10 02:18:38", :updated_at => "2013-12-10 02:18:38" }
 ], :without_protection => true )
 
 
+
+Estado.create([
+  { :nombre => "en espera ", :descripcion => "la queja fue creada y espera a ser enviada a comite ", :created_at => "2013-12-03 00:50:45", :updated_at => "2013-12-03 00:50:45" },
+  { :nombre => "remitido a comite", :descripcion => "la queja fue remitida a comite", :created_at => "2013-12-03 00:53:25", :updated_at => "2013-12-03 00:53:25" },
+  { :nombre => "corregir", :descripcion => "es devuelta al instructor para corregir  ", :created_at => "2014-01-09 21:14:28", :updated_at => "2014-01-09 21:14:28" },
+  { :nombre => "por asignar", :descripcion => "no se ha asignado  a una programacieón", :created_at => "2014-01-16 20:39:13", :updated_at => "2014-01-16 20:40:07" },
+  { :nombre => "en programación", :descripcion => "esta programado a un comité ", :created_at => "2014-01-16 20:44:23", :updated_at => "2014-01-16 20:44:23" }
+], :without_protection => true )
+
+
+
 Falta.create([
-  { :falta => "Academica", :descripcion => "no cumple con los trabajos", :created_at => "2013-12-02 18:46:54", :updated_at => "2013-12-02 18:46:54" },
-  { :falta => "Diciplinaria", :descripcion => "ofender a un instructor", :created_at => "2013-12-02 18:47:54", :updated_at => "2013-12-02 18:47:54" }
+  { :falta => "Academica", :descripcion => "no cumple con los trabajos", :created_at => "2013-12-02 23:46:54", :updated_at => "2013-12-02 23:46:54" },
+  { :falta => "Diciplinaria", :descripcion => "ofender a un instructor", :created_at => "2013-12-02 23:47:54", :updated_at => "2013-12-02 23:47:54" }
 ], :without_protection => true )
 
 
 
 Fcomite.create([
-  { :fecha => "2013-12-12", :lugar => "pasarela", :tipo => "Ordinario", :created_at => "2013-12-10 18:24:29", :updated_at => "2013-12-10 18:24:29" },
-  { :fecha => "2014-01-23", :lugar => "bcghfcgch", :tipo => "Extraordinario", :created_at => "2014-01-14 15:07:54", :updated_at => "2014-01-14 15:07:54" }
+  { :fecha => "2013-12-12", :lugar => "pasarela", :tipo => "Ordinario", :created_at => "2013-12-10 23:24:29", :updated_at => "2013-12-10 23:24:29" },
+  { :fecha => "2014-01-23", :lugar => "bcghfcgch", :tipo => "Extraordinario", :created_at => "2014-01-14 20:07:54", :updated_at => "2014-01-14 20:07:54" }
 ], :without_protection => true )
 
-Estado.create([
-  { :nombre => "en espera ", :descripcion => "la queja fue creada y espera a ser enviada a comite ", :created_at => "2013-12-02 19:50:45", :updated_at => "2013-12-02 19:50:45" },
-  { :nombre => "remitido a comite", :descripcion => "la queja fue remitida a comite", :created_at => "2013-12-02 19:53:25", :updated_at => "2013-12-02 19:53:25" },
-  { :nombre => "corregir", :descripcion => "es devuelta al instructor para corregir  ", :created_at => "2014-01-09 16:14:28", :updated_at => "2014-01-09 16:14:28" },
-  { :nombre => "por asignar", :descripcion => "no se ha asignado  a una programacieón", :created_at => "2014-01-16 15:39:13", :updated_at => "2014-01-16 15:40:07" },
-  { :nombre => "en programación", :descripcion => "esta programado a un comité ", :created_at => "2014-01-16 15:44:23", :updated_at => "2014-01-16 15:44:23" }
-], :without_protection => true )
 
 Programa.create([
-  { :descripcion => "analisis y  de desarrollo  de sistemas de informacion", :abreviatura => "ADSI", :coordinador_id => 1, :centro_id => 1, :created_at => "2013-12-02 19:02:14", :updated_at => "2013-12-02 19:02:14", :estado => true }
+  { :descripcion => "analisis y  de desarrollo  de sistemas de informacion", :abreviatura => "ADSI", :coordinador_id => 1, :created_at => "2013-12-03 00:02:14", :updated_at => "2013-12-03 00:02:14", :estado => true },
+  { :descripcion => "Diseño de joyas ", :abreviatura => "DJ", :coordinador_id => 1, :created_at => "2014-02-13 02:04:42", :updated_at => "2014-02-13 02:04:42", :estado => true }
 ], :without_protection => true )
 
 
 
 Queja.create([
-  { :fechainforme => "2014-01-25", :nombres => "cristian", :apellidos => "jimenez", :tipo_documento_id => 1, :identificacion => "1232435", :telefono => "435346546", :email => "chrystiamgg@misena.edu.co", :programa_id => 1, :ficha => "323921", :descripcion => "kjhfjdshifhnjdsahfalkuskdyhfbdguaslskduej", :falta_id => 1, :testigos => "kjsdfhnkljsdnflkjsdbfjd", :nombreinfor => "jkghiiasljkdhf7uebfjdk", :cargo => "Instructor", :coordinador_id => 1, :estado_id => 3, :created_at => "2014-01-09 16:06:31", :updated_at => "2014-01-13 14:12:23", :evidencia_file_name => "1B5.jpg", :evidencia_content_type => "image/jpeg", :evidencia_file_size => 87084, :evidencia_updated_at => "2014-01-09 16:06:29", :userid => 1 },
-  { :fechainforme => "2014-01-29", :nombres => "kkjdsfhsdkjhfgjfdm", :apellidos => "kkjrhgrhgjk", :tipo_documento_id => 1, :identificacion => "mjdgdfbgjdf", :telefono => "3884758734", :email => "chrystiamgg@misena.edu.co", :programa_id => 1, :ficha => "323921", :descripcion => "dfhgerhgrrgjfd", :falta_id => 1, :testigos => "mndfbgjfbgjfdb", :nombreinfor => "bgjfdbfjgbdj", :cargo => "instructor", :coordinador_id => 1, :estado_id => 1, :created_at => "2014-01-10 14:44:29", :updated_at => "2014-01-13 14:22:58", :evidencia_file_name => "1B5.jpg", :evidencia_content_type => "image/jpeg", :evidencia_file_size => 87084, :evidencia_updated_at => "2014-01-10 14:44:27", :userid => 1 },
-  { :fechainforme => "2014-01-18", :nombres => "jose gregoria", :apellidos => "avila cerezo", :tipo_documento_id => 1, :identificacion => "2345677", :telefono => "354325465", :email => "chrystiamgg@misena.edu.co", :programa_id => 1, :ficha => "323921", :descripcion => "jhdfgjhsbfuergjh", :falta_id => 1, :testigos => "dnsmbfphola uarabe chan\r\n", :nombreinfor => "kskdufherugtuier", :cargo => "jdhgjgfdj", :coordinador_id => 1, :estado_id => 1, :created_at => "2014-01-14 14:02:49", :updated_at => "2014-01-14 14:10:00", :evidencia_file_name => "1B5.jpg", :evidencia_content_type => "image/jpeg", :evidencia_file_size => 87084, :evidencia_updated_at => "2014-01-14 14:02:47", :userid => 2 }
+  { :fechainforme => "2014-01-25", :nombres => "cristian", :apellidos => "jimenez", :tipo_documento_id => 1, :identificacion => "1232435", :telefono => "435346546", :email => "chrystiamgg@misena.edu.co", :programa_id => 1, :ficha => "323921", :descripcion => "kjhfjdshifhnjdsahfalkuskdyhfbdguaslskduej", :falta_id => 1, :testigos => "kjsdfhnkljsdnflkjsdbfjd", :nombreinfor => "jkghiiasljkdhf7uebfjdk", :cargo => "Instructor", :coordinador_id => 1, :estado_id => 3, :userid => 1, :created_at => "2014-01-09 21:06:31", :updated_at => "2014-01-13 19:12:23", :evidencia_file_name => "1B5.jpg", :evidencia_content_type => "image/jpeg", :evidencia_file_size => 87084, :evidencia_updated_at => "2014-01-09 21:06:29" },
+  { :fechainforme => "2014-01-29", :nombres => "kkjdsfhsdkjhfgjfdm", :apellidos => "kkjrhgrhgjk", :tipo_documento_id => 1, :identificacion => "mjdgdfbgjdf", :telefono => "3884758734", :email => "chrystiamgg@misena.edu.co", :programa_id => 1, :ficha => "323921", :descripcion => "dfhgerhgrrgjfd", :falta_id => 1, :testigos => "mndfbgjfbgjfdb", :nombreinfor => "bgjfdbfjgbdj", :cargo => "instructor", :coordinador_id => 1, :estado_id => 1, :userid => 1, :created_at => "2014-01-10 19:44:29", :updated_at => "2014-01-13 19:22:58", :evidencia_file_name => "1B5.jpg", :evidencia_content_type => "image/jpeg", :evidencia_file_size => 87084, :evidencia_updated_at => "2014-01-10 19:44:27" },
+  { :fechainforme => "2014-01-18", :nombres => "jose gregoria", :apellidos => "avila cerezo", :tipo_documento_id => 1, :identificacion => "2345677", :telefono => "354325465", :email => "chrystiamgg@misena.edu.co", :programa_id => 1, :ficha => "323921", :descripcion => "jhdfgjhsbfuergjh", :falta_id => 1, :testigos => "dnsmbfphola uarabe chan\r\n", :nombreinfor => "kskdufherugtuier", :cargo => "jdhgjgfdj", :coordinador_id => 1, :estado_id => 1, :userid => 2, :created_at => "2014-01-14 19:02:49", :updated_at => "2014-01-14 19:10:00", :evidencia_file_name => "1B5.jpg", :evidencia_content_type => "image/jpeg", :evidencia_file_size => 87084, :evidencia_updated_at => "2014-01-14 19:02:47" }
 ], :without_protection => true )
 
 
 
 Role.create([
-  { :name => "Instructor", :created_at => "2014-01-13 14:32:25", :updated_at => "2014-01-13 14:32:25" },
-  { :name => "Admin", :created_at => "2014-01-09 15:51:46", :updated_at => "2014-01-09 15:51:46" },
-  { :name => "Coordinador", :created_at => "2014-01-13 19:37:23", :updated_at => "2014-01-13 19:37:23" }
+  { :name => "Instructor", :created_at => "2014-01-13 19:32:25", :updated_at => "2014-01-13 19:32:25" },
+  { :name => "Admin", :created_at => "2014-01-09 20:51:46", :updated_at => "2014-01-09 20:51:46" },
+  { :name => "Coordinador", :created_at => "2014-01-14 00:37:23", :updated_at => "2014-01-14 00:37:23" }
 ], :without_protection => true )
 
 
 
 TipoDocumento.create([
-  { :sigla => "CC", :descripcion => "Cédula de ciudadanía ", :created_at => "2014-01-09 16:02:14", :updated_at => "2014-01-09 16:02:14" }
+  { :sigla => "CC", :descripcion => "Cédula de ciudadanía ", :created_at => "2014-01-09 21:02:14", :updated_at => "2014-01-09 21:02:14" },
+  { :sigla => "TI", :descripcion => "Tarjeta de Identidad ", :created_at => "2014-02-13 02:05:50", :updated_at => "2014-02-13 02:05:50" }
 ], :without_protection => true )
 
 
@@ -76,7 +80,6 @@ UserRole.create([
   { :user_id => 2, :role_id => 2, :created_at => "2014-01-13 18:34:35", :updated_at => "2014-01-13 18:34:35" },
   { :user_id => 3, :role_id => 3, :created_at => "2014-01-13 19:39:19", :updated_at => "2014-01-13 19:39:19" }
 ])
-
 
 
 

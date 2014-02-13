@@ -13,6 +13,23 @@
  *= require bootstrap-timepicker
  *= require_tree .
  */
+ a {
+  color: #000;
+  &:visited {
+    
+  }
+  &:hover {
+    
+    /*** Rounded Corners ***/
+    border-radius: 0px 15px 15px 15px;
+    -webkit-border-radius:  0px 0px 15px 15px;
+   
+  }
+}
+
+ #lazybox div.admins{max-width: 50000px; color: black; border-radius: 10px; width: 740px;}
+
+ #lazybox div.quejashow{max-width: 50000px; color: black; margin-top: 40px;  border-radius: 10px; width: 700px;}
 
  #lazybox div.userc{
   max-width: 50000px; color: black; background-color: gray; border-radius: 10px; width: 700px; 

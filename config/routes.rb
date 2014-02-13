@@ -22,6 +22,8 @@ SCQ::Application.routes.draw do
 
   match "/asignar" => "asignacioncomites#asignar"
 
+
+
   get 'asignacioncomites/update_aprendices', to: 'asignacioncomites#update_aprendices'
   #match "/fcomites" => "fcomites#update_aprendices"
   
@@ -42,6 +44,8 @@ SCQ::Application.routes.draw do
   get "login" => "sessions#new", :as => "login"
   
   get "signup" => "users#new", :as => "signup"
+
+  get "admin" => "inicio#admin", :as => "admin"
 
   get "inicio/index"
 
