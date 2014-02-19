@@ -8,6 +8,7 @@ class CreateAsignacioncomites < ActiveRecord::Migration
       t.string :fecha
       t.references :estado
       t.integer :quejaid
+      t.text :observaciones
 
       t.timestamps
     end

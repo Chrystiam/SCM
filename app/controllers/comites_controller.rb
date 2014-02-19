@@ -64,9 +64,8 @@ class ComitesController < ApplicationController
 
   def envio_email
     #datos para envio de email a los iembross del  comite y variables para enexar el pdf a el email
-    @fcomite = Fcomite.find((params[:fcomite_id]))
-    @comitespdf = Comite.where(:fcomite_id => (params[:fcomite_id]))
-    @comite = Comite.find_by_fcomite_id(@fcomite.id)
+    @fcomite = Fcomite.find(params[:fcomite_id])
+    @comitespdf = Comite.where(:fcomite_id => params[:fcomite_id])
     #email miembros comite
     #ComiteMailer.usercomite_programacion(@fcomite, @comitespdf, @emailusercom, "notificacion de la queja" ).deliver
 
@@ -77,7 +76,7 @@ class ComitesController < ApplicationController
       @queja = Queja.find(quejaid)
       ComiteMailer.citacion_aprendiz(@queja,@comitea,"Citacion Comite Evaluacion y Seguimiento").deliver
 
-      @usercomite = Usercomite.find_by_comite_id(@comite.id)
+      @usercomite = Usercomite.find_by_comite_id(@comitea.id)
       @emailusercom = Comite.emails(@usercomite.emails)
       ComiteMailer.usercomite_programacion(@fcomite, @comitespdf, @emailusercom, "notificacion de la queja" ).deliver
     end

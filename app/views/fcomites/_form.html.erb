@@ -1,5 +1,5 @@
 <%= javascript_include_tag "fecha.js" %>   
-<%= simple_form_for(@fcomite, :html => { :class => 'form-horizontal' }, :remote => true) do |f| %>
+<%= simple_form_for(@fcomite, :html => { :class => 'form-horizontal' }) do |f| %>
   
   <%= f.input :fecha, :as => :string, :label => "fecha", :input_html => {  :class=>"datepicker" } %>
   <%= f.input :lugar %>

@@ -52,7 +52,7 @@ class AsignacioncomitesController < ApplicationController
   def crear_progra
 
 
-    @aprendices = Asignacioncomite.where(:programa_id => params[:programa_id])
+    @aprendices = Asignacioncomite.where(:programa_id => params[:programa_id], :estado_id => 4)
     @fcomiteid = params[:fcomite_id]
     @programaid = params[:programa_id]
     @hora = params[:horas]
@@ -60,12 +60,13 @@ class AsignacioncomitesController < ApplicationController
     @ids = params[:ids].split(",").map {|s| s.to_i}
      i=0
     @aprendices.each do |aprendiz|
-
-      @nombreasig = Asignacioncomite.find(@ids[i])
-      Comite.create(:hora => @horas[i],:fcomite_id => @fcomiteid[0], :nombreapren => @nombreasig.nombres, :programa_id =>@programaid[0] , :ficha => @nombreasig.ficha, :asignacioncomite_id => @nombreasig.programa_id, :quejaid => @nombreasig.quejaid)   
-      @nombreasig.estado_id = 5
-      @nombreasig.save
-      i+=1
+      if @ids[i] != 0
+        @nombreasig = Asignacioncomite.find(@ids[i])
+        Comite.create(:hora => @horas[i],:fcomite_id => @fcomiteid[0], :nombreapren => @nombreasig.nombres, :programa_id =>@programaid[0] , :ficha => @nombreasig.ficha,:asignacioncomite_id => @nombreasig.id, :quejaid => @nombreasig.quejaid)   
+        @nombreasig.estado_id = 5
+        @nombreasig.save
+        i+=1
+      end
     end
     redirect_to asignacioncomites_path
   end

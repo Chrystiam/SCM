@@ -36,8 +36,9 @@ ActiveRecord::Schema.define(:version => 201307012018430) do
     t.string   "fecha"
     t.integer  "estado_id"
     t.integer  "quejaid"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.text     "observaciones"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   add_index "asignacioncomites", ["estado_id"], :name => "index_asignacioncomites_on_estado_id"
@@ -72,10 +73,10 @@ ActiveRecord::Schema.define(:version => 201307012018430) do
     t.integer  "programa_id"
     t.string   "ficha"
     t.integer  "fcomite_id"
-    t.integer  "asignacioncomiteid"
+    t.integer  "asignacioncomite_id"
     t.integer  "quejaid"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
   end
 
   add_index "comites", ["fcomite_id"], :name => "index_comites_on_fcomite_id"
@@ -109,8 +110,9 @@ ActiveRecord::Schema.define(:version => 201307012018430) do
     t.string   "fecha"
     t.string   "lugar"
     t.string   "tipo"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "tiempo_caso"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "funcionarios", :force => true do |t|
