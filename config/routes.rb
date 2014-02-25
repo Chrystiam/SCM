@@ -18,13 +18,15 @@ SCQ::Application.routes.draw do
 
   match "/cuerpo_correo_correccion" => "quejas#cuerpo_correo_correccion"
 
-  match "/crear_progra" => "asignacioncomites#crear_progra"
+  match "/update_programa" => "asignacioncomites#update_programa"
 
   match "/asignar" => "asignacioncomites#asignar"
 
 
 
-  get 'asignacioncomites/update_aprendices', to: 'asignacioncomites#update_aprendices'
+  match "/update_aprendices" => "asignacioncomites#update_aprendices"
+
+  get "asignacioncomites/asignar_hora", to: "asignacioncomites#asignar_hora"
   #match "/fcomites" => "fcomites#update_aprendices"
   
   resources :roles

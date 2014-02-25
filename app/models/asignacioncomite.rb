@@ -16,28 +16,4 @@ class Asignacioncomite < ActiveRecord::Base
 		where('nombres like ? or apellidos like ? or fecha like ?', "%#{search}%", "%#{search}%","%#{search}%")
 	end
 
-	def self.hash_programa
-
-		@as = Asignacioncomite.where(:estado_id => 4)
-		@programas = []
-		i = 0
-		@as.each do |programa|
-
-			@programa = Programa.find(programa.programa_id)
-			id = @programa.id
-
-			if i != id
-			  @programas << @programa
-			  i = programa.programa_id
-			end
-		end
-		return @programas
-	end
-
-	def self.array_id(id)
-		@ids = []
-		@ids << id
-
-		return @ids 		
-	end
 end

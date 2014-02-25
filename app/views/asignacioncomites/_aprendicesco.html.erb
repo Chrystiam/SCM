@@ -1,0 +1,32 @@
+<%= javascript_include_tag "hora.js" %>
+<div id="divapren">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Nombre Aprendices</th>
+				<th>Hora Citacion</th>
+				 
+			</tr>
+		</thead>
+		<% @idasig = "" %>
+		<tbody>
+		    <% @aprendicesup.each do |aprendiz|%>
+		    	
+				<tr class="trap">
+					<td><%= aprendiz.nombres %></td> 
+				    <td> 
+			            <div class='input-append bootstrap-timepicker' style='display: inline;'>
+						  <input class='time_picker input-small hora' type='text'>
+						  <span class='add-on'>hora<i class='icon-time'></i></span>
+						</div> 
+					</td>
+					<% @idasig += "#{aprendiz.id}," %>
+				</tr>
+
+			<% end %>
+		</tbody>
+		<input name="fcomiteid" id="fcomiteid" type="hidden" value="<%= @fcomiteid %>">
+		<input name="ids" id="ids"type="hidden" value="<%= @idasig %>">
+	</table>
+	<p class="btn btn-mini btn-success" name="asignar" id="asignar">Asignar Horario</p>
+</div> 

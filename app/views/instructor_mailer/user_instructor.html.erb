@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+			<meta chartset="utf-8"/>
+			<title>SCQ - Sistema Centralizado de Quejas</title>
+	</head>
+	<body>
+
+		<p><%= image_tag attachments['logo-sena.png'].url -%></p>
+
+		<p>Respetado(a) instructor(a)  <%= @instructor.nombres %> <%= @instructor.apellidos %><br>
+
+            El comité de evaluación y seguimiento le  da la bienvenida al aplicativo SCM 
+        </p>
+		
+
+		<p>
+			S.C.M(Sistema Central de Monitoreo) va dirigido al área de comité evaluación y seguimiento con el ideal de mejorar el proceso que realiza, el cual esta basado en los capítulos VIII, IX y X del reglamento del aprendiz. <br>
+
+			El objetivo es sistematizar el proceso que actualmente se realiza al presentarse un informe sobre un aprendiz, agilizando la entrada y salida de información a los directos implicados de una manera rápida y transparente, almacenar de manera eficiente la información sobre los procesos para futuros estudios y de esta manera, ayudar a la resolución de los procesos con la mayor eficacia accediendo a la información de manera transparente y ágil. <br>
+
+			la asignación de su Username y Password fue de manera automática y debe ser editada lo antes posible. <br><br>
+
+
+			Username: <%= @instructor.cedula %>
+			<br><br>
+			Password: <%= @instructor.cedula %>
+		</p>
+		
+	</body>
+	<footer>
+		<p>Mensaje enviado automáticamente favor no responder <%= image_tag attachments['scm.png'].url -%> </p>
+	</footer>
+</html>

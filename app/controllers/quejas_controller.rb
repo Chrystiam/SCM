@@ -117,7 +117,7 @@ class QuejasController < ApplicationController
   def envio_email
     @desticoor = @queja.programa.coordinador.id
     @coordinadorp = Coordinador.find(@desticoor)
-   
+    
     QuejaMailer.registro_queja_coordinador(@queja, @coordinadorp,"Notificación de Queja").deliver
     QuejaMailer.registro_queja_instructor(@queja,current_user.email, "Notificación de Queja" ).deliver
   end

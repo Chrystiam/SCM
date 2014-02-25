@@ -35,8 +35,9 @@
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),new_asignacioncomite_path,:remote => true, :class => 'btn btn-primary btn-mini' %>
+
 <!--organizar el link de asignar a comite y hacer que pueda ingresar diferentes regostros-->
+
 <%= link_to 'asignar a programacio', asignar_path, :remote => true, :class => 'btn btn-warning btn btn-mini', :id => 'env'  %>
 <div align="center">
   <%= will_paginate @asignacioncomites, :previous_label => '&laquo; Anterior', :next_label => 'Siguiente

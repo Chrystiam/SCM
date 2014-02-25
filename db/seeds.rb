@@ -31,12 +31,6 @@ Falta.create([
 
 
 
-Fcomite.create([
-  { :fecha => "2013-12-12", :lugar => "pasarela", :tipo => "Ordinario", :created_at => "2013-12-10 23:24:29", :updated_at => "2013-12-10 23:24:29" },
-  { :fecha => "2014-01-23", :lugar => "Salon empresarial", :tipo => "Extraordinario", :created_at => "2014-01-14 20:07:54", :updated_at => "2014-01-14 20:07:54" }
-], :without_protection => true )
-
-
 Programa.create([
   { :descripcion => "analisis y  de desarrollo  de sistemas de informacion", :abreviatura => "ADSI", :coordinador_id => 1, :created_at => "2013-12-03 00:02:14", :updated_at => "2013-12-03 00:02:14", :estado => true },
   { :descripcion => "Diseño de joyas ", :abreviatura => "DJ", :coordinador_id => 1, :created_at => "2014-02-13 02:04:42", :updated_at => "2014-02-13 02:04:42", :estado => true }

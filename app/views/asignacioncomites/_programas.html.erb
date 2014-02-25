@@ -1,0 +1,12 @@
+<%= javascript_include_tag "programas.js" %>
+<div class="controls programacoor" id="programas">
+    <label class="control-label">Seleccione Programa</label>
+    
+    <%= collection_select(:asignacioncomite, :programa_id, @programas, :id, :abreviatura, :prompt => "Seleccione", :id=>'efecto1',:class => "programacoor") %>
+</div>
+
+
+
+<div id="divapren">
+	<%= render :partial => 'aprendicesco'%>
+</div>

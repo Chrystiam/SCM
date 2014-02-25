@@ -8,7 +8,7 @@ module ApplicationHelper
     end    
     #metodo que retorna el nombre del rol, para el user logueado y se ejecuta en la vista
     def has_role
-		@userid = UserRole.find(current_user.id)
+		@userid = UserRole.find_by_user_id(current_user.id)
 	    @userolname = Role.find(@userid.role_id)
 	    @rolename = @userolname.name
 	    return @rolename.downcase 

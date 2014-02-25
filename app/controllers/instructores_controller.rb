@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class InstructoresController < ApplicationController
 
   helper_method :sort_column, :sort_direction
@@ -30,7 +31,14 @@ class InstructoresController < ApplicationController
 
   def create
     @instructor = Instructor.new(params[:instructor])
-    render :action => :new unless @instructor.save
+
+      @user = User.create(:username =>  @instructor.cedula, :email => @instructor.email, :password =>  @instructor.cedula, :nombre =>  @instructor.nombres)
+      UserRole.create(:user_id => @user.id,:role_id => 1)
+      InstructorMailer.user_instructor(@instructor).deliver
+   
+      render :action => :new unless @instructor.save
+   
+   
     @instructores = Instructor.all
   end
 

@@ -9,7 +9,7 @@ class UsersController < ApplicationController
       @rxp = 1
     end
     #buscador
-    @users  = User.order(sort_column + " " + sort_direction).search(params[:search]).page(params[:page]).per_page(@rxp)
+    @users  = User.indexar(current_user.id).order(sort_column + " " + sort_direction).search(params[:search]).page(params[:page]).per_page(@rxp)
     
     #esta variable trae todos los registros para el pdf
     @a= User.all 

@@ -43,7 +43,7 @@ class Queja < ActiveRecord::Base
   
   #metodo para retornar el nombe de rol que tiene el usuario registrado
   def self.has_role(userid)
-    @userid = UserRole.find(userid)
+    @userid = UserRole.find_by_user_id(userid)
     @userolname = Role.find(@userid.role_id)
     @rolename = @userolname.name
     return @rolename.downcase  

@@ -30,43 +30,37 @@ class AsignacioncomitesController < ApplicationController
   end
 
   def update_aprendices
-
-    @aprendices = Asignacioncomite.where(:programa_id => params[:programa_id], :estado_id => 4 )
-    @fcomiteid = params[:fcomite_id]
-    @fcomite = Fcomite.find(@fcomiteid)
-    @tiempo_caso = @fcomite.tiempo_caso
-
-    @comites = Comite.where(:fcomite_id => @fcomiteid)
-    if @comites.count == 0
-      @h = params[:hora]
-    else
-      @hora = @comites.last
-      @ho = Time.now.strftime("%Y/%m/%d #{@hora.hora}").to_time
-      tiempo_caso = @tiempo_caso.to_i * 60 
-      @ho = @ho + tiempo_caso
-      @h = @ho.strftime("%I:%M %p")
-    end
-    render :partial => "aprendices", :object => @aprendices
+    @programas = Programa.all
+    @programaid = params[:programa_id]
+    @aprendicesup = Asignacioncomite.where(:programa_id => @programaid, :estado_id => 4 )
+    render :partial => "aprendicesco"
   end
 
-  def crear_progra
+  def update_programa
 
+    @aprendicesup = Queja.all
+    @coordinadorid = params[:coordinador_id]
+    @programas = Programa.where(:coordinador_id => @coordinadorid)
 
-    @aprendices = Asignacioncomite.where(:programa_id => params[:programa_id], :estado_id => 4)
+    render :partial => "programas"
+  end
+
+  def asignar_hora
+    @hora = params[:horas]
     @fcomiteid = params[:fcomite_id]
     @programaid = params[:programa_id]
-    @hora = params[:horas]
-    @horas = @hora.split(",")
     @ids = params[:ids].split(",").map {|s| s.to_i}
-     i=0
-    @aprendices.each do |aprendiz|
+    @horas = @hora.split(",")
+    i = 0
+    @horas.each do |hora|
       if @ids[i] != 0
         @nombreasig = Asignacioncomite.find(@ids[i])
-        Comite.create(:hora => @horas[i],:fcomite_id => @fcomiteid[0], :nombreapren => @nombreasig.nombres, :programa_id =>@programaid[0] , :ficha => @nombreasig.ficha,:asignacioncomite_id => @nombreasig.id, :quejaid => @nombreasig.quejaid)   
+        Comite.create(:hora => hora,:fcomite_id => @fcomiteid[0], :nombreapren => @nombreasig.nombres, :programa_id =>@programaid[0] , :ficha => @nombreasig.ficha,:asignacioncomite_id => @nombreasig.id, :quejaid => @nombreasig.quejaid)   
         @nombreasig.estado_id = 5
         @nombreasig.save
         i+=1
       end
+    
     end
     redirect_to asignacioncomites_path
   end
@@ -83,8 +77,8 @@ class AsignacioncomitesController < ApplicationController
 
 
   def asignar
-    @programas = Asignacioncomite.hash_programa
-    @aprendices = Queja.all
+    @programas = Programa.all
+    @aprendicesup = Queja.all
   end
 
   def update

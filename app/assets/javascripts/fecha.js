@@ -13,31 +13,30 @@ $(document).ready(function(){
 	});
 
 
-	$('#divapren').css('display','none');	
-	$('.programas').change(function(){
-		var programasele = $('.programas :selected').val();
-		var fcomitesele = $('.fcomite :selected').val();
-		var hora = $('.time_picker').val();
-		if (programasele != "") {
-			$('#divapren').css('display','block');
-			var apren = $('#aprendiz').text();
-			update_aprendices(programasele, hora, fcomitesele);
+		
+	$('#programas').css('display','none');
+	$('.coordinador').change(function(){
+		var coordinadorselec = $('.coordinador :selected').val();
+
+		if (coordinadorselec != "") {
+			$('#programas').css('display','block');
+			crear_progra(coordinadorselec)
 		}
 		else{
-			$('#divapren').css('display','none');
+			$('#programas').css('display','none');
 		}
 
-	    function  update_aprendices(programa_id,hora) {  
+		function  crear_progra(coordinador_id) {  
 	        $.ajax({
-	        url: "/asignacioncomites/update_aprendices",
+	        url: "/update_programa",
 	        type: "GET",
-	        data: ("programa_id=" +  programa_id + "&" + "hora=" + hora + "&"+ "fcomite_id=" + fcomitesele ),
+	        data: ("coordinador_id=" +  coordinador_id),
 	        dataType: "html",
 		        success: function(data) {
-		          jQuery('#divapren').html(data);
+		          jQuery('#programas').html(data);
 		        }
 		    });
         }
-	});
 
+	})
 });

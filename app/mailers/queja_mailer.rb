@@ -26,7 +26,7 @@ class QuejaMailer < ActionMailer::Base
     attachments.inline['scm.png'] = File.read("#{Rails.root}/app/assets/images/scm.png")
 
     @queja = queja
-    
+    @userqueja = User.find(@queja.userid)
     @coordinador = email
     mail(:to => email.email, :subject => asunto)
   end
@@ -36,7 +36,7 @@ class QuejaMailer < ActionMailer::Base
     attachments.inline['scm.png'] = File.read("#{Rails.root}/app/assets/images/scm.png")
     
     @queja = queja
-   
+    @userqueja = User.find(@queja.userid)
     mail(:to => email, :subject => asunto)
   end
 

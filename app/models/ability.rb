@@ -7,15 +7,9 @@ class Ability
     if user.has_role? :admin
       can :manage, :all
       elsif user.has_role? :coordinador
-        can [:create, :update, :show], :all
-      elsif user.has_role? :funcionario
-        can [:create, :update, :show], :all
+        can :manage, :all
       elsif user.has_role? :Instructor
         can  :manage, [Queja]
-      elsif user.has_role? :aprendiz
-        can :show, :all
-      else
-        can :show, :all
     end
   end
 end

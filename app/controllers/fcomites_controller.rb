@@ -22,6 +22,7 @@ class FcomitesController < ApplicationController
     @comite = @fcomite.comites.build(params[:form])
     @fcomite.tipo = params[:tipo]
     render :action => :new unless @fcomite.save
+    redirect_to fcomites_path
     @fcomites = Fcomite.all
   end
 

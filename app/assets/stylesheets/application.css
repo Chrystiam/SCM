@@ -27,13 +27,11 @@
   }
 }
 
- #lazybox div.admins{max-width: 50000px; color: black; border-radius: 10px; width: 740px;}
+ #lazybox div.admins{ max-width: 50000px; color: black; border-radius: 10px; width: 740px;}
 
  #lazybox div.quejashow{max-width: 50000px; color: black; margin-top: 40px;  border-radius: 10px; width: 700px;}
 
- #lazybox div.userc{
-  max-width: 50000px; color: black; background-color: gray; border-radius: 10px; width: 700px; 
- }
+
 
 #efecto1{
   -webkit-box-shadow: 0 10px 6px -6px #777;
@@ -92,45 +90,80 @@
 #lazybox div.centeruser { max-width: 500px; border-radius: 0px; margin-top: 40px; }
 
 
-.lazybox {
-  background: transparent !important;
+#lazybox {
+ background-color: black;
+ background-size: 120%;
+ border-radius: 50px; 
+ border: 1px solid #ccc;
+ box-shadow: 0 1px 5px #333;
+ display: none;
+ left: 49%;
+ padding: 20px;
+ position: absolute;
+ top: 49%;
+ color: black;
+ z-index: 1001;
+ &.confirm { max-width: 300px;  }
+ .lazy_buttons { margin-top: 15px; text-align: right;  }
+ img.lazy_img { display: block; }
+ #lazybox_body { position: relative;  }
 }
-
 #lazybox_close.img {
-  background: url('close.png') no-repeat;
-  width: 25px;
-  height: 25px;
-  top: -17px;
-  right: -17px;
-  
+ background: url('close.png') no-repeat;
+ width: 25px;
+ height: 25px;
+ top: -17px;
+ right: -17px;
 }
 
-#lazybox.sticker {
-  -webkit-border-bottom-left-radius: 20px 500px;
-  -webkit-border-bottom-right-radius: 500px 30px;
-  -webkit-border-top-right-radius: 5px 100px;
-  -moz-border-radius-bottomleft: 20px 500px;
-  -moz-border-radius-bottomright: 500px 30px;
-  -moz-border-radius-topright: 5px 100px;
-  border-radius-bottomleft: 20px 500px;
-  border-radius-bottomright: 500px 30px;
-  border-radius-topright: 5px 100px;
-  border-bottom-left-radius: 20px 500px;
-  border-bottom-right-radius: 500px 30px;
-  border-top-right-radius: 5px 100px;
-}
-
-#lazybox.top {
-  border-radius: 0px;
-  border-bottom-right-radius: 5px;
-  border-bottom-left-radius: 5px;
-  border: none;
+#lazybox.lazybox {
+ background: black;
+ padding: 0;
+ border: 5px solid #222;
+ color: white;
 }
 
 #lazybox.player {
-  background: transparent;
-  border: none;
-  box-shadow: none;
+ border: none;
+ background: #222;
+}
+
+#lazybox.confirm {
+ border-radius: 0;
+ border: 3px solid #222;
+ a#lazybox_close { display: none; }
+}
+
+#lazybox.custom {
+ border: 1px solid #0E0E0E;
+ a#lazybox_close {
+   color: cyan;
+   top: -10px;
+   right: 10px;
+   font: bold 54px/100% Arial, Helvetica, sans-serif;
+   &:hover { color: magenta; }
+ }
+}
+
+#lazybox.top {
+ border-top-right-radius: 0;
+ border-top-left-radius: 0;
+}
+
+
+#lazybox.sticker {
+-webkit-border-bottom-left-radius: 20px 500px;
+-webkit-border-bottom-right-radius: 500px 30px;
+-webkit-border-top-right-radius: 5px 100px;
+-moz-border-radius-bottomleft: 20px 500px;
+-moz-border-radius-bottomright: 500px 30px;
+-moz-border-radius-topright: 5px 100px;
+border-radius-bottomleft: 20px 500px;
+border-radius-bottomright: 500px 30px;
+border-radius-topright: 5px 100px;
+border-bottom-left-radius: 20px 500px;
+border-bottom-right-radius: 500px 30px;
+border-top-right-radius: 5px 100px;
 }
 
 
@@ -345,6 +378,10 @@ border-bottom: solid #181818 1px;
 -webkit-box-shadow: 0px 1px 0px #3a3a3a;
 box-shadow: 0px 1px 0px #3a3a3a;
 }
+
+
+#lazybox div.us{background-color: black;}
+
 
 #registerNew:hover { background-position: 0px -41px; }
 

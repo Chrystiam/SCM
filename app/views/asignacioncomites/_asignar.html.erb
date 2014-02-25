@@ -2,33 +2,23 @@
 <div class="responsive asignar_programacion">
     <div class="modal-body ">  
       
-        <%= form_tag crear_progra_path, :method => 'get' do %>
-		    <%= content_tag :label do %>
-			    <p>
-			        <label class="control-label">Fecha del Comite</label>
+      	<p>
+	        <label class="control-label">Fecha del Comite</label>
 
-		            <div class="controls fcomite" >
-		                <%= collection_select :fcomite_id, params[:fcomite_id], Fcomite.all, :id, :fecha, :prompt => "Seleccione", :id=>'efecto1', :class => "fcomite" %>
-		            </div>
+            <div class="controls fcomite" >
+                <%= collection_select :fcomite_id, params[:fcomite_id], Fcomite.all, :id, :fecha, :prompt => "Seleccione", :id=>'efecto1', :class => "fcomite" %>
+            </div>
 
-		            <div class =" input-append bootstrap-timepicker offset3 ">
-		            	<label class="control-label">Hora de Inicio</label>
-		                <%= text_field_tag :hora1, params[:hora1],  :as => :string, :label => "hora", :class => "time_picker input-small", :id=>'efecto1'%>
-		                <span class="add-on" id="efecto1">hora<i class="icon-time"></i></span>
-		            </div> 
+            <label class="control-label">Seleccione Coordinador</label>
 
-		            <label class="control-label">Seleccione Programa</label>
-		            <div class="controls programas" >
-		                <%= collection_select :programa_id, params[:programa_id], @programas, :id, :abreviatura, :prompt => "Seleccione", :id=>'efecto1', :class => "programas" %>
-		            </div>
-
-		            <div id="divapren">
-						<%= render :partial => 'aprendices', :object => @aprendices	 %>
-		            </div>
-		        </p> 
-		    <% end %>
-		    <%= submit_tag "Consultar", :class => "btn btn-success",   :id=>'efecto1'  %>
-		<% end %>
+            <div class="controls coordinador" >
+                <%= collection_select :coordinador_id, params[:coordinador_id], Coordinador.all, :id, :nombre, :prompt => "Seleccione coordinador", :id=>'efecto1', :class => "fcomite", :class => "coordinador" %>
+            </div>
+            
+            <div  id="programas">
+	            <%= render :partial => 'programas', :object => @programas %>
+            </div>
+        </p> 
 
     </div>
 </div>

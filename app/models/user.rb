@@ -21,5 +21,9 @@ class User < ActiveRecord::Base
   def self.search(search)
 		where('nombre like ?', "%#{search}%",)
 	end
+
+  def self.indexar(userid)
+    @quejauser = User.where(:id => userid)
+  end
   
 end
