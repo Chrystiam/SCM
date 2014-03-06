@@ -28,7 +28,7 @@ class QuejaMailer < ActionMailer::Base
     @queja = queja
     @userqueja = User.find(@queja.userid)
     @coordinador = email
-    mail(:to => email.email, :subject => asunto)
+    mail(:to => @coordinador.email, :subject => asunto)
   end
 
   def registro_queja_instructor(queja,email,asunto)

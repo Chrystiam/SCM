@@ -1,62 +1,49 @@
 <% javascript_include_tag "fecha.js" %>
 <%= simple_form_for(@acta, :html => { :class => 'form-horizontal' }, :remote => true) do |f| %>
-  
-  <%= javascript_include_tag "fecha.js" %>
+
   <%= f.error_notification %>
- 
+
   <div class="responsive">
     <div class="modal-body">  
       <div class="control-group">
-        <div class="row" id ="colors">
-          <div class= "span6"> 
+        <div class="row hero-unit" >
+          <div class= "span9"> 
             <center><h4></h4></center>
             <hr>
-            <%= f.input :ciudad %>
-            <%= f.label :fecha %>
-            <%= f.input :fecha, :as => :string, :label => false, :input_html => {  :class=>"datepicker" } %>
-            <div class ="control-group">
+            <div class ="control-group span4">
               <label class="control-label" for="inputName">Hora Inicio</label>
               <div class="controls" >
                 <div class =" input-append bootstrap-timepicker ">
-                  <%= f.input_field :hora_inicio, :class => "time_picker input-small"%>
+                  <%= f.input_field  :hora_inicio,:as => :string, :class => "time_picker input-small", :id=>'efecto1'%>
                   <span class="add-on"><i class="icon-time"></i></span>
                 </div>
               </div>
             </div>
-            <div class ="control-group">
+            <div class ="control-group span4">
               <label class="control-label" for="inputName">Hora de Finalizacion</label>
               <div class="controls" >
                 <div class =" input-append bootstrap-timepicker">
-                  <%= f.input_field :hora_terminacion, :as => :string, :class => "time_picker input-small"%>
+                  <%= f.input_field  :hora_terminacion, :as => :string, :class => "time_picker input-small", :id=>'efecto1'%>
                   <span class="add-on"><i class="icon-time"></i></span>
                 </div>
               </div>
             </div>
-           
-            <%= f.input :lugar %>
           </div>
-         
-              
-              
-          
           <center><h4></h4></center>
           <hr>
-          <div class ="span6">
-            <div class="row">
-              <%= f.input :tema %>
-              <%= f.input :objetivo_de_la_reunion %>
-              <br><br>
-              <%= f.label :desarrollo_reunion %>
-              <%= f.text_area(:desarrollo_reunion, :rows => 4) %>
-              <br><br>
-              <%= f.label :conclusiones %>
-              <%= f.text_area(:conclusiones, :rows => 4) %>
-              <br><br>
-              <%= f.input :firmas %>
-            </div>
+          <div class="span9">
+            <label class="control-label" for="inputName">objetivo</label>
+            <%= f.text_area :objetivo_de_la_reunion, :rows => 7, :class => "span11" %>
+          </div>
+          <div class="span9">
+            <label class="control-label" for="inputName">Desarrollo</label>
+            <%= f.text_area :desarrollo_reunion, :rows => 7, :class => "span11"%>
+          </div>
+          <div class="span9">
+            <label class="control-label" for="inputName">Concluciones</label>
+            <%= f.text_area :conclusiones, :rows => 7, :class => "span11" %>
           </div>
         </div>
-
         <div class= "span12">
           <div class="form-actions">
             <%= f.submit "Guardar", :class => 'btn btn-primary' %>

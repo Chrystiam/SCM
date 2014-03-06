@@ -6,7 +6,7 @@
   <%= content_tag :label do %>
     Ciudad:
     <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Consultar", :ciudad => nil %>
+    <%= submit_tag "Consultar", :fecha => nil %>
   <% end %>
 <% end %>
 
@@ -24,12 +24,12 @@ Total Actas : <input type="text" id="totalregs" class="span1" value="<%= @actas.
 <table class="table table-bordered table-hover pretty">
   <thead>
     <tr>  
-      <th><%= sortable "id" %></th>
-      <th><%= sortable "ciudad" %></th> 
+      <th><%= sortable "id" %></th> 
       <th><%= sortable "fecha" %></th>
       <th><%= sortable "hora_inicio" %></th> 
-      <th><%= sortable "hora_terminacion" %></th>
-      <th><%= sortable "lugar" %></th> 
+      <th><%= sortable "hora_terminacion" %></th> 
+      <th>Lugar</th>
+      <th>Nombre Aprendices</th>
       <th>Acciones</th>
     </tr>
   </thead>

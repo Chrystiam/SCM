@@ -11,23 +11,22 @@ class ActasController < ApplicationController
     
     #buscador
     @actas  = Acta.order(sort_column + " " + sort_direction).search(params[:search]).page(params[:page]).per_page(@rxp)
-    
-    #esta variable trae todos los registros para el pdf
-    @a= Acta.all 
-    output = ActaList.new(@a,view_context) # Aquí instancio el documento pdf
-    respond_to do |format|
-      format.pdf{
-        send_data output.render, :filename => "actaList.pdf", :type => "application/pdf", 
-        :disposition => "inline" # este parámetro permite ver el documento pdf en linea.
-      }
-      format.html #{ render :text => "<h1>Use .pdf</h1>".html_safe }
-      format.json { render json: @actas  }
-    end
+
   end
 
 
   def show
     @acta = Acta.find(params[:id])
+
+    if params[:format] == "pdf"
+      output = ActaList.new(@acta,view_context) # Aquí instancio el documento pdf
+      respond_to do |format|
+        format.pdf{
+          send_data output.render, :filename => "Acta.pdf", :type => "application/pdf", 
+          :disposition => "inline" # este parámetro permite ver el documento pdf en linea.
+        }
+      end
+    end
   end
 
   
@@ -59,11 +58,43 @@ class ActasController < ApplicationController
     @acta.destroy
     @actas = Acta.all
   end
+
+
+  def pdf_condicionamiento
+    @acta = Acta.find(params[:id])
+    @fechaes, @año = Comite.fechaes
+    @queja = Queja.find(params[:idq])
+    if params[:format] == "pdf"
+      output = Condicionamiento.new(@acta,@queja,@fechaes, @año,view_context) # Aquí instancio el documento pdf
+      respond_to do |format|
+        format.pdf{
+          send_data output.render, :filename => "Condicionamiento_de_matricula.pdf", :type => "application/pdf", 
+          :disposition => "inline" # este parámetro permite ver el documento pdf en linea.
+        }
+      end
+    end
+  end
+
+  def pdf_cancelacion
+      @acta = Acta.find(params[:id])
+      @configuracion = Configuracion.find(@acta.configuracion_id)
+      @fechaes, @año = Comite.fechaes
+      @queja = Queja.find(params[:idq])
+      output = Cancelacion.new(@acta,@configuracion,@queja,@fechaes, @año,view_context) # Aquí instancio el documento pdf
+      respond_to do |format|
+        format.pdf{
+          send_data output.render, :filename => "Cancelacion de matricula.pdf", :type => "application/pdf", 
+          :disposition => "inline" # este parámetro permite ver el documento pdf en linea.
+        }
+
+      end
+  end
+
   
   #ordenamiento
   private
   def sort_column
-    Acta.column_names.include?(params[:sort]) ? params[:sort] : "ciudad"
+    Acta.column_names.include?(params[:sort]) ? params[:sort] : "fecha"
   end
   
   def sort_direction

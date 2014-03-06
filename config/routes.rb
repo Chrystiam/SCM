@@ -1,5 +1,8 @@
 SCQ::Application.routes.draw do
 
+  resources :configuraciones
+
+
   #get 'quejas/asigna', to: 'quejas#asigna'
 
   match "/userc" => "comites#userc"
@@ -21,6 +24,14 @@ SCQ::Application.routes.draw do
   match "/update_programa" => "asignacioncomites#update_programa"
 
   match "/asignar" => "asignacioncomites#asignar"
+
+  match "/cracta" => "comites#cracta"
+
+  match  "/crear_acta" => "comites#crear_acta"
+
+  match  "/pdf_condicionamiento" => "actas#pdf_condicionamiento"
+
+  match "/pdf_cancelacion" => "actas#pdf_cancelacion"
 
 
 

@@ -1,10 +1,11 @@
 class Acta < ActiveRecord::Base
+	belongs_to :comite
+	has_many :configuraciones 
     #atributos 
-    attr_accessible :ciudad, :conclusiones, :desarrollo_reunion, :fecha, :firmas, :hora_inicio, :hora_terminacion, :lugar, :objetivo_de_la_reunion, :tema
+    attr_accessible :comite_id, :conclusiones, :desarrollo_reunion, :fecha, :hora_inicio, :hora_terminacion, :objetivo_de_la_reunion
     
     #buscador
     def self.search(search)
-		where('ciudad like ?', "%#{search}%",)
+		where('fecha like ?', "%#{search}%")
 	end
-
 end

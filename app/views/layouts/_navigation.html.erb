@@ -3,46 +3,47 @@
     <li>
       <%= link_to image_tag('user-home.png',height: '32', width: '32'), root_path, :title => "¿volver al inicio?" %>
     </li>
+  
+    <% if has_role == "instructor" or  has_role == "admin" or has_role == "coordinador" %>
+
+      <li>
+        <%= link_to('Usuarios', users_path) %> 
+      </li>
+
+      <li class="borlink">
+        <%= link_to('Quejas', quejas_path) %> 
+      </li>
+
+      <li>
+        <%= link_to('Comites', fcomites_path) %> 
+      </li>
+
+      <li>
+        <%= link_to('Ayuda', ayudas_path) %> 
+      </li>
+    <% end %>  
+    <% if  has_role == "admin" or has_role == "coordinador" %> 
+
+      <li>
+        <%= link_to('Actas', actas_path) %> 
+      </li>
+
+      <li>
+        <%= link_to 'Administracion', admin_path, :remote => true%>
+      </li>
+    <% end %>
   <% end %>
-  <% if current_user and has_role == "instructor"  %>
-
-    <li>
-      <%= link_to('Usuarios', users_path) %> 
-    </li>
-
-    <li class="borlink">
-      <%= link_to('Quejas', quejas_path) %> 
-    </li>
-
-    <li>
-      <%= link_to('Comites', fcomites_path) %> 
-    </li>
-
-    <li>
-      <%= link_to('Ayuda', ayudas_path) %> 
-    </li>
+    <% if !current_user %>
     
-  <% elsif current_user and has_role == "admin" %> 
+    
+      <li class="divider-vertical"></li>
 
-    <li>
-      <%= link_to('Actas', actas_path) %> 
-    </li>
+      <li><a href="#"></a></li>
+     
+      <li><a href="#"></a></li>
 
-    <li>
-      <%= link_to 'Administracion', admin_path, :remote => true%>
-    </li>
-
-  <% else %>
-  
-  
-    <li class="divider-vertical"></li>
-
-    <li><a href="#"></a></li>
-   
-    <li><a href="#"></a></li>
-
-    <li class="borlink">
-      <%= link_to 'Ingresar', login_path %>
-    </li>
-  <% end %>
+      <li class="borlink">
+        <%= link_to 'Ingresar', login_path %>
+      </li>
+    <% end %>
 </ul> 

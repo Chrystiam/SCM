@@ -62,7 +62,7 @@ class CitacionList < Prawn::Document
 
 	def citacion_footer
 
-		draw_text "SENA 'Mas Trbajo'", :at => [225, 140], size: 12
+		draw_text "SENA", :at => [250, 140], size: 12
 		draw_text "Ministerio de trabajo", :at => [225, 100], size: 10
 		draw_text "Servicio Nacional De Aprendizaje", :at => [190, 89], size: 11, :style => :bold
 		draw_text "Regional Antioquia", :at => [220, 78], size: 11, :style => :bold

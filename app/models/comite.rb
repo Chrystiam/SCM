@@ -1,6 +1,7 @@
 class Comite < ActiveRecord::Base
   
   #referencia de las tablas padre e hijas
+  has_many :actas
   belongs_to :queja
   belongs_to :falta
   belongs_to :prioridad
@@ -10,7 +11,7 @@ class Comite < ActiveRecord::Base
   belongs_to :asignacioncomite
 
   #atributos
-  attr_accessible :hora, :nombreapren,:programa_id, :ficha, :fcomite_id, :asignacioncomite_id, :quejaid 
+  attr_accessible :idsqueja, :hora, :nombreapren,:programa_id, :ficha, :fcomite_id, :asignacioncomite_id, :quejaid 
     #buscador
   def self.search(search)
 		where('hora like ?', "%#{search}%",)

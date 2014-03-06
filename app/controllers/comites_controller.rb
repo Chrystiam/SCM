@@ -2,7 +2,7 @@ class ComitesController < ApplicationController
 
   helper_method :sort_column, :sort_direction
 
-  before_filter :find_fcomite_and_comite, :except => [:envio_email]
+  before_filter :find_fcomite_and_comite, :except => [:envio_email, :crear_acta,:cracta]
 
   def index
    #numero de registro por pagina
@@ -101,6 +101,20 @@ class ComitesController < ApplicationController
     @emails = params[:emails]
     Usercomite.create(:nombre => @nombres, :emails => @emails,:comite_id => @comite_id)
     @comites = Comite.all
+    redirect_to fcomite_comites_path(@fcomite.id)
+  end
+
+  def crear_acta
+    @comite_id = params[:comite_id]
+    @hora_inicio = params[:hora_inicio]
+    @hora_final = params[:hora_terminacion]
+    @objetivo_reunion = params[:objetivo_de_la_reunion]
+    @desarrollo_reunion = params[:desarrollo_reunion]
+    @conclusiones = params[:conclusiones]
+    @comite = Comite.find(@comite_id)
+    @fcomite = Fcomite.find(@comite.fcomite_id)
+
+    Acta.create(:fecha => @fcomite.fecha,:comite_id => @comite_id, :hora_inicio => @hora_inicio, :hora_terminacion => @hora_final, :objetivo_de_la_reunion => @objetivo_reunion, :desarrollo_reunion => @desarrollo_reunion, :conclusiones => @conclusiones)
     redirect_to fcomite_comites_path(@fcomite.id)
   end
   

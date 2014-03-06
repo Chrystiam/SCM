@@ -1,10 +1,10 @@
 <tr id=<%= "acta_#{acta.id}" %>>
   <td><%= link_to acta.id, edit_acta_path(acta), :remote => true %></td>
-  <td><%= acta.ciudad %></td>
   <td><%= acta.fecha %></td>
   <td><%= acta.hora_inicio %></td>
   <td><%= acta.hora_terminacion %></td>
-  <td><%= acta.lugar %></td>
+  <td><%= acta.comite.fcomite.lugar %></td>
+  <td><%= acta.comite.nombreapren %></td>
   <td>
     <%= link_to 'Mostrar', acta, :remote => true, :class => 'btn btn-mini ' %>
     <%= link_to 'Editar', edit_acta_path(acta), :remote => true,
@@ -12,7 +12,38 @@
     <%= link_to 'Eliminar', acta, 
         :data => { :confirm => 'Esta Seguro' },
         :method => :delete, :remote => true, :class => 'btn btn-mini btn-danger' %>
+    <%= link_to image_tag("pdf_icon.gif"), acta_path(acta, :format => "pdf"),:target => "_blank"  %>
+    <% @id = vpdf(acta.id)%>
+
+    <div class="btn-group">
+       <button class="btn">Condicionamiento M</button>
+      <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <% @id.each do |id| %>
+          <li><%= link_to(pdf_condicionamiento_path(:id => acta.id,:idq => id, :format => "pdf"),:target => "_blank") do %><%= @nombres = name(id)%><%= image_tag("pdf_icon.gif")%>
+              <% end %> 
+          </li>
+          
+        <% end %> 
+      </ul>
+    </div>
+    <div class="btn-group">
+       <button class="btn">Cancelacion</button>
+      <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <% @id.each do |id| %>
+          <li><%= link_to(pdf_cancelacion_path(:id => acta.id,:idq => id, :format => "pdf"),:target => "_blank") do %><%= @nombres = name(id)%><%= image_tag("pdf_icon.gif")%>
+              <% end %> 
+          </li>
+          
+        <% end %> 
+      </ul>
+    </div>
   </td>
-</tr>
+</tr> 
 
 

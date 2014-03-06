@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
 	<head>
-			<meta chartset="utf-8"/>
-			<title>SCQ - Sistema Centralizado de Quejas</title>
+		<meta chartset="utf-8"/>
+		<title>SCQ - Sistema Centralizado de Quejas</title>
 	</head>
 	<body>
 
-		<p>Señor(a) Instructor(a) <%= @userqueja.nombre %>  Esta es la que ja que aca de presentar:
+		<p>Señor(a) Instructor(a) <%= @userqueja.nombre %>  Esta es la queja que a presentado:
 		</p>
 
 		<p><%= image_tag attachments['logo-sena.png'].url -%></p><h4>CENTRO DE FORMACIÓN EN DISEÑO, CONFECCIÓN Y MODA, FORMATO DE INFORME O QUEJA</h4>
 		<table align="center" border="4">
 			<tr>
 				<td colspan="6">
-					 Fecha del informe:  <%= @queja.fechainforme %>
+					Fecha del informe: <%= @queja.fechainforme %>
 				</td>
 
 			</tr>
@@ -22,13 +22,13 @@
 					Nombre: <%= @queja.nombres %> <%= @queja.apellidos %>  -<%= @queja.tipo_documento.sigla%>  <%= @queja.identificacion %>  
 					<br>
 					<br>
-					Telefono <%= @queja.telefono %>
+					Telefono: <%= @queja.telefono %>
 					<br>
 					<br>
-					Programma <%= @queja.programa.abreviatura %>
+					Programa: <%= @queja.programa.abreviatura %>
 					<br>
 					<br>
-					N° Ficha <%= @queja.ficha %>
+					N° Ficha: <%= @queja.ficha %>
 				</td>
 			</tr>
 			<tr>
@@ -64,22 +64,4 @@
 		<p>Mensaje enviodo por la aplicación  S.C.M <%= image_tag attachments['scm.png'].url, :width => "150x100" -%> </p>
 	</body>
 </html>
-<!DOCTYPE html>
-<html lang="es">
-	<head>
-			<meta chartset="utf-8"/>
-			<title>SCQ - Sistema Centralizado de Quejas</title>
-	</head>
-	<body>
 
-		<p><%= image_tag attachments['logo-sena.png'].url -%></p>
-		<p>Se ha generado una queja sobre el aprendiz <h3><%= @queja.nombres %></h3> <h3><%= @queja.apellidos %></h3> 
-		</p>
-		
-		<p>Descripcion de la queja presentad</p>
-		<p><%= @queja.descripcion %></p>
-
-		<p>Mensaje enviodo por la aplicación  S.C.M  <%= image_tag attachments['scm.png'].url -%> </p>
-
-	</body>
-</html>

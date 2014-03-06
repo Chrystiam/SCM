@@ -14,18 +14,15 @@
 ActiveRecord::Schema.define(:version => 201307012018430) do
 
   create_table "actas", :force => true do |t|
-    t.string   "ciudad"
     t.string   "fecha"
     t.string   "hora_inicio"
     t.string   "hora_terminacion"
-    t.string   "lugar"
-    t.string   "tema"
-    t.string   "objetivo_de_la_reunion"
+    t.text     "objetivo_de_la_reunion"
     t.text     "desarrollo_reunion"
     t.text     "conclusiones"
-    t.string   "firmas"
     t.datetime "created_at",             :null => false
     t.datetime "updated_at",             :null => false
+    t.integer  "comite_id"
   end
 
   create_table "asignacioncomites", :force => true do |t|
@@ -75,12 +72,23 @@ ActiveRecord::Schema.define(:version => 201307012018430) do
     t.integer  "fcomite_id"
     t.integer  "asignacioncomite_id"
     t.integer  "quejaid"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+    t.string   "idsqueja",            :limit => 20
   end
 
   add_index "comites", ["fcomite_id"], :name => "index_comites_on_fcomite_id"
   add_index "comites", ["programa_id"], :name => "index_comites_on_programa_id"
+
+  create_table "configuraciones", :force => true do |t|
+    t.text     "subdirector"
+    t.text     "considerando"
+    t.integer  "acta_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "configuraciones", ["acta_id"], :name => "index_configuraciones_on_acta_id"
 
   create_table "coordinadores", :force => true do |t|
     t.string   "nombre"

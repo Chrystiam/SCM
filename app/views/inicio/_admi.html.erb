@@ -1,51 +1,21 @@
-<div class="admins">
+<div id="bod">
 	<div class="responsibe">
-		<div class="container-fluid">
-			<div class="row-fluid">
-				<div>
-				    <h4 class="offset3"><%=  image_tag("admin.png", height: '80', width: '80') %>Panel administrativo</h4> 
-
-				    <hr>
-				    <h3 >Opciones</h3>
-
-				</div>
-				    
-			    <div class="span10">
-			      	<div class="row-fluid">
-			      		<div class="span4" id="efecto1">
-							<%=  image_tag("badmin.jpg", height: '32', width: '32') %>        
-				          	<%= link_to "Asignacion a Comite", asignacioncomites_path %>
-				        </div>
-					
-
-				        <div class="span3" id="efecto1">
-				        	<%=  image_tag("badmin.jpg", height: '32', width: '32') %>
-				          	<%= link_to "Centros", centros_path %>
-				        </div>
-
-				        <div class="span5" id="efecto1">
-				        	<%=  image_tag("badmin.jpg", height: '32', width: '32') %>
-				          	<%= link_to "Tipos de Documentos", tipos_documentos_path %>
-				        </div>
-				    </div>
-				    <div class="row-fluid">
-				        <div class="span4" id="efecto1">
-				        	<%=  image_tag("badmin.jpg", height: '32', width: '32') %>
-				          	<%= link_to "actas", actas_path %>
-				        </div>
-				        
-				        <div class="span4" id="efecto1">
-				        	<%=  image_tag("badmin.jpg", height: '32', width: '32') %>
-				          	<%= link_to "Quejas", quejas_path %>
-				        </div>
-
-				        <div class="span4" id="efecto1">
-				        	<%=  image_tag("badmin.jpg", height: '32', width: '32') %>
-				          	<%= link_to "Quejas", quejas_path %>
-				        </div>
-					</div>
-			    </div>
-		    </div> 
+		<div class="container">
+		    <div class="header">
+		        <div class="clr"></div>
+		    </div>
+		    <h1>Panel Administrativo </h1>
+		    <div id="cont">
+		        <ul class="bmenu">
+		            <li><%= link_to "Asignacion a Comite", asignacioncomites_path %></li>
+		            <li><%= link_to "Centros", centros_path %></li>
+		            <li><%= link_to "Tipos de Documentos", tipos_documentos_path %></li>
+		            <li><%= link_to "actas", actas_path %></li>
+		            <li><%= link_to "Quejas", quejas_path %></li>
+		            <li><%= link_to "Comites", fcomites_path %></li>
+		        </ul>
+		    </div>
 		</div>
 	</div>
 </div>
+

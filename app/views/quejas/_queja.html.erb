@@ -22,7 +22,7 @@
     
     <%= link_to 'Mostrar', queja, :remote => true, :class => 'btn btn-mini btn-default' %>
 
-    <% if queja.estado_id == 3 && has_role == "instructor" %>
+    <% if queja.estado_id == 3 && current_user.id == queja.userid %>
       <%= link_to 'Editar', edit_queja_path(queja), :remote => true, :class => 'btn btn-mini btn-warning' %>
     <% end %>
     <%  if has_role == "admin" %>

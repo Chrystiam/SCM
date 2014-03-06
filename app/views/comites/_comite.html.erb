@@ -6,16 +6,42 @@
   <td><%= comite.programa.abreviatura %></td>
   <td><%= comite.ficha %></td>
   
-  <td><%= link_to 'Lista de Miembros de Comite', fcomite_comite_usercomites_path(@fcomite,comite), :class => 'btn btn-inverse btn-mini' %></td>
-  <td><%= link_to 'Ingresar Miembros para Comite', userc_path(:fcomite_id => comite.fcomite_id, :comite_id => comite.id),:remote => true, :class => 'btn btn-inverse btn-mini' %></td>
   <td>
-    <%= link_to 'Mostrar', fcomite_comite_path(@fcomite,comite), :remote => true, :class => 'btn btn-default btn-mini' %>
-    <%= link_to 'Editar', edit_fcomite_comite_path(@fcomite,comite), :remote => true,
-        :class => 'btn btn-warning btn-mini' %>
-    <%= link_to 'Eliminar', fcomite_comite_path( @fcomite,comite), 
-        :data => { :confirm => 'Esta Seguro?' },
-        :method => :delete, :remote => true, :class => 'btn btn-default btn-danger btn-mini' %>
-    <%= link_to "Citacion", fcomite_comite_path(@fcomite,comite, :format => "pdf"), :target => "_blank", :class => "btn btn-mini"%>
+    <div class="btn-group">
+      <button class="btn">Acciones</button>
+      <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li>
+          <%= link_to 'Lista de Miembros de Comite', fcomite_comite_usercomites_path(@fcomite,comite) %>
+        </li>
 
+        <li>
+          <%= link_to 'Ingresar Miembros para Comite', userc_path(:fcomite_id => comite.fcomite_id, :comite_id => comite.id),:remote => true %>
+        </li>
+
+      </ul>
+    </div>
+  </td>
+  <td>
+    
+    <div class="btn-group">
+       <button class="btn">Acciones</button>
+      <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+     
+        <li><%= link_to 'Mostrar', fcomite_comite_path(@fcomite,comite), :remote => true %></li>
+        <li><%= link_to 'Editar', edit_fcomite_comite_path(@fcomite,comite), :remote => true %></li>
+        <li><%= link_to 'Eliminar', fcomite_comite_path( @fcomite,comite), 
+            :data => { :confirm => 'Esta Seguro?' },
+            :method => :delete, :remote => true %></li>
+        <li><%= link_to "Citacion", fcomite_comite_path(@fcomite,comite, :format => "pdf"), :target => "_blank" %></li>
+        <li><%= link_to "Acta", cracta_path(:comite_id => comite.id), :remote => true%></li>
+
+      </ul>
+    </div>
   </td>
 </tr>
