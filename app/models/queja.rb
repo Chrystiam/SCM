@@ -27,7 +27,6 @@ class Queja < ActiveRecord::Base
   
   
   #validaciones
-  validates_attachment_presence :evidencia
   validates_attachment_size :evidencia, :less_than => 5.megabytes
   validates_attachment_content_type :evidencia , :content_type => ['image/jpeg', 'image/png', 'imagen/jpg', 'application/pdf', 'text/plain']
 

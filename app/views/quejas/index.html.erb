@@ -1,38 +1,45 @@
 <%- model_class = Queja -%>
+  <div class="buscador">
+    <div class="row-fluid">
+      <div class="row-fluid">
+        <div class="span6">
+          <%= form_tag request.path, :method => 'get' do %>
+            <%= content_tag :label do %>
+              <h4>Quejas: </h4>
+              <%= text_field_tag :search, params[:search], :id=>'efecto1' %>
+              <%= submit_tag "Consultar", :nombres => nil, :class=>"btn btn-info btn-mini", :id=>'efecto1'%>
+            <% end %>
+          <% end %>
 
-<div class="buscador">
-  <h1 class="h1">Quejas</h1>
-  <%= form_tag request.path, :method => 'get' do %>
-    <%= content_tag :label do %>
-      <p>
-      Nombres Aprendiz:
-      <%= text_field_tag :search, params[:search], :id=>'efecto1' %>
-      <%= submit_tag "Consultar", :nombres => nil, :class=>"btn btn-info btn-mini", :id=>'efecto1'%>
-      </p>
-    <% end %>
-  <% end %>
-  <div id="regi">
-    <%= form_tag request.path, :method => 'get' do %>
-      <%= content_tag :label do %>
-        Numero Registros:
-        <%= text_field_tag :registro, params[:registro], :class =>'input-mini', :title => "ingresa el dato y preciona enter",:id=>'efecto1' %>
-       <% end %>
-    <% end %>
+          <div class="span6">
+            <%= form_tag request.path, :method => 'get' do %>
+              <%= content_tag :label do %>
+                <h4>Numero Registros:</h4>
+                <%= text_field_tag :registro, params[:registro], :class =>'input-mini', :title => "ingresa el dato y preciona enter",:id=>'efecto1' %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <div class=" colorp">
+            
+              <h2>Quejas</h2>
+            
+              <p>
+                Estado de Espera: <%= @estadoquejas.count %>
+              </p>
+
+              <p> 
+              Quejas Remitidas a Comite: <%=  "#{@estadoencomite.count}" %>
+              </p>
+
+              <p>
+              Quejas en correccion: <%= "#{@quejacorreccion.count }"%>
+              </p>
+            
+        </div>
+      </div>
+    </div>
   </div>
-  
-  <p id="qest" >
-    Quejas en Estado de Espera: <%= @estadoquejas.count %>
-  </p>
-  
-  <p id="qrem"> 
-    Quejas Remitidas a Comite: <%=  "#{@estadoencomite.count}" %>
-  </p>
-
-  <p id="qcorr">
-    Quejas en correccion: <%= "#{@quejacorreccion.count }"%>
-  </p>
-
-</div>
 <br>
 <table  class="table table-bordered table-condensed table-hover pretty">
   <thead>
@@ -48,7 +55,7 @@
 		  <th>Acciones</th>
     </tr>
   </thead>
-  <tbody >
+  <tbody class="hero-unit">
     <%= render @quejas %>
   </tbody>
 </table>

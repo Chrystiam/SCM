@@ -1,27 +1,41 @@
 <%- model_class = Instructor -%>
+  <div class="buscador">
+    <div class="row-fluid">
+      <div class="row-fluid">
+        <div class="span6">
+          <%= form_tag request.path, :method => 'get' do %>
+            <%= content_tag :label do %>
+              <h4>Buscador: </h4>
+              <%= text_field_tag :search, params[:search], :placeholder => "Nombre Instructor" %>
 
- <h1>Instructor</h1>
-
-<%= form_tag request.path, :method => 'get' do %>
- <%= content_tag :label do %>
-  <h4>Nombre Instructor: </h4>
- <%= text_field_tag :search, params[:search] %>
- <%= submit_tag "Consultar", :nombres => nil %>
- <% end %>
-<% end %>
-
-<%= form_tag request.path, :method => 'get' do %>
-  <%= content_tag :label do %>
-     Numero Registros:
-    <%= text_field_tag :registro, params[:registro], :class =>'input-mini' %>
-   <% end %>
-<% end %>
-
-<p>
- <h4>Total Instructores: <input type="text" id="totalregs" class="span1" value="<%= @instructores.total_entries %>"readonly /></h4>
-</p>
-
-  <table class="table table-bordered table-hover pretty">
+              <%= submit_tag "Consultar", :nombres => nil %>
+            <% end %>
+          <% end %>
+        
+         <div class="span6">
+            <%= form_tag request.path, :method => 'get' do %>
+              <%= content_tag :label do %>
+                 <h4>Numero Registros:</h4>
+                <%= text_field_tag :registro, params[:registro], :class =>'input-mini' %>
+               <% end %>
+            <% end %>
+          </div>
+        </div>
+        <div class="colorp">
+          <h2>Instructores</h2>
+          <p>
+            Total Instructores: <%= @instructores.count %>
+          </p>
+          <br>
+          <br>
+          <br>
+        </div>
+      </div>
+    </div>
+  </div>
+   <br>
+  <br>
+  <table class="table table-bordered">
    <thead>
      <tr>
        <th><%= sortable "id" %> </th>
@@ -29,10 +43,7 @@
        <th><%= sortable "apellidos" %></th>
        <th><%= sortable "cedula" %></th>
        <th><%= sortable "email" %></th>
-       <th><%= sortable "direccion" %></th>
        <th><%= sortable "telefono" %></th>
-       <th><%= sortable "fch_ncto" %></th>
-       <th><%= sortable "modalidad" %></th>
        <th>Acciones</th>
      </tr>
    </thead>

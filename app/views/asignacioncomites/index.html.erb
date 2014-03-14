@@ -1,23 +1,38 @@
 <%- model_class = Asignacioncomite -%>
 <div class="buscador">
-  <h1 class="h1">Asignados a Comite</h1>
-  <%= form_tag request.path, :id => "submit",  :method => 'get' do %>
-    <%= content_tag :label do %>
-      <%= text_field_tag :search, params[:search], :placeholder => "Nombre Aprendiz", :id=>'efecto1' %>
-      <%= submit_tag "Consultar", :nombres => nil, :apellidos => nil, :class => "btn btn-success", :id => "submit",  :id=>'efecto1' %>
-      
-    <% end %>
-  <% end %>
-  <% if @searc.empty? %>
-    <p id="nr"> N° de Registros: <%= "#{@asignacioncomites.count}" %> </p>
-  <% elsif @asignacioncomites.count == 0 %>
-    <p id="nr">No hay  resultados para: '<%= "#{@searc}"%>' </p>
-  <% else %>
-    <p id="nr"> N° de Resultados de la Busqueda: <%= "#{@asignacioncomites.count}" %></p>
-  <% end %>
-</div>
+    <div class="row-fluid">
+      <div class="row-fluid">
+        <div class="span6">
+          <%= form_tag request.path, :id => "submit",  :method => 'get' do %>
+            <%= content_tag :label do %>
+             <h4>Buscador</h4>
+              <%= text_field_tag :search, params[:search], :placeholder => "Nombre Aprendiz", :id=>'efecto1' %>
+              <%= submit_tag "Consultar", :nombres => nil, :apellidos => nil, :class => "btn btn-info", :id => "submit",  :id=>'efecto1' %>
+            <% end %>
+          <% end %>
+
+          <div class="span6">
+            
+          </div>
+        </div>
+        <div class=" colorp">
+            
+              <h2>Programacion Comite</h2>
+            
+              <% if @searc.empty? %>
+                <p> N° de Registros: <%= "#{@asignacioncomites.count}" %> </p>
+              <% elsif @asignacioncomites.count == 0 %>
+                <p>No hay  resultados para: '<%= "#{@searc}"%>' </p>
+              <% else %>
+                <p> N° de Resultados de la Busqueda: <%= "#{@asignacioncomites.count}" %></p>
+              <% end %>
+            
+        </div>
+      </div>
+    </div>
+  </div>
 <br>
-<table class="table table-striped">
+<table class="table table-striped table-hover">
   <thead>
     <tr>
       <th>id</th>

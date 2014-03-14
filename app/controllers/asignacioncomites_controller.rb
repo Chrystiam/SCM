@@ -51,28 +51,32 @@ class AsignacioncomitesController < ApplicationController
     @programaid = params[:programa_id]
     @ids = params[:ids].split(",").map {|s| s.to_i}
     @horas = @hora.split(",")
+    @comites = Comite.where(:fcomite_id => @fcomiteid)
 
     i = 0
     @horas.each do |hora|
       if @ids[i] != 0
         @nombreasig = Asignacioncomite.find(@ids[i])
-        @comite = Comite.find_by_hora(hora)
+        @comite = @comites.find_by_hora(hora)
         if @comite then
           @comite.nombreapren = "#{@comite.nombreapren}, #{@nombreasig.nombres}"
           @comite.idsqueja = "#{@comite.idsqueja}, #{@nombreasig.quejaid}"
           @comite.save
         else
           Comite.create(:idsqueja => @nombreasig.quejaid, :hora => hora,:fcomite_id => @fcomiteid[0], :nombreapren => @nombreasig.nombres, :programa_id =>@programaid[0] , :ficha => @nombreasig.ficha,:asignacioncomite_id => @nombreasig.id, :quejaid => @nombreasig.quejaid)   
-          
         end
         @nombreasig.estado_id = 5
         @nombreasig.save
         i+=1
-      end
-      
+      end 
     end
 
 
+    
+      respond_to do |format|
+        format.html { redirect_to asignar_path }
+      end
+   
   end
 
   def observacion

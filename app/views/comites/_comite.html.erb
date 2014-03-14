@@ -5,10 +5,10 @@
   <td><%= comite.nombreapren %></td>
   <td><%= comite.programa.abreviatura %></td>
   <td><%= comite.ficha %></td>
-  
+  <% @idsq = qpdf(comite.id) %>
   <td>
     <div class="btn-group">
-      <button class="btn">Acciones</button>
+      <button class="btn">Usuarios Comite</button>
       <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">
         <span class="caret"></span>
       </button>
@@ -27,7 +27,7 @@
   <td>
     
     <div class="btn-group">
-       <button class="btn">Acciones</button>
+       <button class="btn">Opciones</button>
       <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">
         <span class="caret"></span>
       </button>
@@ -35,12 +35,23 @@
      
         <li><%= link_to 'Mostrar', fcomite_comite_path(@fcomite,comite), :remote => true %></li>
         <li><%= link_to 'Editar', edit_fcomite_comite_path(@fcomite,comite), :remote => true %></li>
-        <li><%= link_to 'Eliminar', fcomite_comite_path( @fcomite,comite), 
-            :data => { :confirm => 'Esta Seguro?' },
-            :method => :delete, :remote => true %></li>
         <li><%= link_to "Citacion", fcomite_comite_path(@fcomite,comite, :format => "pdf"), :target => "_blank" %></li>
         <li><%= link_to "Acta", cracta_path(:comite_id => comite.id), :remote => true%></li>
 
+      </ul>
+    </div>
+   <div class="btn-group">
+      <button class="btn">Citacion</button>
+      <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <% @idsq.each do |id| %>
+          <li><%= link_to(fcomite_comite_path(@fcomite,comite,:qid => id,:format => "pdf"),:target => "_blank") do %><%= @nombres = name(id)%><%= image_tag("pdf_icon.gif")%>
+              <% end %> 
+          </li>
+          
+        <% end %> 
       </ul>
     </div>
   </td>

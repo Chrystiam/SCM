@@ -37,9 +37,7 @@ class InstructoresController < ApplicationController
       InstructorMailer.user_instructor(@instructor).deliver
    
       render :action => :new unless @instructor.save
-   
-   
-    @instructores = Instructor.all
+      @instructores = Instructor.all
   end
 
 

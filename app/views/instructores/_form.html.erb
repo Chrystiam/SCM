@@ -1,6 +1,5 @@
+<%= javascript_include_tag "fecha.js" %>
 <%= simple_form_for(@instructor, :html => { :multipart => true, :class => 'form-horizontal' }, :remote => true) do |f| %>
-
-  <%= javascript_include_tag "fecha.js" %>
   <%= f.error_notification %>
   
   <div class="responsive">
@@ -23,11 +22,7 @@
         <hr>
         <div class ="span6">
           <div class="row">
-            <%= f.input :direccion,:required => true %>
-            <%= f.input :telefono, :required => true %>
-            <%= f.label :fecha %>
-            <%= f.input :fch_nacimiento, :as => :string, :label => false, :input_html => {  :class=>"datepicker" } %>  
-            <%= f.input :modalidad, :required => true %>
+            <%= f.input :telefono, :required => true %> 
           </div>
         </div>
       </div>
@@ -35,7 +30,7 @@
       
       <div class= "span12">
         <div class="form-actions">
-          <%= f.submit "Guardar", :class => 'btn btn-primary' %>
+          <%= f.submit "Guardar", :class => 'btn btn-primary submit' %>
           <%= link_to 'Atras', instructores_path, :class => 'btn btn-default' %>
         </div>
       </div>

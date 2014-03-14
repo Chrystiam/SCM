@@ -9,9 +9,6 @@
     <%= link_to 'Mostrar', acta, :remote => true, :class => 'btn btn-mini ' %>
     <%= link_to 'Editar', edit_acta_path(acta), :remote => true,
         :class => 'btn btn-warning btn btn-mini' %>
-    <%= link_to 'Eliminar', acta, 
-        :data => { :confirm => 'Esta Seguro' },
-        :method => :delete, :remote => true, :class => 'btn btn-mini btn-danger' %>
     <%= link_to image_tag("pdf_icon.gif"), acta_path(acta, :format => "pdf"),:target => "_blank"  %>
     <% @id = vpdf(acta.id)%>
 

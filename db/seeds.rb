@@ -4,14 +4,34 @@
 
 
 Centro.create([
-  { :nombre => "Centro de Formacion en Diseño, Confeccion y Moda", :abreviatura => "CFDCM", :created_at => "2013-12-02 23:58:45", :updated_at => "2013-12-02 23:58:45" }
+  { :nombre => "Centro de Formacion en Diseño, Confeccion y Moda", :abreviatura => "CFDCM", :created_at => "2013-12-03 04:58:45", :updated_at => "2013-12-03 04:58:45" }
 ], :without_protection => true )
+
+
+Configuracion.create([
+  { :subdirector => "La  Subdirectora del Centro de Formación en Diseño, Confección y Moda del SENA – Regional Antioquia, nombrada  mediante Resolución No.00759 del 17 de abril de  2012, y con acta de posesión N° 014 del 23 de abril 2012, en uso de las facultades legales y en especial en las conferidas en el artículo 35 del Reglamento del Aprendiz SENA, adoptado mediante Acuerdo 00007 \r\ndel 30 de Abril  de 2012", :considerando => "Que  en el Reglamento del Aprendiz SENA, en su capítulo III expresa entre otros, como deberes del Aprendiz SENA, “1 Cumplir con todas las actividades propias de su proceso de aprendizaje o del plan de mejoramiento, definidas durante su etapa lectiva y productiva. 4. Participar en las actividades complementarias o de profundización, relacionadas con el programa de formación, con el fin de gestionar su proceso de aprendizaje. 5. Informar y hacer solicitud, por escrito, al Coordinador Académico y registrar en el sistema de gestión de la formación oportunamente las solicitudes o novedades que presente durante el proceso de aprendizaje, utilizando medios virtuales y/o físicos….10 Hacer uso apropiado de los ambientes de aprendizaje (infraestructura, equipos, herramientas, recursos didácticos, técnicos, tecnológicos, bibliográficos) disponibles para s proceso de aprendizaje…. \r\n\r\nQue la precitada norma en su capítulo IV señala las prohibiciones de los aprendices del Sena,  entre las cuales se encuentran 3 Incumplir con las actividades de aprendizaje acordadas en su proceso de formación y los compromisos adquiridos como aprendiz SENA, sin justa causa.” \r\n\r\nQue de conformidad con el artículo 28 del aludido reglamento, en los literales; b) Condicionamiento de la matrícula, ésta podrá imponerse “al aprendiz que incurra en una falta académica o disciplinaria, previo agotamiento del procedimiento establecido en este reglamento” Y    Cancelación de la matrícula,  se origina cuando persiste en el aprendiz las causales que originaron el condicionamiento de matricula o por faltas catalogadas como graves de acuerdo a la clasificación determinadas en los artículos 25 y 26 del reglamento, en las etapas lectiva y productiva.”\r\n\r\nQue en cumplimiento del procedimiento señalado por el Reglamento del Aprendiz SENA, los  instructores Salomon Pareja,  mediante comunicación escrita, informan y reportan al coordinador académico, la situación que presenta la   aprendiz  Maria Nohemy Giraldo Zapata del Programa Manejo de Maquinas de Confección Industrial, registrado con N° de ficha 387392,  mediante informe presentado por la empresa, , con el fin de analizar  su incumplimiento de los deberes e infracción a las prohibiciones contempladas en el Reglamento, expresando lo siguiente: \r\n“la aprendiza esta contratada desde el 14 de noviembre del año pasado, durante el mismo año tuvo tres llamados de atención con memorandos por llegadas tarde injustificadas y uno por faltar al trabajo tambien sin justa causa. La aprendiza no volvió a trabajar desde el miércoles 16 de enero, se ha tratado de comunicar con ella pero no atiende llamadas”.\r\n\r\n\r\n\r\nQue citada y notificada la aprendiz al Comité de Evaluación y Seguimiento, con el fin de presentar sus descargos, ésta  no se presentó a la primera sesión  del Comité de Evaluación y Seguimiento.\r\n\r\nQuedando como constancia en las actas del Comité las siguientes recomendaciones, que así: Acta N°77, el comité recomienda como medida sancionatoria cancelación de matrícula.\r\n\r\nQue agotado el procedimiento dispuesto en el reglamento del aprendiz,   el Comité de Evaluación y Seguimiento recomienda a la Subdirectora del Centro, la cancelación del registro de matrícula de la señora Maria Nohemy Giraldo Zapata,  aprendiz del programa de manejo de maquinas de Confección Industrial, número de ficha 387392. \r\nQue por lo anteriormente expuesto, y ante la evidente falta de compromiso de parte de la aprendiz, para el cumplimiento de los deberes expresados en el Capítulo III y la violación de las prohibiciones contenidas en Capítulo IV, artículo 5 del Reglamento del Aprendiz SENA y entendiendo que esta actitud, va en contravía del artículo 4º de la Ley 119 de 1994, que establece como función del SENA, entre otras: “1. Impulsar la promoción social del trabajador, a través de su formación profesional integral, para hacer de él un ciudadano útil y responsable, poseedor de valores morales éticos, culturales y ecológicos”.\r\n\r\n", :acta_id => 6, :created_at => "2014-03-04 14:18:54", :updated_at => "2014-03-04 19:50:32" }
+], :without_protection => true )
+
 
 
 Coordinador.create([
-  { :nombre => "christiam Camilo Gomez", :email => "chrystiamgg@misena.edu.co", :centro_id => 1, :created_at => "2013-12-10 02:18:38", :updated_at => "2013-12-10 02:18:38" }
+  { :nombre => "christiam Camilo Gomez", :email => "chrystiamgg@misena.edu.co", :centro_id => 1, :created_at => "2013-12-10 07:18:38", :updated_at => "2013-12-10 07:18:38" },
+  { :nombre => "Alejandro Saldarriaga ", :email => "alejoalzate@misena.edu.co", :centro_id => 1, :created_at => "2014-02-24 21:24:16", :updated_at => "2014-02-24 21:24:16" }
 ], :without_protection => true )
 
+
+
+Falta.create([
+  { :falta => "Academica", :descripcion => "no cumple con los trabajos", :created_at => "2013-12-03 04:46:54", :updated_at => "2013-12-03 04:46:54" },
+  { :falta => "Diciplinaria", :descripcion => "ofender a un instructor", :created_at => "2013-12-03 04:47:54", :updated_at => "2013-12-03 04:47:54" }
+], :without_protection => true )
+
+
+
+Programa.create([
+  { :descripcion => "analisis y  de desarrollo  de sistemas de informacion", :abreviatura => "ADSI", :coordinador_id => 1, :created_at => "2013-12-03 05:02:14", :updated_at => "2013-12-03 05:02:14", :estado => true },
+  { :descripcion => "Diseño de joyas ", :abreviatura => "DJ", :coordinador_id => 2, :created_at => "2014-02-13 07:04:42", :updated_at => "2014-02-13 07:04:42", :estado => true }
+], :without_protection => true )
 
 
 Estado.create([
@@ -22,19 +42,6 @@ Estado.create([
   { :nombre => "en programación", :descripcion => "esta programado a un comité ", :created_at => "2014-01-16 20:44:23", :updated_at => "2014-01-16 20:44:23" }
 ], :without_protection => true )
 
-
-
-Falta.create([
-  { :falta => "Academica", :descripcion => "no cumple con los trabajos", :created_at => "2013-12-02 23:46:54", :updated_at => "2013-12-02 23:46:54" },
-  { :falta => "Diciplinaria", :descripcion => "ofender a un instructor", :created_at => "2013-12-02 23:47:54", :updated_at => "2013-12-02 23:47:54" }
-], :without_protection => true )
-
-
-
-Programa.create([
-  { :descripcion => "analisis y  de desarrollo  de sistemas de informacion", :abreviatura => "ADSI", :coordinador_id => 1, :created_at => "2013-12-03 00:02:14", :updated_at => "2013-12-03 00:02:14", :estado => true },
-  { :descripcion => "Diseño de joyas ", :abreviatura => "DJ", :coordinador_id => 1, :created_at => "2014-02-13 02:04:42", :updated_at => "2014-02-13 02:04:42", :estado => true }
-], :without_protection => true )
 
 
 Role.create([
@@ -54,7 +61,7 @@ TipoDocumento.create([
 
 User.create([
   { :username => "camilo", :email => "chrystiamgg@misena.edu.co", :password => "1234",  :nombre => "camilo" },
-  { :username => "cristian", :email => "cristiii4n@misena.edu.co", :password => "1234",  :nombre => "cristian" },
+  { :username => "Admin", :email => "cristiii4n@misena.edu.co", :password => "1234",  :nombre => "cristian" },
   { :username => "paulo", :email => "kyubi_589@hotmail.com", :password => "1234",  :nombre => "paulo" }
 ])
 
@@ -65,6 +72,3 @@ UserRole.create([
   { :user_id => 2, :role_id => 2, :created_at => "2014-01-13 18:34:35", :updated_at => "2014-01-13 18:34:35" },
   { :user_id => 3, :role_id => 3, :created_at => "2014-01-13 19:39:19", :updated_at => "2014-01-13 19:39:19" }
 ])
-
-
-

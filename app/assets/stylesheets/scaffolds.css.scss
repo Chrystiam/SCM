@@ -1,3 +1,7 @@
+#li ul li{
+  color: #fff;
+}
+
 .efecto1{
   -webkit-box-shadow: 0 10px 6px -6px #777;
   -moz-box-shadow: 0 10px 6px -6px #777;
@@ -33,7 +37,12 @@
 }
 
 body {
-  background-color: #fff;
+  background-color: #A4A4A4;
+   background-repeat: no-repeat;
+  -webkit-background-size:  100%, cover;
+  -moz-background-size:  100%, cover;
+  -o-background-size:  100%, cover;
+  background-size: 100%;
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;

@@ -24,7 +24,7 @@ class Cancelacion < Prawn::Document
 	    draw_text "Antioquia", :at => [10,695], size: 9, bold: true
 	    draw_text "59202", :at => [14,685],size: 8
 	    move_down 10
-	    draw_text "Resolucion N°             de #{@año}", :at => [230, 705], size: 9, :style => :bold
+	    draw_text "Resolucion N°                        de #{@año}", :at => [230, 705], size: 9, :style => :bold
 	    draw_text "Por la cual se cancela el registro de matrícula de la aprendiz  #{@queja.nombres} #{@queja.apellidos}", :at => [170, 680], size: 9
 	    draw_text "identificado(a) con #{@queja.tipo_documento.descripcion} número #{@queja.identificacion}, N° de ficha #{@queja.ficha}", :at => [180, 670], size: 9
 	end

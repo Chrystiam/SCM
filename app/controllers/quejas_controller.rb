@@ -74,6 +74,7 @@ class QuejasController < ApplicationController
       render :action => :new unless @queja.save
     end  
     
+    
   end
 
   def asigna

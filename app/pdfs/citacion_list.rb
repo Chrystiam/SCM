@@ -9,7 +9,7 @@ class CitacionList < Prawn::Document
 	   @fecha = fecha
 	   @año = año
 	   logo
-	   draw_text "Señor@ Aprendiz", :at => [10, 620], size: 10
+	   draw_text "Señor(a)", :at => [10, 620], size: 10
 	   draw_text "#{@queja.nombres} #{queja.apellidos} ", :at => [10, 605], size: 10
 	   draw_text "Programa: #{@queja.programa.descripcion} ", :at => [10, 590], size: 10
 	   draw_text "Ficha: #{@queja.ficha} ", :at => [10, 575], size: 10

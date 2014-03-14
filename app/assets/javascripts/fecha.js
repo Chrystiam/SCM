@@ -11,4 +11,12 @@ $(document).ready(function(){
 		"language":'es',
 		"autoclose":true
 	});
+	// AJAX Form Submit
+  $(".submit").click(function(event) {
+ 
+      // Show Progress Indicator
+      $(".ajax-progress").show();
+ 
+    });
+// END
 });

@@ -1,26 +1,40 @@
 <%- model_class = Acta -%>
 
-<h1>Actas</h1>
+<div class="buscador">
+    <div class="row-fluid">
+      <div class="row-fluid">
+        <div class="span6">
+          <%= form_tag request.path, :method => 'get' do %>
+            <%= content_tag :label do %>
+              <h4>Buscar:</h4>
+              <%= text_field_tag :search, params[:search], :id=>'efecto1' %>
+              <%= submit_tag "Consultar", :fecha => nil, :class=>"btn btn-info btn-mini", :id=>'efecto1' %>
+            <% end %>
+          <% end %>
 
-<%= form_tag request.path, :method => 'get' do %>
-  <%= content_tag :label do %>
-    Ciudad:
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Consultar", :fecha => nil %>
-  <% end %>
-<% end %>
-
-<%= form_tag request.path, :method => 'get' do %>
-  <%= content_tag :label do %>
-    Numero Registros:
-    <%= text_field_tag :registro, params[:registro], :class =>'input-mini' %>
-   <% end %>
-<% end %>
-
-<p>
-Total Actas : <input type="text" id="totalregs" class="span1" value="<%= @actas.total_entries %>"readonly /></h4>
-</p>
-
+          <div class="span6">
+            <%= form_tag request.path, :method => 'get' do %>
+              <%= content_tag :label do %>
+                <h4>Numero Registros:</h4>
+                <%= text_field_tag :registro, params[:registro], :class =>'input-mini', :title => "ingresa el dato y preciona enter",:id=>'efecto1' %>
+               <% end %>
+            <% end %>
+          </div>
+        </div>
+        <div class="colorp">
+          <h1>Actas</h1>
+        
+          <p>
+           Total Actas: <%= @actas.total_entries %>
+          </p>
+          <br>
+          <br>
+          <br>
+        </div>
+      </div>
+  </div>
+</div>
+<br>
 <table class="table table-bordered table-hover pretty">
   <thead>
     <tr>  
@@ -37,8 +51,6 @@ Total Actas : <input type="text" id="totalregs" class="span1" value="<%= @actas.
     <%= render @actas %>
   </tbody>
 </table>
-<%= link_to 'Nueva Acta', new_acta_path, :class => 'btn btn-primary', :remote => true %>
-<%= link_to image_tag("pdf_icon.gif"), actas_path(:format => :pdf), :id => "pdfc" %> 
 
 <div align="center">
   <%= will_paginate @actas, :previous_label => '&laquo; Anterior', :next_label => 'Siguiente

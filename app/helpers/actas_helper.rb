@@ -10,7 +10,7 @@ module ActasHelper
 
 	def name(queja)
 		@queja = Queja.find(queja)
-	    @nombre = "#{@queja.nombres}" + "#{@queja.apellidos}"
+	    @nombre = "#{@queja.nombres}" 
 
 		
 		return  @nombre

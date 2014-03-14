@@ -5,10 +5,7 @@ class CreateInstructores < ActiveRecord::Migration
       t.string :apellidos
       t.string :cedula
       t.string :email
-      t.string :direccion
       t.string :telefono
-      t.string :fch_nacimiento
-      t.string :modalidad
 
       t.timestamps
     end

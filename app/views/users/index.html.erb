@@ -1,26 +1,40 @@
 <%- model_class = User -%>
+<div class="buscador">
+  <div class="row-fluid">
+    <div class="row-fluid">
+      <div class="span6">
+        <%= form_tag request.path, :method => 'get' do %>
+          <%= content_tag :label do %>
+            <h4>Nombre</h4>
+            <%= text_field_tag :search, params[:search],:id=>"efecto1"  %>
+            <%= submit_tag "Consultar", :nombre => nil, :class => "btn btn-mini btn-info", :id=>"efecto1" %>
+          <% end %>
+        <% end %>
 
-<h1>Usuarios</h1>
-
-<%= form_tag request.path, :method => 'get' do %>
-  <%= content_tag :label do %>
-    Nombre:
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Consultar", :nombre => nil %>
-  <% end %>
-<% end %>
-
-<%= form_tag request.path, :method => 'get' do %>
-  <%= content_tag :label do %>
-    Numero Registros:
-    <%= text_field_tag :registro, params[:registro], :class =>'input-mini', :html => { :title => "Ver Informacion"} %>
-   <% end %>
-<% end %>
-
-<p>
-Total Usuarios : <input type="text" id="totalregs" class="span1" value="<%= @users.count %>"readonly  /></h4>
-</p>
-
+        <div class="span6">
+          <%= form_tag request.path, :method => 'get' do %>
+            <%= content_tag :label do %>
+              <h4>Numero Registros</h4>
+              <%= text_field_tag :registro, params[:registro], :class =>'input-mini',:id=>"efecto1" %>
+             <% end %>
+          <% end %>
+        </div>
+      </div>
+      <div class=" colorp">
+          
+            <h2>Usuarios Comite</h2>
+          
+            <p>
+             Total Usuarios : <%= @users.count %>
+            </p>
+            <br>
+            <br>
+            <br>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
 <table class="table table-bordered table-hover pretty">
   <thead>
     <tr>  

@@ -28,4 +28,12 @@ module ApplicationHelper
 	  
 	end
 
+
+	def qpdf(comite)
+	    @comite = Comite.find(comite)
+	    @idquejas = @comite.idsqueja.split(", ")
+		
+		return  @idquejas
+	end
+
 end

@@ -8,6 +8,7 @@ class CreateActas < ActiveRecord::Migration
       t.text :desarrollo_reunion
       t.text :conclusiones
       t.references :comite
+      t.integer :configuracion_id
 
       t.timestamps
     end

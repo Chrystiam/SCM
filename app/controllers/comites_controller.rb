@@ -31,7 +31,7 @@ class ComitesController < ApplicationController
 
   def show
 
-    @queja = Queja.find(@comite.quejaid)
+    @queja = Queja.find(params[:qid])
     if params[:format] == "pdf"
       @fechaes, @año = Comite.fechaes
       output = CitacionList.new(@queja,@comite,@fechaes,@año,view_context) # Aquí instancio el documento pdf
@@ -79,6 +79,10 @@ class ComitesController < ApplicationController
       @usercomite = Usercomite.find_by_comite_id(@comitea.id)
       @emailusercom = Comite.emails(@usercomite.emails)
       ComiteMailer.usercomite_programacion(@fcomite, @comitespdf, @emailusercom, "notificacion de la queja" ).deliver
+    end
+    respond_to do |format|
+      format.html { redirect_to fcomite_comites_path(@fcomite.id) }
+      format.js { render 'comites/envio_email' }
     end
   end
 

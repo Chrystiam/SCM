@@ -1,26 +1,40 @@
+<%= javascript_include_tag "fecha.js" %>
 <%- model_class = Comite -%>
-
 <div class="buscador">
-  <h1 class="h1">comites</h1>
-  <%= form_tag request.path, :method => 'get' do %>
-    <%= content_tag :label do %>
-      Lugar:
-      <%= text_field_tag :search, params[:search], :id=>'efecto1'  %>
-      <%= submit_tag "Consultar", :hora => nil,:id=>'efecto1'  %>
-    <% end %>
-  <% end %>
-  <div id="regi">
-    <%= form_tag request.path, :method => 'get' do %>
-      <%= content_tag :label do %>
-        Numero Registros:
-        <%= text_field_tag :registro, params[:registro], :class =>'input-mini',:id=>'efecto1'  %>
-       <% end %>
-    <% end %>
-  </div>  
-  
-  <p id="qest">
-  Total comites : <input type="text" id="totalregs" class="span1" value="<%= @comites.count %>"readonly /></h4>
-  </p>
+  <div class="row-fluid">
+    <div class="row-fluid">
+      <div class="span6">
+        <%= form_tag request.path, :method => 'get' do %>
+          <%= content_tag :label do %>
+            <h4>    Lugar</h4>
+            <%= text_field_tag :search, params[:search], :id=>'efecto1'  %>
+            <%= submit_tag "Consultar", :hora => nil, :class=>"btn btn-info btn-mini", :id=>'efecto1'  %>
+          <% end %>
+        <% end %>
+
+        <div class="span6">
+          <%= form_tag request.path, :method => 'get' do %>
+            <%= content_tag :label do %>
+              <h4>Numero Registros</h4>
+              <%= text_field_tag :registro, params[:registro], :class =>'input-mini',:id=>'efecto1'  %>
+             <% end %>
+          <% end %>
+        </div>
+      </div>
+      <div class=" colorp">
+          
+        <h2>Programacion Comite</h2>
+      
+        <p>
+          Total comites : <%= @comites.count %>
+        </p>
+        <br>
+        <br>
+        <br>
+
+      </div>
+    </div>
+  </div>
 </div>  
 <br>
 <table class="table table-bordered table-hover pretty">
@@ -43,7 +57,7 @@
 <%= link_to image_tag("pdf_icon.gif"), fcomite_comites_path(:format => :pdf),:target => "_blank" %>
 <%= link_to 'Atras', fcomites_path, :class => 'btn btn-primary btn-mini' %>
 
-<%= link_to  "enviar a comite", envio_email_path(:fcomite_id => @fcomite), :remote => true, :class => 'btn  btn-info btn-mini' %>
+<%= link_to  "enviar a comite", envio_email_path(:fcomite_id => @fcomite), :class => 'btn  btn-info btn-mini submit' %>
 
 
 <div align="center">

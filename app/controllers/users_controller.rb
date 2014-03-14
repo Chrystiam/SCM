@@ -38,9 +38,8 @@ class UsersController < ApplicationController
 
 
   def create
-   @user = User.new(params[:user])
-   
-    render :inicio unless @user.save
+    @user = User.new(params[:user])
+    render :action => :new unless @user.save
     @users = User.all
   end
 

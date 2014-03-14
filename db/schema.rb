@@ -17,13 +17,15 @@ ActiveRecord::Schema.define(:version => 201307012018430) do
     t.string   "fecha"
     t.string   "hora_inicio"
     t.string   "hora_terminacion"
-    t.text     "objetivo_de_la_reunion"
+    t.string   "objetivo_de_la_reunion"
     t.text     "desarrollo_reunion"
     t.text     "conclusiones"
+    t.integer  "comite_id"
     t.datetime "created_at",             :null => false
     t.datetime "updated_at",             :null => false
-    t.integer  "comite_id"
   end
+
+  add_index "actas", ["comite_id"], :name => "index_actas_on_comite_id"
 
   create_table "asignacioncomites", :force => true do |t|
     t.string   "nombres"
@@ -72,9 +74,8 @@ ActiveRecord::Schema.define(:version => 201307012018430) do
     t.integer  "fcomite_id"
     t.integer  "asignacioncomite_id"
     t.integer  "quejaid"
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
-    t.string   "idsqueja",            :limit => 20
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
   end
 
   add_index "comites", ["fcomite_id"], :name => "index_comites_on_fcomite_id"
@@ -118,9 +119,8 @@ ActiveRecord::Schema.define(:version => 201307012018430) do
     t.string   "fecha"
     t.string   "lugar"
     t.string   "tipo"
-    t.string   "tiempo_caso"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "funcionarios", :force => true do |t|

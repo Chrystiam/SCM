@@ -1,0 +1,62 @@
+Centro.create([
+  { :nombre => "Centro de Formacion en Diseño, Confeccion y Moda", :abreviatura => "CFDCM", :created_at => "2013-12-02 23:58:45", :updated_at => "2013-12-02 23:58:45" }
+], :without_protection => true )
+
+
+Coordinador.create([
+  { :nombre => "christiam Camilo Gomez", :email => "chrystiamgg@misena.edu.co", :centro_id => 1, :created_at => "2013-12-10 02:18:38", :updated_at => "2013-12-10 02:18:38" }
+], :without_protection => true )
+
+
+
+Estado.create([
+  { :nombre => "en espera ", :descripcion => "la queja fue creada y espera a ser enviada a comite ", :created_at => "2013-12-03 00:50:45", :updated_at => "2013-12-03 00:50:45" },
+  { :nombre => "remitido a comite", :descripcion => "la queja fue remitida a comite", :created_at => "2013-12-03 00:53:25", :updated_at => "2013-12-03 00:53:25" },
+  { :nombre => "corregir", :descripcion => "es devuelta al instructor para corregir  ", :created_at => "2014-01-09 21:14:28", :updated_at => "2014-01-09 21:14:28" },
+  { :nombre => "por asignar", :descripcion => "no se ha asignado  a una programacieón", :created_at => "2014-01-16 20:39:13", :updated_at => "2014-01-16 20:40:07" },
+  { :nombre => "en programación", :descripcion => "esta programado a un comité ", :created_at => "2014-01-16 20:44:23", :updated_at => "2014-01-16 20:44:23" }
+], :without_protection => true )
+
+
+
+Falta.create([
+  { :falta => "Academica", :descripcion => "no cumple con los trabajos", :created_at => "2013-12-02 23:46:54", :updated_at => "2013-12-02 23:46:54" },
+  { :falta => "Diciplinaria", :descripcion => "ofender a un instructor", :created_at => "2013-12-02 23:47:54", :updated_at => "2013-12-02 23:47:54" }
+], :without_protection => true )
+
+
+
+Programa.create([
+  { :descripcion => "analisis y  de desarrollo  de sistemas de informacion", :abreviatura => "ADSI", :coordinador_id => 1, :created_at => "2013-12-03 00:02:14", :updated_at => "2013-12-03 00:02:14", :estado => true },
+  { :descripcion => "Diseño de joyas ", :abreviatura => "DJ", :coordinador_id => 1, :created_at => "2014-02-13 02:04:42", :updated_at => "2014-02-13 02:04:42", :estado => true }
+], :without_protection => true )
+
+
+Role.create([
+  { :name => "Instructor", :created_at => "2014-01-13 19:32:25", :updated_at => "2014-01-13 19:32:25" },
+  { :name => "Admin", :created_at => "2014-01-09 20:51:46", :updated_at => "2014-01-09 20:51:46" },
+  { :name => "Coordinador", :created_at => "2014-01-14 00:37:23", :updated_at => "2014-01-14 00:37:23" }
+], :without_protection => true )
+
+
+
+TipoDocumento.create([
+  { :sigla => "CC", :descripcion => "Cédula de ciudadanía ", :created_at => "2014-01-09 21:02:14", :updated_at => "2014-01-09 21:02:14" },
+  { :sigla => "TI", :descripcion => "Tarjeta de Identidad ", :created_at => "2014-02-13 02:05:50", :updated_at => "2014-02-13 02:05:50" }
+], :without_protection => true )
+
+
+
+User.create([
+  { :username => "camilo", :email => "chrystiamgg@misena.edu.co", :password => "1234",  :nombre => "camilo" },
+  { :username => "cristian", :email => "cristiii4n@misena.edu.co", :password => "1234",  :nombre => "cristian" },
+  { :username => "paulo", :email => "kyubi_589@hotmail.com", :password => "1234",  :nombre => "paulo" }
+])
+
+
+
+UserRole.create([
+  { :user_id => 1, :role_id => 1, :created_at => "2014-01-09 15:54:16", :updated_at => "2014-01-09 15:54:16" },
+  { :user_id => 2, :role_id => 2, :created_at => "2014-01-13 18:34:35", :updated_at => "2014-01-13 18:34:35" },
+  { :user_id => 3, :role_id => 3, :created_at => "2014-01-13 19:39:19", :updated_at => "2014-01-13 19:39:19" }
+])
